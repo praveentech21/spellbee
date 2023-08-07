@@ -9,16 +9,6 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta content="Metronic Shop UI description" name="description">
-    <meta content="Metronic Shop UI keywords" name="keywords">
-    <meta content="keenthemes" name="author">
-
-    <meta property="og:site_name" content="-CUSTOMER VALUE-">
-    <meta property="og:title" content="-CUSTOMER VALUE-">
-    <meta property="og:description" content="-CUSTOMER VALUE-">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-    <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Fonts START -->
@@ -62,6 +52,9 @@
             to {
                 visibility: hidden;
             }
+        }
+        .container .ul .li {
+            size: 50px;
         }
     </style>
 
@@ -108,48 +101,62 @@
     <div class="about-block content content-center" id="about">
         <div class="container">
             <br><br>
-            <h3><strong><b>CODEMASTER 2018</b></strong> RULES & REGULATIONS</h3>
+            <h3><strong><b>SPELL CHAMP 2023</b></strong> RULES & REGULATIONS</h3>
             <br>
 
+            <h2 style='font-size:24px;'>Process of Registration</h2>
+
+            <ul type="disc" style="text-align:justify; size: 50px;">
+                <li> Students need to register online or at Campus Online Stall.</li>
+                <li> You can pay the Registration Fee @ <a href="tel: 9052727402">Technology Centre,Idea Lab </a>or our team at stall to get the exam login id and password by SMS/Email.</li>
+                <li> For one registration Student Can Play One Time Only.</li>
+                <li> If he want to improve his score he can REPLAY which costs around 10/- Rs.</li>
+                <li> Best of the Score is Consider as his score.</li>
+                <li> At the Time of selection we will consider time taken if the scores are same.</li>
+                <li> No negative marks for wrong answers.</li>
+            </ul>
+            <br><br>
+            <hr>
 
             <h2 style='font-size:24px;'>LEVEL 1 RULES</h2>
 
             <ul type="disc" style="text-align:justify;">
-                <li> Students need to register online or via APP available with your Class Representative (CR).</li>
-                <li> You can pay the Registration Fee @ Technology Centre, I-Hub, Z Block or to your Class Representative (CR) to get the exam login id and password by SMS/Email.</li>
-                <li> Student can register to all the 3 Programming Languages (C, JAVA & PYTHON) separately.</li>
-                <li> Level 1 is an online exam with 20 objective questions (with easy to moderate complexity).</li>
+                <li> Level 1 is an online Multiple choice exam with 20 objective questions (with easy to moderate complexity).</li>
+                <li> You need to identify the Correct Spelling from the MCQ's.</li>
                 <li> <b>Time Limit:</b> 20 Minutes.</li>
-                <li> <b>Registration Fee:</b> Rs. 50/- per student for C Programming. For JAVA/PYTHON, Registration Fee is Rs.30/-</li>
-                <li> No negative marks for wrong answers.</li>
-                <li> User ID and Password for Level 1 Exam will be sent to your email-id & mobile after registration & payment of exam fee.</li>
-                <li> Registered candidates can take their exam at Technology Centre (9:00 AM to 7:00 PM) or at Digital Learning Centre (9:00 AM to 11:00 PM) or at General Computer Centre (GCC) or at their home via a PC / Laptop / Tab / Mobile.</li>
-                <li> A student can re-register by paying the registration fee again but only the score of the last attempt will be counted. A max of 2 registrations will be allowed. Only for genuine cases, a second chance will be given on a case by case basis.</li>
-                <li> Make sure you have a decent internet connection and no power related problems while taking the exam.</li>
-                <li> Any technical trouble / power failure / internet issues has to be reported to Technology Centre immediately.</li>
+                <li> <b>Registration Fee:</b> Rs. 20/- per student for a student. For Replay Fee is Rs.10/-</li>
+                <li> User ID for Level 1 Exam will be Shared by our Team (to whome you pay money)  after registration & payment of exam fee.</li>
+                <li> Registered candidates can take their exam at Our Campus Online Stall (12:30 AM to 2:00 PM and 3:30 to 5:00 om) or at Technology Centre (after 5:00 pm) or at Girls Hostel Stall (only for Girls after 5:00 pm). </li>
+                <li> A student can re-register by paying 10 /- fee again only best the score will be counted. No max re-registrations. One can try <strong style="color: #C91E3E;">n number of times</strong> to improve his Skills and Score.</li>
                 <li><span style='color:red;'> Students are expected to take their exam before the level 1 deadline.</span></li>
                 <li> Selected list of candidates for Level 2 will be posted in website and communicated to the participants via email or SMS.</li>
                 <li> A sample demo of the online exam can be taken for free at the following link: <a href='http://www.mcr.org.in/level1' target='test' style='color:blue;'>Click Here To Go To Sample Test</a></li>
                 <li> All participants can download their e-certificates from <a href='http://www.codemaster.online/certificate' target='test' style='color:blue;'>Get E-Certificate</a>.</li>
             </ul>
+
             <a name='l2'></a><br><br>
+
             <hr><br><br>
+
             <h2 style='font-size:24px;'>LEVEL 2 RULES</h2><br>
+
             <ul type="disc" style="text-align:justify;">
-                <li> Top 20% of Level 1 (max of 350 students) based on their score in first Level exam will be qualified for Level 2.</li>
-                <li> Separate exams will be conducted for C, Java and Python on different dates/times.</li>
-                <li> Level 2 would be conducted at Technology Centre & Digital Learning Centre, I-Hub, Z-Block for all qualified participants.</li>
-                <li> The Level 2 exam consists of 30 objective type, find output of code, programs, etc., related to respective Programming language that needs to be answered in 30 minutes.</li>
+                <li> Top 20% of Level 1 (max of 250 students) based on their score in first Level exam will be qualified for Level 2.</li>
+                <li> Level 2 would be conducted at Technology Centre for all qualified participants.</li>
+                <li> The Level 2 exam consists of 30 Words, you need to type the Spelling of all the 25 words in 30 minutes.</li>
                 <li> There will be negative marking for Level 2. 1/4th mark will be deducted for every wrong answer.</li>
                 <li> No separate registration fee is required for Level 2 exam.</li>
                 <li> Any sort of mischief or malpractice is highly discouraged and would be considered seriously.</li>
                 <li> Technology Centre team will preside over the Level 2 exam and their decision is deemed final.</li>
                 <li> Selected list of candidates for Final Level will be posted in website and communicated to the participants via email.</li>
             </ul>
+
             <a name='l3'></a><br><br>
+
             <hr><br><br>
 
             <h2 style='font-size:24px;'>LEVEL 3 RULES</h2><br>
+            
             <ul type="disc" style="text-align:justify;">
                 <li> Level 3 would be conducted at Technology Centre for short listed candidates from Level 2.</li>
                 <li> Level 3 is a complete hands-on coding test where the student is expected to write code on system or in HackerRank/Moodle website.</li>
