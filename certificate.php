@@ -73,26 +73,7 @@
 <body class="menu-always-on-top">
 
 
-    <!-- BEGIN STYLE CUSTOMIZER
-    <div class="color-panel">
-        <a href='index.php'><div class="color-mode-icons icon-color">GO BACK</div></a>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER -->
-
-
-
-    <!-- Header BEGIN -->
-    <div class="header header-mobi-ext">
-        <div class="container">
-            <div class="row">
-                <!-- Logo BEGIN -->
-                <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="register.php"><img src="assets/onepage/img/logo/red.png" alt="Code Master 2018"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header END -->
+    <?php include "header.php"; ?>
 
     <!-- About block BEGIN -->
     <div class="about-block content content-center" id="about">
@@ -145,40 +126,7 @@
     <!-- About block END -->
 
 
-    <!-- BEGIN FOOTER -->
-    <div class="container">
-        <div class="footer">
-            <div class="row">
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-12 text-center">
-                    <p class="powered">CODE MASTER 2018 | Powered by: <a href="http://www.mcr.org.in" target='_new'><img src='assets/onepage/img/mcr.png'></a></p>
-                </div>
-                <!-- END COPYRIGHT -->
-            </div>
-        </div>
-    </div>
-    <!-- END FOOTER -->
-    <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
-
-    <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<![endif]-->
-    <!-- Load JavaScripts at the bottom, because it will reduce page load time -->
-    <!-- Core plugins BEGIN (For ALL pages) -->
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- Core plugins END (For ALL pages) -->
-    <!-- Core plugins BEGIN (required only for current page) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/jquery.easing.js"></script>
-    <script src="assets/plugins/jquery.parallax.js"></script>
-    <script src="assets/plugins/jquery.scrollTo.min.js"></script>
-    <script src="assets/onepage/scripts/jquery.nav.js"></script>
-    <!-- Core plugins END (required only for current page) -->
-    <!-- Global js BEGIN -->
-    <script src="assets/onepage/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <?php include "footer.php"; ?>
     <script>
         jQuery(document).ready(function() {
             Layout.init();
