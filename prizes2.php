@@ -140,7 +140,6 @@ td,th
      }							  
      print "<tr><td align='center'>101</td><td style='text-align:left;'><b>KANCHERLA LAHIR VENKATA SRI SYAM KIRAN</b><div style='font-size:10px;'>17B91A0170 - 1/4 CIVIL <b>PRIZE:</b> CIVIL Topper - Mi Smart Band</div></td><td align='center'><b>#149</b></td></tr>";
 echo "</table></center><br><br>";			 
-mysql_close($conn);
 ?>
 			</div>	
 

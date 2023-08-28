@@ -119,7 +119,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- Navigation BEGIN -->
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>Code Master Home</strong></a></li>
+                        <li><a href="index.php"><strong style='color:#C91E3E;'>Department Wise Leader Board</strong></a></li>
                     </ul>
                 </div>
                 <!-- Navigation END -->

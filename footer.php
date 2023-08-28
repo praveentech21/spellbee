@@ -5,7 +5,7 @@
                 <!-- BEGIN BOTTOM ABOUT BLOCK -->
                 <div class="col-md-4 col-sm-6 pre-footer-col">
                     <h2>About us</h2>
-                    <p style="align:justify;">Spell Champ is jointly organized by Campus Online, English Department and Idea Lab of SRKR Engineering College, Bhimavaram. This Event is Started in this year and expeted to Countinue futher years </p>
+                    <p style="align-self:auto;">Spell Champ is jointly organized by Campus Online, English Department and Idea Lab of SRKR Engineering College, Bhimavaram. This Event is Started in this year and expeted to Countinue futher years </p>
                 </div>
                 <!-- END BOTTOM ABOUT BLOCK -->
                 <!-- BEGIN TWITTER BLOCK -->

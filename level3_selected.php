@@ -300,7 +300,6 @@ while($rnd1=mysqli_fetch_row($result1))
 
 echo "</table></center><br><br>";			 
 
-	mysql_close($conn);
 
 ?>
 			
