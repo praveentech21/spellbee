@@ -1,40 +1,33 @@
 <!DOCTYPE html>
-<!--
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
+<?php
 
-<!-- Head BEGIN -->
+$dept = $_GET['dept'];
+
+if ($dept == 'CSE') {
+    $fdept = "COMPUTER SCIENCE & ENGINEERING";
+} elseif ($dept == 'ECE') {
+    $fdept = "ELECTRONICS & COMMUNICATION ENGINEERING";
+} elseif ($dept == 'EEE') {
+    $fdept = "ELECTRICAL & ELECTRONICS ENGINEERING";
+} elseif ($dept == 'MECH') {
+    $fdept = "MECHANICAL ENGINEERING";
+} elseif ($dept == 'CIVIL') {
+    $fdept = "CIVIL ENGINEERING";
+} elseif ($dept == 'IT') {
+    $fdept = "INFORMATION TECHNOLOGY";
+}
+
+?>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>CodeMaster - Online Coding Challenge</title>
+    <title>SRKR SpellBee Challenge 2023</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta content="Metronic Shop UI description" name="description">
-    <meta content="Metronic Shop UI keywords" name="keywords">
-    <meta content="keenthemes" name="author">
-
-    <meta property="og:site_name" content="-CUSTOMER VALUE-">
-    <meta property="og:title" content="-CUSTOMER VALUE-">
-    <meta property="og:description" content="-CUSTOMER VALUE-">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-    <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Fonts START -->
@@ -79,26 +72,42 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 visibility: hidden;
             }
         }
+        .container .ul .li {
+            size: 50px;
+        }
     </style>
 
 </head>
 <!--DOC: menu-always-on-top class to the body element to set menu on top -->
 
 <body class="menu-always-on-top">
+    <a name='l1'></a>
+
+
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel">
+        <a href='index.php#rules'>
+            <div class="color-mode-icons icon-color">GO BACK</div>
+        </a>
+    </div>
+    <!-- END BEGIN STYLE CUSTOMIZER -->
+
+
+
     <!-- Header BEGIN -->
     <div class="header header-mobi-ext">
         <div class="container">
             <div class="row">
                 <!-- Logo BEGIN -->
                 <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="#promo-block"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
+                    <a class="scroll site-logo" href="index.php"><img src="assets/onepage/img/logo/red.png" alt=""></a>
                 </div>
                 <!-- Logo END -->
                 <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
                 <!-- Navigation BEGIN -->
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>Code Master Home</strong></a></li>
+                        <li><a href="index.php"><strong style='color:#C91E3E;'>SpellBee Champ Home</strong></a></li>
                     </ul>
                 </div>
                 <!-- Navigation END -->
@@ -107,55 +116,31 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
     <!-- Header END -->
 
-    <!-- About block BEGIN -->
-    <div class="about-block content content-center" id="about">
+   <!-- About block BEGIN -->
+   <div class="about-block content content-center" id="about">
         <div class="container">
-
-            <br><br>
-            <br><br>
-
-            <h2>Forgot <strong><b>Login ID / Password</b></strong> for Code Master 2018?</h2>
-            <br><br><br>
-            <div style="font-size:20px;margin-left:50px;margin-right:50px;text-align:center;color:#000000;">
-                <p>Your Roll Number Is Your LOGIN ID!</p>
-                <p>For password related issues, please contact Technology Centre, 2nd Floor, Z-Block (Canteen Building), SRKR Campus or call @ +91 9885050551.</p>
-            </div>
-            <br><br><br><br><br><br>
-            <br><br><br><br><br><br>
-
-
-
+            <br>
+            <br>
+            <h2><strong><b><?php echo $dept; ?> LEADERBOARD</b></strong><br><?php echo $dept; ?></h2>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3 style="text-align:center">LEADERBOARD TO BE UPDATED SOON!!</h3>
+    <br>
+   
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- About block END -->
 
 
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-8 col-sm-8">
-                    <div class="copyright">© Code Master Contest 2018 . ALL Rights Reserved.</div>
-                </div>
-                <!-- END COPYRIGHT -->
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-2 col-sm-2 text-right">
-                    <p class="powered">Powered by: <a href="http://www.mcr.org.in/"><img src='assets/onepage/img/mcr.png'></a></p>
-                </div>
-                <!-- END COPYRIGHT -->
-                <!-- BEGIN SOCIAL ICONS -->
-                <div class="col-md-2 col-sm-2 text-left">
-                    <ul class="social-icons">
-                        <li><a class="facebook" data-original-title="facebook" href="https://www.facebook.com/mcrweb/" target='_new'></a></li>
-                        <li><a class="twitter" data-original-title="twitter" href="https://twitter.com/mcr_web" target='_new'></a></li>
-                    </ul>
-                </div>
-                <!-- END SOCIAL ICONS -->
+    <?php  include('footer.php'); ?>
 
-            </div>
-        </div>
-    </div>
     <!-- END FOOTER -->
     <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
