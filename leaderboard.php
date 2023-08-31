@@ -34,12 +34,12 @@ if ($dept == 'CSE') {
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome.min.css" rel="stylesheet">
     <!-- Global styles END -->
     <!-- Page level plugin styles BEGIN -->
     <link href="assets/pages/css/animate.css" rel="stylesheet">
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="scratch/test.css">
 
 
@@ -144,31 +144,6 @@ if ($dept == 'CSE') {
     <!-- END FOOTER -->
     <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
-    <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<![endif]-->
-    <!-- Load JavaScripts at the bottom, because it will reduce page load time -->
-    <!-- Core plugins BEGIN (For ALL pages) -->
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- Core plugins END (For ALL pages) -->
-    <!-- Core plugins BEGIN (required only for current page) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/jquery.easing.js"></script>
-    <script src="assets/plugins/jquery.parallax.js"></script>
-    <script src="assets/plugins/jquery.scrollTo.min.js"></script>
-    <script src="assets/onepage/scripts/jquery.nav.js"></script>
-    <!-- Core plugins END (required only for current page) -->
-    <!-- Global js BEGIN -->
-    <script src="assets/onepage/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
-    <script>
-        jQuery(document).ready(function() {
-            Layout.init();
-        });
-    </script>
-    <!-- Global js END -->
 </body>
 
 </html>

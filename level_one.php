@@ -48,6 +48,8 @@
 			<div class="clear">&nbsp;</div>
 		</div>
 		<?php include "footer.php"; ?>
+		<a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
+	</div>
 </body>
 
 </html>
