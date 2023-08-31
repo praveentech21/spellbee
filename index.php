@@ -1,26 +1,9 @@
-<?php
-
-include "connect.php";
-
-$result = mysqli_query($conn, "SELECT * FROM payments;");
-$total = mysqli_num_rows($result);
-
-$result = mysqli_query($conn, "SELECT * FROM payments where language='C';");
-$c = mysqli_num_rows($result);
-
-$result = mysqli_query($conn, "SELECT * FROM payments where language='PYTHON';");
-$python = mysqli_num_rows($result);
-
-$result = mysqli_query($conn, "SELECT * FROM payments where language='JAVA';");
-$java = mysqli_num_rows($result);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Spell Champ - Online Spelling Challenge</title>
+    <title>SRKR Spell Bee - Online Spelling Challenge </title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -86,12 +69,22 @@ $java = mysqli_num_rows($result);
             <div class="carousel-inner" role="listbox">
                 <!-- First slide -->
                 <div class="item carousel-item-one active">
+                    <img class="carousel-position-srkrec animate-delay"  data-animation="animated fadeInDown">
+                    <img class="animate-delay" style='padding-top:150px;' src="assets/onepage/img/slider/cup.png" alt="SpellBee Challenge" data-animation="animated fadeInDown">
+                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay"   data-animation="animated fadeInUp">
+
+                </div>
+
+                <!-- First slide --
+                <div class="item carousel-item-one">
                     <img class="carousel-position-srkrec hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/srkrec.png" alt="Code Master 2018" data-animation="animated fadeInDown">
                     <div class="center-block">
                         <div class="center-block-wrap">
                             <div class="center-block-body">
                                 <h2 class="margin-bottom-20 animate-delay carousel-title-v1" data-animation="animated fadeInDown">
                                     <span class="color-red"><b>Spell Champ SRKR</b></span>
+									                    <img class="carousel-position-srkrec hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/cup.png" alt="SpellBee Challenge" data-animation="animated fadeInDown">
+	
                                 </h2>
 
                                 <div class="animated flipInX">
@@ -106,15 +99,17 @@ $java = mysqli_num_rows($result);
                             </div>
                         </div>
                     </div>
-                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/coders.png" alt="Iphone" data-animation="animated fadeInUp">
+					<div align='left'>
+                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/cup.png" alt="Iphone" data-animation="animated fadeInUp">
+					</div>	
 
-                </div>
+                </div>-->
 
-                <!-- Second slide -->
+                <!-- Second slide --
                 <div class="item carousel-item-two">
                     <img class="carousel-position-two hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/title.png" alt="Code Master 2018" data-animation="animated fadeInDown">
                     <img class="carousel-position-three hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/prizes.png" alt="Iphone" data-animation="animated fadeInUp">
-                </div>
+                </div> -->
 
                 <!-- Third slide -->
                 <div class="item carousel-item-three">
@@ -123,14 +118,14 @@ $java = mysqli_num_rows($result);
                             <div class="center-block-body">
                                 <span class="carousel-subtitle-v1">IMPORTANT DATES</span>
                                 <h3 class="margin-bottom-20 animate-delay promo-like-text" data-animation="animated fadeInDown">
-                                    <div STYLE='font-size:32px;'><span class='color-red'>ROUND 1:</span> 16th Agu - 02th Sep 2023</div>
-                                    <div STYLE='font-size:32px;'><span class='color-red'>ROUND 2:</span> 04th Sep - 09th Sep 2023</div>
-                                    <div STYLE='font-size:32px;'><span class='color-red'>ROUND 3:</span> 11th Sep - 16th Sep 2023</div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 24th SEP 2023</div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 24th SEP - 30th SEP 2023</div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 05th OCTOBER 2023</div>
                                 </h3>
                             </div>
                         </div>
                     </div>
-                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/prizes2.png" alt="Prizes" data-animation="animated fadeInUp">
+                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/cup.png" width='300px' alt="Prizes" data-animation="animated fadeInUp">
 
                 </div>
             </div>
@@ -149,20 +144,20 @@ $java = mysqli_num_rows($result);
     <!-- About block BEGIN -->
     <div class="about-block content content-center" id="about">
         <div class="container">
-            <h2><strong><b>Spell Champ Srkr</b></strong><br>The Spell Bee Challenge of SRKREC</h2>
-            <h4>Spell Champ is an unique online Spelling challenge conducted annually to test the Spelling skills of SRKREC students. Only SRKREC students (all branches & years of B.E/B.Tech programmes) are eligible to take part in this challenge and can win exciting prizes. The winners will be decided based on their skill level in Spelling, Speed and accuracy. We provide audio of the word,you need to identify the Spelling of the word from the MCQ's.</h4>
-            <!-- <h4>Code Master is an unique online coding challenge conducted annually to test the coding skills of SRKREC students. Only SRKREC students (all branches & years of B.E/B.Tech programmes) are eligible to take part in this challenge and can win exciting prizes. The winners will be decided based on their skill level in Programming, Problem Solving and Code Writing tested in 3 different languages in 3 different levels.</h4> -->
+            <h2><strong><b>SpellBee Champ of SRKREC</b></strong></h2>
+			<h2>The Ultimate Online SpellBee Challenge of The Campus</h2>
+            <h4>SRKR SpellBee is an unique online spelling check challenge conducted to test the Spelling skills of SRKREC students. Only SRKREC students (all branches & years of B.E/B.Tech programmes) are eligible to take part in this challenge and can win exciting prizes. The winners will be decided based on their skill level in Spelling Words with varying levels of difficulty, Speed and accuracy. As the contest is completely online, we provide audio of the word with a defined meaning of that word, you need to guess/write the spelling to gain points.</h4>
 
             <a name='rules'></a>
             <div class="container">
-                <h2 class="margin-bottom-20" style='font-size:24px;'><strong>Levels</strong> Of Spell Champ Challenge</h2>
+                <h2 class="margin-bottom-20" style='font-size:24px;'><strong>Levels</strong> Of SRKR SpellBee Challenge</h2>
                 <div class="row">
                     <!-- Pricing item BEGIN -->
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="pricing-item">
                             <div class="pricing-head">
                                 <h3>LEVEL 1</h3>
-                                <p>Live Spelling Test</p>
+                                <p>Live MCQs Test</p>
                             </div>
                             <div class="pricing-content">
                                 <div class="pi-price">
@@ -170,9 +165,10 @@ $java = mysqli_num_rows($result);
                                 </div>
                                 <ul class="list-unstyled">
                                     <li><i class="fa fa-circle"></i> For Replay <i class="fa fa-rupee"><em>10</em>/-</i></li>
-                                    <li><i class="fa fa-circle"></i> 20 Words / 20 Minutes</li>
-                                    <li><i class="fa fa-circle"></i> Take Exam at Campus Online Stall</li>
+                                    <li><i class="fa fa-circle"></i> 15 Words (Easy to Moderate) - MCQs</li>
+                                    <li><i class="fa fa-circle"></i> Take Exam at Campus Online Stalls on Campus, Hostel Stall (for Hostel Girls) and at Technology Centre (Till 8 PM Every Day) and respected Places</li>
                                     <li><i class="fa fa-circle"></i> Top 20% will go to Level 2</li>
+                                    <li><i class="fa fa-circle"></i>  E-Certificate will be given for every Participant</li>
                                 </ul>
                             </div>
                             <div class="pricing-footer">
@@ -193,10 +189,11 @@ $java = mysqli_num_rows($result);
                                     <strong><i class="fa fa-rupee"></i> <em>0</em>/-</strong>
                                 </div>
                                 <ul class="list-unstyled">
-                                    <li><i class="fa fa-circle"></i> 20 Words / Speed Base Scoring</li>
-                                    <li><i class="fa fa-circle"></i> Proctored Online Exam @ Tech Centre</li>
-                                    <li><i class="fa fa-circle"></i> Top 30 will go to Final Level</li>
-                                    <li><i class="fa fa-circle"></i> Merit Certificates</li>
+                                    <li><i class="fa fa-circle"></i> 30 Words with Moderate to Tough Level Difficulty</li>
+                                    <li><i class="fa fa-circle"></i> This round will be Conducted in Batches @ Tech Centre for 1 Week</li>
+                                    <li><i class="fa fa-circle"></i> Participants should WRITE/TYPE the correct spellings</li>
+                                    <li><i class="fa fa-circle"></i> Top 50 will go to Final Level</li>
+                                    <li><i class="fa fa-circle"></i> Gets Merit E-Certificates</li>
                                 </ul>
                             </div>
                             <div class="pricing-footer">
@@ -210,19 +207,20 @@ $java = mysqli_num_rows($result);
                         <div class="pricing-item">
                             <div class="pricing-head">
                                 <h3>LEVEL 3</h3>
-                                <p>Speed Based Spelling Round</p>
+                                <p>Final Round</p>
                             </div>
                             <div class="pricing-content">
                                 <div class="pi-price">
                                     <strong><i class="fa fa-rupee"></i> <em>0</em>/-</strong>
                                 </div>
                                 <ul class="list-unstyled">
-                                    <li><i class="fa fa-circle"></i> 30 Words - 30 Minutes Competation</li>
-                                    <li><i class="fa fa-circle"></i> Speed Base Scoring </li>
-                                    <li><i class="fa fa-circle"></i> Speed and Accuracy pay's </li>
-                                    <li><i class="fa fa-circle"></i> Top 10 Ranks To Be Generated</li>
+                                    <li><i class="fa fa-circle"></i> 30 Common Words for All - 30 Minutes Competition</li>
+                                    <li><i class="fa fa-circle"></i> Speed Base Scoring Evaluation - Winners To Be Decided on Speed and Accuracy</li>
+                                    <li><i class="fa fa-circle"></i> Top 10 will be rewarded</li>
+                                    <li><i class="fa fa-circle"></i> Department/Section Wise Leader Boards </li>
+                                    <li><i class="fa fa-circle"></i> Exciting Prizes & Certificates for Winners</li>
                                 </ul>
-                            </div>
+                            </div>	
                             <div class="pricing-footer">
                                 <a href="rules.php#l3" class="zoom valign-center btn btn-default">More Details</a>
                             </div>
@@ -244,24 +242,25 @@ $java = mysqli_num_rows($result);
                 <img src="assets/onepage/img/trio.png" alt="" class="img-responsive">
             </div>
             <br>
-            <h2 style='font-size:24px;'>Event <strong>Sponsors</strong></h2>
+            <h2 style='font-size:24px;'>Contest <strong>Sponsors</strong></h2>
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-12 item">
                     <h3>Prime Sponsor</h3>
                     <!--		        <a href="assets/onepage/img/sponsors/bhubl.jpg" class="zoom valign-center"> -->
-                    <center> <img src="assets/onepage/img/sponsors/bhub.png" alt="" class="img-responsive"></center>
-                    <a href='http://www.bhimavaram.online' target='bhub'>Bhimavaram Online</a>
+                    <a href='http://www.purplelane.in' target='plane'><center> <img src="assets/onepage/img/sponsors/purplelane.png" alt="" class="img-responsive"></center>
+                    <b>www.purplelane.in</b></a>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 item">
                     <h3>Title Sponsor</h3> <br>
-                    <center> <img src="assets/onepage/img/sponsors/mobicare.png" alt="" class="img-responsive"></center>
-                    <a href='http://www.saipraveen.free.nf/campusonline' target='mobicare'>SRKR Campus Online</a>
+                    <a href='https://bhimavaramonline.page.link/dhgB' target='bvrmol'><center> <img src="assets/onepage/img/sponsors/bvrmol.png" alt="" class="img-responsive"></center>
+                    <b>Bhimavaram Online</b></a>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 item">
                     <h3>Associate Sponsor</h3>
                     <br>
-                    <center><img src="assets/onepage/img/sponsors/naresh.png" alt="" class="img-responsive"></center>
-                    <a href='http://www.saipraveen.free.nf' target='naresh'>Sai Praveen</a>
+                    <a href='https://bhimavaramonline.page.link/gvFA' target='kshatriya'>
+					<center><img src="assets/onepage/img/sponsors/kkitchen.png" alt="" class="img-responsive"></center>
+                    <b>Kshatriya's Kitchen</b></a>
                 </div>
             </div>
         </div>
@@ -272,35 +271,14 @@ $java = mysqli_num_rows($result);
     <!-- Message block BEGIN -->
     <div class="message-block content content-center valign-center" id="message-block">
         <div class="valign-center-elem">
-            <h2>Top 10 Spell Champs of SRKREC To Be Identified </h2>
-            <h2 style='font-size:20px;'><i>Win Prizes worth more than 25,000/-</i></strong></h2>
-            <h2 style='font-size:16px;'>Get Your Merit Certificate With Score</h2>
+            <h2>Prizes Worth 25,000/- for the Top 10 Winners</h2>
+            <h2 style='font-size:20px;'><i>Merit and Participant Certificates for All</i></strong></h2>
+            <h2 style='font-size:16px;'>Department/Section-wise Leaderboard</h2>
         </div>
     </div>
     <!-- Message block END -->
 
-    <?php
-
-    $cser = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='CSE';");
-    $cse = mysqli_fetch_row($cser);
-
-    $itr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='IT';");
-    $it = mysqli_fetch_row($itr);
-
-    $ecer = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='ECE';");
-    $ece = mysqli_fetch_row($ecer);
-
-    $eeer = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='EEE';");
-    $eee = mysqli_fetch_row($eeer);
-
-    $mechr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='MECH';");
-    $mech = mysqli_fetch_row($mechr);
-
-    $civilr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='CIVIL';");
-    $civil = mysqli_fetch_row($civilr);
-
-
-    ?>
+    
     <!-- Portfolio block BEGIN -->
     <div class="portfolio-block content content-center" id="portfolio">
         <div class="container">
@@ -313,7 +291,7 @@ $java = mysqli_num_rows($result);
                 <a href="leaderboard.php?dept=CIVIL" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Civil Engineering</strong>
-                        <em><br><br><br>Registered: <?php echo $civil[0]; ?><br><br></em>
+                        <em><br><br><br>Registered: To be updated<br><br></em>
                         <b>View CIVIL LeaderBoard</b>
                     </div>
                 </a>
@@ -323,7 +301,7 @@ $java = mysqli_num_rows($result);
                 <a href="leaderboard.php?dept=CSE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science & Engineering</strong>
-                        <em><br><br>Registered: <?php echo $cse[0]; ?><br><br></em>
+                        <em><br><br>Registered:  To be updated <br><br></em>
                         <b>View CSE LeaderBoard</b>
                     </div>
                 </a>
@@ -333,7 +311,7 @@ $java = mysqli_num_rows($result);
                 <a href="leaderboard.php?dept=ECE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electronics & Communication Engineering</strong>
-                        <em><br>Registered: <?php echo $ece[0]; ?><br><br></em>
+                        <em><br><br><br>Registered: To be updated<br><br></em>
                         <b>View ECE LeaderBoard</b>
                     </div>
                 </a>
@@ -343,7 +321,7 @@ $java = mysqli_num_rows($result);
                 <a href="leaderboard.php?dept=EEE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electrical & Electronics Engineering</strong>
-                        <em><br>Registered: <?php echo $eee[0]; ?><br><br></em>
+                        <em><br>Registered: To be updated<br><br></em>
                         <b>View EEE LeaderBoard</b>
                     </div>
                 </a>
@@ -354,7 +332,7 @@ $java = mysqli_num_rows($result);
                 <a href="leaderboard.php?dept=IT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Information Technology</strong>
-                        <em><br><br>Registered: <?php echo $it[0]; ?><br><br></em>
+                        <em><br><br>Registered: To be updated<br><br></em>
                         <b>View IT LeaderBoard</b>
                     </div>
                 </a>
@@ -364,7 +342,7 @@ $java = mysqli_num_rows($result);
                 <a href="leaderboard.php?dept=MECH" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Mechanical Engineering</strong>
-                        <em><br><br>Registered: <?php echo $mech[0]; ?><br><br></em>
+                        <em><br><br>Registered: To be updated<br><br></em>
                         <b>View MECH LeaderBoard</b>
                     </div>
                 </a>
@@ -377,63 +355,63 @@ $java = mysqli_num_rows($result);
     <div class="portfolio-block content content-center" id="portfolio">
         <div class="row">
             <div class="item col-md-2 col-sm-6 col-xs-12">
-                <img src="assets/onepage/img/portfolio/civil.jpg" alt="CIVIL" class="img-responsive">
+                <img src="assets/onepage/img/portfolio/csbs.jpg" alt="CSBS" class="img-responsive">
                 <!--                <a href="civil.php" class="zoom valign-center"> -->
-                <a href="leaderboard.php?dept=CIVIL" class="zoom valign-center">
+                <a href="leaderboard.php?dept=CSBS" class="zoom valign-center">
                     <div class="valign-center-elem">
-                        <strong>Computer Science and Design</strong>
-                        <em><br><br><br>Registered: <?php echo $civil[0]; ?><br><br></em>
-                        <b>View CSD LeaderBoard</b>
-                    </div>
-                </a>
-            </div>
-            <div class="item col-md-2 col-sm-6 col-xs-12">
-                <img src="assets/onepage/img/portfolio/cse.jpg" alt="CSE" class="img-responsive">
-                <a href="leaderboard.php?dept=CSE" class="zoom valign-center">
-                    <div class="valign-center-elem">
-                        <strong>Computer Science and Business Systems</strong>
-                        <em><br><br>Registered: <?php echo $cse[0]; ?><br><br></em>
+                        <strong>COMPUTER SCIENCE & BUSINESS SYSTEMS</strong>
+                        <em><br><br><br>Registered: To be updated<br><br></em>
                         <b>View CSBS LeaderBoard</b>
                     </div>
                 </a>
             </div>
             <div class="item col-md-2 col-sm-6 col-xs-12">
-                <img src="assets/onepage/img/portfolio/ece.jpg" alt="ECE" class="img-responsive">
-                <a href="leaderboard.php?dept=ECE" class="zoom valign-center">
+                <img src="assets/onepage/img/portfolio/csd.jpg" alt="CSD" class="img-responsive">
+                <a href="leaderboard.php?dept=CSD" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Computer Science and Design</strong>
+                        <em><br><br>Registered: To be updated<br><br></em>
+                        <b>View CSD LeaderBoard</b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-2 col-sm-6 col-xs-12">
+                <img src="assets/onepage/img/portfolio/aiml.jpg" alt="AIML" class="img-responsive">
+                <a href="leaderboard.php?dept=AIML" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence & Machine Learning </strong>
-                        <em><br>Registered: <?php echo $ece[0]; ?><br><br></em>
+                        <em><br>Registered: To be updated<br><br></em>
                         <b>View AIML LeaderBoard</b>
                     </div>
                 </a>
             </div>
             <div class="item col-md-2 col-sm-6 col-xs-12">
-                <img src="assets/onepage/img/portfolio/eee.jpg" alt="EEE" class="img-responsive">
-                <a href="leaderboard.php?dept=EEE" class="zoom valign-center">
+                <img src="assets/onepage/img/portfolio/aids.jpg" alt="AIDS" class="img-responsive">
+                <a href="leaderboard.php?dept=AIDS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence and Data Science</strong>
-                        <em><br>Registered: <?php echo $eee[0]; ?><br><br></em>
-                        <b>View EEE LeaderBoard</b>
+                        <em><br>Registered: To be updated<br><br></em>
+                        <b>View AI&DS LeaderBoard</b>
                     </div>
                 </a>
             </div>
 
             <div class="item col-md-2 col-sm-6 col-xs-12">
-                <img src="assets/onepage/img/portfolio/it.jpg" alt="IT" class="img-responsive">
-                <a href="leaderboard.php?dept=IT" class="zoom valign-center">
+                <img src="assets/onepage/img/portfolio/csit.jpg" alt="CSIT" class="img-responsive">
+                <a href="leaderboard.php?dept=CSIT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Information Technology</strong>
-                        <em><br><br>Registered: <?php echo $it[0]; ?><br><br></em>
-                        <b>View CSI LeaderBoard</b>
+                        <em><br><br>Registered: To be updated<br><br></em>
+                        <b>View CSIT LeaderBoard</b>
                     </div>
                 </a>
             </div>
             <div class="item col-md-2 col-sm-6 col-xs-12">
-                <img src="assets/onepage/img/portfolio/mech.jpg" alt="MECH" class="img-responsive">
-                <a href="leaderboard.php?dept=MECH" class="zoom valign-center">
+                <img src="assets/onepage/img/portfolio/cic.jpg" alt="CIC" class="img-responsive">
+                <a href="leaderboard.php?dept=CIC" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Internet of Things and Cyber Security</strong>
-                        <em><br><br>Registered: <?php echo $mech[0]; ?><br><br></em>
+                        <em><br><br>Registered: To be updated<br><br></em>
                         <b>View CSE(IOT) LeaderBoard</b>
                     </div>
                 </a>
@@ -446,7 +424,7 @@ $java = mysqli_num_rows($result);
     <div class="choose-us-block content text-center margin-bottom-40" id="benefits">
         <div class="container">
             <h2>Frequently Asked <strong>Questions</strong></h2>
-            <h4>The frequently asked questions have been answered for better understanding of the Speel Bee Contest and other details. Please feel free to contact <a href="javascript:void(0);">Technology Centre, Z-Block</a> for any unanswered queries.</h4>
+            <h4>The frequently asked questions have been answered for better understanding of the Spell Bee Contest and other details. Please feel free to contact <a href="javascript:void(0);">Technology Centre, Z-Block</a> for any unanswered queries.</h4>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-left">
                     <img src="assets/onepage/img/choose-us.png" alt="Why to choose us" class="img-responsive">
@@ -461,7 +439,7 @@ $java = mysqli_num_rows($result);
                             </div>
                             <div id="accordion1_1" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <p>The Speel Bell contest is only for the students of SRKR Engineering College. Students of any branch and any year can participate in the contest.</p>
+                                    <p>The Spell Bee contest is only for the students of SRKR Engineering College. Students of any branch and any year can participate in the contest.</p>
                                     <p>Students can register and pay the fee at Campus Online Stall or Technology Centre.</p>
                                 </div>
                             </div>
@@ -487,7 +465,7 @@ $java = mysqli_num_rows($result);
                             </div>
                             <div id="accordion1_3" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>The exciting prizes are only meant for encouragement. More than the prizes, you can assess your Spelling skills and know where you stand among the potential Spell Champs of SRKR. Speel Bee Champ 2018 is going to generate a Rank for top 10 students based on their overall performance in the contest. A certificate of merit or participation is given to acknowledge their performance is provided for all.</p>
+                                    <p>The exciting prizes are only meant for encouragement. More than the prizes, you can assess your Spelling skills and know where you stand among the potential Spell Champs of SRKR. Spell Bee Champ 2023 is going to generate a Rank for top 10 students based on their overall performance in the contest. A certificate of merit or participation is given to acknowledge their performance is provided for all.</p>
                                     <p>You can win an Boat Buds / FOSSIL Watches / Smart Bands, Wrist Watches, Sound Boxes, Vouchers and other lot of exciting gadgets and coupons by participating in the contest. To encourage students of all branches, Spell Champ has introduced prizes for Department-wise best performers.</p>
                                 </div>
                             </div>
@@ -526,7 +504,7 @@ $java = mysqli_num_rows($result);
                             <div id="accordion1_6" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <p>Contact Technology Centre, I-Hub, Z-Block, SRKR Engineering College, Bhimavaram for any queries or clarifications during 9 AM to 8 PM.</p>
-                                    <p>Feel free to contact Mr. <a href="http://saipraveen.free.nf/">Sanju</a>, CSD @ +91 90527 27402.</p>
+                                    <p>Feel free to contact Mr.Sanju</a>, CSD @ +91 9848823311.</p>
                                 </div>
                             </div>
                         </div>
@@ -578,7 +556,7 @@ $java = mysqli_num_rows($result);
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong>18</strong>
+                        <strong>10</strong>
                         Winners
                     </div>
                 </div>
@@ -591,78 +569,138 @@ $java = mysqli_num_rows($result);
     <!-- Team block BEGIN -->
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
-            <h2>Meet <strong>The Team</strong></h2>
-            <h4>The content - Speel Bee Champ of SRKR was Conducted in assocation with Engilish Department</h4>
+            <h2> <strong>CHIEF PATRONS</strong></h2>
+            <h4>The contest - Spell Bee Champ of SRKR is organized in assocation with Engilish Department, IDEALab and Technology Centre</h4>
             <div class="row">
             <div class="col-md-3 item">
+                    <h3>Dr.N G K Murthy</h3>
+                    <em>Head, Technology center, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
                     <h3>Dr. Suresh Mudunuri</h3>
-                    <em>Director, MCR Web Solutions</em>
+                    <em>Programme Co-ordinator, CSD, SRKREC</em>
                 </div>
                 <div class="col-md-3 item">
-                    <h3>Dr. Gopal Krishna</h3>
-                    <em>Head,Idea Lab, SRKR</em>
+                    <h3>B.Pavan Kumar</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
                 <div class="col-md-3 item">
-                    <h3>Pavan Sir</h3>
-                    <em>T & P Cell, Srkr</em>
+                    <h3>P.Vijaya Kumar</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-3 item">
+                    <h3>Bh.V.N.Lakshmi</h3>
+                    <em>Professor, Dept. of English, SRKREC</em>
                 </div>
                 <div class="col-md-3 item">
-                    <h3>Riyaz Sir</h3>
-                    <em>T & P Cell</em>
+                    <h3>Dr.P.Bhuvaneshwari</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>B.Pavan Kumar</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>P.Vijaya Kumar</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 item">
+                    <h3>Dr.CH Rupa Jhansi Rani</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>Riyaz Mohammad</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>Dr Satish Kumar Nadimpalli</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>K Ramesh Vijaya Babu</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 item">
+                    <h3>N.Pavan Kumar</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>M Sankar</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>K Aruna Kumari</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>Hari Subash Nair</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 item">
+                    <h3>Kasarapu Esther Rani</h3>
+                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+            </div>
+            </div>
+        
+        </div>
+    </div>
+    <!-- Team block END -->
+
+
+<!-- Team block BEGIN -->
+<div class="team-block content content-center margin-bottom-40" id="team">
+        <div class="container">
+            <h2>Meet <strong>The Student Team</strong></h2>
+            <div class="row">
+            <div class="col-md-3 item">
+                    <h3>Dr. NGK Murthy</h3>
+                    <em>Head, Technology Centre, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>Dr. Bh. V. N. Lakshmi</h3>
+                    <em>Head, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>Dr. Suresh Mudunuri</h3>
+                    <em>Programme Co-ordinator, CSD, SRKREC</em>
+                </div>
+                <div class="col-md-3 item">
+                    <h3>Mr. Ravi Sankar</h3>
+                    <em>Faculty, Dept. of English</em>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 item">
-                    <h3>Susela Mantena</h3>
-                    <em>Professor, CSD</em>
+                    <h3>Ravi Kumar Ch</h3>
+                    <em>3/4 B.Tech CSD</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Neti Praveen</h3>
-                    <em>Professor, CSD</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>Asvini </h3>
-                    <em>Professor, CSD</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>Kotha Madam</h3>
-                    <em>Professor, CSD</em>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-3 item">
                     <h3>Sanju K</h3>
-                    <em>CEO, Campus Onlie</em>
+                    <em>3/4 B.Tech CSD</em>
                 </div>
                 <div class="col-md-3 item">
-                    <h3>Shiva Mani</h3>
-                    <em>MD, Campus Online</em>
+                    <h3>Siva Mani</h3>
+                    <em>3/4 B.Tech CSD</em>
                 </div>
                 <div class="col-md-3 item">
-                    <h3>M Prudhivi</h3>
-                    <em>CFO, Campus Online</em>
+                    <h3>M Prudhvi</h3>
+                    <em>3/4 B.Tech CSD</em>
                 </div>
                 <div class="col-md-3 item">
                     <h3>Vinay S</h3>
-                    <em>Student Body Member, CSD</em>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 item">
-                    <h3>Puneeth</h3>
-                    <em>CIO, Campus Online</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>Rohith</h3>
-                    <em>CCO, Campus Online</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>Karthik Ch</h3>
-                    <em>CDO, Campus Online</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>Sai Praveen</h3>
-                    <em>Founder, Campus Online</em>
+                    <em>3/4 B.Tech CSD</em>
                 </div>
             </div>
         </div>
@@ -670,7 +708,13 @@ $java = mysqli_num_rows($result);
     <!-- Team block END -->
 
 
+
     <?php  include('footer.php'); ?>
+    <!-- BEGIN STYLE CUSTOMIZER -->
+ <!--
+      
+    
+  -->
     <script>
         jQuery(document).ready(function() {
             Layout.init();

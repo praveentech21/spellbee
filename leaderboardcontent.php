@@ -14,27 +14,25 @@ if ($dept == 'CSE') {
     $fdept = "CIVIL ENGINEERING";
 } elseif ($dept == 'IT') {
     $fdept = "INFORMATION TECHNOLOGY";
+}elseif ($dept == 'CSD') {
+    $fdept = "COMPUTER SCIENCE & DESIGN";
+}elseif ($dept == 'CSBS') {
+    $fdept = "COMPUTER SCIENCE & BUSINESS SYSTEMS";
+}elseif ($dept == 'CIC') {
+    $fdept = "COMPUTER SCIENCE & INFORMATION SECURITY";
+}elseif ($dept == 'CSIOT') {
+    $fdept = "COMPUTER SCIENCE & ENGINEERING (IOT)";
+}elseif ($dept == 'AIDS') {
+    $fdept = "ARTIFICIAL INTELLIGENCE & DATA SCIENCE";
+}elseif ($dept == 'AIML') {
+    $fdept = "ARTIFICIAL INTELLIGENCE & MACHINE LEARNING";
+}else {
+    $fdept = "Department Wise Leader Board";
 }
 
 ?>
 <!DOCTYPE html>
-<!--
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
 <html lang="en">
-<!--<![endif]-->
-
-<!-- Head BEGIN -->
 
 <head>
     <meta charset="utf-8">
@@ -119,7 +117,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                 <!-- Navigation BEGIN -->
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>Department Wise Leader Board</strong></a></li>
+                        <li><a href="index.php"><strong style='color:#C91E3E;'><?php echo $fdept ;?> </strong></a></li>
                     </ul>
                 </div>
                 <!-- Navigation END -->
@@ -131,7 +129,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- About block BEGIN -->
     <div class="about-block content content-center" id="about">
         <div class="container">
-            <h2><strong><b><?php echo $dept; ?> LEADERBOARD</b></strong><br><?php echo $dept; ?></h2>
+            <h2><strong><b><?php echo $dept; ?> LEADERBOARD</b></strong><br></h2>
         </div>
     </div>
     <!-- About block END -->
@@ -147,13 +145,13 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         include "connect.php";
 
-        $depr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='$dept' and year=1;");
+        $depr = mysqli_query($conn, "SELECT count(*) FROM `registrations` where student_department='$dept' and student_year=2027;");
         $one = mysqli_fetch_row($depr);
-        $depr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='$dept' and year=2;");
+        $depr = mysqli_query($conn, "SELECT count(*) FROM `registrations` where student_department='$dept' and student_year=2026;");
         $two = mysqli_fetch_row($depr);
-        $depr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='$dept' and year=3;");
+        $depr = mysqli_query($conn, "SELECT count(*) FROM `registrations` where student_department='$dept' and student_year=2025;");
         $three = mysqli_fetch_row($depr);
-        $depr = mysqli_query($conn, "SELECT count(*) FROM payments p, registrations r where r.rollno=p.rollno and r.dept='$dept' and year=4;");
+        $depr = mysqli_query($conn, "SELECT count(*) FROM `registrations` where student_department='$dept' and student_year=2024;");
         $four = mysqli_fetch_row($depr);
 
         $total = $one[0] + $two[0] + $three[0] + $four[0];
@@ -194,7 +192,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
             <h2><?php echo $dept; ?> <strong>Leaderboard</strong></h2>
-            <h4>The Leader Board has been generated for all participants who scored a minimum of 10 Marks (50%). The maximum score of all the 3 languages (C, Java & Python) is considered for ranking.<br>
+            <h4>The Leader Board has been generated for all participants who participate in first round from <?php echo $dept ?> Department based on the scores <br>
                 <!--			<strong>NOTE:</strong> This Leader Board is not the list of students selected for Level 2 or 3. It is meant only for preparing the Top 100 Coders List of SRKREC.</h4> -->
 
                 <div class="col-md-12">
@@ -203,34 +201,17 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
                     include "connect.php";
 
-                    //$query1="SELECT rollno, (greatest(CL1,PL1,JL1)+greatest(CL2,PL2,JL2)+greatest(CL3,PL3,JL3)) as score FROM ranks having score > 10.0 order by score desc;";
-                    $query1 = "SELECT rollno, sname, year, dept, greatest(CL1,PL1,JL1), greatest(CL2,PL2,JL2), greatest(CL3,PL3,JL3), (greatest(CL1,PL1,JL1)+greatest(CL2,PL2,JL2)+greatest(CL3,PL3,JL3)) as score FROM ranks having score >= 10.0 order by score desc;";
-                    $result1 = mysqli_query($conn, $query1);
-
-                    //				echo "<center><table style='background-color:#FFFFFF;' border='1' cellspacing='1' cellpadding='3'><tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;'><th>S.NO</th><th>ROLL NUMBER</th><th>STUDENT NAME</th><th>BATCH</th><th>SCORE</th><th>DEPT. RANK</th><th>OVERALL RANK</th></tr>";
-                    echo "<center><table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'><tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;align:center;'><th>S.NO</th><th>ROLL NUMBER</th><th>STUDENT NAME</th><th>BATCH</th><th>LEVEL 1 (20%)</th><th>LEVEL 2 (30%)</th><th>LEVEL 3 (50%)</th><th>FINAL SCORE (100%)</th><th>DEPT. RANK</th><th>OVERALL RANK</th></tr>";
+                    $result1 = mysqli_query($conn, "SELECT r.student_name,r.student_regno,r.student_year,g.score FROM `registrations` r, `games` g WHERE g.score = (SELECT MAX(`score`) FROM games WHERE `regno` = r.student_regno) and r.student_regno = g.regno and r.student_department = '$dept' ORDER BY g.score;  ");
+                    echo "<center><table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'><tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;align:center;'><th>S.NO</th><th>ROLL NUMBER</th><th>STUDENT NAME</th><th>BATCH</th><th>SCORE </th><th>DEPT. RANK</th><th>OVERALL RANK</th></tr>";
 
                     $count = 0;
-                    $rank = 0;
-                    $orank = 0;
                     $prev_score = 100;
-                    $oprev_score = 100;
 
-                    while ($rnd1 = mysqli_fetch_row($result1)) {
-                        if ($rnd1[7] < $oprev_score) {
-                            $orank++;
-                            $oprev_score = $rnd1[7];
-                        }
-                        $rno = strtoupper($rnd1[0]);
-                        if ($rnd1[3] == $dept) {
+                    while ($rnd1 = mysqli_fetch_assoc($result1) and $count <= 99)  {
+                        $rank = mysqli_fetch_assoc(mysqli_query($conn,"SELECT person.regno, person.score, (SELECT COUNT(*) FROM games AS rank_table WHERE rank_table.score > person.score) + 1 AS rank FROM games AS person WHERE person.regno = '{$rnd1['student_regno']}'"))['rank'];
+
                             $count++;
-                            if ($rnd1[7] < $prev_score) {
-                                $rank++;
-                                $prev_score = $rnd1[7];
-                            }
-                            //   print "<tr><td align='center'>".$count."</td><td align='center'><font color='#DC143C'> ".$rno."</font></td><td> ".$rnd2[0]."</td><td align='center'>".$rnd2[1]."/4 ".$rnd2[2]."</td><td align='center'><b>".round($rnd1[1],2)."</b></td><td align='center'><b>#".$rank."</b></td><td align='center'><b>#".$orank."</b></td></tr>";  
-                            print "<tr><td align='center'>" . $count . "</td><td align='center'><font color='#DC143C'> " . $rno . "</font></td><td><b>" . $rnd1[1] . "</b></td><td align='center'>" . $rnd1[2] . "/4 " . $rnd1[3] . "</td><td align='center'>" . round($rnd1[4], 2) . "</td><td align='center'>" . round($rnd1[5], 2) . "</td><td align='center'>" . round($rnd1[6], 2) . "</td><td align='center'><strong><b>" . round($rnd1[7], 2) . "</b></strong></td><td align='center'><b>#" . $rank . "</b></td><td align='center'><b>#" . $orank . "</b></td></tr>";
-                        }
+                            print "<tr><td align='center'>" . $count . "</td><td align='center'><font color='#DC143C'> " . $rnd1['student_regno']. "</font></td><td><b>" . $rnd1['student_name'] . "</b></td><td align='center'><strong><b>" . round($rnd1[7], 2) . "</b></strong></td><td align='center'><b>#" . $rank . "</b></td><td align='center'><b>#" . $orank . "</b></td></tr>";
                     }
 
                     echo "</table></center><br><br>";

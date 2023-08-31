@@ -76,7 +76,43 @@
     <?php include "header.php"; ?>
 
     <!-- About block BEGIN -->
-    
+    <div class="about-block content content-center" id="about">
+        <div class="container">
+
+            <br>
+            <h3><strong><b>SRKR SPELL BEE </b></strong> 2023</h3>
+
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+
+                <h3><strong>EVENT FEEDBACK</strong><br></h3>
+
+                <form class="contact-form" id='reg1' method='post' action='certificate/certificate.php' onSubmit="return register();">
+                <input type="text" name='rollno' id="rollno" placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
+                <br><input type="text" name='feedback' id="feedback" placeholder="Your Vable Feedback..." class="form-control" autocomplete="on" autofocus>
+                    <br> <select name='language' id='language' required class="form-control" style='color:#C91E3E;'>
+                        <option value=''>Rate our EVENT</option>
+                        <option value='5'><strong>Five</strong> star</option>
+                        <option value='4'><strong>Four</strong> star</option>
+                        <option value='3'><strong>Three</strong> star</option>
+                        <option value='2'><strong>Two</strong> star</option>
+                        <option value='1'><strong>Single</strong> star</option>
+                    </select>
+                    <br> 
+                    <br>
+                    <center><input type="submit" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Submit Feed Back" id='regbutton'></center>
+                    </fieldset>
+                </form><br><br>
+                <br><br><br><br><br><br><br><br>
+
+            </div>
+            <div class="col-md-4"><input type="hidden" id="cmdDoSomething"></div>
+        </div>
+    </div>
+    <!-- About block END -->
+
 
     <?php include "footer.php"; ?>
     <script>

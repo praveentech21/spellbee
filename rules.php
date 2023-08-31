@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CodeMaster - Online Coding Challenge</title>
+    <title>SRKR SpellBee Challenge 2023</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -81,14 +81,14 @@
             <div class="row">
                 <!-- Logo BEGIN -->
                 <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="#promo-block"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
+                    <a class="scroll site-logo" href="index.php"><img src="assets/onepage/img/logo/red.png" alt=""></a>
                 </div>
                 <!-- Logo END -->
                 <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
                 <!-- Navigation BEGIN -->
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>Code Master Home</strong></a></li>
+                        <li><a href="index.php"><strong style='color:#C91E3E;'>SpellBee Champ Home</strong></a></li>
                     </ul>
                 </div>
                 <!-- Navigation END -->
@@ -158,13 +158,13 @@
             <h2 style='font-size:24px;'>LEVEL 3 RULES</h2><br>
             
             <ul type="disc" style="text-align:justify;">
-                <li> Level 3 would be conducted at Technology Centre for short listed candidates from Level 2.</li>
-                <li> Level 3 is a complete hands-on coding test where the student is expected to write code on system or in HackerRank/Moodle website.</li>
-                <li><span style='color:red;'>Final Level will be an Open Book Exam where participants can bring any material, text books or any other resource. Internet will also be provided for participants during the exam.</span></li>
-                <li> Final Level is a 3 hour coding contest where a set of 5-10 programs will be given for each participant and the one who completes more programs will be judged as winner.</li>
-                <li> A Senior Faculty or Subject Expert will act as a Judge for the final Level and his decision is deemed final.</li>
-                <li> Students can bring their own laptop. WiFi will be provided.</li>
-                <li> No separate registration fee is required for Level 3 exam.</li>
+                <li> Level 3 would be conducted at Technology Centre.</li>
+                <li>No options will be given, you must type the word.</li>
+                <li>Only individual participation will be allowed.</li>
+                <li>No seperate registration fee is required for level 3.</li>
+                <li>Your every answer will go under review before evaluation by subject experts.</li>
+                <li>Rules and Regulations may change according to the judicial.</li>
+                <li>Malpractices are Prohibited.</li>
             </ul>
 
             <br><br><br><br>
@@ -177,32 +177,8 @@
     <!-- About block END -->
 
 
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-8 col-sm-8">
-                    <div class="copyright">© Code Master Contest 2018 . ALL Rights Reserved.</div>
-                </div>
-                <!-- END COPYRIGHT -->
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-2 col-sm-2 text-right">
-                    <p class="powered">Powered by: <a href="http://www.mcr.org.in/"><img src='assets/onepage/img/mcr.png'></a></p>
-                </div>
-                <!-- END COPYRIGHT -->
-                <!-- BEGIN SOCIAL ICONS -->
-                <div class="col-md-2 col-sm-2 text-left">
-                    <ul class="social-icons">
-                        <li><a class="facebook" data-original-title="facebook" href="https://www.facebook.com/mcrweb/" target='_new'></a></li>
-                        <li><a class="twitter" data-original-title="twitter" href="https://twitter.com/mcr_web" target='_new'></a></li>
-                    </ul>
-                </div>
-                <!-- END SOCIAL ICONS -->
+    <?php  include('footer.php'); ?>
 
-            </div>
-        </div>
-    </div>
     <!-- END FOOTER -->
     <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
