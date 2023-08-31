@@ -275,7 +275,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
     <!-- END FOOTER -->
-    
     <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
     <!--[if lt IE 9]>

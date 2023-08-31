@@ -68,10 +68,10 @@
     <!-- Core plugins BEGIN (For ALL pages) -->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- Core plugins END (For ALL pages) -->
     <!-- Core plugins BEGIN (required only for current page) -->
-    <script src="assets/plugins/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
     <script src="assets/plugins/jquery.easing.js"></script>
     <script src="assets/plugins/jquery.parallax.js"></script>
     <script src="assets/plugins/jquery.scrollTo.min.js"></script>

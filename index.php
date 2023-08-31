@@ -13,12 +13,12 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
-    <link href="assets/plugins/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Global styles END -->
     <!-- Page level plugin styles BEGIN -->
     <link href="assets/pages/css/animate.css" rel="stylesheet">
-    <link href="assets/plugins/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <!-- Page level plugin styles END -->
     <!-- Theme styles BEGIN -->
     <link href="assets/pages/css/components.css" rel="stylesheet">

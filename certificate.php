@@ -11,18 +11,28 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
+
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
-    <link href="assets/plugins/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Global styles END -->
     <!-- Page level plugin styles BEGIN -->
     <link href="assets/pages/css/animate.css" rel="stylesheet">
-    <link href="assets/plugins/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="scratch/test.css">
 
 

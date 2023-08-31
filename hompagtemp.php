@@ -590,9 +590,60 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         </div>
     </div>
     <!-- END PRE-FOOTER -->
-<?php include('footer.php'); ?>
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-8 col-sm-8">
+                    <div class="copyright">© Code Master Contest 2018 . ALL Rights Reserved.</div>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-2 col-sm-2 text-right">
+                    <p class="powered">Powered by: <a href="http://www.mcr.org.in/"><img src='assets/onepage/img/mcr.png'></a></p>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN SOCIAL ICONS -->
+                <div class="col-md-2 col-sm-2 text-left">
+                    <ul class="social-icons">
+                        <li><a class="facebook" data-original-title="facebook" href="https://www.facebook.com/mcrweb/" target='_new'></a></li>
+                        <li><a class="twitter" data-original-title="twitter" href="https://twitter.com/mcr_web" target='_new'></a></li>
+                    </ul>
+                </div>
+                <!-- END SOCIAL ICONS -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
     <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
-
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<![endif]-->
+<!-- Load JavaScripts at the bottom, because it will reduce page load time -->
+<!-- Core plugins BEGIN (For ALL pages) -->
+<script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Core plugins END (For ALL pages) -->
+<!-- Core plugins BEGIN (required only for current page) -->
+<script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+<script src="assets/plugins/jquery.easing.js"></script>
+<script src="assets/plugins/jquery.parallax.js"></script>
+<script src="assets/plugins/jquery.scrollTo.min.js"></script>
+<script src="assets/onepage/scripts/jquery.nav.js"></script>
+<!-- Core plugins END (required only for current page) -->
+<!-- Global js BEGIN -->
+<script src="assets/onepage/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function() {
+        Layout.init();
+    });
+</script>
+<!-- Global js END -->
 </body>
 </html>
