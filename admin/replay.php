@@ -53,7 +53,36 @@
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
 
-              <!-- Write Your Code Here Shiva -->
+                            <!-- Bordered Table -->
+                            <div class="card">
+                <h5 class="card-header">Payment Conformation</h5>
+                <div class="card-body">
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>NAME</th>
+                          <th>REGISTRATION NO</th>
+                          <th>NAME</th>
+                          <th>YEAR</th>
+                          <th>DEPARTMENT</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
+                          <td>Albert Cook</td>
+                          <td>Albert Cook</td>
+                          <td>Albert Cook</td>
+                          <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!--/ Bordered Table -->
+
               
             </div>
           </div>

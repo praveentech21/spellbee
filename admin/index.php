@@ -53,7 +53,61 @@
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
 
-              <!-- Write Your Code Here Shiva -->
+              
+              <!-- Bordered Table -->
+              <div class="col-8 col-lg-7 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="card">
+                <h5 class="card-header">GAME LEADER BOARD</h5>
+                <div class="card-body">
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>NAME</th>
+                          <th>Branch</th>
+                          <th>Year</th>
+                          <th>SCORE</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
+                          <td>Albert Cook</td>
+                          <td><span class="badge bg-label-primary me-1">Active</span></td>
+                          <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-8 col-lg-5 order-2 order-md-3 order-lg-2 mb-4">
+              <div class="card">
+                <h5 class="card-header">DEPARTMENT LEADER BOARD</h5>
+                <div class="card-body">
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>DEPARTMENT</th>
+                          <th>NAME</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>CSD</td>
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angulsbadljabdashar Project</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+              
               
             </div>
           </div>

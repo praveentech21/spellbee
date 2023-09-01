@@ -4,7 +4,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="../index.php" class="app-brand-link">
-              <img src="Bhavani/img/spellbee.png" alt="">
+              <img src="Bhavani/img/red.png" alt="">
             </a>
           </div>
 
@@ -17,6 +17,12 @@
             <li class="menu-item ">
               <a href="index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Home</div>
+              </a>
+            </li>
+            <li class="menu-item ">
+              <a href="dashboard.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-crown"></i>
                 <div data-i18n="Analytics">Dashbord</div>
               </a>
             </li>

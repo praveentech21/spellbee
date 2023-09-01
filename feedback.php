@@ -2,6 +2,12 @@
 <html lang="en">
 
 <?php include 'connect.php'; 
+    $recaptchaSecretKey = '6LdZG_AnAAAAAKmLadC78GblGojXfJOXYTCXbNtQ';
+    $response = $_POST['g-recaptcha-response'];
+    
+    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecretKey}&response={$response}");
+    $responseData = json_decode($verifyResponse);
+    if ($responseData->success) {
     if(isset($_POST['addfeedback'])){
         $rating = $_POST['rating'];
         $rollno = $_POST['rollno'];
@@ -15,6 +21,10 @@
             echo "<script>alert('Something Went Wrong!');</script>";
         }
     }
+}
+else{
+    echo "<script>alert('Please verify captcha');</script>";
+}
 ?>
 
 <head>
@@ -58,6 +68,8 @@
     <link href="assets/onepage/css/style-responsive.css" rel="stylesheet">
     <link href="assets/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
     <link href="assets/onepage/css/custom.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
     <!-- Theme styles END -->
 
@@ -114,7 +126,9 @@
                         <option value='2'><strong>Two</strong> star</option>
                         <option value='1'><strong>Single</strong> star</option>
                     </select>
-                    <br> 
+                    <br>
+                    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div>                    <br>
+ 
                     <br>
                     <center><input type="submit" name="addfeedback" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Submit Feed Back" id='regbutton'></center>
                     </fieldset>
