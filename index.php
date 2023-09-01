@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,6 +46,10 @@
             to {
                 visibility: hidden;
             }
+        }
+
+        h3{
+            font-size: 14px;
         }
     </style>
 
@@ -119,8 +123,8 @@
                                 <span class="carousel-subtitle-v1">IMPORTANT DATES</span>
                                 <h3 class="margin-bottom-20 animate-delay promo-like-text" data-animation="animated fadeInDown">
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 24th SEP 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 24th SEP - 30th SEP 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 05th OCTOBER 2023</div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 24th SEP - 4th OCT 2023</div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 10th OCTOBER 2023</div>
                                 </h3>
                             </div>
                         </div>
@@ -569,140 +573,213 @@
     <!-- Team block BEGIN -->
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
-            <h2> <strong>CHIEF PATRONS</strong></h2>
+            <h2> Meet <strong> the Faculty advisors</strong></h2>
             <h4>The contest - Spell Bee Champ of SRKR is organized in assocation with Engilish Department, IDEALab and Technology Centre</h4>
             <div class="row">
-            <div class="col-md-3 item">
-                    <h3>Dr.N G K Murthy</h3>
-                    <em>Head, Technology center, SRKREC</em>
+            <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Dr.N.G.K.Murthy</h3>         
+                    <em style="font-size: 10px;">Head, Technology center, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Dr. Suresh Mudunuri</h3>
-                    <em>Programme Co-ordinator, CSD, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Bh.V.N.Lakshmi</h3>
+                    <em style="font-size: 10px;">Professor, Dept. of English, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>B.Pavan Kumar</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Dr. Suresh Mudunuri</h3>
+                    <em style="font-size: 10px;">Programme Co-ordinator, CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>P.Vijaya Kumar</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">M Sankar</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
-            </div>
-            <div class="row">
-            <div class="col-md-3 item">
-                    <h3>Bh.V.N.Lakshmi</h3>
-                    <em>Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Dr.P.Bhuvaneshwari</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Dr.P.Bhuvaneshwari</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>B.Pavan Kumar</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>P.Vijaya Kumar</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">B.Pavan Kumar</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
             </div>
-            <div class="row">
+            <div class="row">   
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">P.Vijaya Kumar</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Dr.CH Rupa Jhansi Rani</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Riyaz Mohammad</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Dr. N Satish Kumar</h3>
+                    <em style="font-size: 10px;">Associate Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">K Ramesh Vijaya Babu</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">N.Pavan Kumar</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
+                </div>
 
-                <div class="col-md-3 item">
-                    <h3>Dr.CH Rupa Jhansi Rani</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+            </div>
+            <div class="row">
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">K Aruna Kumari</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Riyaz Mohammad</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Hari Subash Nair</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Dr Satish Kumar Nadimpalli</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Kasarapu Esther Rani</h3>
+                    <em style="font-size: 10px;">Asst.Professor, Dept. of English, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>K Ramesh Vijaya Babu</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">M Suseela</h3>
+                    <em style="font-size: 10px;">Asst.Professor, CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">N Praveen</h3>
+                    <em style="font-size: 10px;">Asst.Professor, CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">A Aswini Priyanka</h3>
+                    <em style="font-size: 10px;">Asst.Professor, CSD, SRKREC</em>
                 </div>
             </div>
             <div class="row">
-
-                <div class="col-md-3 item">
-                    <h3>N.Pavan Kumar</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>M Sankar</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>K Aruna Kumari</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
-                <div class="col-md-3 item">
-                    <h3>Hari Subash Nair</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
+            <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">E Rama Lakshmi</h3>
+                    <em style="font-size: 10px;">Asst.Professor, CSD, SRKREC</em>
+                </div>   
             </div>
-            <div class="row">
-
-                <div class="col-md-3 item">
-                    <h3>Kasarapu Esther Rani</h3>
-                    <em>Asst.Professor, Dept. of English, SRKREC</em>
-                </div>
-            </div>
-            </div>
-        
+            </div>       
         </div>
     </div>
     <!-- Team block END -->
-
 
 <!-- Team block BEGIN -->
 <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
             <h2>Meet <strong>The Student Team</strong></h2>
             <div class="row">
-            <div class="col-md-3 item">
-                    <h3>Dr. NGK Murthy</h3>
-                    <em>Head, Technology Centre, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">P. Nikhil</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Dr. Bh. V. N. Lakshmi</h3>
-                    <em>Head, Dept. of English, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">B. Lakshman</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Dr. Suresh Mudunuri</h3>
-                    <em>Programme Co-ordinator, CSD, SRKREC</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">L. V Nikitha</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Mr. Ravi Sankar</h3>
-                    <em>Faculty, Dept. of English</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">V. Manasa</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">D. Varsha</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">K. Yeshwanth</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">P. Krishna Vamsi</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">U. Manoj</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">M. Rohith</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">P. Bharath</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">B. Avinash</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">M. Jahnavi</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 item">
-                    <h3>Ravi Kumar Ch</h3>
-                    <em>3/4 B.Tech CSD</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Ch. Ravi Kumar</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Sanju K</h3>
-                    <em>3/4 B.Tech CSD</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">K. Sanju</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Siva Mani</h3>
-                    <em>3/4 B.Tech CSD</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">V. Sai Siva Mani</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>M Prudhvi</h3>
-                    <em>3/4 B.Tech CSD</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">M. Prudhvi Varma</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
                 </div>
-                <div class="col-md-3 item">
-                    <h3>Vinay S</h3>
-                    <em>3/4 B.Tech CSD</em>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">B. Rohit</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">V. Harsha</h3>
+                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
                 </div>
             </div>
+            <div class="row">
+            <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">S. Vinay Prasad</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">Ch. Anusha</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">P. Chaitanya Srujana</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">R. S Pallavi</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">J. R S Sathvik</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
+                </div>
+                <div class="col-md-2 item">
+                    <h3 style="font-size:14px;">G.Surendra</h3>
+                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
+                </div>
+              
+            </div>
+
+
+
+
+
         </div>
     </div>
     <!-- Team block END -->
@@ -794,4 +871,4 @@
 
 </body>
 
-</html>
+</html>`

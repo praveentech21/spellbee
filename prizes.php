@@ -155,14 +155,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             <div class="row">
                 <!-- Logo BEGIN -->
                 <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="#promo-block"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
+                    <a class="scroll site-logo" href="index.php"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
                 </div>
                 <!-- Logo END -->
                 <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
                 <!-- Navigation BEGIN -->
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>Code Master Home</strong></a></li>
+                        <li><a href="index.php"><strong style='color:#C91E3E;'>SRKR SPELLBEE</strong></a></li>
                     </ul>
                 </div>
                 <!-- Navigation END -->
@@ -173,7 +173,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container"><br>
-            <h2><strong><b>CODE MASTER 2018</b><br>WINNERS & PRIZES</strong></h2>
+            <h2><strong><b>SRKR SPELL BEE </b><br>2023</strong></h2>
 
             <h4>Prizes for winners will be relesed after the Event</h4>
                 <br><br><br><br><br><br><br><br>
@@ -213,95 +213,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     <!-- Team block END -->
 
 
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer" id="contact">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN BOTTOM ABOUT BLOCK -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
-                    <h2>About us</h2>
-                    <p align='justify'>Code Master is jointly organized by MCR Web Solutions and Technology Centre of SRKR Engineering College, Bhimavaram. The contest has recieved wonderful responsive during the last two seasons in 2015 & 2016 and winners have been given exciting prizes. </p>
-                </div>
-                <!-- END BOTTOM ABOUT BLOCK -->
-                <!-- BEGIN TWITTER BLOCK -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
-                    <h2 class="margin-bottom-0">PAST CODE MASTER EVENTS</h2>
-                    <h5><a href='http://www.srkrcampus.net/codemaster2016/' target='_new'>Code Master 2016</a></h5>
-                    <h5><a href='http://www.srkrcampus.net/codemaster2015/' target='_new'>Code Master 2015</a></h5>
-                </div>
-                <!-- END TWITTER BLOCK -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
-                    <!-- BEGIN BOTTOM CONTACTS -->
-                    <h2>Our Contacts</h2>
-                    <address class="margin-bottom-20">
-                        MCR Web Solutions & Technology Centre<br>
-                        2nd Floor, I-Hub Incubation Centre,<br>
-                        Z-Block, SRKR Engineering College,<br>
-                        Chinna Amiram, Bhimavaram, A.P. - 534204<br>
-                        Phone: <a>+91 92 93 94 0004</a><br>
-                        Email: <a href="mailto:codemaster@srkrec.edu.in">codemaster@srkrec.edu.in</a><br>
-                    </address>
-                    <!-- END BOTTOM CONTACTS -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-8 col-sm-8">
-                    <div class="copyright">© Code Master Contest 2018 . ALL Rights Reserved.</div>
-                </div>
-                <!-- END COPYRIGHT -->
-                <!-- BEGIN COPYRIGHT -->
-                <div class="col-md-2 col-sm-2 text-right">
-                    <p class="powered">Powered by: <a href="http://www.mcr.org.in/"><img src='assets/onepage/img/mcr.png'></a></p>
-                </div>
-                <!-- END COPYRIGHT -->
-                <!-- BEGIN SOCIAL ICONS -->
-                <div class="col-md-2 col-sm-2 text-left">
-                    <ul class="social-icons">
-                        <li><a class="facebook" data-original-title="facebook" href="https://www.facebook.com/mcrweb/" target='_new'></a></li>
-                        <li><a class="twitter" data-original-title="twitter" href="https://twitter.com/mcr_web" target='_new'></a></li>
-                    </ul>
-                </div>
-                <!-- END SOCIAL ICONS -->
-
-            </div>
-        </div>
-    </div>
-    <!-- END FOOTER -->
-    <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
-
-    <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<![endif]-->
-    <!-- Load JavaScripts at the bottom, because it will reduce page load time -->
-    <!-- Core plugins BEGIN (For ALL pages) -->
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- Core plugins END (For ALL pages) -->
-    <!-- Core plugins BEGIN (required only for current page) -->
-    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
-    <script src="assets/plugins/jquery.easing.js"></script>
-    <script src="assets/plugins/jquery.parallax.js"></script>
-    <script src="assets/plugins/jquery.scrollTo.min.js"></script>
-    <script src="assets/onepage/scripts/jquery.nav.js"></script>
-    <!-- Core plugins END (required only for current page) -->
-    <!-- Global js BEGIN -->
-    <script src="assets/onepage/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
-    <script>
-        jQuery(document).ready(function() {
-            Layout.init();
-        });
-    </script>
-    <!-- Global js END -->
+<?php include 'footer.php' ?>
 </body>
 
 </html>

@@ -11,12 +11,12 @@
                 <!-- BEGIN TWITTER BLOCK -->
                 <div class="col-md-4 col-sm-6 pre-footer-col">
                     <h2 class="margin-bottom-0">CHECK OUT </h2>
-                    <h5><a href='http://saipraveen.free.nf/campusonline' target='_new'>Campus Online</a></h5>
+                    <!-- <h5><a href='http://saipraveen.free.nf/campusonline' target='_new'>Campus Online</a></h5> -->
                     <h5><a href='register.php' target='_new'>Register</a></h5>
-                    <h5><a href='ranks.php' target='_new'>Ranks</a></h5>
+                    <!-- <h5><a href='ranks.php' target='_new'>Ranks</a></h5> -->
                     <h5><a href='rules.php' target='_new'>Rules</a></h5>
-                    <h5><a href='certificate.php' target='_new'>Certificate</a></h5>
-                    <h5><a href='prizes.php' target='_new'>Prizes</a></h5>
+                    <!-- <h5><a href='certificate.php' target='_new'>Certificate</a></h5> -->
+                    <!-- <h5><a href='prizes.php' target='_new'>Prizes</a></h5> -->
                     <h5><a href='feedback.php' target='_new'>Feedback</a></h5>
                 </div>
                 <!-- END TWITTER BLOCK -->
@@ -28,8 +28,8 @@
                         2nd Floor, I-Hub Incubation Centre,<br>
                         Idea Lab, SRKR Engineering College,<br>
                         Chinna Amiram, Bhimavaram, A.P. - 534204<br>
-                        Phone: <a href="tel:+9052727402">+91 90527 27402</a> <a href="tel:+9848823311">+91 98488 23311</a><br>
-                        Email: <a href="mailto:spellbee2k23@srkrec.edu.in">spellbee2k23@srkrec.edu.in</a><br>
+                        Phone: <a href="tel:+9848823311">+91 98488 23311</a> <a href="tel:+9052727402">+91 90527 27402</a><br>
+                        <!-- Email: <a href="mailto:spellbee2k23@srkrec.edu.in">spellbee2k23@srkrec.edu.in</a><br> -->
                     </address>
                     <!-- END BOTTOM CONTACTS -->
                 </div>
@@ -67,10 +67,6 @@
     <!-- END FOOTER -->
     <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
-    <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<![endif]-->
-    <!-- Load JavaScripts at the bottom, because it will reduce page load time -->
     <!-- Core plugins BEGIN (For ALL pages) -->
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>

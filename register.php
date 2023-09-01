@@ -141,8 +141,8 @@ include "connect.php";
                     <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id='regbutton'></center>
                     </fieldset>
                 </form><br><br>
-                <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to pay money online you can use link on page side bar.</h3>
-                <br><br><br><br><br><br><br><br><br><br><br>
+                <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to pay money online you can .</h3><br><br>
+                <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 
             </div>
         </div>
