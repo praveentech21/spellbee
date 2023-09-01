@@ -115,24 +115,32 @@ else{
 
                 <h3><strong>EVENT FEEDBACK</strong><br></h3>
 
-                <form class="contact-form" id='reg1' method='post' action='#' onSubmit="return register();">
-                <input type="text" name='rollno' id="rollno" required placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
-                <br><input type="text" name='feedback' required id="feedback" placeholder="Your Vable Feedback..." class="form-control" autocomplete="on" autofocus>
-                    <br> <select name='rating' id='rating' required class="form-control" style='color:#C91E3E;'>
-                        <option value=''>Rate our EVENT</option>
-                        <option value='5'><strong>Five</strong> star</option>
-                        <option value='4'><strong>Four</strong> star</option>
-                        <option value='3'><strong>Three</strong> star</option>
-                        <option value='2'><strong>Two</strong> star</option>
-                        <option value='1'><strong>Single</strong> star</option>
-                    </select>
-                    <br>
-                    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div>                    <br>
- 
-                    <br>
-                    <center><input type="submit" name="addfeedback" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Submit Feed Back" id='regbutton'></center>
-                    </fieldset>
-                </form><br><br>
+                <!-- Your HTML form with error placeholders and "required" attributes -->
+<form class="contact-form" id="reg1" method="post" action="#" onsubmit="return validateForm();">
+    <input type="text" name="rollno" id="rollno" required placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
+    <div id="rollno-error" class="error"></div>
+
+    <br><input type="text" name="feedback" required id="feedback" placeholder="Your Valuable Feedback..." class="form-control" autocomplete="on" autofocus>
+    <div id="feedback-error" class="error"></div>
+
+    <br><select name="rating" id="rating" required class="form-control" style="color:#C91E3E;">
+        <option value="">Rate our EVENT</option>
+        <option value="5"><strong>Five</strong> star</option>
+        <option value="4"><strong>Four</strong> star</option>
+        <option value="3"><strong>Three</strong> star</option>
+        <option value="2"><strong>Two</strong> star</option>
+        <option value="1"><strong>Single</strong> star</option>
+    </select>
+    <div id="rating-error" class="error"></div>
+
+    <br>
+    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div>
+    <div id="captcha-error" class="error"></div>
+
+    <br>
+    <center><input type="submit" name="addfeedback" class="button" style="background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;" value="Submit Feedback" id="regbutton"></center>
+</form>
+<br><br>
                 <br><br><br><br><br><br><br><br>
 
             </div>
@@ -192,6 +200,50 @@ else{
             return true;
         }
     </script>
+    <script>
+function validateForm() {
+    var rollno = document.forms["reg1"]["rollno"].value;
+    var feedback = document.forms["reg1"]["feedback"].value;
+    var rating = document.forms["reg1"]["rating"].value;
+    var captchaResponse = grecaptcha.getResponse(); // Get the reCAPTCHA response
+
+    // Clear previous error messages
+    document.getElementById("rollno-error").innerHTML = "";
+    document.getElementById("feedback-error").innerHTML = "";
+    document.getElementById("rating-error").innerHTML = "";
+    document.getElementById("captcha-error").innerHTML = "";
+
+    // Basic field validation
+    var isValid = true;
+
+    if (rollno === "") {
+        document.getElementById("rollno-error").innerHTML = "Roll Number must be filled out";
+        isValid = false;
+    } else {
+        // Validate roll number format
+        var rollnoPattern = /^(20|21|22|23)B\d{2}\A\d{4}$/;
+        if (!rollnoPattern.test(rollno)) {
+            document.getElementById("rollno-error").innerHTML = "Invalid Roll Number format (must be 10 digits)";
+            isValid = false;
+        }
+    }
+    if (feedback === "") {
+        document.getElementById("feedback-error").innerHTML = "Feedback must be filled out";
+        isValid = false;
+    }
+    if (rating === "") {
+        document.getElementById("rating-error").innerHTML = "Please rate our event";
+        isValid = false;
+    }
+    if (captchaResponse.length === 0) {
+        document.getElementById("captcha-error").innerHTML = "Please complete the reCAPTCHA";
+        isValid = false;
+    }
+
+    return isValid; // Form is valid if all validations pass
+}
+</script>
+
 </body>
 
 </html>
