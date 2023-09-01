@@ -96,17 +96,9 @@
             </div>
             <div class="col-md-4"><input type="hidden" id="cmdDoSomething"></div>
 
-
-
-
-            <!--            <h3><strong><b>Code Master</b></strong><br>The Annual Coding Challenge of SRKREC</h3> -->
-
-
-
         </div>
     </div>
     <!-- About block END -->
-
 
     <?php include "footer.php"; ?>
     <script>
