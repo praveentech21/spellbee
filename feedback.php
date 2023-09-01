@@ -7,8 +7,8 @@
     
     $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecretKey}&response={$response}");
     $responseData = json_decode($verifyResponse);
-    if ($responseData->success) {
     if(isset($_POST['addfeedback'])){
+        if ($responseData->success) {
         $rating = $_POST['rating'];
         $rollno = $_POST['rollno'];
         $feedback = $_POST['feedback'];
@@ -21,10 +21,11 @@
             echo "<script>alert('Something Went Wrong!');</script>";
         }
     }
-}
-else{
-    echo "<script>alert('Please verify captcha');</script>";
-}
+    else{
+        echo "<script>alert('Please verify captcha');</script>";
+    }
+    }
+
 ?>
 
 <head>
