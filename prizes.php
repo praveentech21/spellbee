@@ -150,44 +150,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <body class="menu-always-on-top">
 
     <?php include "header.php"; ?>
-
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container"><br>
             <h2><strong><b>SRKR SPELL BEE </b><br>2023</strong></h2>
 
             <h4>Prizes for winners will be relesed after the Event</h4>
-                <br><br><br><br><br><br><br><br>
-                <div class="col-md-12">
-                    <?php
-
-                    // include "connect.php";
-
-                    // $query1 = "SELECT rollno, sname, year, dept, greatest(CL1,PL1,JL1), greatest(CL2,PL2,JL2), greatest(CL3,PL3,JL3), (greatest(CL1,PL1,JL1)+greatest(CL2,PL2,JL2)+greatest(CL3,PL3,JL3)) as score FROM ranks having score >= 43.0 order by score desc;";
-                    // $result1 = mysqli_query($conn, $query1);
-
-                    // echo "<center><table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'><tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;align:center;'><th>S.NO</th><th>ROLL NUMBER</th><th>STUDENT NAME</th><th>BATCH</th><th>FINAL SCORE (100%)</th><th>OVERALL RANK</th><th align='center'>PRIZE WON</th></tr>";
-
-                    // $count = 0;
-                    // $rank = 0;
-                    // $prev_score = 100;
-
-                    // while ($rnd1 = mysqli_fetch_row($result1)) {
-                    //     if ($rnd1[1] < $oprev_score) {
-                    //         $orank++;
-                    //         $oprev_score = $rnd1[1];
-                    //     }
-                    //     $rno = strtoupper($rnd1[0]);
-                    //     $count++;
-                    //     $rank++;
-                    //     $prize = get_prize($rank);
-                    //     print "<tr><td align='center'>" . $count . "</td><td align='center'><font color='#DC143C'> " . $rno . "</font></td><td><b>" . $rnd1[1] . "</b></td><td align='center'>" . $rnd1[2] . "/4 " . $rnd1[3] . "</td><td align='center'><strong><b>" . round($rnd1[7], 2) . "</b></strong></td><td align='center' style='font-size:14px;'><b>#" . $rank . "</b></td><td align='center'><strong><b>" . $prize . "</b></strong></td></tr>";
-                    // }
-                    // print "<tr><td align='center'>101</td><td align='center'><font color='#DC143C'> 17B91A0170</font></td><td><b>KANCHERLA LAHIR VENKATA SRI SYAM KIRAN</b></td><td align='center'>1/4 CIVIL</td><td align='center'><strong><b>31.1</b></strong></td><td align='center'><b>#149</b></td><td align='center'><strong><b><span style='color:#FF4000;'>CIVIL Topper - Mi Smart Band</span></b></strong></td></tr>";
-                    // echo "</table></center><br><br>";
-                    // mysqli_close($conn);
-                    ?>
-                </div>
-
+                <br><br><br><br><br><br><br><br><br>
         </div>
     </div>
     <!-- Team block END -->

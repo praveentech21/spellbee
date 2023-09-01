@@ -97,7 +97,7 @@ if ($dept == 'CSE') {
     <br>
     <h3 style="text-align:center">LEADERBOARD TO BE UPDATED SOON!!</h3>
     <br>
-   
+    <br>
     <br>
     <br>
     <br>

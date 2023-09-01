@@ -62,41 +62,7 @@
 <!--DOC: menu-always-on-top class to the body element to set menu on top -->
 
 <body class="menu-always-on-top">
-    <a name='l1'></a>
-
-
-    <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel">
-        <a href='index.php#rules'>
-            <div class="color-mode-icons icon-color">GO BACK</div>
-        </a>
-    </div>
-    <!-- END BEGIN STYLE CUSTOMIZER -->
-
-
-
-    <!-- Header BEGIN -->
-    <div class="header header-mobi-ext">
-        <div class="container">
-            <div class="row">
-                <!-- Logo BEGIN -->
-                <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="index.php"><img src="assets/onepage/img/logo/red.png" alt=""></a>
-                </div>
-                <!-- Logo END -->
-                <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-                <!-- Navigation BEGIN -->
-                <div class="col-md-10 pull-right">
-                    <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>SpellBee Champ Home</strong></a></li>
-                    </ul>
-                </div>
-                <!-- Navigation END -->
-            </div>
-        </div>
-    </div>
-    <!-- Header END -->
-
+    <?php  include('header.php'); ?>
     <!-- About block BEGIN -->
     <div class="about-block content content-center" id="about">
         <div class="container">
