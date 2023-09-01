@@ -84,7 +84,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT * FROM `users` GROUP BY `departme
                           $student_details = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `pid` = '{$student['sid']}'"));
                         ?>
                         <tr>
-                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo $student_details['player_name'] ?></strong></td>
+                          <td> <strong><?php echo $student_details['player_name'] ?></strong></td>
                           <td><?php echo $student_details['department'] ?></td>
                           <td><span class="badge bg-label-primary me-1">
                           <?php if($student_details['place'] == '2027') echo 'First Year';
@@ -121,7 +121,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT * FROM `users` GROUP BY `departme
                         ?>
                         <tr>
                           <td><?php echo $dept['department'] ?></td>
-                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo $dept['player_name'] ?></strong></td>
+                          <td> <strong><?php echo $dept['player_name'] ?></strong></td>
                         </tr>
                         <?php } ?>
                       </tbody>

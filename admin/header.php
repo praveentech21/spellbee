@@ -35,7 +35,7 @@
             <li class="menu-item ">
               <a href="payment_conformation.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
-                <div data-i18n="Analytics">Payment</div>
+                <div data-i18n="Analytics">Payment Conformation</div>
               </a>
             </li>
             <li class="menu-item ">
