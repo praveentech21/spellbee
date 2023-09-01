@@ -1,5 +1,4 @@
 <?php 
- $conn = new mysqli("localhost","root","","spellchamp")
-
+ $conn = new mysqli("localhost","root","","spellbee");
 
 ?>

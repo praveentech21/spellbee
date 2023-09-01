@@ -11,8 +11,8 @@ if(isset($_POST['addnewstudent'])){
   $section = $_POST['section'];
   if(isset($_POST['paymentinfo'])) $paymentinfo = 1; else $paymentinfo = 0;
   $batch = $_POST['batch'];
-  $addnewstudent = $conn ->prepare("INSERT INTO `registrations`(`student_regno`, `student_name`, `email`, `student_year`, `student_department`, `student_section`, `student_mobile`,`patment_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-  $addnewstudent->bind_param("sssisssi",$regno,$sname,$email,$batch,$branch,$section,$mobile,$paymentinfo);
+  $addnewstudent = $conn ->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`, `payment_status`) VALUES (?,?,?,?,?,?,?,?)");
+  $addnewstudent->bind_param("ssissssi",$mobile,$sname,$batch,$regno,$email,$branch,$section,$paymentinfo);
   if($addnewstudent->execute()){
     echo "<script>alert('New Student Added Successfully');</script>";
   }else{

@@ -19,7 +19,7 @@
             <div class="row">
                 <!-- Logo BEGIN -->
                 <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="#promo-block"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
+                    <a class="scroll site-logo" href="index.php"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
                 </div>
                 <!-- Logo END -->
                 <!-- Navigation BEGIN -->

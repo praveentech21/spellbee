@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CodeMaster - Online Coding Challenge</title>
+    <title>Registrations - Spell Bee</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -17,12 +17,12 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
-    <link href="assets/plugins/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Global styles END -->
     <!-- Page level plugin styles BEGIN -->
     <link href="assets/pages/css/animate.css" rel="stylesheet">
-    <link href="assets/plugins/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="scratch/test.css">
 
 
@@ -70,47 +70,59 @@
         <div class="container">
 
             <br>
-            <h3><strong><b>CODEMASTER</b></strong> 2018</h3>
+            <h3><strong><b>SRKR SPELL BEE</b></strong> 2K23</h3>
 
 
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
 
-                <h3><strong>ONLINE CERTIFICATE GENERATION</strong><br></h3>
+                <h3><strong>Online Registrations</strong><br></h3>
 
                 <form class="contact-form" id='reg1' method='post' action='certificate/certificate.php' onSubmit="return register();">
-                    <input type="text" name='rollno' id="rollno" placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
-                    <br> <select name='language' id='language' class="form-control" style='color:#C91E3E;'>
-                        <option value='-'>SELECT EXAM LANGUAGE</option>
-                        <option value='C'>C PROGRAMMING</option>
-                        <option value='JAVA'>JAVA</option>
-                        <option value='PYTHON'>PYTHON</option>
+                <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
+                <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
+                <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">
+                <br><input type="tel" name='mobile' id="mobile" placeholder="Your Mobile Number" class="form-control" autocomplete="off">
+                    <br> <select name='branch' id='branch' class="form-control" style='color:#C91E3E;'>
+                    <option selected value="">Select Your Branch</option>
+                          <option value="csd">CSD</option>
+                          <option value="cse">CSE</option>
+                          <option value="csbs">CSBS</option>
+                          <option value="CIC">CIC</option>
+                          <option value="CSE(Iot)">CSE(Iot)</option>
+                          <option value="IT">IT</option>
+                          <option value="AIDS">AIDS</option>
+                          <option value="AIML">AIML</option>
+                          <option value="MECH">MECH</option>
+                          <option value="CIVIL">CIVIL</option>
+                          <option value="ECE">ECE</option>
+                          <option value="EEE">EEE</option>
                     </select>
-                    <br> <select name='level' id='level' class="form-control" style='color:#C91E3E;'>
-                        <option value='L1'>Level 1</option>
-                        <option value='L2'>Level 2</option>
-                        <option value='L3'>Level 3</option>
+                    <br> <select name='section' id='section' class="form-control" style='color:#C91E3E;'>
+                    <option selected value="">Select Your Section</option>
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="D">D</option>
+                          <option value="E">E</option>
+                          <option value="F">F</option>
                     </select>
-                    <br> <input type="password" name='password' id="password" placeholder="YOUR EXAM PASSWORD" class="form-control">
-                    <div id='rgerror' style='color:red;font-weight:bold;font-size:14px;'></div>
+                    <br> <select name='batch' id='batch' class="form-control" style='color:#C91E3E;'>
+                    <option selected value="">Select Student Year</option>
+                              <option value="2027">First Year</option>
+                              <option value="2026">Second</option>
+                              <option value="2025">Third Year</option>
+                              <option value="2024">Fourth Year</option>
+                    </select>
                     <br>
-                    <center><input type="submit" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="GET CERTIFICATE" id='regbutton'></center>
+                    <center><input type="submit" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id='regbutton'></center>
                     </fieldset>
                 </form><br><br>
-                <h3><strong>NOTE:</strong> Use the password sent to your email / mobile for Level 1 exam.</h3>
+                <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to pay money online you can use link on page side bar.</h3>
                 <br><br><br><br><br><br><br><br><br><br><br>
 
             </div>
-            <div class="col-md-4"><input type="hidden" id="cmdDoSomething"></div>
-
-
-
-
-            <!--            <h3><strong><b>Code Master</b></strong><br>The Annual Coding Challenge of SRKREC</h3> -->
-
-
-
         </div>
     </div>
     <!-- About block END -->

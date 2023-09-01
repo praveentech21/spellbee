@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Head BEGIN -->
+<?php include 'connect.php'; 
+    if(isset($_POST['addfeedback'])){
+        $rating = $_POST['rating'];
+        $rollno = $_POST['rollno'];
+        $feedback = $_POST['feedback'];
+        $addfeedback = $conn -> prepare("INSERT INTO `feedback`(`regno`, `feedback`, `rating`) VALUES (?,?,?)");
+        $addfeedback -> bind_param("sss",$rollno,$feedback,$rating);
+        if($addfeedback -> execute()){
+            echo "<script>alert('Thank You For Your Feedback!');</script>";
+        }
+        else{
+            echo "<script>alert('Something Went Wrong!');</script>";
+        }
+    }
+?>
 
 <head>
     <meta charset="utf-8">
@@ -89,10 +103,10 @@
 
                 <h3><strong>EVENT FEEDBACK</strong><br></h3>
 
-                <form class="contact-form" id='reg1' method='post' action='certificate/certificate.php' onSubmit="return register();">
-                <input type="text" name='rollno' id="rollno" placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
-                <br><input type="text" name='feedback' id="feedback" placeholder="Your Vable Feedback..." class="form-control" autocomplete="on" autofocus>
-                    <br> <select name='language' id='language' required class="form-control" style='color:#C91E3E;'>
+                <form class="contact-form" id='reg1' method='post' action='#' onSubmit="return register();">
+                <input type="text" name='rollno' id="rollno" required placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
+                <br><input type="text" name='feedback' required id="feedback" placeholder="Your Vable Feedback..." class="form-control" autocomplete="on" autofocus>
+                    <br> <select name='rating' id='rating' required class="form-control" style='color:#C91E3E;'>
                         <option value=''>Rate our EVENT</option>
                         <option value='5'><strong>Five</strong> star</option>
                         <option value='4'><strong>Four</strong> star</option>
@@ -102,7 +116,7 @@
                     </select>
                     <br> 
                     <br>
-                    <center><input type="submit" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Submit Feed Back" id='regbutton'></center>
+                    <center><input type="submit" name="addfeedback" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Submit Feed Back" id='regbutton'></center>
                     </fieldset>
                 </form><br><br>
                 <br><br><br><br><br><br><br><br>

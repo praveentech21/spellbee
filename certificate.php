@@ -88,27 +88,9 @@
             <div class="col-md-4">
 
                 <h3><strong>ONLINE CERTIFICATE GENERATION</strong><br></h3>
-
-                <form class="contact-form" id='reg1' method='post' action='certificate/certificate.php' onSubmit="return register();">
-                    <input type="text" name='rollno' id="rollno" placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
-                    <br> <select name='language' id='language' class="form-control" style='color:#C91E3E;'>
-                        <option value='-'>SELECT EXAM LANGUAGE</option>
-                        <option value='C'>C PROGRAMMING</option>
-                        <option value='JAVA'>JAVA</option>
-                        <option value='PYTHON'>PYTHON</option>
-                    </select>
-                    <br> <select name='level' id='level' class="form-control" style='color:#C91E3E;'>
-                        <option value='L1'>Level 1</option>
-                        <option value='L2'>Level 2</option>
-                        <option value='L3'>Level 3</option>
-                    </select>
-                    <br> <input type="password" name='password' id="password" placeholder="YOUR EXAM PASSWORD" class="form-control">
-                    <div id='rgerror' style='color:red;font-weight:bold;font-size:14px;'></div>
-                    <br>
-                    <center><input type="submit" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="GET CERTIFICATE" id='regbutton'></center>
-                    </fieldset>
-                </form><br><br>
-                <h3><strong>NOTE:</strong> Use the password sent to your email / mobile for Level 1 exam.</h3>
+                <h5>IF you havn't recived certificate plese contact us</h5>
+                <p>Mobile : <a href="tel:+9052727402">905 2727 402</a></p>
+                <p>or Mail us : <a href="mailto:spellbee2k23@srkrec.edu.in">spellbee2k23@srkrec.edu.in</a></p>
                 <br><br><br><br><br><br><br><br><br><br><br>
 
             </div>

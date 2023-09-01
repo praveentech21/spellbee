@@ -10,8 +10,14 @@
                 <!-- END BOTTOM ABOUT BLOCK -->
                 <!-- BEGIN TWITTER BLOCK -->
                 <div class="col-md-4 col-sm-6 pre-footer-col">
-                    <h2 class="margin-bottom-0">SRKR Campus Online </h2>
+                    <h2 class="margin-bottom-0">CHECK OUT </h2>
                     <h5><a href='http://saipraveen.free.nf/campusonline' target='_new'>Campus Online</a></h5>
+                    <h5><a href='register.php' target='_new'>Register</a></h5>
+                    <h5><a href='ranks.php' target='_new'>Ranks</a></h5>
+                    <h5><a href='rules.php' target='_new'>Rules</a></h5>
+                    <h5><a href='certificate.php' target='_new'>Certificate</a></h5>
+                    <h5><a href='prizes.php' target='_new'>Prizes</a></h5>
+                    <h5><a href='feedback.php' target='_new'>Feedback</a></h5>
                 </div>
                 <!-- END TWITTER BLOCK -->
                 <div class="col-md-4 col-sm-6 pre-footer-col">
