@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+include "connect.php";
+ if(isset($_POST['newregistration'])){
+    $name = $_POST['name'];
+    $regno = $_POST['regno'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $branch = $_POST['branch'];
+    $section = $_POST['section'];
+    $batch = $_POST['batch'];
+    $newregistration = $conn -> prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
+    $newregistration -> bind_param("ssissss",$mobile,$name,$batch,$regno,$email,$branch,$section);
+    if($newregistration -> execute()){
+        echo "<script>alert('Registration Successfull');</script>";
+    }
+    else{
+        echo "<script>alert('Registration Failed');</script>";
+    }
+ }
+?>
+
 <!-- Head BEGIN -->
 
 <head>
@@ -79,7 +101,7 @@
 
                 <h3><strong>Online Registrations</strong><br></h3>
 
-                <form class="contact-form" id='reg1' method='post' action='certificate/certificate.php' onSubmit="return register();">
+                <form class="contact-form" id='reg1' method='post' action='#' onSubmit="return register();">
                 <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
                 <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
                 <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">
@@ -116,7 +138,7 @@
                               <option value="2024">Fourth Year</option>
                     </select>
                     <br>
-                    <center><input type="submit" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id='regbutton'></center>
+                    <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id='regbutton'></center>
                     </fieldset>
                 </form><br><br>
                 <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to pay money online you can use link on page side bar.</h3>
