@@ -1,3 +1,13 @@
+<?php
+include 'connect.php';
+session_start();
+// if(!isset($_SESSION['admin']))
+// {
+//   header("location:login.php");
+// }
+$leaderboard = mysqli_query($conn, "SELECT *,SUM(marks) as total FROM `responses` GROUP BY `sid` ORDER BY SUM(marks) DESC");
+$deptleaderboard = mysqli_query($conn, "SELECT * FROM `users` GROUP BY `department` ORDER BY `points` DESC");
+?>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -70,12 +80,22 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php while($student = mysqli_fetch_assoc($leaderboard)){
+                          $student_details = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `pid` = '{$student['sid']}'"));
+                        ?>
                         <tr>
-                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                          <td>Albert Cook</td>
-                          <td><span class="badge bg-label-primary me-1">Active</span></td>
-                          <td><span class="badge bg-label-primary me-1">Active</span></td>
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo $student_details['player_name'] ?></strong></td>
+                          <td><?php echo $student_details['department'] ?></td>
+                          <td><span class="badge bg-label-primary me-1">
+                          <?php if($student_details['place'] == '2027') echo 'First Year';
+                                elseif($student_details['place'] == '2026') echo 'Second Year';
+                                elseif($student_details['place'] == '2025') echo 'Third Year';
+                                elseif($student_details['place'] == '2024') echo 'Fourth Year';
+                          ?>
+                          </span></td>
+                          <td><span class="badge bg-label-primary me-1"><?php echo $student_details['points'] ?></span></td>
                         </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
@@ -96,10 +116,14 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php 
+                          while($dept = mysqli_fetch_assoc($deptleaderboard)){
+                        ?>
                         <tr>
-                          <td>CSD</td>
-                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angulsbadljabdashar Project</strong></td>
+                          <td><?php echo $dept['department'] ?></td>
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo $dept['player_name'] ?></strong></td>
                         </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
