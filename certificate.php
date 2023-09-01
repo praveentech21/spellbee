@@ -88,7 +88,7 @@
             <div class="col-md-4">
 
                 <h3><strong>ONLINE CERTIFICATE GENERATION</strong><br></h3>
-                <h5>IF you havn't recived certificate plese contact us</h5>
+                <h5>If you havn't recived certificate plese contact us</h5>
                 <p>Mobile : <a href="tel:+9052727402">905 2727 402</a></p>
                 <p>or Mail us : <a href="mailto:spellbee2k23@srkrec.edu.in">spellbee2k23@srkrec.edu.in</a></p>
                 <br><br><br><br><br><br><br><br><br><br><br>
