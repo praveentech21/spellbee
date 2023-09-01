@@ -149,27 +149,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <body class="menu-always-on-top">
 
-    <!-- Header BEGIN -->
-    <div class="header header-mobi-ext">
-        <div class="container">
-            <div class="row">
-                <!-- Logo BEGIN -->
-                <div class="col-md-2 col-sm-2">
-                    <a class="scroll site-logo" href="index.php"><img src="assets/onepage/img/logo/red.png" alt="Metronic One Page"></a>
-                </div>
-                <!-- Logo END -->
-                <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-                <!-- Navigation BEGIN -->
-                <div class="col-md-10 pull-right">
-                    <ul class="header-navigation">
-                        <li><a href="index.php"><strong style='color:#C91E3E;'>SRKR SPELLBEE</strong></a></li>
-                    </ul>
-                </div>
-                <!-- Navigation END -->
-            </div>
-        </div>
-    </div>
-    <!-- Header END -->
+    <?php include "header.php"; ?>
 
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container"><br>
