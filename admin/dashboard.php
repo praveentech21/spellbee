@@ -1,3 +1,22 @@
+<?php
+  include 'connect.php';
+  $date = date('Y-m-d');
+  $csd = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'csd' and DATE(`lastseen`) = '$date' "));
+  $csbs = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'csbs' and DATE(`lastseen`) = '$date' "));
+  $cse = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'cse' and DATE(`lastseen`) = '$date' "));
+  $it = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'it' and DATE(`lastseen`) = '$date' "));
+  $cic = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'cic' and DATE(`lastseen`) = '$date' "));
+  $cseiot = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'cse(iot)' and DATE(`lastseen`) = '$date' "));
+  $civil = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'civil' and DATE(`lastseen`) = '$date' "));
+  $ece = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'ece' and DATE(`lastseen`) = '$date' "));
+  $eee = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'eee' and DATE(`lastseen`) = '$date' "));
+  $mech = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'mech' and DATE(`lastseen`) = '$date' "));
+  $aids = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'aids' and DATE(`lastseen`) = '$date' "));
+  $aiml = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'aiml' and DATE(`lastseen`) = '$date' "));
+
+  
+
+?>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -62,32 +81,30 @@
                       <table class="table table-bordered">
                         <tbody>
                         <tr>
+                          <?php 
+                          $todaygames = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' ")); ?>
                             <th>Number of Games</th>
-                            <th>Number</th>
+                            <th><?php echo $todaygames ?></th>
                           </tr>
                           <tr>
-                            <th>Number of Retakes </th>
-                            <th>Number</th>
-                          </tr>
-                          <tr>
-                            <th>New Registrations </th>
-                            <th>Number</th>
-                          </tr>
-                          <tr>
+                            <?php $today_first_years = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' and `place` = 2027")); ?>
                             <th>FIRST YEAR </th>
-                            <th>Number</th>
+                            <th><?php echo $today_first_years ?></th>
                           </tr>
                           <tr>
+                          <?php $today_second_years = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' and `place` = 2026")); ?>
                             <th>SECOND YEAR </th>
-                            <th>Number</th>
+                            <th><?php echo $today_second_years ?></th>
                           </tr>
                           <tr>
+                          <?php $today_third_years = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' and `place` = 2025")); ?>
                             <th>THIRD YEAR </th>
-                            <th>Number</th>
+                            <th><?php echo $today_third_years ?></th>
                           </tr>
                           <tr>
+                          <?php $today_fourth_years = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' and `place` = 2024")); ?>
                             <th>FOURTH YEAR </th>
-                            <th>Number</th>
+                            <th><?php echo $today_fourth_years ?></th>
                           </tr>
                         </tbody>
                       </table>
@@ -103,15 +120,15 @@
                 <div class="card">
                   <div class="card-body">
                     <span class="d-block mb-1">Total Register </span>
-                    <h3 class="card-title text-nowrap mb-2">  Boxes</h3>
+                    <h3 class="card-title text-nowrap mb-2">  <?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) as total FROM `users` "))['total']; ?></h3>
                   </div>
-                </div>
+                </div>  
               </div>
               <div class="col-6 mb-4">
                 <div class="card">
                   <div class="card-body">
-                    <span class="d-block mb-1">TOtal Played </span>
-                    <h3 class="card-title text-nowrap mb-2">  Boxes</h3>
+                    <span class="d-block mb-1">Total Played </span>
+                    <h3 class="card-title text-nowrap mb-2">  <?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) as total FROM `users` WHERE `points` IS NOT NULL "))['total']; ?></h3>
                   </div>
                 </div>
               </div>
@@ -119,15 +136,15 @@
                 <div class="card">
                   <div class="card-body">
                     <span class="d-block mb-1">Needs to play </span>
-                    <h3 class="card-title text-nowrap mb-2">  Boxes</h3>
+                    <h3 class="card-title text-nowrap mb-2">  <?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) as total FROM `users` WHERE `points` IS NULL "))['total']; ?></h3>
                   </div>
                 </div>
               </div>
               <div class="col-6 mb-4">
                 <div class="card">
                   <div class="card-body">
-                    <span class="d-block mb-1">Retakes</span>
-                    <h3 class="card-title text-nowrap mb-2">  Boxes</h3>  
+                    <span class="d-block mb-1">Higest Score</span>
+                    <h3 class="card-title text-nowrap mb-2">  <?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT MAX(`points`) as total FROM `users`"))['total']; ?></h3>  
                   </div>
                 </div>
               </div>
@@ -148,51 +165,51 @@
                   <tbody>
                   <tr>
                       <th>COMPUTER SCIENCE AND DESIGN</th>
-                      <th>Number</th>
+                      <th><?php echo $csd ?></th>
                     </tr>
                     <tr>
                       <th>COMPUTER SCIENCE AND BUSSINESS SYSTEMS </th>
-                      <th>Number</th>
+                      <th><?php echo $csbs ?></th>
                     </tr>
                     <tr>
                       <th>CSE </th>
-                      <th>Number</th>
+                      <th><?php echo $cse ?></th>
                     </tr>
                     <tr>
                       <th>IT </th>
-                      <th>Number</th>
+                      <th><?php echo $it ?></th>
                     </tr>
                     <tr>
                       <th>CIC </th>
-                      <th>Number</th>
+                      <th><?php echo $cic ?></th>
                     </tr>
                     <tr>
                       <th>CSE(IOT) </th>
-                      <th>Number</th>
+                      <th><?php echo $cseiot ?></th>
                     </tr>
                     <tr>
                       <th>CIVIL </th>
-                      <th>Number</th>
+                      <th><?php echo $civil ?></th>
                     </tr>
                     <tr>
                       <th>ECE </th>
-                      <th>Number</th>
+                      <th><?php echo $ece ?></th>
                     </tr>
                     <tr>
                       <th>EEE </th>
-                      <th>Number</th>
+                      <th><?php echo $eee ?></th>
                     </tr>
                     <tr>
                       <th>MECH </th>
-                      <th>Number</th>
+                      <th><?php echo $mech ?></th>
                     </tr>
                     <tr>
                       <th>AIDS </th>
-                      <th>Number</th>
+                      <th><?php echo $aids ?></th>
                     </tr>
                     <tr>
                       <th>AIML </th>
-                      <th>Number</th>
+                      <th><?php echo $aiml ?></th>
                     </tr>
                   </tbody>
                 </table>
