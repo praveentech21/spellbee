@@ -4,33 +4,46 @@
 <?php
 
 include "connect.php";
- if(isset($_POST['newregistration'])){
-    $recaptchaSecretKey = '6LdZG_AnAAAAAKmLadC78GblGojXfJOXYTCXbNtQ';
+if (isset($_POST['newregistration'])) {
+    $secretKey = "6LdZG_AnAAAAAKmLadC78GblGojXfJOXYTCXbNtQ"; // Replace with your Secret key
     $response = $_POST['g-recaptcha-response'];
-    
-    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecretKey}&response={$response}");
-    $responseData = json_decode($verifyResponse);
-    if ($responseData->success) {
-    $name = $_POST['name'];
-    $regno = $_POST['regno'];
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $branch = $_POST['branch'];
-    $section = $_POST['section'];
-    $batch = $_POST['batch'];
-    $newregistration = $conn -> prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
-    $newregistration -> bind_param("ssissss",$mobile,$name,$batch,$regno,$email,$branch,$section);
-    if($newregistration -> execute()){
-        echo "<script>alert('Registration Successfull');</script>";
+    $url = "https://www.google.com/recaptcha/api/siteverify";
+    $data = [
+        "secret" => $secretKey,
+        "response" => $response,
+        "remoteip" => $_SERVER["REMOTE_ADDR"]
+    ];
+
+    $options = [
+        "http" => [
+            "header" => "Content-type: application/x-www-form-urlencoded\r\n",
+            "method" => "POST",
+            "content" => http_build_query($data)
+        ]
+    ];
+
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
+    $response = json_decode($result, true);
+    if ($response['success']) {
+        $name = $_POST['name'];
+        $regno = $_POST['regno'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $branch = $_POST['branch'];
+        $section = $_POST['section'];
+        $batch = $_POST['batch'];
+        $newregistration = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
+        $newregistration->bind_param("ssissss", $mobile, $name, $batch, $regno, $email, $branch, $section);
+        if ($newregistration->execute()) {
+            echo "<script>alert('Registration Successfull');</script>";
+        } else {
+            echo "<script>alert('Registration Failed');</script>";
+        }
+    } else {
+        echo "<script>alert('You are a robot!');</script";
     }
-    else{
-        echo "<script>alert('Registration Failed');</script>";
-    }
-    }
-    else{
-        echo "<script>alert('Please verify captcha');</script>";
-    }
- }
+}
 ?>
 
 <!-- Head BEGIN -->
@@ -58,7 +71,7 @@ include "connect.php";
     <link href="assets/pages/css/animate.css" rel="stylesheet">
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="scratch/test.css">
-    
+
 
 
     <!-- Page level plugin styles END -->
@@ -91,7 +104,7 @@ include "connect.php";
             }
         }
     </style>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <!--DOC: menu-always-on-top class to the body element to set menu on top -->
 
@@ -115,53 +128,53 @@ include "connect.php";
                 <h3><strong>Online Registrations</strong><br></h3>
 
                 <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return validateForm();">
-                <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
-                <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
-                <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">
-                <br><input type="tel" name='mobile' id="mobile" placeholder="Your Mobile Number" class="form-control" autocomplete="off">
+                    <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
+                    <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
+                    <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">
+                    <br><input type="tel" name='mobile' id="mobile" placeholder="Your Mobile Number" class="form-control" autocomplete="off">
                     <br> <select name='branch' id='branch' class="form-control" style='color:#C91E3E;'>
-                    <option selected value="">Select Your Branch</option>
-                          <option value="csd">CSD</option>
-                          <option value="cse">CSE</option>
-                          <option value="csbs">CSBS</option>
-                          <option value="CIC">CIC</option>
-                          <option value="CSE(Iot)">CSE(Iot)</option>
-                          <option value="IT">IT</option>
-                          <option value="AIDS">AIDS</option>
-                          <option value="AIML">AIML</option>
-                          <option value="MECH">MECH</option>
-                          <option value="CIVIL">CIVIL</option>
-                          <option value="ECE">ECE</option>
-                          <option value="EEE">EEE</option>
+                        <option selected value="">Select Your Branch</option>
+                        <option value="csd">CSD</option>
+                        <option value="cse">CSE</option>
+                        <option value="csbs">CSBS</option>
+                        <option value="CIC">CIC</option>
+                        <option value="CSE(Iot)">CSE(Iot)</option>
+                        <option value="IT">IT</option>
+                        <option value="AIDS">AIDS</option>
+                        <option value="AIML">AIML</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CIVIL">CIVIL</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
                     </select>
                     <br> <select name='section' id='section' class="form-control" style='color:#C91E3E;'>
-                    <option selected value="">Select Your Section</option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                          <option value="D">D</option>
-                          <option value="E">E</option>
-                          <option value="F">F</option>
+                        <option selected value="">Select Your Section</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
                     </select>
                     <br> <select name='batch' id='batch' class="form-control" style='color:#C91E3E;'>
-                    <option selected value="">Select Student Year</option>
-                              <option value="2027">First Year</option>
-                              <option value="2026">Second</option>
-                              <option value="2025">Third Year</option>
-                              <option value="2024">Fourth Year</option>
+                        <option selected value="">Select Student Year</option>
+                        <option value="2027">First Year</option>
+                        <option value="2026">Second</option>
+                        <option value="2025">Third Year</option>
+                        <option value="2024">Fourth Year</option>
                     </select>
-                    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div>                    <br>
+                    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div> <br>
                     <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id="regbutton"></center>
                     </fieldset>
                     <!-- Error placeholders -->
-    <div id="name-error" class="error"></div>
-    <div id="regno-error" class="error"></div>
-    <div id="email-error" class="error"></div>
-    <div id="mobile-error" class="error"></div>
-    <div id="branch-error" class="error"></div>
-    <div id="section-error" class="error"></div>
-    <div id="batch-error" class="error"></div>
-    <div id="captcha-error" class="error"></div>
+                    <div id="name-error" class="error"></div>
+                    <div id="regno-error" class="error"></div>
+                    <div id="email-error" class="error"></div>
+                    <div id="mobile-error" class="error"></div>
+                    <div id="branch-error" class="error"></div>
+                    <div id="section-error" class="error"></div>
+                    <div id="batch-error" class="error"></div>
+                    <div id="captcha-error" class="error"></div>
                 </form><br><br>
                 <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3><br><br>
                 <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
@@ -173,7 +186,7 @@ include "connect.php";
 
 
     <?php include "footer.php"; ?>
-    
+
     <script>
         jQuery(document).ready(function() {
             Layout.init();
@@ -224,86 +237,86 @@ include "connect.php";
         }
     </script>
     <script>
-function validateForm() {
-    var name = document.forms["reg1"]["name"].value;
-    var regno = document.forms["reg1"]["regno"].value;
-    var email = document.forms["reg1"]["email"].value;
-    var mobile = document.forms["reg1"]["mobile"].value;
-    var branch = document.forms["reg1"]["branch"].value;
-    var section = document.forms["reg1"]["section"].value;
-    var batch = document.forms["reg1"]["batch"].value;
-    var captchaResponse = grecaptcha.getResponse(); // Get the reCAPTCHA response
+        function validateForm() {
+            var name = document.forms["reg1"]["name"].value;
+            var regno = document.forms["reg1"]["regno"].value;
+            var email = document.forms["reg1"]["email"].value;
+            var mobile = document.forms["reg1"]["mobile"].value;
+            var branch = document.forms["reg1"]["branch"].value;
+            var section = document.forms["reg1"]["section"].value;
+            var batch = document.forms["reg1"]["batch"].value;
+            var captchaResponse = grecaptcha.getResponse(); // Get the reCAPTCHA response
 
-    // Clear previous error messages
-    document.getElementById("name-error").innerHTML = "";
-    document.getElementById("regno-error").innerHTML = "";
-    document.getElementById("email-error").innerHTML = "";
-    document.getElementById("mobile-error").innerHTML = "";
-    document.getElementById("branch-error").innerHTML = "";
-    document.getElementById("section-error").innerHTML = "";
-    document.getElementById("batch-error").innerHTML = "";
-    document.getElementById("captcha-error").innerHTML = "";
+            // Clear previous error messages
+            document.getElementById("name-error").innerHTML = "";
+            document.getElementById("regno-error").innerHTML = "";
+            document.getElementById("email-error").innerHTML = "";
+            document.getElementById("mobile-error").innerHTML = "";
+            document.getElementById("branch-error").innerHTML = "";
+            document.getElementById("section-error").innerHTML = "";
+            document.getElementById("batch-error").innerHTML = "";
+            document.getElementById("captcha-error").innerHTML = "";
 
-    // Basic field validation
-    var isValid = true;
+            // Basic field validation
+            var isValid = true;
 
-    if (name === "") {
-        document.getElementById("name-error").innerHTML = "Name must be filled out";
-        isValid = false;
-    }
-    if (regno === "") {
-        document.getElementById("regno-error").innerHTML = "Register Number must be filled out";
-        isValid = false;
-    } else {
-        // Validate registration number format
-        var regnoPattern = /^(20|21|22|23)B\d{2}\A\d{4}$/;
-        if (!regnoPattern.test(regno)) {
-            document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
-            isValid = false;
+            if (name === "") {
+                document.getElementById("name-error").innerHTML = "Name must be filled out";
+                isValid = false;
+            }
+            if (regno === "") {
+                document.getElementById("regno-error").innerHTML = "Register Number must be filled out";
+                isValid = false;
+            } else {
+                // Validate registration number format
+                var regnoPattern = /^(20|21|22|23)B\d{2}\A\d{4}$/;
+                if (!regnoPattern.test(regno)) {
+                    document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
+                    isValid = false;
+                }
+            }
+            if (email === "") {
+                document.getElementById("email-error").innerHTML = "Email must be filled out";
+                isValid = false;
+            } else {
+                // Validate email format
+                var emailPattern = /^\S+@\S+\.\S+$/;
+                if (!emailPattern.test(email)) {
+                    document.getElementById("email-error").innerHTML = "Invalid Email format";
+                    isValid = false;
+                }
+            }
+            if (mobile === "") {
+                document.getElementById("mobile-error").innerHTML = "Mobile Number must be filled out";
+                isValid = false;
+            } else {
+                // Validate mobile number format (10 digits)
+                var mobilePattern = /^\d{10}$/;
+                if (!mobilePattern.test(mobile)) {
+                    document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format (must be 10 digits)";
+                    isValid = false;
+                }
+            }
+            if (branch === "") {
+                document.getElementById("branch-error").innerHTML = "Please select your Branch";
+                isValid = false;
+            }
+            if (section === "") {
+                document.getElementById("section-error").innerHTML = "Please select your Section";
+                isValid = false;
+            }
+            if (batch === "") {
+                document.getElementById("batch-error").innerHTML = "Please select your Student Year";
+                isValid = false;
+            }
+            if (captchaResponse.length === 0) {
+                document.getElementById("captcha-error").innerHTML = "Please complete the reCAPTCHA";
+                isValid = false;
+            }
+
+            return isValid; // Form is valid if all validations pass
         }
-    }
-    if (email === "") {
-        document.getElementById("email-error").innerHTML = "Email must be filled out";
-        isValid = false;
-    } else {
-        // Validate email format
-        var emailPattern = /^\S+@\S+\.\S+$/;
-        if (!emailPattern.test(email)) {
-            document.getElementById("email-error").innerHTML = "Invalid Email format";
-            isValid = false;
-        }
-    }
-    if (mobile === "") {
-        document.getElementById("mobile-error").innerHTML = "Mobile Number must be filled out";
-        isValid = false;
-    } else {
-        // Validate mobile number format (10 digits)
-        var mobilePattern = /^\d{10}$/;
-        if (!mobilePattern.test(mobile)) {
-            document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format (must be 10 digits)";
-            isValid = false;
-        }
-    }
-    if (branch === "") {
-        document.getElementById("branch-error").innerHTML = "Please select your Branch";
-        isValid = false;
-    }
-    if (section === "") {
-        document.getElementById("section-error").innerHTML = "Please select your Section";
-        isValid = false;
-    }
-    if (batch === "") {
-        document.getElementById("batch-error").innerHTML = "Please select your Student Year";
-        isValid = false;
-    }
-    if (captchaResponse.length === 0) {
-        document.getElementById("captcha-error").innerHTML = "Please complete the reCAPTCHA";
-        isValid = false;
-    }
-
-    return isValid; // Form is valid if all validations pass
-}
-</script>
+    </script>
 
 </body>
 

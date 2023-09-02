@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php include 'connect.php'; ?>
+<?php include 'connect.php'; ?>
 
 <head>
     <meta charset="utf-8">
     <title>SRKR Spell Bee - Online Spelling Challenge </title>
-    <link rel="icon" type="image/x-icon" href="assets/onepage/img/slider/cup.png" />
-
+    <link rel="shortcut icon" href="/assets/onepage/img/cup.png">
+    
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv=Content-Type content=text/html; charset=utf-8 />
 
-    <link rel="shortcut icon" href="assets/onepage/img/cup.png">
+    <link rel="shortcut icon" href="favicon.ico">
     <!-- Fonts START -->
-    <link
-        href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
-        rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -425,7 +423,7 @@
         <div class="container">
             <h2>Frequently Asked <strong>Questions</strong></h2>
             <h4>The frequently asked questions have been answered for better understanding of the Spell Bee Contest and
-                other details. Please feel free to contact <a href="javascript:void(0);">Technology Centre, Z-Block</a>
+                other details. Please feel free to contact <a href="javascript:void(0);">Technology Centre, Z-Block or call to the helpline numbers at the bottom of this page.</a>
                 for any unanswered queries.</h4>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-left">
@@ -444,8 +442,7 @@
                                 <div class="panel-body">
                                     <p>The Spell Bee contest is only for the students of SRKR Engineering College.
                                         Students of any branch and any year can participate in the contest.</p>
-                                    <p>Students can register and pay the fee at Campus Online Stall or Technology
-                                        Centre.</p>
+                                    <p>Students can register and pay the fee at Campus Online Stalls or at Technology Centre.</p>
                                 </div>
                             </div>
                         </div>
@@ -459,8 +456,7 @@
                             <div id="accordion1_2" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <p>For First Time: Rs. 20/-. For Replay - Rs. 10/-</p>
-                                    <p>The registration fee can be paid to our Team at Stalls or at Technology Centre to
-                                        get your exam user id and password.</p>
+                                    <p>The registration fee can be paid to our Team at Stalls or at Technology Centre to get your exam user id and password.</p>
                                 </div>
                             </div>
                         </div>
@@ -468,19 +464,17 @@
                             <div class="panel-heading">
                                 <h5 class="panel-title">
                                     <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_3">What is the benefit of taking
-                                        this contest?</a>
+                                        data-parent="#accordion1" href="#accordion1_3">What is the benefit of taking this contest?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_3" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>The exciting prizes are only meant for encouragement. More than the prizes, you
-                                        can assess your Spelling skills and know where you stand among the potential
-                                        Spell Champs of SRKR. Spell Bee Champ 2023 is going to generate a Rank for top
+                                    <p>SpellBee Challenge is a popular contest all across the globe and participating/winning in such contests can be helpful in your career and in your placements. The exciting prizes are only meant for encouragement. More than the prizes, you
+                                        can assess your Spelling skills and know where you stand among the potential peers
+                                         of SRKR. SRKR SpellBee Challenge 2023 is going to generate Ranks for the top
                                         10 students based on their overall performance in the contest. A certificate of
-                                        merit or participation is given to acknowledge their performance is provided for
-                                        all.</p>
-                                    <p>You can win an Boat Buds / FOSSIL Watches / Smart Bands, Wrist Watches, Sound
+                                        merit or participation is given to acknowledge their performance.</p>
+                                    <p>You can win an Boat EarPods / Smart Watches / Sound
                                         Boxes, Vouchers and other lot of exciting gadgets and coupons by participating
                                         in the contest. To encourage students of all branches, Spell Champ has
                                         introduced prizes for Department-wise best performers.</p>
@@ -496,7 +490,7 @@
                             </div>
                             <div id="accordion1_4" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>Round 1 can be taken 3 Places (at Campus Online / at Girls Hostel Stall /
+                                    <p>Round 1 can be taken 5 Places (at Campus Online Stalls / at Girls Hostel Stall /
                                         Technology Centre), we will provide our System / laptop / Desktop before the
                                         Round 1 Deadline.</p>
                                     <p>Round 2 & 3 will be conducted @ Technology Centre & Digital Learning Centre.</p>
@@ -507,12 +501,12 @@
                             <div class="panel-heading">
                                 <h5 class="panel-title">
                                     <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_5">What are the words asks ?</a>
+                                        data-parent="#accordion1" href="#accordion1_5">Is the contest tough to participate?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_5" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>Basic word mostly used in our Daily world</p>
+                                    <p>For round 1, we use the basic words that are used regularly in our daily life. For further rounds, the complexity may increase. Overall, contest has been designed for an average student to participate.</p>
                                 </div>
                             </div>
                         </div>
@@ -573,7 +567,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT MAX(points) as top FROM `users` "))['top'] ?></strong>
-                        HIGEST SCORE
+                        HIGHEST SCORE
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
@@ -806,72 +800,5 @@
     });
     </script>
     <!-- Global js END -->
-    <script type="text/javascript">
-    // Register......
-    function register() {
-
-        var rollno = document.getElementById('rollno').value;
-        var name = document.getElementById('name').value;
-        var batch = document.getElementById('batch').value;
-        var email = document.getElementById('email').value;
-        var mobile = document.getElementById('mobile').value;
-        var language = document.getElementById('language').value;
-
-        document.getElementById('rgerror').innerHTML = "";
-
-        if (rollno == "") {
-            document.getElementById('rgerror').innerHTML = "Please Fill Your Roll Number!<br>";
-            return false;
-        }
-
-        rn = /^[0-9]{12}$/;
-        fn = /^[0-9]{2}[0-9A-Za-z]{8}$/;
-        mn = /^[0-9]{9}$/;
-        if (!rn.test(rollno)) {
-            if (!fn.test(rollno)) {
-                if (!mn.test(rollno)) {
-                    document.getElementById('rgerror').innerHTML = "Invalid Roll Number!<br>";
-                    return false;
-                }
-            }
-        }
-
-        if (name == "") {
-            document.getElementById('rgerror').innerHTML = "Please Fill Your Full Name!<br>";
-            return false;
-        }
-
-        if (batch == "-") {
-            document.getElementById('rgerror').innerHTML = "Please Select Your Batch!<br>";
-            return false;
-        }
-
-        if (email == "") {
-            document.getElementById('rgerror').innerHTML = "Please Fill Your E-mail!<br>";
-            return false;
-        }
-        var atpos = email.indexOf("@");
-        var dotpos = email.lastIndexOf(".");
-        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length) {
-            document.getElementById('rgerror').innerHTML = "Invalid E-mail ID!<br>";
-            return false;
-        }
-
-        if (mobile == "") {
-            document.getElementById('rgerror').innerHTML = "Please Fill Your Mobile Number!<br>";
-            return false;
-        }
-        mb = /^[0-9]{10}$/;
-        if (!mb.test(mobile)) {
-            document.getElementById('rgerror').innerHTML =
-                "Invalid Mobile Number!<br>(Enter only a 10 digit mobile number)<br>";
-            return false;
-        }
-
-        if (language == "-") {
-            document.getElementById('rgerror').innerHTML = "Please Select The Exam Language!<br>";
-            return false;
-        }
-
-        return true;
-    }
+</body>
+</html>
