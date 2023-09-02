@@ -1521,8 +1521,4 @@ margin-bottom: 5px !important;
   transform: translateY(4px);
 }
 
-.contact-form, .form-control, ::placeholder
-{
- text-transform: uppercase;
-}
 

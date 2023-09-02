@@ -683,114 +683,232 @@
         <div class="container">
             <h2>Meet <strong>The Student Team</strong></h2>
             <div class="row">
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">P. Nikhil</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">B. Lakshman</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">L. V Nikitha</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">V. Manasa</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">D. Varsha</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">K. Yeshwanth</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-            </div>
+                <style>
+                    /* Style for the news scrolling section */
+                    .news-scrolling {
+                        background-color: #C91E3E;
+                        /* Background color for the scrolling section */
+                        padding: 10px 0;
+                        /* 10px padding at the top and bottom */
+                        text-align: center;
+                        white-space: nowrap;
+                        /* Prevent text from wrapping to multiple lines */
+                        overflow: hidden;
+                        /* Hide overflow content */
+                        color: #FFFFFF;
+                        /* Text color */
+                        font-size: 16px;
+                        /* Font size */
+                        font-weight: bold;
+                        /* Bold text */
+                    }
 
-            <div class="row">
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">P. Krishna Vamsi</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">U. Manoj</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">M. Rohith</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">P. Bharath</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">B. Avinash</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">M. Jahnavi</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">Ch. Ravi Kumar</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">K. Sanju</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">V. Sai Siva Mani</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">M. Prudhvi Varma</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">B. Rohit</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">V. Harsha</h3>
-                    <em style="font-size: 10px;">2/4 CSD, SRKREC</em>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">S. Vinay Prasad</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">Ch. Anusha</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">P. Chaitanya Srujana</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">R. S Pallavi</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">J. R S Sathvik</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
-                <div class="col-md-2 item">
-                    <h3 style="font-size:14px;">G.Surendra</h3>
-                    <em style="font-size: 10px;">3/4 CSD, SRKREC</em>
-                </div>
+                    /* Style for the scrolling marquee */
+                    .marquee {
+                        animation: marquee 45s linear infinite;
+                        /* Start the marquee animation immediately */
+                        display: inline-block;
+                        /* Ensure the marquee stays inline */
+                        white-space: nowrap;
+                        /* Prevent text from wrapping */
+                    }
 
+                    /* Keyframes for the marquee animation */
+                    @keyframes marquee {
+                        0% {
+                            transform: translateX(50%);
+                        }
+
+                        100% {
+                            transform: translateX(-100%);
+                        }
+                    }
+
+                    /* Style for individual news items */
+                    .news-item {
+                        display: inline-block;
+                        white-space: nowrap;
+                        /* Prevent text from wrapping to multiple lines */
+                        margin-right: 20px;
+                        /* Add a margin to create a gap between names */
+                    }
+
+                    /* Style for news text (non-link part) */
+                    .news-text {
+                        color: #FFFFFF;
+                        /* Text color */
+                        display: inline;
+                        /* Display the text inline */
+                    }
+
+                    /* Style for news links */
+                    .news-link {
+                        color: #C91E3E;
+                        /* Change link text color to #C91E3E */
+                        text-decoration: none;
+                        /* Remove underline from links */
+                        background-color: white;
+                        /* Change background color to white */
+                        padding: 5px 5px;
+                        /* Add padding to the button for better appearance */
+                        border-radius: 5px;
+                        /* Add rounded corners to the button */
+                        display: inline;
+                        /* Display the button inline */
+                        margin-left: 10px;
+                        /* Add spacing to separate the button from the text */
+                        cursor: pointer;
+                        /* Change cursor to pointer on hover */
+                    }
+
+                    /* Style for the white text */
+                    .white-text {
+                        color: #FFFFFF;
+                        /* Text color */
+                    }
+                </style>
+
+
+                <!-- News Scrolling Section -->
+                <div class="news-scrolling">
+                    <div class="marquee">
+                        <div class="news-item">
+                            <p><span class="news-text">P. Nikhil (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">B. Lakshman (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">L. V Nikitha (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">V. Manasa (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Veera Raghava (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Varsha (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Yeshwanth (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Sanjani (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Priya (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Mounika (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Vishnu (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Jahnavi (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Divya (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Manoj (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Sandeep (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Abhiram (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Bharath (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Vamsi (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">tejeswini (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">karimunisa (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Durga (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Shyam (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Ganesh (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Sindhu (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Navya (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text">Snighda (2/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> P.Chaitanya Srujana (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> R.Pallavi (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> Ch.Anusha (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> G.Y Anannya (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> Ch.Karthik (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> V.Sai Siva Mani (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> K.Sanju (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> B.Rohit (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> V.Harsha (3/4 CSD)</span></p>
+                        </div>                        
+                        <div class="news-item">
+                            <p><span class="news-text"> N.Siva sai (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> M.Prudhvi Varma (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> S.Vinay Prasad (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> G.Surendra (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> Y.Ganesh (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> V.Rohith (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> J.R.S.Sathwik (3/4 CSD)</span></p>
+                        </div>
+                        <div class="news-item">
+                            <p><span class="news-text"> Ch.Ravi Kumar (3/4 CSD)</span></p>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
             </div>
         </div>
     </div>
     <!-- Team block END -->
+
 
     <?php include   'footer.php'; ?>
 

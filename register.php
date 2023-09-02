@@ -5,17 +5,16 @@
 
 include "connect.php";
 if (isset($_POST['newregistration'])) {
-        $name = $_POST['name'];
-        $regno = $_POST['regno'];
-        $email = $_POST['email'];
-        $mobile = $_POST['mobile'];
-        $branch = $_POST['branch'];
-        $section = $_POST['section'];
-        $batch = $_POST['batch'];
-        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `regno`='$regno'"))>0){
-            echo "<script>alert('You are already registered!');</script>";
-        }
-        else{
+    $name = $_POST['name'];
+    $regno = $_POST['regno'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $branch = $_POST['branch'];
+    $section = $_POST['section'];
+    $batch = $_POST['batch'];
+    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `regno`='$regno' or `pid` = '$mobile'")) > 0) {
+        echo "<script>alert('You are already registered!');</script>";
+    } else {
         $newregistration = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
         $newregistration->bind_param("ssissss", $mobile, $name, $batch, $regno, $email, $branch, $section);
         if ($newregistration->execute()) {
@@ -24,10 +23,9 @@ if (isset($_POST['newregistration'])) {
             echo "<script>alert('Registration Failed');</script>";
         }
     }
-    } 
+}
 ?>
 
-<!-- Head BEGIN -->
 
 <head>
     <meta charset="utf-8">
@@ -157,7 +155,8 @@ if (isset($_POST['newregistration'])) {
                     <div id="batch-error" class="error"></div>
                     <div id="captcha-error" class="error"></div>
                 </form><br><br>
-                <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3><br><br>
+                <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to
+                    pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3><br><br>
                 <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 
             </div>
