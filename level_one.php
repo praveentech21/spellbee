@@ -4,7 +4,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="variant-multi.css" title="Variant Multi" media="all" />
-	<title>Code Master 2016 Statistics</title>
+	<title>Lvele One - SpellBee SRKR</title>
+	<link rel="icon" type="image/x-icon" href="assets/onepage/img/slider/cup.png" />
+
 	<link href='http://fonts.googleapis.com/css?family=Lato:300italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Bilbo|Oswald' rel='stylesheet' type='text/css'>
 </head>

@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CodeMaster - Online Coding Challenge</title>
+    <title>Certificate SpellBee SRKR</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -19,10 +19,12 @@
     <meta property="og:title" content="-CUSTOMER VALUE-">
     <meta property="og:description" content="-CUSTOMER VALUE-">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:image" content="-CUSTOMER VALUE-">
     <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/onepage/img/slider/cup.png" />
+
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->

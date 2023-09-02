@@ -22,7 +22,9 @@ if ($dept == 'CSE') {
 
 <head>
     <meta charset="utf-8">
-    <title>SRKR SpellBee Challenge 2023</title>
+    <title>Leaderboard - SpellBee SRKR</title>
+    <link rel="icon" type="image/x-icon" href="assets/onepage/img/slider/cup.png" />
+
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
