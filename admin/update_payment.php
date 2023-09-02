@@ -13,7 +13,7 @@ if (isset($_POST["pid"])) {
     
     if ($stmt->execute()) {
         // Update successful
-        mysqli_query($conn, "INSERT INTO `responses`(`sid`, `response`) VALUES ('$pid','1')");
+        mysqli_query($conn, "UPDATE `users` SET `status` = 1 WHERE pid ='$pid'");
         echo "Payment confirmation updated successfully.";
     } else {
         // Update failed

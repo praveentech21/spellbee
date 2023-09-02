@@ -2,13 +2,8 @@
 <html lang="en">
 
 <?php include 'connect.php'; 
-    $recaptchaSecretKey = '6LdZG_AnAAAAAKmLadC78GblGojXfJOXYTCXbNtQ';
-    $response = $_POST['g-recaptcha-response'];
-    
-    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecretKey}&response={$response}");
-    $responseData = json_decode($verifyResponse);
     if(isset($_POST['addfeedback'])){
-        if ($responseData->success) {
+        
         $rating = $_POST['rating'];
         $rollno = $_POST['rollno'];
         $feedback = $_POST['feedback'];
@@ -20,10 +15,6 @@
         else{
             echo "<script>alert('Something Went Wrong!');</script>";
         }
-    }
-    else{
-        echo "<script>alert('Please verify captcha');</script>";
-    }
     }
 
 ?>
@@ -71,7 +62,7 @@
     <link href="assets/onepage/css/style-responsive.css" rel="stylesheet">
     <link href="assets/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
     <link href="assets/onepage/css/custom.css" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 
 
     <!-- Theme styles END -->
@@ -137,7 +128,7 @@
     <div id="rating-error" class="error"></div>
 
     <br>
-    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div>
+    <!-- <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div> -->
     <div id="captcha-error" class="error"></div>
 
     <br>

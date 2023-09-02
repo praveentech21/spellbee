@@ -5,27 +5,6 @@
 
 include "connect.php";
 if (isset($_POST['newregistration'])) {
-    $secretKey = "6LdZG_AnAAAAAKmLadC78GblGojXfJOXYTCXbNtQ"; // Replace with your Secret key
-    $response = $_POST['g-recaptcha-response'];
-    $url = "https://www.google.com/recaptcha/api/siteverify";
-    $data = [
-        "secret" => $secretKey,
-        "response" => $response,
-        "remoteip" => $_SERVER["REMOTE_ADDR"]
-    ];
-
-    $options = [
-        "http" => [
-            "header" => "Content-type: application/x-www-form-urlencoded\r\n",
-            "method" => "POST",
-            "content" => http_build_query($data)
-        ]
-    ];
-
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    $response = json_decode($result, true);
-    if ($response['success']) {
         $name = $_POST['name'];
         $regno = $_POST['regno'];
         $email = $_POST['email'];
@@ -33,6 +12,10 @@ if (isset($_POST['newregistration'])) {
         $branch = $_POST['branch'];
         $section = $_POST['section'];
         $batch = $_POST['batch'];
+        if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `regno`='$regno'"))>0){
+            echo "<script>alert('You are already registered!');</script>";
+        }
+        else{
         $newregistration = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
         $newregistration->bind_param("ssissss", $mobile, $name, $batch, $regno, $email, $branch, $section);
         if ($newregistration->execute()) {
@@ -40,10 +23,8 @@ if (isset($_POST['newregistration'])) {
         } else {
             echo "<script>alert('Registration Failed');</script>";
         }
-    } else {
-        echo "<script>alert('You are a robot!');</script";
     }
-}
+    } 
 ?>
 
 <!-- Head BEGIN -->
@@ -104,7 +85,7 @@ if (isset($_POST['newregistration'])) {
             }
         }
     </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </head>
 <!--DOC: menu-always-on-top class to the body element to set menu on top -->
 
@@ -163,7 +144,7 @@ if (isset($_POST['newregistration'])) {
                         <option value="2025">Third Year</option>
                         <option value="2024">Fourth Year</option>
                     </select>
-                    <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div> <br>
+                    <!-- <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div> <br> -->
                     <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id="regbutton"></center>
                     </fieldset>
                     <!-- Error placeholders -->
