@@ -9,17 +9,21 @@ if(isset($_POST['addnewstudent'])){
   $regno = $_POST['regno'];
   $email = $_POST['email'];
   $mobile = $_POST['mobile'];
+
   $branch = $_POST['branch'];
   $section = $_POST['section'];
-  if(isset($_POST['paymentinfo'])) $paymentinfo = 1; else $paymentinfo = 0;
+  if(isset($_POST['paymentinfo'])) {$paymentinfo = 1; mysqli_query($conn, "UPDATE `users` SET `status` = 1 WHERE pid ='$pid'");
+  } else $paymentinfo = 0;
   $batch = $_POST['batch'];
+  if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `pid` = '$mobile' or `regno` = '$regno'"))>0){
+    echo "<script>alert('Student Already Registered');</script>";}else{
   $addnewstudent = $conn ->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`, `payment_status`) VALUES (?,?,?,?,?,?,?,?)");
   $addnewstudent->bind_param("ssissssi",$mobile,$sname,$batch,$regno,$email,$branch,$section,$paymentinfo);
   if($addnewstudent->execute()){
     echo "<script>alert('New Student Added Successfully');</script>";
   }else{
-    echo "<script>alert('New Student Added Failed');</script>";
-  }
+    echo "<script>alert('You are already Registered');</script>";
+  }}
 }
 ?>
 <!DOCTYPE html>
