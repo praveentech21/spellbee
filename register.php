@@ -155,7 +155,7 @@ if (isset($_POST['newregistration'])) {
                     <div id="batch-error" class="error"></div>
                     <div id="captcha-error" class="error"></div>
                 </form><br><br>
-                <h3><strong>NOTE:</strong>You can Pay money in our stalls and confirm you Registration, If you want to
+                <h3><strong>NOTE: </strong> You can Pay money in our stalls and confirm you Registration, If you want to
                     pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3><br><br>
                 <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 
