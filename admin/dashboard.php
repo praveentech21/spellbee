@@ -1,4 +1,8 @@
 <?php
+
+  session_start();
+  if(!isset($_SESSION['supid'])) header("location: login.php");
+
   include 'connect.php';
   $date = date('Y-m-d');
   $csd = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'csd' and DATE(`lastseen`) = '$date' "));

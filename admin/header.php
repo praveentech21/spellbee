@@ -44,12 +44,12 @@
                 <div data-i18n="Analytics">Replay</div>
               </a>
             </li>
-            <li class="menu-item ">
+            <!-- <li class="menu-item ">
               <a href="editstudent.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Analytics">Update Student Details</div>
               </a>
-            </li>
+            </li> -->
             <li class="menu-item ">
               <a href="logout.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>

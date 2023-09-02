@@ -1,10 +1,8 @@
 <?php
 include 'connect.php';
 session_start();
-// if(!isset($_SESSION['admin']))
-// {
-//   header("location:login.php");
-// }
+if(!isset($_SESSION['supid'])) header("location: login.php");
+
 $leaderboard = mysqli_query($conn, "SELECT *,SUM(marks) as total FROM `responses` GROUP BY `sid` ORDER BY SUM(marks) DESC");
 $deptleaderboard = mysqli_query($conn, "SELECT * FROM `users` GROUP BY `department` ORDER BY `points` DESC");
 ?>

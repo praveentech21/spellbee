@@ -1,4 +1,6 @@
 <?php
+session_start();
+if(!isset($_SESSION['supid'])) header("location: login.php");
 
 include "connect.php";
 

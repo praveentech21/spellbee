@@ -1,3 +1,13 @@
+<?php 
+session_start();
+if(!isset($_SESSION['supid'])) header("location: login.php");
+
+include 'connect.php';
+
+  $replayers = mysqli_query($conn,"SELECT * FROM `users` WHERE `points` IS NOT NULL");
+
+?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -63,19 +73,25 @@
                         <tr>
                           <th>NAME</th>
                           <th>REGISTRATION NO</th>
-                          <th>NAME</th>
-                          <th>YEAR</th>
                           <th>DEPARTMENT</th>
+                          <th>YEAR</th>
+                          <th>Conformation</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php while($row = mysqli_fetch_array($replayers)){ ?>
                         <tr>
-                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                          <td>Albert Cook</td>
-                          <td>Albert Cook</td>
-                          <td>Albert Cook</td>
-                          <td><span class="badge bg-label-primary me-1">Active</span></td>
+                          <td><strong><?php echo $row['player_name'] ?></strong></td>
+                          <td><?php echo $row['regno'] ?></td>
+                          <td><?php echo $row['department'] ?></td>
+                          <td><?php if($row['place'] == '2027') echo "First Year";
+                                    elseif($row['place'] == '2026') echo "Second Year";
+                                    elseif($row['place'] == '2025') echo "Third Year";
+                                    elseif($row['place'] == '2024') echo "Fourth Year";
+                                    ?></td>
+                          <td><button type="button" name="conformpayment" class="btn rounded-pill btn-info conform-payment" data-pid="<?php echo $row['pid']; ?>">Replay</button></td>
                         </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
@@ -91,6 +107,35 @@
       <!-- Footer Starts Here Shiva-->
         <?php include 'footer.php'; ?>
       <!-- Footer Ends Here Shiva-->
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Add a click event listener to the buttons with the class "conform-payment"
+    $(".conform-payment").click(function() {
+        // Get the user ID from the data attribute
+        var pid = $(this).data("pid");
+        
+        // Send an AJAX request to update the database
+        $.ajax({
+            type: "POST",
+            url: "update_payment.php", // Replace with the URL of your PHP script
+            data: { replay: pid }, // Send the user ID to the server
+            success: function(response) {
+                // Handle the server response if needed
+                console.log("Replay Confirmed successfully.");
+                window.location.reload();
+            },
+            error: function() {
+                // Handle errors if the AJAX request fails
+                console.error("Error in Repayment confirmation.");
+            }
+        });
+    });
+});
+</script>
+
 
   </body>
 </html>

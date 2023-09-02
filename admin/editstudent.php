@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if(!isset($_SESSION['supid'])) header("location: login.php");
+
+
 include 'connect.php';
 $run1 = mysqli_query($conn, "select * from users where pid='0'");
 if (isset($_POST['getdetails'])) {

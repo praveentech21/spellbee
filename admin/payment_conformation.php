@@ -1,4 +1,7 @@
 <?php 
+session_start();
+if(!isset($_SESSION['supid'])) header("location: login.php");
+
 include 'connect.php';
 
   $notpayed = mysqli_query($conn,"SELECT * FROM `users` WHERE `payment_status` = '0' ");
@@ -86,7 +89,7 @@ include 'connect.php';
                                     elseif($row['place'] == '2025') echo "Third Year";
                                     elseif($row['place'] == '2024') echo "Fourth Year";
                                     ?></td>
-                          <td><button type="button" name="conformpayment" class="btn btn-outline-success conform-payment" data-pid="<?php echo $row['pid']; ?>">Confirm Payment</button></td>
+                          <td><button type="button" name="conformpayment" class="btn rounded-pill btn-success conform-payment" data-pid="<?php echo $row['pid']; ?>">Confirm Payment</button></td>
                         </tr>
                         <?php } ?>
                       </tbody>
