@@ -37,6 +37,8 @@ if ($dept == 'CSE') {
 <head>
     <meta charset="utf-8">
     <title>Leaderboard - SpellBee SRKR</title>
+    <link rel="shortcut icon" href="assets/onepage/img/cup.png">
+
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

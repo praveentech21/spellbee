@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php include 'connect.php'; ?>
 
 <head>
     <meta charset="utf-8">
@@ -10,7 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="assets/onepage/img/cup.png">
     <!-- Fonts START -->
     <link
         href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
@@ -559,25 +560,25 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong>50 </strong>
+                        <strong><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users`")) ?> </strong>
                         REGSITER SO FAR
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong>30</strong>
+                        <strong><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `points` IS NOT NULL")) ?></strong>
                         PLAYED SO FAR
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong>10</strong>
+                        <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT MAX(points) as top FROM `users` "))['top'] ?></strong>
                         HIGEST SCORE
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong>CSD</strong>
+                        <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT `department` as top FROM `users`WHERE `points` = ( SELECT MAX(points) FROM `users`) ORDER BY `lastseen` DESC LIMIT 1 "))['top'] ?></strong>
                         HIGH SCORE DEPARTMENT
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Rules - SRKR SpellBee</title>
-    <link rel="icon" type="image/x-icon" href="assets/onepage/img/slider/cup.png" />
+    <link rel="shortcut icon" href="assets/onepage/img/cup.png">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
