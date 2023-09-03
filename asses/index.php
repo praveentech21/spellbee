@@ -116,12 +116,11 @@ $words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $aword['word'] ?></h5>
                       <p class="card-text"><?php echo $aword['meaning'] ?></p>
-                      <p class="card-text"><audio id="myAudio" controls>
-                          <source src="<?php echo $aword['qid'] ?>.mp3" type="audio/mp3">
+                      <p class="card-text">
+                        <audio id="myAudio" controls>
+                          <source src="Bhavani/sounds/<?php echo $aword['qid'] ?>.mp3" type="audio/mp3">
                           Your browser does not support the audio element.
                         </audio>
-
-                        <button onclick="playSound()">Play Sound</button>
                       </p>
                       <a>
                         <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="esay" class='btn btn-success'>Esay</button>
