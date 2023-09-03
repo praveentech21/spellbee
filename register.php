@@ -106,7 +106,7 @@ if (isset($_POST['newregistration'])) {
 
                 <h3><strong>Online Registrations</strong><br></h3>
 
-                <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return register();">
+                <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return validateForm();">
                     <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
                     <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
                     <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">
@@ -142,9 +142,7 @@ if (isset($_POST['newregistration'])) {
                         <option value="2025">Third Year</option>
                         <option value="2024">Fourth Year</option>
                     </select>
-                    <!-- <div class="g-recaptcha" data-sitekey="6LdZG_AnAAAAANG-Aiq1UWrSbn6Oi5TPR98vyNIm"></div> <br> -->
                     <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id="regbutton"></center>
-                    </fieldset>
                     <!-- Error placeholders -->
                     <div id="name-error" class="error"></div>
                     <div id="regno-error" class="error"></div>
@@ -154,7 +152,9 @@ if (isset($_POST['newregistration'])) {
                     <div id="section-error" class="error"></div>
                     <div id="batch-error" class="error"></div>
                     <div id="captcha-error" class="error"></div>
-                </form><br><br>
+                </form>
+
+                <br><br>
                 <h3><strong>NOTE: </strong> You can Pay money in our stalls and confirm you Registration, If you want to
                     pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3><br><br>
                 <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
@@ -218,14 +218,13 @@ if (isset($_POST['newregistration'])) {
     </script>
     <script>
         function validateForm() {
-            var name = document.forms["reg1"]["name"].value;
-            var regno = document.forms["reg1"]["regno"].value;
-            var email = document.forms["reg1"]["email"].value;
-            var mobile = document.forms["reg1"]["mobile"].value;
-            var branch = document.forms["reg1"]["branch"].value;
-            var section = document.forms["reg1"]["section"].value;
-            var batch = document.forms["reg1"]["batch"].value;
-            var captchaResponse = grecaptcha.getResponse(); // Get the reCAPTCHA response
+            var name = document.getElementById("name").value;
+            var regno = document.getElementById("regno").value;
+            var email = document.getElementById("email").value;
+            var mobile = document.getElementById("mobile").value;
+            var branch = document.getElementById("branch").value;
+            var section = document.getElementById("section").value;
+            var batch = document.getElementById("batch").value;
 
             // Clear previous error messages
             document.getElementById("name-error").innerHTML = "";
@@ -235,66 +234,72 @@ if (isset($_POST['newregistration'])) {
             document.getElementById("branch-error").innerHTML = "";
             document.getElementById("section-error").innerHTML = "";
             document.getElementById("batch-error").innerHTML = "";
-            document.getElementById("captcha-error").innerHTML = "";
 
-            // Basic field validation
             var isValid = true;
 
+            // Validate Name
             if (name === "") {
                 document.getElementById("name-error").innerHTML = "Name must be filled out";
                 isValid = false;
             }
+
+            // Validate Register Number
             if (regno === "") {
                 document.getElementById("regno-error").innerHTML = "Register Number must be filled out";
                 isValid = false;
             } else {
-                // Validate registration number format
-                var regnoPattern = /^(20|21|22|23)B\d{2}\A\d{4}$/;
-                if (!regnoPattern.test(regno)) {
+                var regnoPattern = /^(20|21|22|23)B\d{2}A\d{4}$/;
+                var regnoPattern1 = /^(AIDS|AIML|CSBS|CSD|CSE|CIC|CSI|CIVIL|MECH|EEE|ECE|IT)\d{4}$/;
+                if (!regnoPattern.test(regno) ) {
+                    if (!regnoPattern1.test(regno)) {
                     document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
-                    isValid = false;
+                    isValid = false;}
                 }
             }
+
+            // Validate Email
             if (email === "") {
                 document.getElementById("email-error").innerHTML = "Email must be filled out";
                 isValid = false;
             } else {
-                // Validate email format
                 var emailPattern = /^\S+@\S+\.\S+$/;
                 if (!emailPattern.test(email)) {
                     document.getElementById("email-error").innerHTML = "Invalid Email format";
                     isValid = false;
                 }
             }
+
+            // Validate Mobile Number
             if (mobile === "") {
                 document.getElementById("mobile-error").innerHTML = "Mobile Number must be filled out";
                 isValid = false;
             } else {
-                // Validate mobile number format (10 digits)
-                var mobilePattern = /^\d{10}$/;
+                var mobilePattern = /^[6-9]\d{9}$/;
                 if (!mobilePattern.test(mobile)) {
                     document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format (must be 10 digits)";
                     isValid = false;
                 }
             }
+
+            // Validate Branch
             if (branch === "") {
                 document.getElementById("branch-error").innerHTML = "Please select your Branch";
                 isValid = false;
             }
+
+            // Validate Section
             if (section === "") {
                 document.getElementById("section-error").innerHTML = "Please select your Section";
                 isValid = false;
             }
+
+            // Validate Batch
             if (batch === "") {
                 document.getElementById("batch-error").innerHTML = "Please select your Student Year";
                 isValid = false;
             }
-            if (captchaResponse.length === 0) {
-                document.getElementById("captcha-error").innerHTML = "Please complete the reCAPTCHA";
-                isValid = false;
-            }
 
-            return isValid; // Form is valid if all validations pass
+            return isValid;
         }
     </script>
 

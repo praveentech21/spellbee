@@ -21,7 +21,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT * FROM `users` GROUP BY `departme
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Campus Online Admin</title>
+    <title>SRKR SpellBee Admin</title>
 
     <meta name="description" content="" />
 

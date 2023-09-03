@@ -12,7 +12,7 @@ if(isset($_POST['addnewstudent'])){
 
   $branch = $_POST['branch'];
   $section = $_POST['section'];
-  if(isset($_POST['paymentinfo'])) {$paymentinfo = 1; mysqli_query($conn, "UPDATE `users` SET `status` = 1 WHERE pid ='$mobile'");
+  if(isset($_POST['paymentinfo'])) {$paymentinfo = 1; mysqli_query($conn, "UPDATE `users` SET `status` = 1, `payment_status`=1 WHERE pid ='$mobile'");
   } else $paymentinfo = 0;
   $batch = $_POST['batch'];
   if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `pid` = '$mobile' or `regno` = '$regno'"))>0){

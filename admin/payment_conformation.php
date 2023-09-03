@@ -121,7 +121,7 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "update_payment.php", // Replace with the URL of your PHP script
-            data: { pid: pid }, // Send the user ID to the server
+            data: { payment: pid }, // Send the user ID to the server
             success: function(response) {
                 // Handle the server response if needed
                 console.log("Payment confirmation updated successfully.");
