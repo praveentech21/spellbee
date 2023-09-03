@@ -112,7 +112,7 @@ $words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `
                 <p>Think Like a normal Scholl going kid.. we want more simple words which increses the intrest in playing game</p>
                 <h4 class="mt-2 text-muted">Asses these words</h4>
                 <?php while ($aword = mysqli_fetch_assoc($words)) { ?>
-                  <div class="card mb-4" id="wordbox<?php echo $aword['qid'] ?>">
+                  <div class="card mb-4 wordbox" data-qid="<?php echo $aword['qid'] ?>">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $aword['word'] ?></h5>
                       <p class="card-text"><?php echo $aword['meaning'] ?></p>
@@ -123,11 +123,10 @@ $words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `
                         </audio>
                       </p>
                       <a>
-                        <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="esay" class='btn btn-success'>Esay</button>
-                        <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="medium" class='btn btn-secondary'>Medium</button>
-                        <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="difficult" class='btn btn-warning'>Difficult</button>
+                        <button type='button' data-action="esay" class='btn btn-success assess-btn'>Easy</button>
+                        <button type='button' data-action="medium" class='btn btn-secondary assess-btn'>Medium</button>
+                        <button type='button' data-action="difficult" class='btn btn-warning assess-btn'>Difficult</button>
                       </a>
-
                     </div>
                   </div>
                 <?php } ?>
@@ -182,21 +181,6 @@ $words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script>
-    function change_status(stdid, eid) {
-      // axaj call to pickup.php
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
-        }
-      };
-      var data = "?stdid=" + stdid + "&eid=" + eid;
-      xhttp.open("GET", "update_status.php" + data, true);
-      xhttp.send();
-      window.location.reload();
-    }
-  </script>
-  <script>
     var audio = document.getElementById("myAudio");
     var seekBar = document.getElementById("seekBar");
 
@@ -233,91 +217,32 @@ $words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `
   </script>
   <script>
     $(document).ready(function() {
-      $('#esay').click(function() {
+  $('.assess-btn').click(function() {
+    var qid = $(this).closest('.wordbox').data('qid');
+    var button = $(this);
 
-        var qid = $(this).data('qid');
-        // Perform the AJAX request
-        $.ajax({
-          url: 'update.php', // Replace with the path to your PHP script
-          type: 'POST', // Use POST or GET, depending on your requirements
-          data: {
-            action: 'esay',
-            qid: qid // You can pass any data needed for your update here
-          },
-          success: function(response) {
-            // Handle the response from the server, e.g., show a success message
-            console.log(response);
-            var container = document.getElementById('wordbox' + qid);
-            if (container) {
-              container.remove();
-            }
-          },
-          error: function() {
-            console.log('Error updating the database');
-            var container = document.getElementById('wordbox' + qid);
-            if (container) {
-              container.remove();
-            }
-          }
-        });
-      });
-      $('#medium').click(function() {
-
-        var qid = $(this).data('qid');
-
-        // Perform the AJAX request
-        $.ajax({
-          url: 'update.php', // Replace with the path to your PHP script
-          type: 'POST', // Use POST or GET, depending on your requirements
-          data: {
-            action: 'medium',
-            qid: qid // You can pass any data needed for your update here
-          },
-          success: function(response) {
-            console.log(response);
-            var container = document.getElementById('wordbox' + qid);
-            if (container) {
-              container.remove();
-            }
-          },
-          error: function() {
-            console.log('Error updating the database');
-            var container = document.getElementById('wordbox' + qid);
-            if (container) {
-              container.remove();
-            }
-          }
-        });
-      });
-      $('#difficult').click(function() {
-
-        var qid = $(this).data('qid');
-
-        // Perform the AJAX request
-        $.ajax({
-          url: 'update.php', // Replace with the path to your PHP script
-          type: 'POST', // Use POST or GET, depending on your requirements
-          data: {
-            action: 'difficult',
-            qid: qid // You can pass any data needed for your update here
-          },
-          success: function(response) {
-            console.log(response);
-            var container = document.getElementById('wordbox' + qid);
-            if (container) {
-              container.remove();
-            }
-          },
-          error: function() {
-            console.log('Error updating the database');
-            var container = document.getElementById('wordbox' + qid);
-            if (container) {
-              container.remove();
-            }
-          }
-        });
-      });
+    // Perform the AJAX request
+    $.ajax({
+      url: 'update.php', // Replace with the path to your PHP script
+      type: 'POST', // Use POST or GET, depending on your requirements
+      data: {
+        action: button.data('action'), // Use data-action attribute to determine the action
+        qid: qid // You can pass any data needed for your update here
+      },
+      success: function(response) {
+        console.log(response);
+        var container = button.closest('.wordbox');
+        if (container) {
+          container.remove();
+        }
+      },
+      error: function() {
+        console.log('Error updating the database');
+      }
     });
+  });
+});
+
   </script>
 
 </body>
