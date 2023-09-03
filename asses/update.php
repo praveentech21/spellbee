@@ -9,25 +9,25 @@ include 'connect.php';
 
 if (isset($_POST['action']) && $_POST['action'] == 'esay') {
     $qid = $_POST['qid'];
-    $sql = "INSERT INTO `responces`(`regno`, `wordid`, `responce`) VALUES ('$regno','$qid,'1')";
+    $sql = "INSERT INTO `responces`(`regno`, `wordid`, `responce`) VALUES ('$regno','$qid','1')";
     if ($conn->query($sql) === true) {
         echo 'Database updated successfully';
     } else {
         echo 'Error updating the database: ' . $conn->error;
     }
 }
-if (isset($_POST['action']) && $_POST['action'] == 'medium') {
+elseif (isset($_POST['action']) && $_POST['action'] == 'medium') {
     $qid = $_POST['qid'];
-    $sql = "INSERT INTO `responces`(`regno`, `wordid`, `responce`) VALUES ('$regno','$qid,'2')";
+    $sql = "INSERT INTO `responces`(`regno`, `wordid`, `responce`) VALUES ('$regno','$qid','2')";
     if ($conn->query($sql) === true) {
         echo 'Database updated successfully';
     } else {
         echo 'Error updating the database: ' . $conn->error;
     }
 }
-if (isset($_POST['action']) && $_POST['action'] == 'difficult') {
+elseif (isset($_POST['action']) && $_POST['action'] == 'difficult') {
     $qid = $_POST['qid'];
-    $sql = "INSERT INTO `responces`(`regno`, `wordid`, `responce`) VALUES ('$regno','$qid,'3')";
+    $sql = "INSERT INTO `responces`(`regno`, `wordid`, `responce`) VALUES ('$regno','$qid','3')";
     if ($conn->query($sql) === true) {
         echo 'Database updated successfully';
     } else {
