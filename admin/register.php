@@ -9,7 +9,6 @@ if(isset($_POST['addnewstudent'])){
   $regno = $_POST['regno'];
   $email = $_POST['email'];
   $mobile = $_POST['mobile'];
-
   $branch = $_POST['branch'];
   $section = $_POST['section'];
   if(isset($_POST['paymentinfo'])) {$paymentinfo = 1; } else $paymentinfo = 0;
