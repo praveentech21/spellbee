@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['user'])) {
+  header('location:login.php');
+}
 include 'connect.php';
 
 //I want the words that user not yet assesed

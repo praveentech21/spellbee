@@ -106,7 +106,7 @@ if (isset($_POST['newregistration'])) {
 
                 <h3><strong>Online Registrations</strong><br></h3>
 
-                <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return validateForm();">
+                <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return register();">
                     <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
                     <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
                     <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">

@@ -6,8 +6,15 @@ if(!empty($_SESSION['user'])){
   header("location: index.php");
 }
 if(isset($_POST['submit'])){
-  $_SESSION['user']=$_POST['pin'];
-  header("location: index.php");
+  $regno=$_POST['regno'];
+  $pin=$_POST['pin'];
+  if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `team` WHERE `regno`='$regno' AND `pass`='$pin'")) ==1){
+    $_SESSION['user']=$regno;
+    header("location: index.php");
+  }
+  else{
+    echo "<script>alert('You are Not allowed')</script>";
+  }
 }
 
 ?><!DOCTYPE html>
@@ -87,6 +94,19 @@ if(isset($_POST['submit'])){
                   <div class="input-group input-group-merge">
                     <input
                       type="text"
+                      id="password"
+                      class="form-control"
+                      name="regno"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Password</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
                       id="password"
                       class="form-control"
                       name="pin"
