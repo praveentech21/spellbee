@@ -1,7 +1,12 @@
 <?php 
- $conn = new mysqli("localhost","root","","spellbeeasses");
-  $conn1 = new mysqli('srkrec.edu.in','srkrec','srk@1234','srkdb');
-  $words = mysqli_query($conn1,"SELECT * FROM `words` ");
+  session_start();
+  if(!isset($_SESSION['user'])){
+    header('location:login.php');
+  }
+  include 'connect.php';
+
+  //I want the words that user not yet assesed
+  $words = mysqli_query($conn,"SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `wordid` FROM `responces` WHERE `regno`='{$_SESSION['user']}')");
 ?>
 <!DOCTYPE html>
 <html
@@ -48,7 +53,7 @@
 
     <link rel="stylesheet" href="Bhavani/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Helpers -->
     <script src="Bhavani/vendor/js/helpers.js"></script>
@@ -95,7 +100,7 @@
             id="layout-navbar">
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <h2 style="padding-top: 18px;">Asses Spell Bee Words for Spell Bee 2023</h2>
+              <h2 style="padding-top: 18px;">Asses Words for Spell Bee 2023</h2>
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -119,44 +124,27 @@
               <div class="row mb-5">
               <div class="col-md-6 col-lg-4">
                 <p>Think Like a normal Scholl going kid.. we want more simple words which increses the intrest in playing game</p>
-                <h4 class="mt-2 text-muted">Your Lunch Boxes</h4>
-                <?php //while($aword = mysqli_fetch_assoc($words)){ ?>
+                <h4 class="mt-2 text-muted">Asses these words</h4>
+                <?php while($aword = mysqli_fetch_assoc($words)){ ?>
                   <div class="card mb-4">
                   <div class="card-body"> 
-                    <h5 class="card-title">Word</h5>
-                    <p class="card-text">Sound</p>
-                    <p class="card-text">Meaning</p>
+                    <h5 class="card-title"><?php echo $aword['word'] ?></h5>
+                    <p class="card-text"><?php echo $aword['meaning'] ?></p>
+                    <p class="card-text"><audio id="myAudio" controls>
+        <source src="<?php echo $aword['qid'] ?>.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button onclick="playSound()">Play Sound</button></p>
                     <a>
-                    <button type='button' class='btn btn-success'>Pick Up</button>
-                    <button type='button' class='btn btn-danger'>Drop Box</button>
-                    <button type='button' class='btn btn-danger'>Drop Box</button>
+                    <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="esay" class='btn btn-success'>Esay</button>
+                    <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="medium" class='btn btn-secondary'>Medium</button>
+                    <button type='button' data-qid="<?php echo $aword['qid'] ?>" id="difficult" class='btn btn-warning'>Difficult</button>
                     </a>
+                    
                   </div>
                 </div>
-                <div class="card mb-4">
-                  <div class="card-body"> 
-                    <h5 class="card-title">Word</h5>
-                    <p class="card-text">Sound</p>
-                    <p class="card-text">Meaning</p>
-                    <a>
-                    <button type='button' class='btn btn-success'>Pick Up</button>
-                    <button type='button' class='btn btn-danger'>Drop Box</button>
-                    <button type='button' class='btn btn-danger'>Drop Box</button>
-                    </a>
-                  </div>
-                </div>
-                <div class="card mb-4">
-                  <div class="card-body"> 
-                    <h5 class="card-title">Word</h5>
-                    <p class="card-text">Sound</p>
-                    <p class="card-text">Meaning</p>
-                    <a>
-                    <button type='button' class='btn btn-success'>Pick Up</button>
-                    <button type='button' class='btn btn-danger'>Drop Box</button>
-                    <button type='button' class='btn btn-danger'>Drop Box</button>
-                    </a>
-                  </div>
-                </div>
+                <?php } ?>
               </div>
               </div>
             </div>
@@ -222,5 +210,110 @@
         window.location.reload();
       }
     </script>
+    <script>
+        var audio = document.getElementById("myAudio");
+        var seekBar = document.getElementById("seekBar");
+
+        function playPause() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function increaseVolume() {
+            if (audio.volume < 1.0) {
+                audio.volume += 0.1;
+            }
+        }
+
+        function decreaseVolume() {
+            if (audio.volume > 0.0) {
+                audio.volume -= 0.1;
+            }
+        }
+
+        function seekAudio() {
+            var seekTo = audio.duration * (seekBar.value / 100);
+            audio.currentTime = seekTo;
+        }
+
+        // Update the seek bar as the audio plays
+        audio.addEventListener("timeupdate", function() {
+            var seekValue = (100 / audio.duration) * audio.currentTime;
+            seekBar.value = seekValue;
+        });
+    </script>
+    <script>
+$(document).ready(function() {
+  $('#esay').click(function() {
+
+        var qid = $(this).data('qid');
+        // Perform the AJAX request
+        $.ajax({
+            url: 'update.php', // Replace with the path to your PHP script
+            type: 'POST', // Use POST or GET, depending on your requirements
+            data: {
+                action: 'esay',
+                qid: qid // You can pass any data needed for your update here
+            },
+            success: function(response) {
+                // Handle the response from the server, e.g., show a success message
+                alert('Database updated successfully');
+            },
+            error: function() {
+                // Handle errors here, e.g., show an error message
+                alert('Error updating the database');
+            }
+        });
+    });
+    $('#medium').click(function() {
+
+      var qid = $(this).data('qid');
+
+        // Perform the AJAX request
+        $.ajax({
+            url: 'update.php', // Replace with the path to your PHP script
+            type: 'POST', // Use POST or GET, depending on your requirements
+            data: {
+                action: 'medium',
+                qid:qid // You can pass any data needed for your update here
+            },
+            success: function(response) {
+                // Handle the response from the server, e.g., show a success message
+                console.log(response);
+            },
+            error: function() {
+                // Handle errors here, e.g., show an error message
+                console.log('Error updating the database');
+            }
+        });
+    });
+    $('#difficult').click(function() {
+
+      var qid = $(this).data('qid');
+
+        // Perform the AJAX request
+        $.ajax({
+            url: 'update.php', // Replace with the path to your PHP script
+            type: 'POST', // Use POST or GET, depending on your requirements
+            data: {
+                action: 'difficult',
+                qid:qid // You can pass any data needed for your update here
+            },
+            success: function(response) {
+                // Handle the response from the server, e.g., show a success message
+                alert('Database updated successfully');
+            },
+            error: function() {
+                // Handle errors here, e.g., show an error message
+                alert('Error updating the database');
+            }
+        });
+    });
+});
+</script>
+
   </body>
 </html>
