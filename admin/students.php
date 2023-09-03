@@ -71,7 +71,7 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                 </tr>
               </thead>
               <tbody>
-                <?php while ($row = mysqli_fetch_array($notpayed)) { ?>
+                <?php while ($row = mysqli_fetch_array($registrations)) { ?>
                   <tr>
                     <td><strong><?php echo $row['player_name'] ?></strong></td>
                     <td><?php echo $row['regno'] ?></td>
@@ -81,7 +81,9 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                         elseif ($row['place'] == '2025') echo "Third Year";
                         elseif ($row['place'] == '2024') echo "Fourth Year";
                         ?></td>
-                    <td><?php echo $row['department'] ?></td>
+                    <td><<?php if ($row['payment_status'] == '0') echo "Not Paid";
+                        elseif ($row['payment_status'] == '1' and $row['status'] = '') echo "Not";
+                        ?></td>
                   </tr>
                 <?php } ?>
               </tbody>
