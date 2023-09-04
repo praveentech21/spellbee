@@ -266,6 +266,7 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                           <th>DEPARTMENT</th>
                           <th>YEAR</th>
                           <th>Status</th>
+                          <th>Message</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -289,6 +290,12 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                                 elseif ($tresponces < '15') echo "Semi Completed";
                                 elseif ($tresponces == '15') echo "Completed";
                                 ?></td>
+                            <td>
+                              <button type="button" class="btn rounded-pill btn-primary confirm-game" data-pid="<?php echo $row['pid']; ?> " data-name="<?php echo $row['player_name']; ?> ">
+                                Welcome
+                              </button>
+                            </td>
+
                           </tr>
                         <?php } ?>
                       </tbody>
@@ -309,34 +316,59 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
           <!-- Footer Ends Here Shiva-->
 
           <script>
-  $(document).ready(function () {
-    // Cache the table rows for better performance
-    var rows = $("#registrationTable tr");
+            $(document).ready(function() {
+              // Cache the table rows for better performance
+              var rows = $("#registrationTable tr");
 
-    // Bind the input field's keyup event
-    $("#searchInput").keyup(function () {
-      var searchText = $(this).val().toLowerCase();
+              // Bind the input field's keyup event
+              $("#searchInput").keyup(function() {
+                var searchText = $(this).val().toLowerCase();
 
-      // Iterate through each table row
-      rows.each(function () {
-        var name = $(this).find("td:nth-child(1)").text().toLowerCase();
-        var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
-        var department = $(this).find("td:nth-child(3)").text().toLowerCase();
+                // Iterate through each table row
+                rows.each(function() {
+                  var name = $(this).find("td:nth-child(1)").text().toLowerCase();
+                  var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
+                  var department = $(this).find("td:nth-child(3)").text().toLowerCase();
 
-        // Check if the search text matches any of the row data
-        if (
-          name.includes(searchText) ||
-          regno.includes(searchText) ||
-          department.includes(searchText)
-        ) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      });
-    });
-  });
-</script>
+                  // Check if the search text matches any of the row data
+                  if (
+                    name.includes(searchText) ||
+                    regno.includes(searchText) ||
+                    department.includes(searchText)
+                  ) {
+                    $(this).show();
+                  } else {
+                    $(this).hide();
+                  }
+                });
+              });
+            });
+          </script>
+          <script>
+            $(document).ready(function() {
+              // Add a click event listener to the buttons with the class "confirm-game"
+              $(".confirm-game").click(function() {
+
+                var phoneNumber = $(this).data("pid");
+                var name = $(this).data("name");
+        // var message = "Hello "+name+", Thank You for Playing *SRKR SPELL BEE* You can see leader board hear: https://srkrec.edu.in/spellbee/ This is your Certificate. ";
+        
+          var message = "Dear Thank You for Registering to SRKR SpellBee Challenge 2023! You can take the test at any of the SpellBee/Campus Online Stalls on Campus or at Technology Centre.\n\n-SRKR SpellBee Organizing Team, CSD";
+
+        // Encode the message for use in a URL
+        var encodedMessage = encodeURIComponent(message);
+
+        // Construct the WhatsApp URL
+        var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+
+        // Open WhatsApp with the pre-filled message
+        window.open(whatsappURL, "_blank");
+
+
+              });
+            });
+          </script>
+
 
 
 

@@ -235,14 +235,11 @@ if (isset($_POST['addnewstudent'])) {
         document.getElementById("regno-error").innerHTML = "Register Number must be filled out";
         isValid = false;
       } else {
-        var regnoPattern = /^(20|21|22|23)B\d{2}A\d{4}$/;
-        var regnoPattern1 = /^(AIDS|AIML|CSBS|CSD|CSE|CIC|CSI|CIVIL|MECH|EEE|ECE|IT)\d{4}$/;
-        if (!regnoPattern.test(regno)) {
-          if (!regnoPattern1.test(regno)) {
-            document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
-            isValid = false;
-          }
-        }
+        var regnoPattern = /^\w{10}$/;
+                if (!regnoPattern.test(regno)) {
+                    document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
+                    isValid = false;
+                }
 
       }
 
@@ -250,19 +247,23 @@ if (isset($_POST['addnewstudent'])) {
         document.getElementById("email-error").innerHTML = "Email must be filled out";
         isValid = false;
       } else {
-        var emailPattern = /^(?=.*[@])(?=.*(srkrec\.edu\.in|gmail\.com|outlook\.com|srkrec\.ac\.in))\S+@\S+\.\S+$/;
-        if (!emailPattern.test(email)) {
-          document.getElementById("email-error").innerHTML = "Invalid Email format";
-          isValid = false;
-        }
+        var emailPattern = /.+@.+/;
+                if (!emailPattern.test(email)) {
+                    document.getElementById("email-error").innerHTML = "Invalid Email format";
+                    isValid = false;
+                }
       }
 
       if (mobile === "") {
         document.getElementById("mobile-error").innerHTML = "Mobile Number must be filled out";
         isValid = false;
-      } else if (!/^[6-9]\d{9}$/.test(mobile)) {
-        document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format";
-        isValid = false;
+      } else {
+        var mobilePattern = /^[6-9]\d{9}$/;
+                if (!mobilePattern.test(mobile)) {
+                    document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format (must be 10 digits)";
+                    isValid = false;
+                }
+
       }
 
 

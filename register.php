@@ -11,18 +11,40 @@ if (isset($_POST['newregistration'])) {
     $mobile = $_POST['mobile'];
     $branch = $_POST['branch'];
     $section = $_POST['section'];
+    $recaptchaResponse = $_POST['h-captcha-response'];
     $batch = $_POST['batch'];
-    if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `regno`='$regno' or `pid` = '$mobile'")) > 0) {
-        echo "<script>alert('You are already registered! you can go and play game campus online stall');</script>";
-    } else {
-        $newregistration = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
-        $newregistration->bind_param("ssissss", $mobile, $name, $batch, $regno, $email, $branch, $section);
-        if ($newregistration->execute()) {
-            
-            echo "<script>alert('You Register Sucessfully you can go and play game in our stalls');</script>";
+
+
+    $secretKey = "ES_6aec8d63fca04791b4648bc8c74b15bd"; // Replace with your Secret key
+    $url = "https://hcaptcha.com/siteverify";
+    $data = [
+        "secret" => $secretKey,
+        "response" => $recaptchaResponse,
+    ];
+
+    $verify = curl_init();
+    curl_setopt($verify, CURLOPT_URL, $url);
+    curl_setopt($verify, CURLOPT_POST, true);
+    curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($verify);
+    $responseData = json_decode($response);
+
+    if ($responseData->success) {
+        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `regno`='$regno' or `pid` = '$mobile'")) > 0) {
+            echo "<script>alert('You are already registered! you can go and play game campus online stall');</script>";
         } else {
-            echo "<script>alert('Registration Failed');</script>";
+            $newregistration = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
+            $newregistration->bind_param("ssissss", $mobile, $name, $batch, $regno, $email, $branch, $section);
+            if ($newregistration->execute()) {
+                echo "<script>alert('You Register Sucessfully you can go and play game in our stalls');</script>";
+            } else {
+                echo "<script>alert('Registration Failed');</script>";
+            }
         }
+    }
+    else {
+        echo "<script>alert('Please verify captcha');</script>";
     }
 }
 ?>
@@ -62,6 +84,7 @@ if (isset($_POST['newregistration'])) {
     <link href="assets/onepage/css/style-responsive.css" rel="stylesheet">
     <link href="assets/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
     <link href="assets/onepage/css/custom.css" rel="stylesheet">
+    <script src='https://www.hCaptcha.com/1/api.js' async defer></script>
 
     <!-- Theme styles END -->
 
@@ -105,8 +128,8 @@ if (isset($_POST['newregistration'])) {
 
             <div class="col-md-4">
 
-            <h3><strong>Online Registrations</strong><br></h3>
-            <h3 id="error_register"><strong></strong><br></h3>
+                <h3><strong>Online Registrations</strong><br></h3>
+                <h3 id="error_register"><strong></strong><br></h3>
 
                 <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return validateForm();">
                     <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
@@ -153,7 +176,8 @@ if (isset($_POST['newregistration'])) {
                         <option value="2026">Second</option>
                         <option value="2025">Third Year</option>
                         <option value="2024">Fourth Year</option>
-                    </select>
+                    </select><br>
+                    <div class="h-captcha" data-sitekey="f6892b7e-56c6-4010-a3c0-2878d8437349"></div>
                     <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id="regbutton"></center>
                     <!-- Error placeholders -->
                     <div id="section-error" class="error"></div>
@@ -263,7 +287,7 @@ if (isset($_POST['newregistration'])) {
                 // }
                 // var regnoPattern = /^(20|21|22|23)B\d{2}A\d{4}$/;
                 var regnoPattern = /^\w{10}$/;
-                if (!regnoPattern.test(regno) ) {
+                if (!regnoPattern.test(regno)) {
                     document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
                     isValid = false;
                 }
