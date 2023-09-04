@@ -1,11 +1,13 @@
-<?php
-include 'connect.php';
+<?php 
 session_start();
-if(!isset($_SESSION['admin']) ) header("location: login.php");
+if(!isset($_SESSION['admin'])) header("location: login.php");
 
-$leaderboard = mysqli_query($conn, "SELECT *,SUM(marks) as total FROM `responses` GROUP BY `sid` ORDER BY SUM(marks) DESC");
-$deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `users` GROUP BY `department` ORDER BY MAX(`points`) DESC");
+include 'connect.php';
+
+  $notpayed = mysqli_query($conn,"SELECT * FROM `users` WHERE `payment_status` = '1' and `status` = '0' ");
+
 ?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -21,7 +23,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>SRKR SpellBee Admin</title>
+    <title>Campus Online Admin</title>
 
     <meta name="description" content="" />
 
@@ -49,8 +51,6 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
     <script src="Bhavani/vendor/js/helpers.js"></script>
 
     <script src="Bhavani/js/config.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   </head>
 
   <body>
@@ -63,65 +63,33 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
 
-              
-              <!-- Bordered Table -->
-              <div class="col-8 col-lg-7 order-2 order-md-3 order-lg-2 mb-4">
-                <div class="card">
-                <h5 class="card-header">GAME LEADER BOARD</h5>
+                            <!-- Bordered Table -->
+                            <div class="card">
+                <h5 class="card-header">Payment Conformation</h5>
                 <div class="card-body">
                   <div class="table-responsive text-nowrap">
                     <table class="table table-bordered" id="registrationTable">
                       <thead>
                         <tr>
                           <th>NAME</th>
-                          <th>Branch</th>
-                          <th>Year</th>
-                          <th>SCORE</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php while($student = mysqli_fetch_assoc($leaderboard)){
-                          $student_details = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `pid` = '{$student['sid']}'"));
-                        ?>
-                        <tr>
-                          <td> <strong><?php echo $student_details['player_name'] ?></strong></td>
-                          <td><?php echo $student_details['department'] ?></td>
-                          <td><span class="badge bg-label-primary me-1">
-                          <?php if($student_details['place'] == '2027') echo 'First Year';
-                                elseif($student_details['place'] == '2026') echo 'Second Year';
-                                elseif($student_details['place'] == '2025') echo 'Third Year';
-                                elseif($student_details['place'] == '2024') echo 'Fourth Year';
-                          ?>
-                          </span></td>
-                          <td><span class="badge bg-label-primary me-1"><?php echo $student['total'] ?></span></td>
-                        </tr>
-                        <?php } ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                </div>
-              </div>
-
-              <div class="col-8 col-lg-5 order-2 order-md-3 order-lg-2 mb-4">
-              <div class="card">
-                <h5 class="card-header">DEPARTMENT LEADER BOARD</h5>
-                <div class="card-body">
-                  <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
+                          <th>REGISTRATION NO</th>
                           <th>DEPARTMENT</th>
-                          <th>NAME</th>
+                          <th>YEAR</th>
+                          <th>Conformation</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php 
-                          while($dept = mysqli_fetch_assoc($deptleaderboard)){
-                        ?>
+                        <?php while($row = mysqli_fetch_array($notpayed)){ ?>
                         <tr>
-                          <td><?php echo $dept['department'] ?></td>
-                          <td> <strong><?php echo $dept['player_name'] ?></strong></td>
+                          <td><strong><?php echo $row['player_name'] ?></strong></td>
+                          <td><?php echo $row['regno'] ?></td>
+                          <td><?php echo $row['department'] ?></td>
+                          <td><?php if($row['place'] == '2027') echo "First Year";
+                                    elseif($row['place'] == '2026') echo "Second Year";
+                                    elseif($row['place'] == '2025') echo "Third Year";
+                                    elseif($row['place'] == '2024') echo "Fourth Year";
+                                    ?></td>
+                          <td><button type="button"class="btn rounded-pill btn-primary conform-payment" data-pid="<?php echo $row['pid']; ?>">Confirm Game</button></td>
                         </tr>
                         <?php } ?>
                       </tbody>
@@ -129,9 +97,8 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
                   </div>
                 </div>
               </div>
+              <!--/ Bordered Table -->
 
-            </div>
-              
               
             </div>
           </div>
@@ -140,7 +107,35 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
       <!-- Footer Starts Here Shiva-->
         <?php include 'footer.php'; ?>
       <!-- Footer Ends Here Shiva-->
-      <script>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Add a click event listener to the buttons with the class "conform-payment"
+    $(".conform-payment").click(function() {
+        // Get the user ID from the data attribute
+        var pid = $(this).data("pid");
+        
+        // Send an AJAX request to update the database
+        $.ajax({
+            type: "POST",
+            url: "update_payment.php", // Replace with the URL of your PHP script
+            data: { gameconfirm: pid }, // Send the user ID to the server
+            success: function(response) {
+                // Handle the server response if needed
+                console.log("Payment confirmation updated successfully.");
+                window.location.reload();
+            },
+            error: function() {
+                // Handle errors if the AJAX request fails
+                console.error("Error updating payment confirmation.");
+            }
+        });
+    });
+});
+</script> 
+<script>
   $(document).ready(function () {
     // Cache the table rows for better performance
     var rows = $("#registrationTable tr");
@@ -169,6 +164,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
     });
   });
 </script>
+
 
 
   </body>

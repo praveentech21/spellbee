@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!isset($_SESSION['supid'])) header("location: login.php");
+if(!isset($_SESSION['admin'])) header("location: login.php");
 
 include 'connect.php';
 
@@ -68,7 +68,7 @@ include 'connect.php';
                 <h5 class="card-header">Payment Conformation</h5>
                 <div class="card-body">
                   <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="registrationTable">
                       <thead>
                         <tr>
                           <th>NAME</th>
@@ -135,6 +135,36 @@ $(document).ready(function() {
     });
 });
 </script>
+<script>
+  $(document).ready(function () {
+    // Cache the table rows for better performance
+    var rows = $("#registrationTable tr");
+
+    // Bind the input field's keyup event
+    $("#searchInput").keyup(function () {
+      var searchText = $(this).val().toLowerCase();
+
+      // Iterate through each table row
+      rows.each(function () {
+        var name = $(this).find("td:nth-child(1)").text().toLowerCase();
+        var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
+        var department = $(this).find("td:nth-child(3)").text().toLowerCase();
+
+        // Check if the search text matches any of the row data
+        if (
+          name.includes(searchText) ||
+          regno.includes(searchText) ||
+          department.includes(searchText)
+        ) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+  });
+</script>
+
 
 
   </body>

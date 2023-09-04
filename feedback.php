@@ -10,11 +10,9 @@ if (isset($_POST['addfeedback'])) {
     $addfeedback = $conn->prepare("INSERT INTO `feedback`(`regno`, `feedback`, `rating`) VALUES (?,?,?)");
     $addfeedback->bind_param("sss", $rollno, $feedback, $rating);
     if ($addfeedback->execute()) {
-        echo "<script>alert('Thank You For Your Feedback!');</script>";
-        header("location: index.php");
+        echo "<script>alert('Thank You For Your Feedback!'); window.location.href = 'index.php';</script>"; 
     } else {
         echo "<script>alert('Something Went Wrong!');</script>";
-        
     }
 }
 
@@ -111,7 +109,7 @@ if (isset($_POST['addfeedback'])) {
                 <h3><strong>EVENT FEEDBACK</strong><br></h3>
 
                 <!-- Your HTML form with error placeholders and "required" attributes -->
-                <form class="contact-form" id="reg1" method="post" action="#" onsubmit="return validateForm();">
+                <form class="contact-form" id="reg1" method="post" action="#" onsubmit="return validateForms();">
                     <input type="text" name="rollno" id="rollno" required placeholder="Your Roll Number..." class="form-control" autocomplete="on" autofocus>
                     <div id="rollno-error" class="error"></div>
 
@@ -126,7 +124,6 @@ if (isset($_POST['addfeedback'])) {
                         <option value="2"><strong>Two</strong> star</option>
                         <option value="1"><strong>Single</strong> star</option>
                     </select>
-                    <div id="rating-error" class="error"></div>
 
                     <br>
 
@@ -134,10 +131,10 @@ if (isset($_POST['addfeedback'])) {
                     <center><input type="submit" name="addfeedback" class="button" style="background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;" value="Submit Feedback" id="regbutton"></center>
                 </form>
                 <br><br>
+
                 <br><br><br><br><br><br><br><br>
 
             </div>
-            <div class="col-md-4"><input type="hidden" id="cmdDoSomething"></div>
         </div>
     </div>
     <!-- About block END -->
@@ -193,40 +190,34 @@ if (isset($_POST['addfeedback'])) {
             return true;
         }
     </script>
-    <script>
-        function validateForm() {
-            var rollno = document.forms["reg1"]["rollno"].value;
-            var feedback = document.forms["reg1"]["feedback"].value;
-            var rating = document.forms["reg1"]["rating"].value;
+<script>
+    function validateForms() {
+        var rollno = document.forms["reg1"]["rollno"].value;
+        var feedback = document.forms["reg1"]["feedback"].value;
 
-            // Clear previous error messages
-            document.getElementById("rollno-error").innerHTML = "";
-            document.getElementById("feedback-error").innerHTML = "";
-            document.getElementById("rating-error").innerHTML = "";
+        // Clear previous error messages
+        document.getElementById("rollno-error").innerHTML = "";
+        document.getElementById("feedback-error").innerHTML = "";
 
-            // Basic field validation
-            var isValid = true;
+        // Basic field validation
+        var isValid = true;
 
-            // Validate Roll Number format (letters followed by digits)
-            var rollnoPattern = /^[A-Za-z]+\d+$/;
-            if (!rollnoPattern.test(rollno)) {
-                document.getElementById("rollno-error").innerHTML = "Invalid Roll Number format";
-                isValid = false;
-            }
+        // Validate Roll Number format
+        var regnoPattern = /^\w{10}$/;
+                if (!regnoPattern.test(rollno) ) {
+                    document.getElementById("rollno-error").innerHTML = "Invalid Register Number format";
+                    isValid = false;
+                }   
 
-            if (feedback === "") {
-                document.getElementById("feedback-error").innerHTML = "Feedback must be filled out";
-                isValid = false;
-            }
-
-            if (rating === "") {
-                document.getElementById("rating-error").innerHTML = "Please rate our EVENT";
-                isValid = false;
-            }
-
-            return isValid; // Form is valid if all validations pass
+        if (feedback === "") {
+            document.getElementById("feedback-error").innerHTML = "Feedback must be filled out";
+            isValid = false;
         }
-    </script>
+
+
+        return isValid; // Form is valid if all validations pass
+    }
+</script>
 
 </body>
 

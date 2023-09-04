@@ -13,12 +13,13 @@ if (isset($_POST['newregistration'])) {
     $section = $_POST['section'];
     $batch = $_POST['batch'];
     if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `regno`='$regno' or `pid` = '$mobile'")) > 0) {
-        echo "<script>alert('You are already registered!');</script>";
+        echo "<script>alert('You are already registered! you can go and play game campus online stall');</script>";
     } else {
         $newregistration = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`, `place`, `regno`, `email`, `department`, `section`) VALUES (?,?,?,?,?,?,?)");
         $newregistration->bind_param("ssissss", $mobile, $name, $batch, $regno, $email, $branch, $section);
         if ($newregistration->execute()) {
-            echo "<script>alert('Registration Successfull');</script>";
+            
+            echo "<script>alert('You Register Sucessfully you can go and play game in our stalls');</script>";
         } else {
             echo "<script>alert('Registration Failed');</script>";
         }
@@ -104,20 +105,29 @@ if (isset($_POST['newregistration'])) {
 
             <div class="col-md-4">
 
-                <h3><strong>Online Registrations</strong><br></h3>
+            <h3><strong>Online Registrations</strong><br></h3>
+            <h3 id="error_register"><strong></strong><br></h3>
 
                 <form class="contact-form" id='reg1' method='post' action='#' onsubmit="return validateForm();">
                     <input type="text" name='name' id="name" placeholder="Your Name..." class="form-control" autocomplete="off" autofocus>
+                    <div id="name-error" class="error"></div>
+
                     <br><input type="text" name='regno' id="regno" placeholder="Your Register Number..." class="form-control" autocomplete="off">
+                    <div id="regno-error" class="error"></div>
+
                     <br><input type="email" name='email' id="email" placeholder="Your Email" class="form-control" autocomplete="off">
+                    <div id="email-error" class="error"></div>
+
                     <br><input type="tel" name='mobile' id="mobile" placeholder="Your Mobile Number" class="form-control" autocomplete="off">
+                    <div id="mobile-error" class="error"></div>
+
                     <br> <select name='branch' id='branch' class="form-control" style='color:#C91E3E;'>
                         <option selected value="">Select Your Branch</option>
-                        <option value="csd">CSD</option>
-                        <option value="cse">CSE</option>
-                        <option value="csbs">CSBS</option>
+                        <option value="CSD">CSD</option>
+                        <option value="CSE">CSE</option>
+                        <option value="CSBS">CSBS</option>
                         <option value="CIC">CIC</option>
-                        <option value="CSE(Iot)">CSE(Iot)</option>
+                        <option value="CSE(IOT)">CSE(Iot)</option>
                         <option value="IT">IT</option>
                         <option value="AIDS">AIDS</option>
                         <option value="AIML">AIML</option>
@@ -126,6 +136,8 @@ if (isset($_POST['newregistration'])) {
                         <option value="ECE">ECE</option>
                         <option value="EEE">EEE</option>
                     </select>
+                    <div id="branch-error" class="error"></div>
+
                     <br> <select name='section' id='section' class="form-control" style='color:#C91E3E;'>
                         <option selected value="">Select Your Section</option>
                         <option value="A">A</option>
@@ -144,14 +156,8 @@ if (isset($_POST['newregistration'])) {
                     </select>
                     <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id="regbutton"></center>
                     <!-- Error placeholders -->
-                    <div id="name-error" class="error"></div>
-                    <div id="regno-error" class="error"></div>
-                    <div id="email-error" class="error"></div>
-                    <div id="mobile-error" class="error"></div>
-                    <div id="branch-error" class="error"></div>
                     <div id="section-error" class="error"></div>
                     <div id="batch-error" class="error"></div>
-                    <div id="captcha-error" class="error"></div>
                 </form>
 
                 <br><br>
@@ -248,12 +254,18 @@ if (isset($_POST['newregistration'])) {
                 document.getElementById("regno-error").innerHTML = "Register Number must be filled out";
                 isValid = false;
             } else {
-                var regnoPattern = /^(20|21|22|23)B\d{2}A\d{4}$/;
-                var regnoPattern1 = /^(AIDS|AIML|CSBS|CSD|CSE|CIC|CSI|CIVIL|MECH|EEE|ECE|IT)\d{4}$/;
+                // var regnoPattern = /^(20|21|22|23)B\d{2}A\d{4}$/;
+                // var regnoPattern1 = /^(AIDS|AIML|CSBS|CSD|CSE|CIC|CSI|CIVIL|MECH|EEE|ECE|IT)\d{4}$/;
+                // if (!regnoPattern.test(regno) ) {
+                //     if (!regnoPattern1.test(regno)) {
+                //     document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
+                //     isValid = false;}
+                // }
+                // var regnoPattern = /^(20|21|22|23)B\d{2}A\d{4}$/;
+                var regnoPattern = /^\w{10}$/;
                 if (!regnoPattern.test(regno) ) {
-                    if (!regnoPattern1.test(regno)) {
                     document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
-                    isValid = false;}
+                    isValid = false;
                 }
             }
 
@@ -262,7 +274,7 @@ if (isset($_POST['newregistration'])) {
                 document.getElementById("email-error").innerHTML = "Email must be filled out";
                 isValid = false;
             } else {
-                var emailPattern = /^\S+@\S+\.\S+$/;
+                var emailPattern = /.+@.+/;
                 if (!emailPattern.test(email)) {
                     document.getElementById("email-error").innerHTML = "Invalid Email format";
                     isValid = false;

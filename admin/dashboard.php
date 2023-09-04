@@ -1,7 +1,7 @@
 <?php
 
   session_start();
-  if(!isset($_SESSION['supid'])) header("location: login.php");
+  if(!isset($_SESSION['admin'])) header("location: login.php");
 
   include 'connect.php';
   $date = date('Y-m-d');
@@ -91,6 +91,12 @@
                             <th><?php echo $todaygames ?></th>
                           </tr>
                           <tr>
+                          <?php 
+                          $retakes = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' and `payment_status` >1 ")); ?>
+                            <th>No of Retakes</th>
+                            <th><?php echo $retakes ?></th>
+                          </tr>
+                          <tr>
                             <?php $today_first_years = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' and `place` = 2027")); ?>
                             <th>FIRST YEAR </th>
                             <th><?php echo $today_first_years ?></th>
@@ -176,43 +182,43 @@
                       <th><?php echo $csbs ?></th>
                     </tr>
                     <tr>
-                      <th>CSE </th>
+                      <th>COMPUTER SCIENCE AND ENGINEERING </th>
                       <th><?php echo $cse ?></th>
                     </tr>
                     <tr>
-                      <th>IT </th>
+                      <th>INFORMATION TECHNOLOGY </th>
                       <th><?php echo $it ?></th>
                     </tr>
                     <tr>
-                      <th>CIC </th>
+                      <th>CSE INFORMATION TECHNOLOGY </th>
                       <th><?php echo $cic ?></th>
                     </tr>
                     <tr>
-                      <th>CSE(IOT) </th>
+                      <th>CSE CYBER SECURITY IOT, BLOCK CHAIN </th>
                       <th><?php echo $cseiot ?></th>
                     </tr>
                     <tr>
-                      <th>CIVIL </th>
+                      <th>CIVIL ENGINEERING</th>
                       <th><?php echo $civil ?></th>
                     </tr>
                     <tr>
-                      <th>ECE </th>
+                      <th>Electronics and Communications Engineering </th>
                       <th><?php echo $ece ?></th>
                     </tr>
                     <tr>
-                      <th>EEE </th>
+                      <th>Electrical and Electronics Engineering </th>
                       <th><?php echo $eee ?></th>
                     </tr>
                     <tr>
-                      <th>MECH </th>
+                      <th>mechanical Engineering </th>
                       <th><?php echo $mech ?></th>
                     </tr>
                     <tr>
-                      <th>AIDS </th>
+                      <th>AIDArtificial Intelligence and Data ScienceS </th>
                       <th><?php echo $aids ?></th>
                     </tr>
                     <tr>
-                      <th>AIML </th>
+                      <th>Artificial Intelligence & Machine Learning </th>
                       <th><?php echo $aiml ?></th>
                     </tr>
                   </tbody>
@@ -222,6 +228,44 @@
           </div>
         </div>
         <!--/ Today Delivary Agent Report Ends Here Shiva -->
+                      <!-- Subscribed Parents -->
+                      <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                <div class="row">
+                  <div class="col-12 mb-4">
+                    <div class="card">
+                      <h5 class="card-header">Subscribed Parents</h5>
+                      <div class="card-body">
+                        <div class="table-responsive text-nowrap">
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>SECTION</th>
+                                <th>students Registered</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              $subscribed_parents = mysqli_query($conn, "SELECT `department` FROM `users` GROUP BY`department`");
+                              while ($row = mysqli_fetch_assoc($subscribed_parents)) {
+                                  $section = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as players,`section` FROM `users` WHERE `department` = '$row[department]' GROUP BY`section`"));
+                                ?>
+                                <tr>
+                                  <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+                                    <strong><?php echo $row['department'].'_'.$section['section'] ?></strong>
+                                  </td>
+                                  <td><?php echo $section['players'] ?></td>
+                                </tr>
+                              <?php } ?>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/ Subscribed Parents -->
+
 
       </div>
           </div>

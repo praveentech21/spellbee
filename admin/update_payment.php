@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['supid'])) header("location: login.php");
+if(!isset($_SESSION['admin'])) header("location: login.php");
+$admin = $_SESSION['admin'];
 
 // Include your database connection code here
 include 'connect.php';
@@ -8,8 +9,8 @@ include 'connect.php';
 if (isset($_POST["payment"])) {
     $pid = $_POST["payment"];
     
-    $stmt = $conn->prepare("UPDATE `users` SET `payment_status` = 1,`status`=1 WHERE pid = ?");
-    $stmt->bind_param("i", $pid);
+    $stmt = $conn->prepare("UPDATE `users` SET `payment_status` = 1,`admin` = ? WHERE pid = ?");
+    $stmt->bind_param("si",$admin, $pid);
     
     if ($stmt->execute()) {
         echo "Payment confirmation updated successfully.";
@@ -27,13 +28,26 @@ if (isset($_POST["replay"])) {
     
     if ($stmt->execute()) {
         // Update successful
-        $setpoints = $conn -> prepare("UPDATE `users` SET `payment_status` =? , `status`=1, `points`= NULL WHERE `pid` = ?");
-        $setpoints -> bind_param("ss",$previous_status, $pid);
+        $setpoints = $conn -> prepare("UPDATE `users` SET `payment_status` =?,`admin` = ? , `status`=1, `points`= NULL WHERE `pid` = ?");
+        $setpoints -> bind_param("iss",$previous_status,$admin, $pid);
         $setpoints -> execute();
-        echo "Payment confirmation updated successfully.";
+        echo "Replay confirmation updated successfully.";
     } else {
         // Update failed
-        echo "Error updating payment confirmation.";
+        echo "Error updating Replay confirmation.";
+    }
+}
+if (isset($_POST["gameconfirm"])) {
+    $pid = $_POST["gameconfirm"];
+    $stmt = $conn->prepare("UPDATE `users` SET `status`=1 ,`admin` = ? WHERE `pid` = ?");
+    $stmt->bind_param("ss", $admin, $pid);
+    
+    if ($stmt->execute()) {
+        // Update successful
+        echo "Game confirmation updated successfully.";
+    } else {
+        // Update failed
+        echo "Error updating Game confirmation.";
     }
 }
 else {

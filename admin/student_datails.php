@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['view'])) header("location: view.php");
+if (!isset($_SESSION['admin'])) header("location: login.php");
 
 include 'connect.php';
 
@@ -43,6 +43,8 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
   <script src="Bhavani/vendor/js/helpers.js"></script>
 
   <script src="Bhavani/js/config.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -62,27 +64,137 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
 
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
-
           <!-- Layouts -->
+
           <li class="menu-item ">
-            <a href="students.php" class="menu-link">
+
+            <a href="index.php" class="menu-link">
+
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
+
               <div data-i18n="Analytics">Home</div>
+
             </a>
+
           </li>
+
           <li class="menu-item ">
-            <a href="logout.php" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-              <div data-i18n="Analytics">Logout</div>
+
+            <a href="dashboard.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-crown"></i>
+
+              <div data-i18n="Analytics">Dashbord</div>
+
             </a>
+
           </li>
+
+          <li class="menu-item ">
+
+            <a href="student_datails.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-copy"></i>
+
+              <div data-i18n="Analytics">Players</div>
+
+            </a>
+
+          </li>
+
+          <li class="menu-item ">
+
+            <a href="register.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-user"></i>
+
+              <div data-i18n="Analytics">Registration</div>
+
+            </a>
+
+          </li>
+
+          <li class="menu-item ">
+
+            <a href="payment_conformation.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-copy"></i>
+
+              <div data-i18n="Analytics">Payment Confirmation</div>
+
+            </a>
+
+          </li>
+
+          <li class="menu-item ">
+
+            <a href="game_confirmation.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-support"></i>
+
+              <div data-i18n="Analytics">Game Confirmation</div>
+
+            </a>
+
+          </li>
+
+          <li class="menu-item ">
+
+            <a href="certificate.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-file"></i>
+
+              <div data-i18n="Analytics">Certificate</div>
+
+            </a>
+
+          </li>
+
+
+
+          <li class="menu-item ">
+
+            <a href="replay.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+
+              <div data-i18n="Analytics">Replay</div>
+
+            </a>
+
+          </li>
+
+          <!-- <li class="menu-item ">
+
+<a href="editstudent.php" class="menu-link">
+
+  <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+
+  <div data-i18n="Analytics">Update Student Details</div>
+
+</a>
+
+</li> -->
+
+          <li class="menu-item ">
+
+            <a href="logout.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+
+              <div data-i18n="Analytics">Logout</div>
+
+            </a>
+
+          </li>
+
+
         </ul>
       </aside>
       <div class="layout-page">
         <!-- Navbar -->
 
         <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-
           <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center">
@@ -90,6 +202,7 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                 <input type="text" class="form-control border-0 shadow-none" id="searchInput" title="Search with regno or name or phone number....." placeholder="Search with regno or name or phone number....." aria-label="Search with regno or name or phone number....." />
               </div>
             </div>
+
 
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -135,10 +248,7 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
 
         <!-- / Navbar -->
 
-        <div class="content-wrapper">
-
-          <!-- Sidebar Ends Here Shiva -->
-
+        <div class="content-wrapper"> <!-- Sidebar Ends Here Shiva -->
           <!-- Content Starts Here Shiva-->
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
@@ -198,7 +308,6 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
           <?php include 'footer.php'; ?>
           <!-- Footer Ends Here Shiva-->
 
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           <script>
   $(document).ready(function () {
     // Cache the table rows for better performance
@@ -228,6 +337,7 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
     });
   });
 </script>
+
 
 
 

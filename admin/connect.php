@@ -1,3 +1,4 @@
-<?php
- $conn = new mysqli("localhost","root","","spellbee");
+<?php 
+ $conn = new mysqli("localhost","root","","test");
+
 ?>

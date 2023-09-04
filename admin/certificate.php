@@ -67,7 +67,8 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
                   <th>REGISTRATION NO</th>
                   <th>DEPARTMENT</th>
                   <th>YEAR</th>
-                  <th>Conformation</th>
+                  <th>Certificate</th>
+                  <th>Send</th>
                 </tr>
               </thead>
               <tbody>
@@ -81,7 +82,8 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
                         elseif ($row['place'] == '2025') echo "Third Year";
                         elseif ($row['place'] == '2024') echo "Fourth Year";
                         ?></td>
-                    <td><button type="button" name="conformpayment" class="btn rounded-pill btn-info conform-payment" data-pid="<?php echo $row['pid']; ?>">Replay</button></td>
+                    <td><button type="button" name="conformpayment" class="btn rounded-pill btn-primary get-certificate" data-pid="<?php echo $row['pid']; ?>" data-roll="<?php echo $row['regno']; ?>">Certificate</button></td>
+                    <td><button type="button" name="conformpayment" class="btn btn-success conform-payment" data-name="<?php echo $row['player_name'] ?>" data-pid="<?php echo $row['pid']; ?>">Whats App</button></td>
                   </tr>
                 <?php } ?>
               </tbody>
@@ -105,59 +107,89 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
   <script>
     $(document).ready(function() {
       // Add a click event listener to the buttons with the class "conform-payment"
-      $(".conform-payment").click(function() {
+      $(".get-certificate").click(function() {
         // Get the user ID from the data attribute
         var pid = $(this).data("pid");
+        var rolll = $(this).data("roll");
 
         // Send an AJAX request to update the database
         $.ajax({
           type: "POST",
-          url: "update_payment.php", // Replace with the URL of your PHP script
+          url: "certificate/certificate.php", // Replace with the URL of your PHP script
           data: {
-            replay: pid
+            rollno: pid,
           }, // Send the user ID to the server
           success: function(response) {
             // Handle the server response if needed
-            console.log("Replay Confirmed successfully.");
-            window.location.reload();
+            console.log("Server Response:", response);
+            
+            var link = document.createElement("a");
+
+            // Set the href attribute to the file URL
+            link.href = "http://localhost/spellchamp/admin/certificate/tmp/" + rolll + ".png";
+
+            // Set the download attribute to specify the filename
+            link.download = rolll + ".png";
+
+            // Trigger a click event on the anchor element
+            link.click();
+
           },
           error: function() {
             // Handle errors if the AJAX request fails
-            console.error("Error in Repayment confirmation.");
+            console.error("Error in Generating Certificate.");
+          }
+        });
+      });
+      $(".conform-payment").click(function() {
+        // Get the user ID from the data attribute
+        var phoneNumber = $(this).data("pid");
+        var name = $(this).data("name");
+        // var message = "Hello "+name+", Thank You for Playing *SRKR SPELL BEE* You can see leader board hear: https://srkrec.edu.in/spellbee/ This is your Certificate. ";
+        
+          var message = "This certificate is presented to " + name +  "in recognition of your active participation in SRKR SPELL BEE CHAMP on DATE.We hope you enjoyed the event and we look forward to seeing you again next year.<BR>Visit https://srkrec.edu.in/spellbee for more details and leaderboard score...";
+
+        // Encode the message for use in a URL
+        var encodedMessage = encodeURIComponent(message);
+
+        // Construct the WhatsApp URL
+        var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
+
+        // Open WhatsApp with the pre-filled message
+        window.open(whatsappURL, "_blank");
+      });
+
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Cache the table rows for better performance
+      var rows = $("#registrationTable tr");
+
+      // Bind the input field's keyup event
+      $("#searchInput").keyup(function() {
+        var searchText = $(this).val().toLowerCase();
+
+        // Iterate through each table row
+        rows.each(function() {
+          var name = $(this).find("td:nth-child(1)").text().toLowerCase();
+          var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
+          var department = $(this).find("td:nth-child(3)").text().toLowerCase();
+
+          // Check if the search text matches any of the row data
+          if (
+            name.includes(searchText) ||
+            regno.includes(searchText) ||
+            department.includes(searchText)
+          ) {
+            $(this).show();
+          } else {
+            $(this).hide();
           }
         });
       });
     });
   </script>
-  <script>
-  $(document).ready(function () {
-    // Cache the table rows for better performance
-    var rows = $("#registrationTable tr");
-
-    // Bind the input field's keyup event
-    $("#searchInput").keyup(function () {
-      var searchText = $(this).val().toLowerCase();
-
-      // Iterate through each table row
-      rows.each(function () {
-        var name = $(this).find("td:nth-child(1)").text().toLowerCase();
-        var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
-        var department = $(this).find("td:nth-child(3)").text().toLowerCase();
-
-        // Check if the search text matches any of the row data
-        if (
-          name.includes(searchText) ||
-          regno.includes(searchText) ||
-          department.includes(searchText)
-        ) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      });
-    });
-  });
-</script>
 
 
 
