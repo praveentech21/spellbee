@@ -40,7 +40,7 @@ if ($dept == 'CSE') {
 }
 
 $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' AND `place` = '$year' AND `section` = '$sec'"));
-$sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' AND `place` = '$year' AND `section` = '$sec' ORDER BY `points` DESC , `lastseen` DESC");
+$sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' AND `place` = '$year' AND `section` = '$sec' AND `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
 
 ?>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $years . " / 4 -" . $dept  ?> - SRKR SPELLBEE Leaderboard</title>
+    <title><?php echo $years . " / 4 - " . $dept ." ". $sec." Section"  ?> - SRKR SPELLBEE Leaderboard</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -149,7 +149,7 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
     <div class="about-block content content-center" id="about">
         <div class="container">
             <br><br>
-            <h2><strong><b><?php echo $dept . " " . $years . " / 4" ?> LEADERBOARD</b></strong>
+            <h2><strong><b><?php echo $years . " / 4 - " . $dept ." ". $sec ?> LEADERBOARD</b></strong>
                 <br><?php echo $fdept; ?>
             </h2>
         </div>
@@ -163,7 +163,7 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
 
     <!-- Facts block BEGIN -->
     <div class="facts-block content content-center" style="min-height: auto;" id="a">
-        <h2>TOTAL REGISTRATIONS FROM <?php echo $dept . " " . $years . " / 4" ?> : <?php echo $total; ?></h2>
+        <h2>TOTAL REGISTRATIONS FROM <?php echo $years . " / 4 - " . $dept ." ". $sec ?> : <?php echo $total; ?></h2>
     </div>
     <!-- Facts block END -->
 
@@ -186,6 +186,7 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
                             <th>SCORE</th>
                             <th>SECTION RANK</th>
                             <th>DEPT. RANK</th>
+                            <th>YEAR. RANK</th>
                             <th>OVERALL RANK</th>
                         </tr>
 
@@ -195,11 +196,17 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
                         while ($lbord = mysqli_fetch_array($sectionleader)) {
                             $deptrank = 1;
                             $overallrank = 1;
+                            $yearrank = 1;
+                            $yearranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `place` = '$year' ORDER BY `points` DESC , `lastseen` DESC");
                             $overallranks = mysqli_query($conn, "SELECT `pid` FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
                             $deptranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '$dept' ORDER BY `points` DESC , `lastseen` DESC");
                             while ($orank = mysqli_fetch_assoc($deptranks)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
                                 else $deptrank++;
+                            }
+                            while ($orank = mysqli_fetch_assoc($yearranks)) {
+                                if ($orank['pid'] == "{$lbord['pid']}") break;
+                                else $yearrank++;
                             }
                             while ($orank = mysqli_fetch_assoc($overallranks)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
@@ -214,7 +221,7 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sino .  "</td><td align='center'>" . $deptrank . "</td><td align='center'>" . $overallrank . "</td></tr>";
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sino .  "</td><td align='center'>" . $deptrank . "</td><td align='center'>" . $yearrank . "</td><td align='center'>" . $overallrank . "</td></tr>";
                             $sino++;
                         }
 
