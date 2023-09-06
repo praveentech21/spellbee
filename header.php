@@ -25,14 +25,7 @@
                 <!-- Navigation BEGIN -->
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
-                        <li class="current"><a href="#promo-block">Home</a></li>
-                        <li><a href="index.php#about">About</a></li>
-                        <li><a href="index.php#services">Prizes</a></li>
-                        <li><a href="index.php#portfolio">Leader Board</a></li>
-                        <li><a href="index.php#benefits">FAQ</a></li>
-                        <li><a href="index.php#prices"><strong style='color:#C91E3E;'>REGISTER</strong></a></li>
-                        <li><a href="index.php#team">Team</a></li>
-                        <li><a href="index.php#contact">Contact</a></li>
+                        <li><a href="index.php"><strong style='color:#C91E3E;'>SRKR Spell BEE Home</strong></a></li>
                     </ul>
                 </div>
                 <!-- Navigation END -->
