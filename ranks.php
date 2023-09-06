@@ -139,7 +139,7 @@ include 'connect.php';
         <h2>TOTAL REGISTRATIONS FROM  : <?php echo $total; ?></h2>
         <div class="container">
             <div class="row">
-                <a href="year_wise_leaderboard.php?year=2027&dept=<?php echo $dept ?>">
+                <a href="year_wise_leaderboard.php?year=2027">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="item">
                             <strong><?php echo $one; ?></strong>
@@ -147,7 +147,7 @@ include 'connect.php';
                         </div>
                     </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2026&dept=<?php echo $dept ?>">
+                <a href="year_wise_leaderboard.php?year=2026">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="item">
                             <strong><?php echo $two; ?></strong>
@@ -155,7 +155,7 @@ include 'connect.php';
                         </div>
                     </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2025&dept=<?php echo $dept ?>">
+                <a href="year_wise_leaderboard.php?year=2025">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="item">
                             <strong><?php echo $three; ?></strong>
@@ -163,7 +163,7 @@ include 'connect.php';
                         </div>
                     </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2024&dept=<?php echo $dept ?>">
+                <a href="year_wise_leaderboard.php?year=2024">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="item">
                             <strong><?php echo $four; ?></strong>

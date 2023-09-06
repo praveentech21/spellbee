@@ -1,45 +1,17 @@
 <?php
 include 'connect.php';
-$dept = $_GET['dept'];
 $year = $_GET['year'];
-if($year == '2027') $years = 1;
-elseif($year == '2026') $years = 2;
-elseif($year == '2025') $years = 3;
-elseif($year == '2024') $years = 4;
+
+if ($year == '2027') $years = 1;
+elseif ($year == '2026') $years = 2;
+elseif ($year == '2025') $years = 3;
+elseif ($year == '2024') $years = 4;
 
 
 
-if ($dept == 'CSE') {
-    $fdept = "COMPUTER SCIENCE & ENGINEERING";
-} elseif ($dept == 'ECE') {
-    $fdept = "ELECTRONICS & COMMUNICATION ENGINEERING";
-} elseif ($dept == 'EEE') {
-    $fdept = "ELECTRICAL & ELECTRONICS ENGINEERING";
-} elseif ($dept == 'MECH') {
-    $fdept = "MECHANICAL ENGINEERING";
-} elseif ($dept == 'CIVIL') {
-    $fdept = "CIVIL ENGINEERING";
-} elseif ($dept == 'IT') {
-    $fdept = "INFORMATION TECHNOLOGY";
-} elseif ($dept == 'CSD') {
-    $fdept = "COMPUTER SCIENCE & DATA SCIENCE";
-} elseif ($dept == 'CSBS') {
-    $fdept = "COMPUTER SCIENCE & BUSINESS SYSTEMS";
-} elseif ($dept == 'CSD') {
-    $fdept = "COMPUTER SCIENCE & DESIGN";
-} elseif ($dept == 'AIML') {
-    $fdept = "ARTIFICIAL INTELLIGENCE & MACHINE LEARNING";
-} elseif ($dept == 'AIDS') {
-    $fdept = "ARTIFICIAL INTELLIGENCE & DATA SCIENCE";
-} elseif ($dept == 'CSIT') {
-    $fdept = "COMPUTER SCIENCE & INFORMATION TECHNOLOGY";
-} elseif ($dept == 'CIC') {
-    $fdept = "IOT & CYBER SECURITY INCLUDING BLOCK CHAIN TECHNOLOGY";
-}
 
-$sections = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year' GROUP BY `section`");
-$total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year'"));
-$secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
+$total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year'"));
+$secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
 
 ?>
 <!DOCTYPE html>
@@ -49,7 +21,7 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$d
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $dept ." - ". $years . " / 4 " ?> - SRKR SPELLBEE Leaderboard</title>
+    <title><?php echo  $years . " / 4 " ?> - SRKR SPELLBEE Leaderboard</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -110,25 +82,29 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$d
             padding: 5px;
             font-size: 13px;
         }
+
         a:visited {
-  color: #FFFFFF; /* Change to your desired color */
-}
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
 
-/* Change the color of links when hovered over */
-a:hover {
-  color: rgb(201, 30, 62); /* Change to your desired color */
-}
+        /* Change the color of links when hovered over */
+        a:hover {
+            color: rgb(201, 30, 62);
+            /* Change to your desired color */
+        }
 
-/* Change the color of active links (when clicked) */
-a:active {
-  color: #FFFFFF; /* Change to your desired color */
-}
+        /* Change the color of active links (when clicked) */
+        a:active {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
 
-/* Change the default link color */
-a {
-  color: #FFFFFF; /* Change to your desired color */
-}
-
+        /* Change the default link color */
+        a {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
     </style>
 
 </head>
@@ -144,45 +120,37 @@ a {
     <div class="about-block content content-center" id="about">
         <div class="container">
             <br>
-            <h2><strong><b><?php echo $years . " / 4 - " . $dept   ?> LEADERBOARD</b></strong>
-                <br><?php echo $fdept; ?>
+            <h2><strong><b><?php echo $years . " / 4 "  ?> SRKR SPELLBEE LEADERBOARD</b></strong>
+                <br>SRKR ENGINEERING COLLEGE
             </h2>
         </div>
     </div>
     <!-- About block END -->
-    <div class="valign-center-elem">
-        <h2 align ='center'>
-            <img src="assets/onepage/img/portfolio/dept/<?php echo strtolower($dept); ?>.jpg" alt="<?php echo $fdept ?>" class="img-responsive">
-        </h2>
+
+        <!-- Services block BEGIN -->
+        <div class="services-block content content-center" id="services">
+        <div class="container">
+            <div class="ab-trio">
+                <img src="assets/onepage/img/trio.png" alt="" class="img-responsive">
+            </div>
+            <br>
+            <h2 style='font-size:24px;'>Contest <strong>TOP TEN PRIZES</strong></h2>
+        </div>
     </div>
+    <!-- Services block END -->
+
 
     <!-- Facts block BEGIN -->
-    <div class="facts-block content content-center" id="a">
-        <h2>TOTAL REGISTRATIONS FROM <?php echo $years . " / 4 - ". $dept ?> : <?php echo $total; ?></h2>
-        <div class="container">
-            <div class="row">
-                <?php while ($ses_details = mysqli_fetch_assoc($sections)) {
-                    $num_of_reg = mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department` = '$dept' and `section` = '{$ses_details['section']}'and `place`= $year"));
-                ?>
-                    <a href="section_leader_board.php?sec=<?php echo $ses_details['section'] . '&year=' . $year . '&dept=' . $dept ?> ">
-                        <div class="col-md-3 col-sm-3 col-xs-6">
-                            <div class="item">
-                                <strong><?php echo $num_of_reg; ?></strong>
-                                <?php echo "<span style='font-size:28px;'>".$ses_details['section']  ?></span><br>SECTION
-                            </div>
-                        </div>
-                    </a>
-                <?php } ?>
-            </div>
-        </div>
+    <div class="facts-block content content-center" style="min-height: auto;" id="a">
+        <h2>TOTAL REGISTRATIONS FROM <?php echo $years . " / 4 - " ?> : <?php echo $total; ?></h2>
     </div>
     <!-- Facts block END -->
 
     <!-- Team block BEGIN -->
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
-            <h2><?php echo $dept; ?> <strong>Leaderboard</strong></h2>
-            <h4>The Leader Board has been generated for all participants who takes SPELLBEE Exam from <strong><?php echo $years." /4 ".$dept; ?></strong> .<br>
+            <h2>SRKR SPELLBEE <strong>Leaderboard</strong></h2>
+            <h4>The Leader Board has been generated for all participants of <?php echo $years." / 4"; ?> , who participate SpellBee Game within College<br>
                 The Maximum score <strong>3000</strong>
             </h4>
             <!--			<strong>NOTE:</strong> This Leader Board is not the list of students selected for Level 2 or 3. It is meant only for preparing the Top 100 Coders List of SRKREC.</h4> -->
@@ -194,9 +162,11 @@ a {
                             <th>S.NO</th>
                             <th>ROLL NUMBER</th>
                             <th>STUDENT NAME</th>
+                            <th>YEAR</th>
                             <th>SCORE</th>
                             <th>SECTION RANK</th>
                             <th>DEPT. RANK</th>
+                            <th>YEAR. RANK</th>
                             <th>OVERALL RANK</th>
                         </tr>
 
@@ -204,12 +174,27 @@ a {
                         $sino = 1;
 
                         while ($lbord = mysqli_fetch_assoc($secleader)) {
-                            $camrank = 0;
-                            $overallrank = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
-                            while ($orank = mysqli_fetch_assoc($overallrank)) {
+                            $deptrank = 1;
+                            $sectionrank = 1;
+                            $ovrrank = 1;
+                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' and `place` = '{$lbord['place']}' and `section` = '{$lbord['section']}' ORDER BY `points` DESC , `lastseen` DESC");
+                            $deptranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' ORDER BY `points` DESC , `lastseen` DESC");
+                            $ovrranks = mysqli_query($conn, "SELECT `pid` FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
+                            while ($orank = mysqli_fetch_assoc($deptranks)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
-                                else $camrank++;
+                                else $deptrank++;
                             }
+                            while ($orank = mysqli_fetch_assoc($ovrranks)) {
+                                if ($orank['pid'] == "{$lbord['pid']}") break;
+                                else $ovrrank++;
+                            }
+                            while ($orank = mysqli_fetch_assoc($sectionranks)) {
+                                if ($orank['pid'] == "{$lbord['pid']}") break;
+                                else $sectionrank++;
+                            }
+
+
+
 
                             if ($lbord['place'] == '2027') {
                                 $year = "FIRST YEAR";
@@ -220,7 +205,7 @@ a {
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: center;'>" . $year .  "</td><td style='text-align: center;'>" . $lbord['points'] . "</td><td style='text-align: center;'>" . $sino .  "</td><td style='text-align: center;'>" . $camrank . "</td></tr>";
+                            print "<tr><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: center;'>" . $year .  "</td><td style='text-align: center;'>" . $lbord['points'] . "</td><td style='text-align: center;'>" . $sectionrank .  "</td><td style='text-align: center;'>" . $deptrank . "</td><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'>" . $ovrrank . "</td></tr>";
                             $sino++;
                         }
 

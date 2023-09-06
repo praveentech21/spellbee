@@ -165,7 +165,7 @@ a {
         <h2>TOTAL REGISTRATIONS FROM <?php echo $dept; ?> : <?php echo $total; ?></h2>
         <div class="container">
             <div class="row">
-                <a href="year_wise_leaderboard.php?year=2027&dept=<?php echo $dept ?>">
+                <a href="leaderboard_year.php?year=2027&dept=<?php echo $dept ?>">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo $one; ?></strong>
@@ -173,7 +173,7 @@ a {
                     </div>
                 </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2026&dept=<?php echo $dept ?>">
+                <a href="leaderboard_year.php?year=2026&dept=<?php echo $dept ?>">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo $two; ?></strong>
@@ -181,7 +181,7 @@ a {
                     </div>
                 </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2025&dept=<?php echo $dept ?>">
+                <a href="leaderboard_year.php?year=2025&dept=<?php echo $dept ?>">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo $three; ?></strong>
@@ -189,7 +189,7 @@ a {
                     </div>
                 </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2024&dept=<?php echo $dept ?>">
+                <a href="leaderboard_year.php?year=2024&dept=<?php echo $dept ?>">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo $four; ?></strong>
