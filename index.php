@@ -324,6 +324,8 @@
     <div class="portfolio-block content content-center" id="portfolio">
         <div class="container">
             <h2 class="margin-bottom-50">Department Wise <strong>Leader Board</strong></h2>
+            <a href="ranks.php" target="_blank" class="btn blink" style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b> VIEW LEADERBOARD</b></a><br><br><br>
+
         </div>
         <div class="row">
             <div class="item col-md-2 col-sm-6 col-xs-12">

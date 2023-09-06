@@ -151,7 +151,7 @@ a {
     </div>
     <!-- About block END -->
     <div class="valign-center-elem">
-        <h2 style='text-align: center;'>
+        <h2 align ='center'>
             <img src="assets/onepage/img/portfolio/dept/<?php echo strtolower($dept); ?>.jpg" alt="<?php echo $fdept ?>" class="img-responsive">
         </h2>
     </div>
@@ -164,7 +164,7 @@ a {
                 <?php while ($ses_details = mysqli_fetch_assoc($sections)) {
                     $num_of_reg = mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department` = '$dept' and `section` = '{$ses_details['section']}'and `place`= $year"));
                 ?>
-                    <a href="section_leader_board.php?sec=<?php echo $ses_details['section'] . '&year =' . $year . '&dept=' . $dept ?> ">
+                    <a href="section_leader_board.php?sec=<?php echo $ses_details['section'] . '&year=' . $year . '&dept=' . $dept ?> ">
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="item">
                                 <strong><?php echo $num_of_reg; ?></strong>
@@ -182,7 +182,7 @@ a {
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
             <h2><?php echo $dept; ?> <strong>Leaderboard</strong></h2>
-            <h4>The Leader Board has been generated for all participants who takes SPELLBEE Exam from <strong><?php echo $dept; ?></strong> .<br>
+            <h4>The Leader Board has been generated for all participants who takes SPELLBEE Exam from <strong><?php echo $years." /4 ".$dept; ?></strong> .<br>
                 The Maximum score <strong>3000</strong>
             </h4>
             <!--			<strong>NOTE:</strong> This Leader Board is not the list of students selected for Level 2 or 3. It is meant only for preparing the Top 100 Coders List of SRKREC.</h4> -->
@@ -203,10 +203,10 @@ a {
                         <?php
                         $sino = 1;
 
-                        while ($lbord = mysqli_fetch_array($secleader)) {
+                        while ($lbord = mysqli_fetch_assoc($secleader)) {
                             $camrank = 0;
-                            $overallrank = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` >+ '1500' ORDER BY `points` ASC , `lastseen` DESC");
-                            while ($orank = mysqli_fetch_array($overallrank)) {
+                            $overallrank = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
+                            while ($orank = mysqli_fetch_assoc($overallrank)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
                                 else $camrank++;
                             }
@@ -228,8 +228,7 @@ a {
                         ?>
 
             </div>
-            <h4>The Remaing registred Students haven't take you exam <br>
-                You are requested to take your exam at any stall in our Campus</h4>
+            <h4>The Remaing registred Students haven't take played <br> You are requested to take your game at any stall in our Campus</h4>
 
 
         </div>

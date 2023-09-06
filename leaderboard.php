@@ -38,7 +38,7 @@ if ($dept == 'CSE') {
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $dept ?> - Leaderboard SRKR SPELLBEE</title>
+    <title><?php echo $dept ?> - SRKR SPELLBEE Leaderboard</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -159,7 +159,7 @@ a {
         $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2024' and `department` = '$dept'");
         $four = mysqli_num_rows($depr);
 
-        $total = $one + $two + $three + $four;
+        $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept'"));
         $deptleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
         ?>
         <h2>TOTAL REGISTRATIONS FROM <?php echo $dept; ?> : <?php echo $total; ?></h2>
