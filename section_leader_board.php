@@ -1,6 +1,7 @@
 <?php
 include 'connect.php';
 $dept = $_GET['dept'];
+$year = $_GET['year'];
 
 if ($dept == 'CSE') {
     $fdept = "COMPUTER SCIENCE & ENGINEERING";
@@ -30,6 +31,8 @@ if ($dept == 'CSE') {
     $fdept = "IOT & CYBER SECURITY INCLUDING BLOCK CHAIN TECHNOLOGY";
 }
 
+        $sections = mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = '$dept' and `points` is NOT null GROUP BY `section`");
+
 ?>
 <!DOCTYPE html>
 <!--[if !IE]><!-->
@@ -38,7 +41,7 @@ if ($dept == 'CSE') {
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $dept ?> - Leaderboard SRKR SPELLBEE</title>
+    <title><?php echo $year." / 4 -" .$dept  ?> - Leaderboard</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -99,8 +102,7 @@ if ($dept == 'CSE') {
             padding: 5px;
             font-size: 13px;
         }
-        /* Change the color of visited links */
-a:visited {
+        a:visited {
   color: #FFFFFF; /* Change to your desired color */
 }
 
@@ -133,8 +135,7 @@ a {
     <!-- About block BEGIN -->
     <div class="about-block content content-center" id="about">
         <div class="container">
-            <br>
-            <h2><strong><b><?php echo $dept; ?> LEADERBOARD</b></strong>
+            <h2><strong><b><?php echo $dept." ".$year." / 4" ?> LEADERBOARD</b></strong>
                 <br><?php echo $fdept; ?>
             </h2>
         </div>
@@ -148,24 +149,11 @@ a {
 
     <!-- Facts block BEGIN -->
     <div class="facts-block content content-center" id="a">
-        <?php
-
-        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2027' and `department` = '$dept '");
-        $one = mysqli_num_rows($depr);
-        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2026' and `department` = '$dept'");
-        $two = mysqli_num_rows($depr);
-        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2025' and `department` = '$dept'");
-        $three = mysqli_num_rows($depr);
-        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2024' and `department` = '$dept'");
-        $four = mysqli_num_rows($depr);
-
-        $total = $one + $two + $three + $four;
-        $deptleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
-        ?>
-        <h2>TOTAL REGISTRATIONS FROM <?php echo $dept; ?> : <?php echo $total; ?></h2>
+        <h2>TOTAL REGISTRATIONS OF <?php echo $dept; ?>: <?php echo $total; ?></h2>
         <div class="container">
             <div class="row">
-                <a href="year_wise_leaderboard.php?year=2027&dept=<?php echo $dept ?>">
+                <?php while($ses_details = mysqli_fetch_assoc($sections)){ ?>
+                <a href="">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo $one; ?></strong>
@@ -173,30 +161,7 @@ a {
                     </div>
                 </div>
                 </a>
-                <a href="year_wise_leaderboard.php?year=2026&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $two; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>2/4 " . $dept; ?></span><br>Registrations
-                    </div>
-                </div>
-                </a>
-                <a href="year_wise_leaderboard.php?year=2025&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $three; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>3/4 " . $dept; ?></span><br>Registrations
-                    </div>
-                </div>
-                </a>
-                <a href="year_wise_leaderboard.php?year=2024&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $four; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>4/4 " . $dept; ?></span><br>Registrations
-                    </div>
-                </div>
-                </a>
+                <?php } ?>                
             </div>
         </div>
     </div>
@@ -206,9 +171,10 @@ a {
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
             <h2><?php echo $dept; ?> <strong>Leaderboard</strong></h2>
-            <h4>The Leader Board has been generated for all participants who played from <strong><?php echo $dept; ?></strong> .<br>
+            <h4>The Leader Board has been generated for all participants who playe from <strong><?php echo $dept; ?></strong> .<br>
             The Maximum score <strong>3000</strong>
             </h4>
+                <!--			<strong>NOTE:</strong> This Leader Board is not the list of students selected for Level 2 or 3. It is meant only for preparing the Top 100 Coders List of SRKREC.</h4> -->
 
                 <div class="col-md-12">
                 <center><table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'><tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;text-align:center;'><th>S.NO</th><th>ROLL NUMBER</th><th>STUDENT NAME</th><th>YEAR</th><th>SCORE</th><th>DEPT. RANK</th><th>OVERALL RANK</th></tr>
@@ -216,10 +182,10 @@ a {
                     <?php
                     $sino = 1;
 
-                    while ($lbord = mysqli_fetch_assoc($deptleader)) {
-                        $camrank = 1;
-                        $overallrank = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");    
-                        while ($orank = mysqli_fetch_assoc($overallrank)) {
+                    while ($lbord = mysqli_fetch_array($deptleader)) {
+                        $camrank = 0;
+                        $overallrank = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` >+ '1500' ORDER BY `points` ASC , `lastseen` DESC");
+                        while ($orank = mysqli_fetch_array($overallrank)) {
                             if($orank['pid'] == "{$lbord['pid']}") break;
                             else $camrank++;
                         }
@@ -228,7 +194,7 @@ a {
                         elseif($lbord['place'] == '2026'){ $year = "SECOND YEAR"; }
                         elseif($lbord['place'] == '2025'){ $year = "THIRD YEAR"; }
                         elseif($lbord['place'] == '2024'){ $year = "FOURTH YEAR"; }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" .$year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sino .  "</td><td align='center'>" . $camrank . "</td></tr>";
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . $lbord['player_name'] . "</b></td><td align='center'>" .$year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sino .  "</td><td align='center'>" . $camrank . "</td></tr>";
                         $sino++;
                     }
 
