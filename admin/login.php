@@ -9,6 +9,7 @@ if(isset($_POST['submit'])){
   $admin=$_POST['admin'];
   $pass=$_POST['pass'];
   if(mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `admins` WHERE `mobile`='$admin' AND `password`='$pass'")) ==1){
+    $_SESSION['acategory']=mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `admins` WHERE `mobile`='$admin' AND `password`='$pass'"))['category'] ;
     $_SESSION['admin']=$admin;
     header("location: index.php");
   }
