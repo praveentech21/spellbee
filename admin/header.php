@@ -494,4 +494,4 @@ if ($_SESSION['category'] == 'stall') { ?>
 
           <!-- Sidebar Ends Here Shiva -->
 
-                <?php } ?>
+                <?php  } ?>

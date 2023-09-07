@@ -10,8 +10,13 @@ if (isset($_POST['submit'])) {
   $pass = $_POST['pass'];
   if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `admins` WHERE `mobile`='$admin' AND `password`='$pass'")) == 1) {
     $_SESSION['category'] = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `admins` WHERE `mobile`='$admin' AND `password`='$pass'"))['category'];
+
     $_SESSION['admin'] = $admin;
+    if($_SESSION['category'] == 'stall' || $_SESSION['category'] == 'superadmin')
     header("location: index.php");
+    else
+    header("location: students.php");
+
   } else {
     echo "<script>alert('This is Not For You')</script>";
   }
