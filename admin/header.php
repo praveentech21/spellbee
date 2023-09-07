@@ -50,6 +50,17 @@
           </a>
 
         </li>
+        <li class="menu-item ">
+
+          <a href="editstudent.php" class="menu-link">
+
+            <i class="menu-icon tf-icons bx bx-copy"></i>
+
+            <div data-i18n="Analytics">EDIT USER</div>
+
+          </a>
+
+        </li>
 
         <li class="menu-item ">
 
