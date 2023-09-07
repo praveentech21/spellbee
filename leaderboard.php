@@ -218,7 +218,7 @@ a {
 
                     while ($lbord = mysqli_fetch_assoc($deptleader)) {
                         $camrank = 1;
-                        $overallrank = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");    
+                        $overallrank = mysqli_query($conn, "SELECT * FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");    
                         while ($orank = mysqli_fetch_assoc($overallrank)) {
                             if($orank['pid'] == "{$lbord['pid']}") break;
                             else $camrank++;

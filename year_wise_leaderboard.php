@@ -11,7 +11,7 @@ elseif ($year == '2024') $years = 4;
 
 
 $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year'"));
-$secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
+$secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' and `points` IS NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
 
 ?>
 <!DOCTYPE html>
@@ -150,7 +150,7 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
             <h2>SRKR SPELLBEE <strong>Leaderboard</strong></h2>
-            <h4>The Leader Board has been generated for all participants of <?php echo $years." / 4"; ?> , who participate SpellBee Game within College<br>
+            <h4>The Leader Board has been generated for all participants of <?php echo $years." / 4"; ?> , who participate SpellBee Game with in College<br>
                 The Maximum score <strong>3000</strong>
             </h4>
             <!--			<strong>NOTE:</strong> This Leader Board is not the list of students selected for Level 2 or 3. It is meant only for preparing the Top 100 Coders List of SRKREC.</h4> -->
@@ -177,9 +177,9 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                             $deptrank = 1;
                             $sectionrank = 1;
                             $ovrrank = 1;
-                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' and `place` = '{$lbord['place']}' and `section` = '{$lbord['section']}' ORDER BY `points` DESC , `lastseen` DESC");
+                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' and `place` = '$year' and `section` = '{$lbord['section']}' ORDER BY `points` DESC , `lastseen` DESC");
                             $deptranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' ORDER BY `points` DESC , `lastseen` DESC");
-                            $ovrranks = mysqli_query($conn, "SELECT `pid` FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
+                            $ovrranks = mysqli_query($conn, "SELECT * FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
                             while ($orank = mysqli_fetch_assoc($deptranks)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
                                 else $deptrank++;

@@ -115,7 +115,7 @@ include 'connect.php';
                 <img src="assets/onepage/img/trio.png" alt="" class="img-responsive">
             </div>
             <br>
-            <h2 style='font-size:24px;'>Contest <strong>TOP TEN PRIZES</strong></h2>
+            <h2 style='font-size:24px;'><strong>TOP TEN </strong>PRIZES</h2>
         </div>
     </div>
     <!-- Services block END -->

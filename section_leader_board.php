@@ -198,7 +198,7 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
                             $overallrank = 1;
                             $yearrank = 1;
                             $yearranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `place` = '$year' ORDER BY `points` DESC , `lastseen` DESC");
-                            $overallranks = mysqli_query($conn, "SELECT `pid` FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
+                            $overallranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
                             $deptranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '$dept' ORDER BY `points` DESC , `lastseen` DESC");
                             while ($orank = mysqli_fetch_assoc($deptranks)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
