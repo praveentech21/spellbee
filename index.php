@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <title>SRKR Spell Bee - Online Spelling Challenge </title>
     <link rel="shortcut icon" href="/assets/onepage/img/cup.png">
-    
+
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv=Content-Type content=text/html; charset=utf-8 />
 
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Fonts START -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,26 +34,26 @@
 
 
     <style type='text/css'>
-    .blink {
-        animation: blink-animation 3s steps(5, start) infinite;
-        -webkit-animation: blink-animation 3s steps(5, start) infinite;
-    }
-
-    @keyframes blink-animation {
-        to {
-            visibility: hidden;
+        .blink {
+            animation: blink-animation 3s steps(5, start) infinite;
+            -webkit-animation: blink-animation 3s steps(5, start) infinite;
         }
-    }
 
-    @-webkit-keyframes blink-animation {
-        to {
-            visibility: hidden;
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
         }
-    }
 
-    h3 {
-        font-size: 14px;
-    }
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        h3 {
+            font-size: 14px;
+        }
     </style>
 
 </head>
@@ -61,18 +61,27 @@
 
 <body class="menu-always-on-top">
 
-<!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel">
-    <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" data-text="REGISTER NOW" data-color="#C91E3E" data-size="medium">
-  <script>
-    (function(){
-      var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-      if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-      s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
-      rzp && rzp.init && rzp.init()}})();
-  </script>
-</div>
-    
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <div class="color-panel">
+        <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" data-text="REGISTER NOW" data-color="#C91E3E" data-size="medium">
+            <script>
+                (function() {
+                    var d = document;
+                    var x = !d.getElementById('razorpay-embed-btn-js')
+                    if (x) {
+                        var s = d.createElement('script');
+                        s.defer = !0;
+                        s.id = 'razorpay-embed-btn-js';
+                        s.src = 'https://cdn.razorpay.com/static/embed_btn/bundle.js';
+                        d.body.appendChild(s);
+                    } else {
+                        var rzp = window['__rzp__'];
+                        rzp && rzp.init && rzp.init()
+                    }
+                })();
+            </script>
+        </div>
+
     </div>
     <!-- END BEGIN STYLE CUSTOMIZER -->
 
@@ -119,10 +128,8 @@
 
                 <div class="item carousel-item-one active">
                     <img class="carousel-position-srkrec animate-delay" data-animation="animated fadeInDown">
-                    <img class="animate-delay" style='padding-top:150px;' src="assets/onepage/img/slider/cup.png"
-                        alt="SpellBee Challenge" data-animation="animated fadeInDown">
-                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay"
-                        data-animation="animated fadeInUp">
+                    <img class="animate-delay" style='padding-top:150px;' src="assets/onepage/img/slider/cup.png" alt="SpellBee Challenge" data-animation="animated fadeInDown">
+                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay" data-animation="animated fadeInUp">
                 </div>
 
                 <div class="item carousel-item-three">
@@ -130,8 +137,7 @@
                         <div class="center-block-wrap">
                             <div class="center-block-body">
                                 <span class="carousel-subtitle-v1">IMPORTANT DATES</span>
-                                <h3 class="margin-bottom-20 animate-delay promo-like-text"
-                                    data-animation="animated fadeInDown">
+                                <h3 class="margin-bottom-20 animate-delay promo-like-text" data-animation="animated fadeInDown">
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 24th
                                         SEP 2023</div>
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 24th SEP - 4th
@@ -142,9 +148,7 @@
                             </div>
                         </div>
                     </div>
-                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay"
-                        src="assets/onepage/img/slider/cup.png" width='300px' alt="Prizes"
-                        data-animation="animated fadeInUp">
+                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/cup.png" width='300px' alt="Prizes" data-animation="animated fadeInUp">
                 </div>
             </div>
 
@@ -334,7 +338,7 @@
                 <a href="leaderboard.php?dept=CIVIL" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Civil Engineering</strong>
-                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CIVIL' ")) ?> <br><br></em>
+                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CIVIL' ")) ?> <br><br></em>
                         <b>View CIVIL LeaderBoard</b>
                     </div>
                 </a>
@@ -344,7 +348,7 @@
                 <a href="leaderboard.php?dept=CSE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science & Engineering</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSE' ")) ?> <br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSE' ")) ?> <br><br></em>
                         <b>View CSE LeaderBoard</b>
                     </div>
                 </a>
@@ -354,7 +358,7 @@
                 <a href="leaderboard.php?dept=ECE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electronics & Communication Engineering</strong>
-                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'ECE' ")) ?><br><br></em>
+                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'ECE' ")) ?><br><br></em>
                         <b>View ECE LeaderBoard</b>
                     </div>
                 </a>
@@ -364,7 +368,7 @@
                 <a href="leaderboard.php?dept=EEE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electrical & Electronics Engineering</strong>
-                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'EEE' ")) ?><br><br></em>
+                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'EEE' ")) ?><br><br></em>
                         <b>View EEE LeaderBoard</b>
                     </div>
                 </a>
@@ -375,7 +379,7 @@
                 <a href="leaderboard.php?dept=IT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Information Technology</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'IT' ")) ?><br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'IT' ")) ?><br><br></em>
                         <b>View IT LeaderBoard</b>
                     </div>
                 </a>
@@ -385,7 +389,7 @@
                 <a href="leaderboard.php?dept=MECH" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Mechanical Engineering</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'MECH' ")) ?><br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'MECH' ")) ?><br><br></em>
                         <b>View MECH LeaderBoard</b>
                     </div>
                 </a>
@@ -403,7 +407,7 @@
                 <a href="leaderboard.php?dept=CSBS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>COMPUTER SCIENCE & BUSINESS SYSTEMS</strong>
-                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSBS' ")) ?><br><br></em>
+                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSBS' ")) ?><br><br></em>
                         <b>View CSBS LeaderBoard</b>
                     </div>
                 </a>
@@ -413,7 +417,7 @@
                 <a href="leaderboard.php?dept=CSD" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Design</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSD' ")) ?><br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSD' ")) ?><br><br></em>
                         <b>View CSD LeaderBoard</b>
                     </div>
                 </a>
@@ -423,7 +427,7 @@
                 <a href="leaderboard.php?dept=AIML" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence & Machine Learning </strong>
-                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'AIML' ")) ?><br><br></em>
+                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'AIML' ")) ?><br><br></em>
                         <b>View AIML LeaderBoard</b>
                     </div>
                 </a>
@@ -433,7 +437,7 @@
                 <a href="leaderboard.php?dept=AIDS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence and Data Science</strong>
-                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'AIDS' ")) ?><br><br></em>
+                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'AIDS' ")) ?><br><br></em>
                         <b>View AI&DS LeaderBoard</b>
                     </div>
                 </a>
@@ -444,7 +448,7 @@
                 <a href="leaderboard.php?dept=CSIT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Information Technology</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CIC' ")) ?><br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CIC' ")) ?><br><br></em>
                         <b>View CSIT LeaderBoard</b>
                     </div>
                 </a>
@@ -454,7 +458,7 @@
                 <a href="leaderboard.php?dept=CIC" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Internet of Things and Cyber Security</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSE(IOT)' ")) ?>br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSE(IOT)' ")) ?>br><br></em>
                         <b>View CIC LeaderBoard</b>
                     </div>
                 </a>
@@ -479,8 +483,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
-                                        href="#accordion1_1">Who can participate?</a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">Who can participate?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_1" class="panel-collapse collapse in">
@@ -494,8 +497,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_2">Is there an exam fee?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Is there an exam fee?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_2" class="panel-collapse collapse">
@@ -508,15 +510,14 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_3">What is the benefit of taking this contest?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">What is the benefit of taking this contest?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_3" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <p>SpellBee Challenge is a popular contest all across the globe and participating/winning in such contests can be helpful in your career and in your placements. The exciting prizes are only meant for encouragement. More than the prizes, you
                                         can assess your Spelling skills and know where you stand among the potential peers
-                                         of SRKR. SRKR SpellBee Challenge 2023 is going to generate Ranks for the top
+                                        of SRKR. SRKR SpellBee Challenge 2023 is going to generate Ranks for the top
                                         10 students based on their overall performance in the contest. A certificate of
                                         merit or participation is given to acknowledge their performance.</p>
                                     <p>You can win an Boat EarPods / Smart Watches / Sound
@@ -529,8 +530,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_4">Where is the exam conducted?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">Where is the exam conducted?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_4" class="panel-collapse collapse">
@@ -545,8 +545,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_5">Is the contest tough to participate?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">Is the contest tough to participate?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_5" class="panel-collapse collapse">
@@ -558,8 +557,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                        data-parent="#accordion1" href="#accordion1_6">I have other doubts. Whom do I
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">I have other doubts. Whom do I
                                         contact?</a>
                                 </h5>
                             </div>
@@ -592,32 +590,32 @@
 
     <!-- Facts block BEGIN -->
     <div class="facts-block content content-center" id="facts-block">
-        <!-- <a href="ranks.php" target="_blank" class="btn blink" style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b>REGISTRATIONS CLOSED</b></a> -->
+        <a href="ranks.php" target="_blank" class="btn blink" style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b> View SRKR SPELLBEE LEADERBOARD</b></a>
         <br><br><br>
         <h2>Spell Champ 2023 Registration Stats</h2>
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users`")) ?> </strong>
+                        <strong><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users`")) ?> </strong>
                         REGISTER SO FAR
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `points` IS NOT NULL")) ?></strong>
+                        <strong><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NULL")) ?></strong>
                         PLAYED SO FAR
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT MAX(points) as top FROM `users` "))['top'] ?></strong>
+                        <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn, "SELECT MAX(points) as top FROM `users` "))['top'] ?></strong>
                         HIGHEST SCORE
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
-                        <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn,"SELECT `department` as top FROM `users`WHERE `points` = ( SELECT MAX(points) FROM `users`) ORDER BY `lastseen` DESC LIMIT 1 "))['top'] ?></strong>
+                        <strong><?php echo mysqli_fetch_assoc(mysqli_query($conn, "SELECT `department` as top FROM `users`WHERE `points` = ( SELECT MAX(points) FROM `users`) ORDER BY `lastseen` DESC LIMIT 1 "))['top'] ?></strong>
                         HIGH SCORE DEPARTMENT
                     </div>
                 </div>
@@ -758,6 +756,12 @@
                         /* Prevent text from wrapping */
                     }
 
+
+                    /* Pause the marquee animation on hover */
+                    .marquee:hover {
+                        animation-play-state: paused;
+                    }
+
                     /* Keyframes for the marquee animation */
                     @keyframes marquee {
                         0% {
@@ -815,7 +819,7 @@
 
 
                 <!-- News Scrolling Section -->
-                <div class="news-scrolling">
+                <div id="scrolling-marquee" class="news-scrolling">
                     <div class="marquee">
                         <div class="news-item">
                             <p><span class="news-text">P. Nikhil (2/4 CSD)</span></p>
@@ -921,7 +925,7 @@
                         </div>
                         <div class="news-item">
                             <p><span class="news-text"> V.Harsha (3/4 CSD)</span></p>
-                        </div>                        
+                        </div>
                         <div class="news-item">
                             <p><span class="news-text"> N.Siva sai (3/4 CSD)</span></p>
                         </div>
@@ -958,10 +962,21 @@
     <?php include   'footer.php'; ?>
 
     <script>
-    jQuery(document).ready(function() {
-        Layout.init();
-    });
+        jQuery(document).ready(function() {
+            Layout.init();
+        });
+
+        // Get the marquee element by ID
+const marquee = document.getElementById('scrolling-marquee');
+
+// Resume the marquee animation when the cursor leaves the marquee
+marquee.addEventListener('mouseout', function () {
+    marquee.style.animationPlayState = 'running';
+});
+
     </script>
+    
     <!-- Global js END -->
 </body>
+
 </html>
