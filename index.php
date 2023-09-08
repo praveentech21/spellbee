@@ -600,7 +600,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="item">
                         <strong><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users`")) ?> </strong>
-                        REGSITER SO FAR
+                        REGISTER SO FAR
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-6">

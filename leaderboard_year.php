@@ -161,7 +161,7 @@ if ($dept == 'CSE') {
         <?php
         $sections = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year' GROUP BY `section`");
         $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year'"));
-        $deptleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
+        $deptleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `place` = '$year' ORDER BY `points` DESC , `lastseen` DESC");
         ?>
         <h2>TOTAL REGISTRATIONS FROM <?php echo $dept; ?> : <?php echo $total; ?></h2>
         <div class="container">
@@ -211,7 +211,7 @@ if ($dept == 'CSE') {
                             $deptrank = 1;
                             $sectionrank = 1;
                             $yearrank = 1;
-                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
+                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
                             $deptranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '$dept' ORDER BY `points` DESC , `lastseen` DESC");
                             $yearranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `place` = '$year' ORDER BY `points` DESC , `lastseen` DESC");
                             while ($orank = mysqli_fetch_assoc($deptranks)) {
@@ -236,7 +236,17 @@ if ($dept == 'CSE') {
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $deptrank .  "</td><td align='center'>" . $yearrank .  "</td><td align='center'>" . $sectionrank . "</td></tr>";
+
+
+                            if($lbord['points'] == NULL){
+                                $lbord['points'] = "YET TO PLAY";
+                                $sectionrank = "YET TO PLAY";
+                                $deptrank = "YET TO PLAY";
+                                $yearrank = "YET TO PLAY";
+                            }
+
+
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;' ><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $deptrank .  "</td><td align='center'>" . $yearrank .  "</td><td align='center'>" . $sectionrank . "</td></tr>";
                             $sino++;
                         }
 

@@ -160,7 +160,7 @@ a {
         $four = mysqli_num_rows($depr);
 
         $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept'"));
-        $deptleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' and `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
+        $deptleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' ORDER BY `points` DESC , `lastseen` DESC");
         ?>
         <h2>TOTAL REGISTRATIONS FROM <?php echo $dept; ?> : <?php echo $total; ?></h2>
         <div class="container">
@@ -223,12 +223,21 @@ a {
                             if($orank['pid'] == "{$lbord['pid']}") break;
                             else $camrank++;
                         }
+
+                        $deprank = $sino;
+
+                        if($lbord['points'] == NULL){
+                            $lbord['points'] = "YET TO PLAY";
+                            $deprank = "YET TO PLAY";
+                            $camrank = "YET TO PLAY";
+                        }
+
     
                         if($lbord['place'] == '2027'){ $year = "FIRST YEAR"; }
                         elseif($lbord['place'] == '2026'){ $year = "SECOND YEAR"; }
                         elseif($lbord['place'] == '2025'){ $year = "THIRD YEAR"; }
                         elseif($lbord['place'] == '2024'){ $year = "FOURTH YEAR"; }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" .$year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sino .  "</td><td align='center'>" . $camrank . "</td></tr>";
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" .$year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $deprank .  "</td><td align='center'>" . $camrank . "</td></tr>";
                         $sino++;
                     }
 
@@ -236,8 +245,8 @@ a {
                     ?>
 
                 </div>
-                <h4>The Remaing registred Students haven't take you exam <br>
-            You are requested to  take your exam at any stall in our Campus</h4>
+                <h4>Those who are not played requested to  take your exam at any stall in our Campus</h4>
+                <!-- <h4>The Remaing registred Students haven't take you exam <br> You are requested to  take your exam at any stall in our Campus</h4> -->
 
 
         </div>

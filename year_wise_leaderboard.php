@@ -11,7 +11,7 @@ elseif ($year == '2024') $years = 4;
 
 
 $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year'"));
-$secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' and `points` IS NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
+$secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' ORDER BY `points` DESC , `lastseen` DESC");
 
 ?>
 <!DOCTYPE html>
@@ -188,8 +188,8 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
                                 else $ovrrank++;
                             }
-                            while ($orank = mysqli_fetch_assoc($sectionranks)) {
-                                if ($orank['pid'] == "{$lbord['pid']}") break;
+                            while($orank = mysqli_fetch_assoc($sectionranks)){
+                                if($orank['pid'] == "{$lbord['pid']}") break;
                                 else $sectionrank++;
                             }
 
@@ -205,7 +205,7 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: center;'>" . $year .  "</td><td style='text-align: center;'>" . $lbord['points'] . "</td><td style='text-align: center;'>" . $sectionrank .  "</td><td style='text-align: center;'>" . $deptrank . "</td><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'>" . $ovrrank . "</td></tr>";
+                            print "<tr><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: center;'>" . $year .  "</td><td style='text-align: center;'>" . $lbord['points'] . "</td><td style='text-align: center;'>" . $sectionrank .  "</td><td style='text-align: center;'>" . $deptrank . "</td><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'>" . $ovrrank . "</td></tr>";
                             $sino++;
                         }
 

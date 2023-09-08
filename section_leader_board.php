@@ -40,7 +40,7 @@ if ($dept == 'CSE') {
 }
 
 $total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' AND `place` = '$year' AND `section` = '$sec'"));
-$sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' AND `place` = '$year' AND `section` = '$sec' AND `points` is not null ORDER BY `points` DESC , `lastseen` DESC");
+$sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` = '$dept' AND `place` = '$year' AND `section` = '$sec' ORDER BY `points` DESC , `lastseen` DESC");
 
 ?>
 <!DOCTYPE html>
@@ -221,7 +221,18 @@ $sectionleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `department` =
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sino .  "</td><td align='center'>" . $deptrank . "</td><td align='center'>" . $yearrank . "</td><td align='center'>" . $overallrank . "</td></tr>";
+
+                            $sectionrank = $sino;
+
+                            if($lbord['points'] == NULL){
+                                $lbord['points'] = "YET TO PLAY";
+                                $sectionrank = "YET TO PLAY";
+                                $deptrank = "YET TO PLAY";
+                                $yearrank = "YET TO PLAY";
+                                $overallrank = "YET TO PLAY";
+                            }
+
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sectionrank .  "</td><td align='center'>" . $deptrank . "</td><td align='center'>" . $yearrank . "</td><td align='center'>" . $overallrank . "</td></tr>";
                             $sino++;
                         }
 

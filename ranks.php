@@ -134,7 +134,7 @@ include 'connect.php';
         $four = mysqli_num_rows($depr);
 
         $total = $one + $two + $three + $four;
-        $leaderboard = mysqli_query($conn, "SELECT * FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
+        $leaderboard = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
         ?>
         <h2>TOTAL REGISTRATIONS FROM  : <?php echo $total; ?></h2>
         <div class="container">
@@ -231,7 +231,16 @@ include 'connect.php';
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . $lbord['regno'] . "</font></td><td><b>" . strtoupper($lbord['player_name']) . "</b></td><td align='center'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sectionrank .  "</td><td align='center'>" . $deptrank .  "</td><td align='center'>" . $yearrank .  "</td><td align='center'><strong>" . $sino . "</strong></td></tr>";
+                            $deprank = $sino;
+
+                            if($lbord['points'] == NULL){
+                                $lbord['points'] = "YET TO PLAY";
+                                $sectionrank = "YET TO PLAY";
+                                $deptrank = "YET TO PLAY";
+                                $yearrank = "YET TO PLAY";
+                                $deprank = "YET TO PLAY";
+                            }
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sectionrank .  "</td><td align='center'>" . $deptrank .  "</td><td align='center'>" . $yearrank .  "</td><td align='center'><strong>" . $deprank . "</strong></td></tr>";
                             $sino++;
                         }
 
