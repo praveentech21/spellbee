@@ -50,310 +50,112 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
 <body>
 
   <!-- Sidebar Starts Here Shiva -->
-  <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
+  <?php include 'header.php'; ?>
+  <!-- Sidebar Ends Here Shiva --> <!-- Content Starts Here Shiva-->
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
 
-      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <div class="app-brand demo">
-          <a href="../index.php" class="app-brand-link">
-            <img src="Bhavani/img/red.png" alt="">
-          </a>
+      <!-- Bordered Table -->
+      <div class="card">
+        <h5 class="card-header">Registered Students</h5>
+        <div class="card-body">
+          <div class="table-responsive text-nowrap">
+            <table class="table table-bordered" id="registrationTable">
+              <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>REGISTRATION NO</th>
+                  <th>DEPARTMENT</th>
+                  <th>YEAR</th>
+                  <th>Status</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php while ($row = mysqli_fetch_array($registrations)) {
+                  $tresponces = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM `responses` WHERE `sid` = '$row[regno]'"))['count(*)'];
+                ?>
+                  <tr>
+                    <td><strong><?php echo $row['player_name'] ?></strong></td>
+                    <td><?php echo $row['regno'] ?></td>
+                    <td><?php echo $row['department'] ?></td>
+                    <td><?php if ($row['place'] == '2027') echo "First Year";
+                        elseif ($row['place'] == '2026') echo "Second Year";
+                        elseif ($row['place'] == '2025') echo "Third Year";
+                        elseif ($row['place'] == '2024') echo "Fourth Year";
+                        ?></td>
+                    <td><?php if ($row['payment_status'] == '0') echo "Not Paid";
+                        elseif ($row['payment_status'] > '1' and $tresponces == '0') echo "Choose to Replay";
+                        elseif ($row['payment_status'] > '1' and $tresponces < '15') echo "Semi Replay";
+                        elseif ($row['payment_status'] > '1' and $tresponces == '15') echo "Replayed";
+                        elseif ($tresponces == '0') echo "Not Played";
+                        elseif ($tresponces < '15') echo "Semi Completed";
+                        elseif ($tresponces == '15') echo "Completed";
+                        ?></td>
+                    <td>
+                      <button type="button" class="btn rounded-pill btn-primary confirm-game" data-pid="<?php echo $row['pid']; ?> " data-name="<?php echo $row['player_name']; ?> ">
+                        Welcome
+                      </button>
+                    </td>
+
+                  </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-
-        <div class="menu-inner-shadow"></div>
-
-        <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <!-- Layouts -->
-
-          <li class="menu-item ">
-
-            <a href="index.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-
-              <div data-i18n="Analytics">Home</div>
-
-            </a>
-
-          </li>
-
-          <li class="menu-item ">
-
-            <a href="dashboard.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-crown"></i>
-
-              <div data-i18n="Analytics">Dashbord</div>
-
-            </a>
-
-          </li>
-
-          <li class="menu-item ">
-
-            <a href="student_datails.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-copy"></i>
-
-              <div data-i18n="Analytics">Players</div>
-
-            </a>
-
-          </li>
-
-          <li class="menu-item ">
-
-            <a href="register.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-user"></i>
-
-              <div data-i18n="Analytics">Registration</div>
-
-            </a>
-
-          </li>
-
-          <li class="menu-item ">
-
-            <a href="payment_conformation.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-copy"></i>
-
-              <div data-i18n="Analytics">Payment Confirmation</div>
-
-            </a>
-
-          </li>
-
-          <li class="menu-item ">
-
-            <a href="game_confirmation.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-support"></i>
-
-              <div data-i18n="Analytics">Game Confirmation</div>
-
-            </a>
-
-          </li>
-
-          <li class="menu-item ">
-
-            <a href="certificate.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-file"></i>
-
-              <div data-i18n="Analytics">Certificate</div>
-
-            </a>
-
-          </li>
-
-
-
-          <li class="menu-item ">
-
-            <a href="replay.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
-
-              <div data-i18n="Analytics">Replay</div>
-
-            </a>
-
-          </li>
-
-          <!-- <li class="menu-item ">
-
-<a href="editstudent.php" class="menu-link">
-
-  <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-
-  <div data-i18n="Analytics">Update Student Details</div>
-
-</a>
-
-</li> -->
-
-          <li class="menu-item ">
-
-            <a href="logout.php" class="menu-link">
-
-              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-
-              <div data-i18n="Analytics">Logout</div>
-
-            </a>
-
-          </li>
-
-
-        </ul>
-      </aside>
-      <div class="layout-page">
-        <!-- Navbar -->
-
-        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-            <div class="navbar-nav align-items-center">
-              <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" id="searchInput" title="Search with regno or name or phone number....." placeholder="Search with regno or name or phone number....." aria-label="Search with regno or name or phone number....." />
-              </div>
-            </div>
-
-
-
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
-              <!-- User -->
-              <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                  <div class="avatar avatar-online">
-                    <img src="Bhavani/img/team_1.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                  </div>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <div class="d-flex">
-                        <div class="flex-shrink-0 me-3">
-                          <div class="avatar avatar-online">
-                            <img src="Bhavani/img/team_1.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                          </div>
-                        </div>
-                        <div class="flex-grow-1">
-                          <span class="fw-semibold d-block">Dr. Suresh Babu</span>
-                          <small class="text-muted">Founder BVRMOL</small>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="logout.php">
-                      <i class="bx bx-power-off me-2"></i>
-                      <span class="align-middle">Log Out</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <!--/ User -->
-            </ul>
-          </div>
-        </nav>
-
-        <!-- / Navbar -->
-
-        <div class="content-wrapper"> <!-- Sidebar Ends Here Shiva -->
-          <!-- Content Starts Here Shiva-->
-          <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="row">
-
-              <!-- Bordered Table -->
-              <div class="card">
-                <h5 class="card-header">Registered Students</h5>
-                <div class="card-body">
-                  <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered" id="registrationTable">
-                      <thead>
-                        <tr>
-                          <th>NAME</th>
-                          <th>REGISTRATION NO</th>
-                          <th>DEPARTMENT</th>
-                          <th>YEAR</th>
-                          <th>Status</th>
-                          <th>Message</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php while ($row = mysqli_fetch_array($registrations)) {
-                          $tresponces = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM `responses` WHERE `sid` = '$row[regno]'"))['count(*)'];
-                        ?>
-                          <tr>
-                            <td><strong><?php echo $row['player_name'] ?></strong></td>
-                            <td><?php echo $row['regno'] ?></td>
-                            <td><?php echo $row['department'] ?></td>
-                            <td><?php if ($row['place'] == '2027') echo "First Year";
-                                elseif ($row['place'] == '2026') echo "Second Year";
-                                elseif ($row['place'] == '2025') echo "Third Year";
-                                elseif ($row['place'] == '2024') echo "Fourth Year";
-                                ?></td>
-                            <td><?php if ($row['payment_status'] == '0') echo "Not Paid";
-                                elseif ($row['payment_status'] > '1' and $tresponces == '0') echo "Choose to Replay";
-                                elseif ($row['payment_status'] > '1' and $tresponces < '15') echo "Semi Replay";
-                                elseif ($row['payment_status'] > '1' and $tresponces == '15') echo "Replayed";
-                                elseif ($tresponces == '0') echo "Not Played";
-                                elseif ($tresponces < '15') echo "Semi Completed";
-                                elseif ($tresponces == '15') echo "Completed";
-                                ?></td>
-                            <td>
-                              <button type="button" class="btn rounded-pill btn-primary confirm-game" data-pid="<?php echo $row['pid']; ?> " data-name="<?php echo $row['player_name']; ?> ">
-                                Welcome
-                              </button>
-                            </td>
-
-                          </tr>
-                        <?php } ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!--/ Bordered Table -->
-
-
-
-            </div>
-          </div>
-          <!-- Content Ends Here Shiva -->
-
-          <!-- Footer Starts Here Shiva-->
-          <?php include 'footer.php'; ?>
-          <!-- Footer Ends Here Shiva-->
-
-          <script>
-            $(document).ready(function() {
-              // Cache the table rows for better performance
-              var rows = $("#registrationTable tr");
-
-              // Bind the input field's keyup event
-              $("#searchInput").keyup(function() {
-                var searchText = $(this).val().toLowerCase();
-
-                // Iterate through each table row
-                rows.each(function() {
-                  var name = $(this).find("td:nth-child(1)").text().toLowerCase();
-                  var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
-                  var department = $(this).find("td:nth-child(3)").text().toLowerCase();
-
-                  // Check if the search text matches any of the row data
-                  if (
-                    name.includes(searchText) ||
-                    regno.includes(searchText) ||
-                    department.includes(searchText)
-                  ) {
-                    $(this).show();
-                  } else {
-                    $(this).hide();
-                  }
-                });
-              });
-            });
-          </script>
-          <script>
-            $(document).ready(function() {
-              // Add a click event listener to the buttons with the class "confirm-game"
-              $(".confirm-game").click(function() {
-
-                var phoneNumber = $(this).data("pid");
-                var name = $(this).data("name");
+      </div>
+      <!--/ Bordered Table -->
+
+
+
+    </div>
+  </div>
+  <!-- Content Ends Here Shiva -->
+
+  <!-- Footer Starts Here Shiva-->
+  <?php include 'footer.php'; ?>
+  <!-- Footer Ends Here Shiva-->
+
+  <script>
+    $(document).ready(function() {
+      // Cache the table rows for better performance
+      var rows = $("#registrationTable tr");
+
+      // Bind the input field's keyup event
+      $("#searchInput").keyup(function() {
+        var searchText = $(this).val().toLowerCase();
+
+        // Iterate through each table row
+        rows.each(function() {
+          var name = $(this).find("td:nth-child(1)").text().toLowerCase();
+          var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
+          var department = $(this).find("td:nth-child(3)").text().toLowerCase();
+
+          // Check if the search text matches any of the row data
+          if (
+            name.includes(searchText) ||
+            regno.includes(searchText) ||
+            department.includes(searchText)
+          ) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Add a click event listener to the buttons with the class "confirm-game"
+      $(".confirm-game").click(function() {
+
+        var phoneNumber = $(this).data("pid");
+        var name = $(this).data("name");
         // var message = "Hello "+name+", Thank You for Playing *SRKR SPELL BEE* You can see leader board hear: https://srkrec.edu.in/spellbee/ This is your Certificate. ";
-        
-          var message = "Dear Thank You for Registering to SRKR SpellBee Challenge 2023! You can take the test at any of the SpellBee/Campus Online Stalls on Campus or at Technology Centre.\n\n-SRKR SpellBee Organizing Team, CSD";
+
+        var message = "Dear Thank You for Registering to SRKR SpellBee Challenge 2023! You can take the test at any of the SpellBee/Campus Online Stalls on Campus or at Technology Centre.\n\n-SRKR SpellBee Organizing Team, CSD";
 
         // Encode the message for use in a URL
         var encodedMessage = encodeURIComponent(message);
@@ -365,9 +167,9 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
         window.open(whatsappURL, "_blank");
 
 
-              });
-            });
-          </script>
+      });
+    });
+  </script>
 
 
 

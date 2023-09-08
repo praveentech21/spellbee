@@ -334,7 +334,7 @@
                 <a href="leaderboard.php?dept=CIVIL" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Civil Engineering</strong>
-                        <em><br><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CIVIL' ")) ?> <br><br></em>
                         <b>View CIVIL LeaderBoard</b>
                     </div>
                 </a>
@@ -344,7 +344,7 @@
                 <a href="leaderboard.php?dept=CSE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science & Engineering</strong>
-                        <em><br><br>Registered: To be updated <br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSE' ")) ?> <br><br></em>
                         <b>View CSE LeaderBoard</b>
                     </div>
                 </a>
@@ -354,7 +354,7 @@
                 <a href="leaderboard.php?dept=ECE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electronics & Communication Engineering</strong>
-                        <em><br><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'ECE' ")) ?><br><br></em>
                         <b>View ECE LeaderBoard</b>
                     </div>
                 </a>
@@ -364,7 +364,7 @@
                 <a href="leaderboard.php?dept=EEE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electrical & Electronics Engineering</strong>
-                        <em><br>Registered: To be updated<br><br></em>
+                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'EEE' ")) ?><br><br></em>
                         <b>View EEE LeaderBoard</b>
                     </div>
                 </a>
@@ -375,7 +375,7 @@
                 <a href="leaderboard.php?dept=IT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Information Technology</strong>
-                        <em><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'IT' ")) ?><br><br></em>
                         <b>View IT LeaderBoard</b>
                     </div>
                 </a>
@@ -385,7 +385,7 @@
                 <a href="leaderboard.php?dept=MECH" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Mechanical Engineering</strong>
-                        <em><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'MECH' ")) ?><br><br></em>
                         <b>View MECH LeaderBoard</b>
                     </div>
                 </a>
@@ -403,7 +403,7 @@
                 <a href="leaderboard.php?dept=CSBS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>COMPUTER SCIENCE & BUSINESS SYSTEMS</strong>
-                        <em><br><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSBS' ")) ?><br><br></em>
                         <b>View CSBS LeaderBoard</b>
                     </div>
                 </a>
@@ -413,7 +413,7 @@
                 <a href="leaderboard.php?dept=CSD" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Design</strong>
-                        <em><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSD' ")) ?><br><br></em>
                         <b>View CSD LeaderBoard</b>
                     </div>
                 </a>
@@ -423,7 +423,7 @@
                 <a href="leaderboard.php?dept=AIML" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence & Machine Learning </strong>
-                        <em><br>Registered: To be updated<br><br></em>
+                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'AIML' ")) ?><br><br></em>
                         <b>View AIML LeaderBoard</b>
                     </div>
                 </a>
@@ -433,7 +433,7 @@
                 <a href="leaderboard.php?dept=AIDS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence and Data Science</strong>
-                        <em><br>Registered: To be updated<br><br></em>
+                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'AIDS' ")) ?><br><br></em>
                         <b>View AI&DS LeaderBoard</b>
                     </div>
                 </a>
@@ -444,7 +444,7 @@
                 <a href="leaderboard.php?dept=CSIT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Information Technology</strong>
-                        <em><br><br>Registered: To be updated<br><br></em>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CIC' ")) ?><br><br></em>
                         <b>View CSIT LeaderBoard</b>
                     </div>
                 </a>
@@ -454,8 +454,8 @@
                 <a href="leaderboard.php?dept=CIC" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Internet of Things and Cyber Security</strong>
-                        <em><br><br>Registered: To be updated<br><br></em>
-                        <b>View CSE(IOT) LeaderBoard</b>
+                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `department`= 'CSE(IOT)' ")) ?>br><br></em>
+                        <b>View CIC LeaderBoard</b>
                     </div>
                 </a>
             </div>

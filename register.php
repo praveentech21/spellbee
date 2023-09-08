@@ -150,7 +150,7 @@ if (isset($_POST['newregistration'])) {
                         <option value="CSE">CSE</option>
                         <option value="CSBS">CSBS</option>
                         <option value="CIC">CIC</option>
-                        <option value="CSE(IOT)">CSE(Iot)</option>
+                        <option value="CSIT">CSIT</option>
                         <option value="IT">IT</option>
                         <option value="AIDS">AIDS</option>
                         <option value="AIML">AIML</option>

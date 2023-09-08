@@ -3,7 +3,7 @@ include 'connect.php';
 session_start();
 if(!isset($_SESSION['admin']) ) header("location: login.php");
 
-$leaderboard = mysqli_query($conn, "SELECT *,SUM(marks) as total FROM `responses` GROUP BY `sid` ORDER BY SUM(marks) DESC");
+$leaderboard = mysqli_query($conn, " SELECT *,SUM(marks) as total FROM `responses` GROUP BY `sid` ORDER BY SUM(marks) DESC , `timestamp` DESC");
 $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `users` GROUP BY `department` ORDER BY MAX(`points`) DESC");
 ?>
 <!DOCTYPE html>
@@ -84,7 +84,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
                           $student_details = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `pid` = '{$student['sid']}'"));
                         ?>
                         <tr>
-                          <td> <strong><?php echo $student_details['player_name'] ?></strong></td>
+                          <td> <strong><?php echo strtoupper($student_details['player_name']) ?></strong></td>
                           <td><?php echo $student_details['department'] ?></td>
                           <td><span class="badge bg-label-primary me-1">
                           <?php if($student_details['place'] == '2027') echo 'First Year';
@@ -121,7 +121,7 @@ $deptleaderboard = mysqli_query($conn, "SELECT `department`,`player_name` FROM `
                         ?>
                         <tr>
                           <td><?php echo $dept['department'] ?></td>
-                          <td> <strong><?php echo $dept['player_name'] ?></strong></td>
+                          <td> <strong><?php echo strtoupper($dept['player_name']) ?></strong></td>
                         </tr>
                         <?php } ?>
                       </tbody>
