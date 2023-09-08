@@ -164,7 +164,7 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                             <th>STUDENT NAME</th>
                             <th>YEAR</th>
                             <th>SCORE</th>
-                            <th>SECTION RANK</th>
+                            <!-- <th>SECTION RANK</th> -->
                             <th>DEPT. RANK</th>
                             <th>YEAR. RANK</th>
                             <th>OVERALL RANK</th>
@@ -177,9 +177,8 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                             $deptrank = 1;
                             $sectionrank = 1;
                             $ovrrank = 1;
-                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' and `place` = '$year' and `section` = '{$lbord['section']}' ORDER BY `points` DESC , `lastseen` DESC");
                             $deptranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '{$lbord['department']}' ORDER BY `points` DESC , `lastseen` DESC");
-                            $ovrranks = mysqli_query($conn, "SELECT * FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");
+                            $ovrranks = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");
                             while ($orank = mysqli_fetch_assoc($deptranks)) {
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
                                 else $deptrank++;
@@ -188,13 +187,6 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                                 if ($orank['pid'] == "{$lbord['pid']}") break;
                                 else $ovrrank++;
                             }
-                            while($orank = mysqli_fetch_assoc($sectionranks)){
-                                if($orank['pid'] == "{$lbord['pid']}") break;
-                                else $sectionrank++;
-                            }
-
-
-
 
                             if ($lbord['place'] == '2027') {
                                 $year = "FIRST YEAR";
@@ -205,7 +197,18 @@ $secleader = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '$year' 
                             } elseif ($lbord['place'] == '2024') {
                                 $year = "FOURTH YEAR";
                             }
-                            print "<tr><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: center;'>" . $year .  "</td><td style='text-align: center;'>" . $lbord['points'] . "</td><td style='text-align: center;'>" . $sectionrank .  "</td><td style='text-align: center;'>" . $deptrank . "</td><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'>" . $ovrrank . "</td></tr>";
+
+                            $yearrank = $sino;
+
+                            if($lbord['points'] == NULL){
+                                $lbord['points'] = "YET TO PLAY";
+                                // $sectionrank = "YET TO PLAY";
+                                $deptrank = "YET TO PLAY";
+                                $yearrank = "YET TO PLAY";
+                                $ovrrank = "YET TO PLAY";
+                            }
+
+                            print "<tr><td style='text-align: center;'>" . $sino . "</td><td style='text-align: center;'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: center;'>" . $year .  "</td><td style='text-align: center;'>" . $lbord['points'] . "</td><td style='text-align: center;'>" . $deptrank . "</td><td style='text-align: center;'>" . $yearrank . "</td><td style='text-align: center;'>" . $ovrrank . "</td></tr>";
                             $sino++;
                         }
 
