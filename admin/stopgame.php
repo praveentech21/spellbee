@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin'])) header("location: login.php");
 
 include 'connect.php';
 
-$registrations = mysqli_query($conn, "SELECT * FROM `users`");
+$registrations = mysqli_query($conn, "SELECT * FROM `users` where `status`=1 and `pid` in (SELECT `sid` FROM `responses` GROUP BY `sid` HAVING COUNT(`sid`) < 15) ");
 
 ?>
 
@@ -68,7 +68,7 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                   <th>DEPARTMENT</th>
                   <th>YEAR</th>
                   <th>Status</th>
-                  <!-- <th>Discontinu</th> -->
+                  <th>Discontinu</th>
                 </tr>
               </thead>
               <tbody>
@@ -94,9 +94,31 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                         elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '15') echo "Replayed";
                         else echo "Update Status";
                         ?></td>
-                    <!-- <td><button type="button" class="btn rounded-pill btn-danger confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">Stop Game</button></td> -->
+                    <td><button type="button" class="btn rounded-pill btn-danger confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">Stop Game</button></td>
 
                   </tr>
+                  <!-- Modal Code Starts Here -->
+                  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Stop Game</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to stop his/her game?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal Code Ends Here -->
+
                 <?php } ?>
               </tbody>
             </table>
@@ -144,6 +166,44 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
       });
     });
   </script>
+  <script>
+    $(document).ready(function() {
+      // Add a click event listener to the buttons with the class "confirm-game"
+      $(".confirm-game").click(function() {
+        // Get the game ID from the data attribute
+        var pid = $(this).data("pid");
+
+        // Handle the "Confirm" button click
+        $("#confirmButton").click(function() {
+          // Send the AJAX request to update the game confirmation
+          $.ajax({
+          type: "POST",
+          url: "update_payment.php", // Replace with the URL of your PHP script
+          data: {
+            stop: pid
+          }, // Send the user ID to the server
+          success: function(response) {
+            // Handle the server response if needed
+            console.log("Game Stoped successfully.");
+            window.location.reload();
+          },
+          error: function() {
+            // Handle errors if the AJAX request fails
+            console.error("Error in Game Stoping.");
+          }
+        });
+
+          // Close the modal
+          $("#confirmationModal").modal("hide");
+        });
+      });
+
+    });
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

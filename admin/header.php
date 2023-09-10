@@ -115,6 +115,18 @@ if ($_SESSION['category'] == 'stall') {
 
           <li class="menu-item ">
 
+            <a href="stopgame.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-box"></i>
+
+              <div data-i18n="Analytics">Stop Game</div>
+
+            </a>
+
+          </li>
+
+          <li class="menu-item ">
+
             <a href="editstudent.php" class="menu-link">
 
               <i class="menu-icon tf-icons bx bx-copy"></i>
@@ -235,165 +247,177 @@ if ($_SESSION['category'] == 'stall') {
                 <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <!-- Layouts -->
+                  <!-- Dashboard -->
+                  <!-- Layouts -->
 
-          <li class="menu-item ">
+                  <li class="menu-item ">
 
-            <a href="index.php" class="menu-link">
+                    <a href="index.php" class="menu-link">
 
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
 
-              <div data-i18n="Analytics">Home</div>
+                      <div data-i18n="Analytics">Home</div>
 
-            </a>
+                    </a>
 
-          </li>
+                  </li>
 
-          <li class="menu-item ">
+                  <li class="menu-item ">
 
-            <a href="dashboard.php" class="menu-link">
+                    <a href="dashboard.php" class="menu-link">
 
-              <i class="menu-icon tf-icons bx bx-layout"></i>
+                      <i class="menu-icon tf-icons bx bx-layout"></i>
 
-              <div data-i18n="Analytics">Dashbord</div>
+                      <div data-i18n="Analytics">Dashbord</div>
 
-            </a>
+                    </a>
 
-          </li>
+                  </li>
 
-          <li class="menu-item ">
+                  <li class="menu-item ">
 
-            <a href="student_status.php" class="menu-link">
+                    <a href="student_status.php" class="menu-link">
 
-              <i class="menu-icon tf-icons bx bx-crown"></i>
+                      <i class="menu-icon tf-icons bx bx-crown"></i>
 
-              <div data-i18n="Analytics">Error Status</div>
+                      <div data-i18n="Analytics">Error Status</div>
 
-            </a>
+                    </a>
 
-          </li>
+                  </li>
 
-          <li class="menu-item ">
+                  <li class="menu-item ">
 
-            <a href="student_datails.php" class="menu-link">
+                    <a href="student_datails.php" class="menu-link">
 
-              <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
 
-              <div data-i18n="Analytics">Players</div>
+                      <div data-i18n="Analytics">Players</div>
 
-            </a>
-          
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="register.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-user"></i>
+                    <a href="register.php" class="menu-link">
 
-              <div data-i18n="Analytics">Registration</div>
+                      <i class="menu-icon tf-icons bx bx-user"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Registration</div>
 
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="payment_conformation.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-copy"></i>
+                    <a href="payment_conformation.php" class="menu-link">
 
-              <div data-i18n="Analytics">Payment Confirmation</div>
+                      <i class="menu-icon tf-icons bx bx-copy"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Payment Confirmation</div>
 
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="game_confirmation.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-support"></i>
+                    <a href="game_confirmation.php" class="menu-link">
 
-              <div data-i18n="Analytics">Game Confirmation</div>
+                      <i class="menu-icon tf-icons bx bx-support"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Game Confirmation</div>
 
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="replay.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                    <a href="replay.php" class="menu-link">
 
-              <div data-i18n="Analytics">Replay</div>
+                      <i class="menu-icon tf-icons bx bx-dock-top"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Replay</div>
 
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="certificate.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-file"></i>
+                    <a href="certificate.php" class="menu-link">
 
-              <div data-i18n="Analytics">Certificate</div>
+                      <i class="menu-icon tf-icons bx bx-file"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Certificate</div>
 
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="editstudent.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-copy"></i>
+                    <a href="stopgame.php" class="menu-link">
 
-              <div data-i18n="Analytics">EDIT USER</div>
+                      <i class="menu-icon tf-icons bx bx-box"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Stop Game</div>
 
-          </li>
-          <li class="menu-item ">
+                    </a>
 
-            <a href="status.php" class="menu-link">
+                  </li>
 
-              <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                  <li class="menu-item ">
 
-              <div data-i18n="Analytics">Update Status</div>
+                    <a href="editstudent.php" class="menu-link">
 
-            </a>
+                      <i class="menu-icon tf-icons bx bx-copy"></i>
 
-          </li>
+                      <div data-i18n="Analytics">EDIT USER</div>
 
-          <li class="menu-item ">
+                    </a>
 
-            <a href="addword.php" class="menu-link">
+                  </li>
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-table"></i>
+                    <a href="status.php" class="menu-link">
 
-              <div data-i18n="Analytics">Add New Words</div>
+                      <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Update Status</div>
 
-          </li>
+                    </a>
 
-          <li class="menu-item ">
+                  </li>
 
-            <a href="logout.php" class="menu-link">
+                  <li class="menu-item ">
 
-              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                    <a href="addword.php" class="menu-link">
 
-              <div data-i18n="Analytics">Logout</div>
+                      <i class="menu-icon tf-icons bx bx-table"></i>
 
-            </a>
+                      <div data-i18n="Analytics">Add New Words</div>
 
-          </li>
+                    </a>
 
-        </ul>
+                  </li>
+
+                  <li class="menu-item ">
+
+                    <a href="logout.php" class="menu-link">
+
+                      <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+
+                      <div data-i18n="Analytics">Logout</div>
+
+                    </a>
+
+                  </li>
+
+                </ul>
 
               </aside>
               <div class="layout-page">
@@ -454,9 +478,9 @@ if ($_SESSION['category'] == 'stall') {
                 <!-- / Navbar -->
 
                 <div class="content-wrapper">
-                <?php } else { 
-                  header("location:students.php");
-                  ?>
+                <?php } else {
+                header("location:students.php");
+                ?>
 
                   <!-- Sidebar Starts Here Shiva -->
                   <div class="layout-wrapper layout-content-navbar">
