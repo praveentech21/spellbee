@@ -49,7 +49,7 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+  
 </head>
 
 <body>
@@ -80,8 +80,8 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
               <tbody>
                 <?php while ($row = mysqli_fetch_array($notpayed)) { ?>
                   <tr>
-                    <td><strong><?php echo $row['player_name'] ?></strong></td>
-                    <td><?php echo $row['regno'] ?></td>
+                    <td><strong><?php echo strtoupper($row['player_name']) ?></strong></td>
+                    <td><?php echo strtoupper($row['regno']) ?></td>
                     <td><?php echo $row['department'] ?></td>
                     <td><?php if ($row['place'] == '2027') echo "First Year";
                         elseif ($row['place'] == '2026') echo "Second Year";

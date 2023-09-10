@@ -68,16 +68,16 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                   <th>DEPARTMENT</th>
                   <th>YEAR</th>
                   <th>Status</th>
-                  <th>Message</th>
+                  <th>Discontinu</th>
                 </tr>
               </thead>
               <tbody>
                 <?php while ($row = mysqli_fetch_array($registrations)) {
                   $tresponces = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM `responses` WHERE `sid` = '$row[regno]'"))['count(*)'];
                 ?>
-                  <tr>
-                    <td><strong><?php echo $row['player_name'] ?></strong></td>
-                    <td><?php echo $row['regno'] ?></td>
+                  <tr title="<?php echo $row['pid'] ?>">
+                    <td><strong><?php echo strtoupper($row['player_name']) ?></strong></td>
+                    <td><?php echo strtoupper($row['regno']) ?></td>
                     <td><?php echo $row['department'] ?></td>
                     <td><?php if ($row['place'] == '2027') echo "First Year";
                         elseif ($row['place'] == '2026') echo "Second Year";
@@ -85,20 +85,40 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                         elseif ($row['place'] == '2024') echo "Fourth Year";
                         ?></td>
                     <td><?php if ($row['payment_status'] == '0') echo "Not Paid";
-                        elseif ($row['payment_status'] > '1' and $tresponces == '0') echo "Choose to Replay";
-                        elseif ($row['payment_status'] > '1' and $tresponces < '15') echo "Semi Replay";
-                        elseif ($row['payment_status'] > '1' and $tresponces == '15') echo "Replayed";
-                        elseif ($tresponces == '0') echo "Not Played";
-                        elseif ($tresponces < '15') echo "Semi Completed";
-                        elseif ($tresponces == '15') echo "Completed";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '0') echo "Payment Confirmed";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces == 0) echo "Go and Play";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces < 15) echo "Semi Played";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces == 15) echo "Game Completed";
+                        elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '0') echo "Choose to Replay";
+                        elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces < '15') echo "Semi Replay";
+                        elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '15') echo "Replayed";
+                        else echo "Update Status";
                         ?></td>
-                    <td>
-                      <button type="button" class="btn rounded-pill btn-primary confirm-game" data-pid="<?php echo $row['pid']; ?> " data-name="<?php echo $row['player_name']; ?> ">
-                        Welcome
-                      </button>
-                    </td>
+                    <td><button type="button" class="btn rounded-pill btn-danger confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">Stop Game</button></td>
 
                   </tr>
+                  <!-- Modal Code Starts Here -->
+                  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Stop Game</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to stop his/her game?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal Code Ends Here -->
+
                 <?php } ?>
               </tbody>
             </table>
@@ -150,30 +170,40 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
     $(document).ready(function() {
       // Add a click event listener to the buttons with the class "confirm-game"
       $(".confirm-game").click(function() {
+        // Get the game ID from the data attribute
+        var pid = $(this).data("pid");
 
-        var phoneNumber = $(this).data("pid");
-        var name = $(this).data("name");
-        // var message = "Hello "+name+", Thank You for Playing *SRKR SPELL BEE* You can see leader board hear: https://srkrec.edu.in/spellbee/ This is your Certificate. ";
+        // Handle the "Confirm" button click
+        $("#confirmButton").click(function() {
+          // Send the AJAX request to update the game confirmation
+          $.ajax({
+          type: "POST",
+          url: "update_payment.php", // Replace with the URL of your PHP script
+          data: {
+            stop: pid
+          }, // Send the user ID to the server
+          success: function(response) {
+            // Handle the server response if needed
+            console.log("Game Stoped successfully.");
+            window.location.reload();
+          },
+          error: function() {
+            // Handle errors if the AJAX request fails
+            console.error("Error in Game Stoping.");
+          }
+        });
 
-        var message = "Dear Thank You for Registering to SRKR SpellBee Challenge 2023! You can take the test at any of the SpellBee/Campus Online Stalls on Campus or at Technology Centre.\n\n-SRKR SpellBee Organizing Team, CSD";
-
-        // Encode the message for use in a URL
-        var encodedMessage = encodeURIComponent(message);
-
-        // Construct the WhatsApp URL
-        var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodedMessage;
-
-        // Open WhatsApp with the pre-filled message
-        window.open(whatsappURL, "_blank");
-
-
+          // Close the modal
+          $("#confirmationModal").modal("hide");
+        });
       });
+
     });
   </script>
-
-
-
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

@@ -134,7 +134,7 @@
     </div>
 </div>
 <!-- END FOOTER -->
-<a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
+<a href="#" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
 
 <!-- Core plugins BEGIN (For ALL pages) -->
 <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>

@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin'])) header("location: login.php");
 
 include 'connect.php';
 
-$replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NULL");
+$notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NULL");
 
 ?>
 
@@ -15,7 +15,7 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Campus Online Admin</title>
+  <title>Replay SRKR Spellbee</title>
 
   <meta name="description" content="" />
 
@@ -43,6 +43,8 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
   <script src="Bhavani/vendor/js/helpers.js"></script>
 
   <script src="Bhavani/js/config.js"></script>
+  <!-- Add these links in your HTML -->
+
 </head>
 
 <body>
@@ -67,23 +69,48 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
                   <th>REGISTRATION NO</th>
                   <th>DEPARTMENT</th>
                   <th>YEAR</th>
-                  <th>Conformation</th>
+                  <th>Replay</th>
                 </tr>
               </thead>
-              <tbody>
-                <?php while ($row = mysqli_fetch_array($replayers)) { ?>
-                  <tr>
-                    <td><strong><?php echo $row['player_name'] ?></strong></td>
-                    <td><?php echo $row['regno'] ?></td>
-                    <td><?php echo $row['department'] ?></td>
-                    <td><?php if ($row['place'] == '2027') echo "First Year";
-                        elseif ($row['place'] == '2026') echo "Second Year";
-                        elseif ($row['place'] == '2025') echo "Third Year";
-                        elseif ($row['place'] == '2024') echo "Fourth Year";
-                        ?></td>
-                    <td><button type="button" name="conformpayment" class="btn rounded-pill btn-info conform-payment" data-pid="<?php echo $row['pid']; ?>">Replay</button></td>
-                  </tr>
-                <?php } ?>
+              <?php while ($row = mysqli_fetch_array($notpayed)) { ?>
+                <tr>
+                  <td><strong><?php echo strtoupper($row['player_name']) ?></strong></td>
+                  <td><?php echo strtoupper($row['regno']) ?></td>
+                  <td><?php echo $row['department'] ?></td>
+                  <td><?php if ($row['place'] == '2027') echo "First Year";
+                      elseif ($row['place'] == '2026') echo "Second Year";
+                      elseif ($row['place'] == '2025') echo "Third Year";
+                      elseif ($row['place'] == '2024') echo "Fourth Year";
+                      ?></td>
+                  <td>
+                    <button type="button" class="btn rounded-pill btn-info confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">
+                      Replay
+                    </button>
+                  </td>
+                </tr>
+                <!-- Modal Code Starts Here -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm Game</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to confirm this game?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal Code Ends Here -->
+
+              <?php } ?>
               </tbody>
             </table>
           </div>
@@ -104,13 +131,15 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
 
   <script>
     $(document).ready(function() {
-      // Add a click event listener to the buttons with the class "conform-payment"
-      $(".conform-payment").click(function() {
-        // Get the user ID from the data attribute
+      // Add a click event listener to the buttons with the class "confirm-game"
+      $(".confirm-game").click(function() {
+        // Get the game ID from the data attribute
         var pid = $(this).data("pid");
 
-        // Send an AJAX request to update the database
-        $.ajax({
+        // Handle the "Confirm" button click
+        $("#confirmButton").click(function() {
+          // Send the AJAX request to update the game confirmation
+          $.ajax({
           type: "POST",
           url: "update_payment.php", // Replace with the URL of your PHP script
           data: {
@@ -126,39 +155,47 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
             console.error("Error in Repayment confirmation.");
           }
         });
+
+          // Close the modal
+          $("#confirmationModal").modal("hide");
+        });
       });
     });
   </script>
   <script>
-  $(document).ready(function () {
-    // Cache the table rows for better performance
-    var rows = $("#registrationTable tr");
+    $(document).ready(function() {
+      // Cache the table rows for better performance
+      var rows = $("#registrationTable tr");
 
-    // Bind the input field's keyup event
-    $("#searchInput").keyup(function () {
-      var searchText = $(this).val().toLowerCase();
+      // Bind the input field's keyup event
+      $("#searchInput").keyup(function() {
+        var searchText = $(this).val().toLowerCase();
 
-      // Iterate through each table row
-      rows.each(function () {
-        var name = $(this).find("td:nth-child(1)").text().toLowerCase();
-        var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
-        var department = $(this).find("td:nth-child(3)").text().toLowerCase();
+        // Iterate through each table row
+        rows.each(function() {
+          var name = $(this).find("td:nth-child(1)").text().toLowerCase();
+          var regno = $(this).find("td:nth-child(2)").text().toLowerCase();
+          var department = $(this).find("td:nth-child(3)").text().toLowerCase();
 
-        // Check if the search text matches any of the row data
-        if (
-          name.includes(searchText) ||
-          regno.includes(searchText) ||
-          department.includes(searchText)
-        ) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
+          // Check if the search text matches any of the row data
+          if (
+            name.includes(searchText) ||
+            regno.includes(searchText) ||
+            department.includes(searchText)
+          ) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 </body>

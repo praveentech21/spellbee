@@ -74,8 +74,8 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
               <tbody>
                 <?php while ($row = mysqli_fetch_array($replayers)) { ?>
                   <tr>
-                    <td><strong><?php echo $row['player_name'] ?></strong></td>
-                    <td><?php echo $row['regno'] ?></td>
+                    <td><strong><?php echo strtoupper($row['player_name']) ?></strong></td>
+                    <td><?php echo strtoupper($row['regno']) ?></td>
                     <td><?php echo $row['department'] ?></td>
                     <td><?php if ($row['place'] == '2027') echo "First Year";
                         elseif ($row['place'] == '2026') echo "Second Year";
@@ -93,7 +93,7 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
       </div>
       <!--/ Bordered Table -->
 
-
+      
     </div>
   </div>
   <!-- Content Ends Here Shiva -->
@@ -115,24 +115,27 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
         // Send an AJAX request to update the database
         $.ajax({
           type: "POST",
-          url: "certificate/certificate.php", // Replace with the URL of your PHP script
+          url: "../certificate/certificate.php", // Replace with the URL of your PHP script
           data: {
             rollno: pid,
           }, // Send the user ID to the server
           success: function(response) {
             // Handle the server response if needed
             console.log("Server Response:", response);
-            
+
+
             var link = document.createElement("a");
 
             // Set the href attribute to the file URL
-            link.href = "http://localhost/spellchamp/admin/certificate/tmp/" + rolll + ".png";
+            link.href = "http://srkrec.edu.in/spellbee/certificate/tmp/" + rolll + ".png";
 
             // Set the download attribute to specify the filename
             link.download = rolll + ".png";
 
             // Trigger a click event on the anchor element
             link.click();
+
+            window.open("http://srkrec.edu.in/spellbee/certificate/tmp/" + rolll + ".png" , "_blank");
 
           },
           error: function() {
@@ -145,9 +148,11 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
         // Get the user ID from the data attribute
         var phoneNumber = $(this).data("pid");
         var name = $(this).data("name");
-        // var message = "Hello "+name+", Thank You for Playing *SRKR SPELL BEE* You can see leader board hear: https://srkrec.edu.in/spellbee/ This is your Certificate. ";
+        name.toUpperCase();
         
-          var message = "This certificate is presented to " + name +  "in recognition of your active participation in SRKR SPELL BEE CHAMP on DATE.We hope you enjoyed the event and we look forward to seeing you again next year.<BR>Visit https://srkrec.edu.in/spellbee for more details and leaderboard score...";
+
+            var message = "Dear "+name+",\nThank You for Registering to SRKR SpellBee Challenge 2023\nThis certificate is presented to you in recognition of your active participation in SRKR SPELL BEE CHAMP. We hope you enjoyed the event and we look forward to seeing you again next year.\n\nVisit https://srkrec.edu.in/spellbee/ranks.php \nfor more details and leaderboard score...\n\n-SRKR SpellBee Organizing Team(SDC), CSD";
+
 
         // Encode the message for use in a URL
         var encodedMessage = encodeURIComponent(message);

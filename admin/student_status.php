@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin'])) header("location: login.php");
 
 include 'connect.php';
 
-$notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = '1' and `status` = '0' ");
+$notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `status`=0 and `payment_status` > 0 and `gameconfby` IS NOT NULL");
 
 ?>
 
@@ -15,7 +15,7 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Game Confirmation SRKR Spellbee</title>
+  <title>Error Student Status SRKR Spellbee</title>
 
   <meta name="description" content="" />
 
@@ -69,7 +69,7 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
                   <th>REGISTRATION NO</th>
                   <th>DEPARTMENT</th>
                   <th>YEAR</th>
-                  <th>Conformation</th>
+                  <th>Replay</th>
                 </tr>
               </thead>
               <?php while ($row = mysqli_fetch_array($notpayed)) { ?>
@@ -83,9 +83,7 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
                       elseif ($row['place'] == '2024') echo "Fourth Year";
                       ?></td>
                   <td>
-                    <button type="button" class="btn rounded-pill btn-primary confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">
-                      Confirm Game
-                    </button>
+                    <button type="button" class="btn rounded-pill btn-danger confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">Allow</button>
                   </td>
                 </tr>
                 <!-- Modal Code Starts Here -->
@@ -93,13 +91,13 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirm Game</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm $previous_status</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        Are you sure you want to confirm this game?
+                        Are you sure you want to allow him to Play game?
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -140,21 +138,21 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `payment_status` = 
         $("#confirmButton").click(function() {
           // Send the AJAX request to update the game confirmation
           $.ajax({
-            type: "POST",
-            url: "update_payment.php", // Replace with the URL of your PHP script
-            data: {
-              gameconfirm: pid
-            }, // Send the game ID to the server
-            success: function(response) {
-              // Handle the server response if needed
-              console.log("Game confirmation updated successfully.");
-              window.location.reload();
-            },
-            error: function() {
-              // Handle errors if the AJAX request fails
-              console.error("Error updating game confirmation.");
-            }
-          });
+          type: "POST",
+          url: "update_payment.php", // Replace with the URL of your PHP script
+          data: {
+            allow: pid
+          }, // Send the user ID to the server
+          success: function(response) {
+            // Handle the server response if needed
+            console.log("Replay Confirmed successfully.");
+            window.location.reload();
+          },
+          error: function() {
+            // Handle errors if the AJAX request fails
+            console.error("Error in Repayment confirmation.");
+          }
+        });
 
           // Close the modal
           $("#confirmationModal").modal("hide");

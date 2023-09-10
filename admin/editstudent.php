@@ -78,8 +78,8 @@ $studentdetails = mysqli_query($conn, "SELECT * FROM `users`");
                             </thead>
                             <tbody>
                                 <?php while ($row = mysqli_fetch_array($studentdetails)) { ?>
-                                    <tr>
-                                        <td title="<?php echo $row['pid'] ?>"><strong><?php echo $row['player_name'] ?></strong></td>
+                                    <tr title="<?php echo $row['pid'] ?>" >
+                                        <td><strong><?php echo $row['player_name'] ?></strong></td>
                                         <td><?php echo $row['regno'] ?></td>
                                         <td><?php echo $row['department'] ?></td>
                                         <td><?php if ($row['place'] == '2027') echo "First Year";

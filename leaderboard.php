@@ -99,26 +99,30 @@ if ($dept == 'CSE') {
             padding: 5px;
             font-size: 13px;
         }
+
         /* Change the color of visited links */
-a:visited {
-  color: #FFFFFF; /* Change to your desired color */
-}
+        a:visited {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
 
-/* Change the color of links when hovered over */
-a:hover {
-  color: rgb(201, 30, 62); /* Change to your desired color */
-}
+        /* Change the color of links when hovered over */
+        a:hover {
+            color: rgb(201, 30, 62);
+            /* Change to your desired color */
+        }
 
-/* Change the color of active links (when clicked) */
-a:active {
-  color: #FFFFFF; /* Change to your desired color */
-}
+        /* Change the color of active links (when clicked) */
+        a:active {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
 
-/* Change the default link color */
-a {
-  color: #FFFFFF; /* Change to your desired color */
-}
-
+        /* Change the default link color */
+        a {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
     </style>
 
 </head>
@@ -166,36 +170,36 @@ a {
         <div class="container">
             <div class="row">
                 <a href="leaderboard_year.php?year=2027&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $one; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>1/4 " . $dept; ?></span><br>Registrations
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $one; ?></strong>
+                            <?php echo "<span style='font-size:28px;'>1/4 " . $dept; ?></span><br>Registrations
+                        </div>
                     </div>
-                </div>
                 </a>
                 <a href="leaderboard_year.php?year=2026&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $two; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>2/4 " . $dept; ?></span><br>Registrations
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $two; ?></strong>
+                            <?php echo "<span style='font-size:28px;'>2/4 " . $dept; ?></span><br>Registrations
+                        </div>
                     </div>
-                </div>
                 </a>
                 <a href="leaderboard_year.php?year=2025&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $three; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>3/4 " . $dept; ?></span><br>Registrations
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $three; ?></strong>
+                            <?php echo "<span style='font-size:28px;'>3/4 " . $dept; ?></span><br>Registrations
+                        </div>
                     </div>
-                </div>
                 </a>
                 <a href="leaderboard_year.php?year=2024&dept=<?php echo $dept ?>">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="item">
-                        <strong><?php echo $four; ?></strong>
-                        <?php echo "<span style='font-size:28px;'>4/4 " . $dept; ?></span><br>Registrations
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $four; ?></strong>
+                            <?php echo "<span style='font-size:28px;'>4/4 " . $dept; ?></span><br>Registrations
+                        </div>
                     </div>
-                </div>
                 </a>
             </div>
         </div>
@@ -207,46 +211,76 @@ a {
         <div class="container">
             <h2><?php echo $dept; ?> <strong>Leaderboard</strong></h2>
             <h4>The Leader Board has been generated for all participants who played from <strong><?php echo $dept; ?></strong> .<br>
-            The Maximum score <strong>3000</strong>
+                The Maximum score <strong>3000</strong>
             </h4>
 
-                <div class="col-md-12">
-                <center><table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'><tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;text-align:center;'><th>S.NO</th><th>ROLL NUMBER</th><th>STUDENT NAME</th><th>YEAR</th><th>SCORE</th><th>DEPT. RANK</th><th>OVERALL RANK</th></tr>
+            <div class="col-md-12">
+                <center>
+                    <table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'>
+                        <tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;text-align:center;'>
+                            <th>S.NO</th>
+                            <th>ROLL NUMBER</th>
+                            <th>STUDENT NAME</th>
+                            <th>YEAR</th>
+                            <th>SCORE</th>
+                            <th>SECTION. RANK</th>
+                            <th>DEPT. RANK</th>
+                            <th>YEAR RANK</th>
+                            <th>OVERALL RANK</th>
+                        </tr>
 
-                    <?php
-                    $sino = 1;
+                        <?php
+                        $sino = 1;
 
-                    while ($lbord = mysqli_fetch_assoc($deptleader)) {
-                        $camrank = 1;
-                        $overallrank = mysqli_query($conn, "SELECT * FROM `users` where `points` is NOT NULL ORDER BY `points` DESC , `lastseen` DESC");    
-                        while ($orank = mysqli_fetch_assoc($overallrank)) {
-                            if($orank['pid'] == "{$lbord['pid']}") break;
-                            else $camrank++;
+                        while ($lbord = mysqli_fetch_assoc($deptleader)) {
+                            $sectionrank = 1;
+                            $yearrank = 1;
+                            $overall = 1;
+                            $overallrank = mysqli_query($conn, "SELECT * FROM `users` ORDER BY `points` DESC , `lastseen` DESC");    
+                            $sectionranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `department` = '$dept' and `place` = '{$lbord['place']}' and `section` = '{$lbord['section']}' ORDER BY `points` DESC , `lastseen` DESC");
+                            $yearranks = mysqli_query($conn, "SELECT `pid` FROM `users` where `place` = '{$lbord['place']}' ORDER BY `points` DESC , `lastseen` DESC");
+                            while ($orank = mysqli_fetch_assoc($yearranks)) {
+                                if ($orank['pid'] == "{$lbord['pid']}") break;
+                                else $yearrank++;
+                            }
+                            while ($orank = mysqli_fetch_assoc($sectionranks)) {
+                                if ($orank['pid'] == "{$lbord['pid']}") break;
+                                else $sectionrank++;
+                            }
+                            while ($orank = mysqli_fetch_assoc($overallrank)) {
+                                if($orank['pid'] == "{$lbord['pid']}") break;
+                                else $overall++;
+                            }
+
+                            if ($lbord['place'] == '2027') {
+                                $year = "FIRST YEAR";
+                            } elseif ($lbord['place'] == '2026') {
+                                $year = "SECOND YEAR";
+                            } elseif ($lbord['place'] == '2025') {
+                                $year = "THIRD YEAR";
+                            } elseif ($lbord['place'] == '2024') {
+                                $year = "FOURTH YEAR";
+                            }
+                            $deprank = $sino;
+
+                            if($lbord['points'] == NULL){
+                                $lbord['points'] = "YET TO PLAY";
+                                $sectionrank = "YET TO PLAY";
+                                $overall = "YET TO PLAY";
+                                $yearrank = "YET TO PLAY";
+                                $deprank = "YET TO PLAY";
+                            }
+                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" . $year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $sectionrank .  "</td><td align='center'>" . $deprank .  "</td><td align='center'>" . $yearrank .  "</td><td align='center'><strong>" . $overall . "</strong></td></tr>";
+                            $sino++;
+
                         }
 
-                        $deprank = $sino;
+                        echo "</table></center><br><br>";
+                        ?>
 
-                        if($lbord['points'] == NULL){
-                            $lbord['points'] = "YET TO PLAY";
-                            $deprank = "YET TO PLAY";
-                            $camrank = "YET TO PLAY";
-                        }
-
-    
-                        if($lbord['place'] == '2027'){ $year = "FIRST YEAR"; }
-                        elseif($lbord['place'] == '2026'){ $year = "SECOND YEAR"; }
-                        elseif($lbord['place'] == '2025'){ $year = "THIRD YEAR"; }
-                        elseif($lbord['place'] == '2024'){ $year = "FOURTH YEAR"; }
-                            print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" .$year .  "</td><td align='center'>" . $lbord['points'] . "</td><td align='center'>" . $deprank .  "</td><td align='center'>" . $camrank . "</td></tr>";
-                        $sino++;
-                    }
-
-                    echo "</table></center><br><br>";
-                    ?>
-
-                </div>
-                <h4>Those who are not played requested to  take your exam at any stall in our Campus</h4>
-                <!-- <h4>The Remaing registred Students haven't take you exam <br> You are requested to  take your exam at any stall in our Campus</h4> -->
+            </div>
+            <h4>Those who are not played requested to take your exam at any stall in our Campus</h4>
+            <!-- <h4>The Remaing registred Students haven't take you exam <br> You are requested to  take your exam at any stall in our Campus</h4> -->
 
 
         </div>

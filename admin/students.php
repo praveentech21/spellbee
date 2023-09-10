@@ -47,99 +47,99 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
 
 <body>
 
-                        <!-- Sidebar Starts Here Shiva -->
-                        <div class="layout-wrapper layout-content-navbar">
-                    <div class="layout-container">
+  <!-- Sidebar Starts Here Shiva -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
 
-                      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-                        <div class="app-brand demo">
-                          <a href="../index.php" class="app-brand-link">
-                            <img src="Bhavani/img/red.png" alt="">
-                          </a>
-                        </div>
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <div class="app-brand demo">
+          <a href="../index.php" class="app-brand-link">
+            <img src="Bhavani/img/red.png" alt="">
+          </a>
+        </div>
 
-                        <div class="menu-inner-shadow"></div>
+        <div class="menu-inner-shadow"></div>
 
-                        <ul class="menu-inner py-1">
-                          <!-- Dashboard -->
+        <ul class="menu-inner py-1">
+          <!-- Dashboard -->
 
-                          <!-- Layouts -->
-                          <li class="menu-item ">
-                            <a href="students.php" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                              <div data-i18n="Analytics">Home</div>
-                            </a>
-                          </li>
-                          <li class="menu-item ">
-                            <a href="logout.php" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                              <div data-i18n="Analytics">Logout</div>
-                            </a>
-                          </li>
-                        </ul>
-                      </aside>
-                      <div class="layout-page">
-                        <!-- Navbar -->
+          <!-- Layouts -->
+          <li class="menu-item ">
+            <a href="students.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Analytics">Home</div>
+            </a>
+          </li>
+          <li class="menu-item ">
+            <a href="logout.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+              <div data-i18n="Analytics">Logout</div>
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <div class="layout-page">
+        <!-- Navbar -->
 
-                        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
 
-                          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                            <div class="navbar-nav align-items-center">
-                              <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" id="searchInput" title="Search with regno or name or phone number....." placeholder="Search with regno or name or phone number....." aria-label="Search with regno or name or phone number....." />
-                              </div>
-                            </div>
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <div class="navbar-nav align-items-center">
+              <div class="nav-item d-flex align-items-center">
+                <i class="bx bx-search fs-4 lh-0"></i>
+                <input type="text" class="form-control border-0 shadow-none" id="searchInput" title="Search with regno or name or phone number....." placeholder="Search with regno or name or phone number....." aria-label="Search with regno or name or phone number....." />
+              </div>
+            </div>
 
 
-                            <ul class="navbar-nav flex-row align-items-center ms-auto">
-                              <!-- User -->
-                              <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                  <div class="avatar avatar-online">
-                                    <img src="Bhavani/img/team_1.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                                  </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                  <li>
-                                    <a class="dropdown-item" href="#">
-                                      <div class="d-flex">
-                                        <div class="flex-shrink-0 me-3">
-                                          <div class="avatar avatar-online">
-                                            <img src="Bhavani/img/team_1.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                                          </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                          <span class="fw-semibold d-block">Dr. Suresh Babu</span>
-                                          <small class="text-muted">Founder BVRMOL</small>
-                                        </div>
-                                      </div>
-                                    </a>
-                                  </li>
-
-                                  <li>
-                                    <div class="dropdown-divider"></div>
-                                  </li>
-                                  <li>
-                                    <a class="dropdown-item" href="logout.php">
-                                      <i class="bx bx-power-off me-2"></i>
-                                      <span class="align-middle">Log Out</span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <!--/ User -->
-                            </ul>
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <!-- User -->
+              <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <div class="avatar avatar-online">
+                    <img src="Bhavani/img/team_1.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                  </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <div class="d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="avatar avatar-online">  
+                            <img src="Bhavani/img/team_1.jpg" alt class="w-px-40 h-auto rounded-circle" />
                           </div>
-                        </nav>
+                        </div>
+                        <div class="flex-grow-1">
+                          <span class="fw-semibold d-block">Dr. Suresh Babu</span>
+                          <small class="text-muted">Founder BVRMOL</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
 
-                        <!-- / Navbar -->
+                  <li>
+                    <div class="dropdown-divider"></div>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="logout.php">
+                      <i class="bx bx-power-off me-2"></i>
+                      <span class="align-middle">Log Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <!--/ User -->
+            </ul>
+          </div>
+        </nav>
 
-                        <div class="content-wrapper">
+        <!-- / Navbar -->
 
-                          <!-- Sidebar Ends Here Shiva -->
+        <div class="content-wrapper">
 
-      
+          <!-- Sidebar Ends Here Shiva -->
+
+
           <!-- Content Starts Here Shiva-->
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
@@ -164,8 +164,8 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                           $tresponces = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM `responses` WHERE `sid` = '$row[regno]'"))['count(*)'];
                         ?>
                           <tr>
-                            <td><strong><?php echo $row['player_name'] ?></strong></td>
-                            <td><?php echo $row['regno'] ?></td>
+                            <td><strong><?php echo strtoupper($row['player_name']) ?></strong></td>
+                            <td><?php echo strtoupper($row['regno']) ?></td>
                             <td><?php echo $row['department'] ?></td>
                             <td><?php if ($row['place'] == '2027') echo "First Year";
                                 elseif ($row['place'] == '2026') echo "Second Year";
@@ -173,13 +173,16 @@ $registrations = mysqli_query($conn, "SELECT * FROM `users`");
                                 elseif ($row['place'] == '2024') echo "Fourth Year";
                                 ?></td>
                             <td><?php if ($row['payment_status'] == '0') echo "Not Paid";
-                                elseif ($row['payment_status'] > '1' and $tresponces == '0') echo "Choose to Replay";
-                                elseif ($row['payment_status'] > '1' and $tresponces < '15') echo "Semi Replay";
-                                elseif ($row['payment_status'] > '1' and $tresponces == '15') echo "Replayed";
-                                elseif ($tresponces == '0') echo "Not Played";
-                                elseif ($tresponces < '15') echo "Semi Completed";
-                                elseif ($tresponces == '15') echo "Completed";
-                                ?></td>
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '0') echo "Payment Confirmed";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces == 0) echo "Go and Play";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces < 15) echo "Semi Played";
+                        elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces == 15) echo "Game Completed";
+                        elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '0') echo "Choose to Replay";
+                        elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces < '15') echo "Semi Replay";
+                        elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '15') echo "Replayed";
+                        else echo "Update Status";
+                        ?></td>
+                                
                           </tr>
                         <?php } ?>
                       </tbody>

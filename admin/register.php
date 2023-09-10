@@ -12,14 +12,21 @@ if (isset($_POST['addnewstudent'])) {
   $mobile = $_POST['mobile'];
   $branch = $_POST['branch'];
   $section = $_POST['section'];
-  if (isset($_POST['paymentinfo'])) $paymentinfo = 1; else $paymentinfo = 0;
-  if (isset($_POST['gamestatus']) and isset($_POST['paymentinfo'])) $gamestatus = 1; else $gamestatus = 0;
+  if (isset($_POST['paymentinfo'])) $paymentinfo = 1;
+  else $paymentinfo = 0;
+  if (isset($_POST['gamestatus']) and isset($_POST['paymentinfo'])) $gamestatus = 1;
+  else $gamestatus = 0;
   $batch = $_POST['batch'];
   if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `pid` = '$mobile' or `regno` = '$regno'")) > 0) {
     echo "<script>alert('Student Already Registered');</script>";
   } else {
-    $addnewstudent = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`,`status` ,`place`, `regno`, `email`, `department`, `section`, `payment_status`,`admin`) VALUES (?,?,?,?,?,?,?,?,?,?)");
-    $addnewstudent->bind_param("ssiissssis", $mobile, $sname,$gamestatus ,$batch, $regno, $email, $branch, $section, $paymentinfo, $admin);
+    if ($paymentinfo == 1) {
+      $addnewstudent = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`,`status` ,`place`, `regno`, `email`, `department`, `section`, `payment_status`,`admin`,`pconfprby`) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+      $addnewstudent->bind_param("ssiissssiss", $mobile, $sname, $gamestatus, $batch, $regno, $email, $branch, $section, $paymentinfo, $admin,$admin);
+    } else {
+      $addnewstudent = $conn->prepare("INSERT INTO `users`(`pid`, `player_name`,`status` ,`place`, `regno`, `email`, `department`, `section`, `payment_status`,`admin`) VALUES (?,?,?,?,?,?,?,?,?,?)");
+      $addnewstudent->bind_param("ssiissssis", $mobile, $sname, $gamestatus, $batch, $regno, $email, $branch, $section, $paymentinfo,$admin);
+    }
     if ($addnewstudent->execute()) {
       echo "<script>alert('New Student Added Successfully');</script>";
     } else {
@@ -91,12 +98,17 @@ if (isset($_POST['addnewstudent'])) {
                 <label class="col-sm-2 col-form-label" for="sname">Name</label>
                 <div class="col-sm-10">
                   <input type="text" required class="form-control" autocomplete="off" id="sname" autofocus name="sname" placeholder="Student Name" />
+                  <div id="name-error" class="error"></div>
                 </div>
               </div>
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="regno">Register Number</label>
                 <div class="col-sm-10">
-                  <input type="text" required autocomplete="off" class="form-control" id="regno" name="regno" placeholder="student College ID" />
+                  <div class="input-group input-group-merge">
+                    <input type="text" required autocomplete="off" class="form-control" id="regno" name="regno" placeholder="student College ID" />
+                  </div>
+                  <div class="form-text">For Juniours use their dept and remaning are last digits of mobile number must be length 10</div>
+                  <div id="regno-error" class="error"></div>
                 </div>
               </div>
               <div class="row mb-3">
@@ -105,6 +117,7 @@ if (isset($_POST['addnewstudent'])) {
                   <div class="input-group input-group-merge">
                     <input type="email" name="email" id="email" autocomplete="off" class="form-control" placeholder="Student Email" aria-label="john.doe" aria-describedby="basic-default-email2" required />
                   </div>
+                  <div id="email-error" class="error"></div>
                   <div class="form-text">You can use letters, numbers & periods</div>
                 </div>
               </div>
@@ -112,6 +125,7 @@ if (isset($_POST['addnewstudent'])) {
                 <label class="col-sm-2 col-form-label" for="mobile">Mobile No</label>
                 <div class="col-sm-10">
                   <input type="text" id="mobile" autocomplete="off" name="mobile" class="form-control phone-mask" placeholder="905 272 7402" aria-label="905 272 7402" aria-describedby="basic-default-phone" />
+                  <div id="mobile-error" class="error"></div>
                 </div>
               </div>
               <div class="row mb-3">
@@ -133,6 +147,7 @@ if (isset($_POST['addnewstudent'])) {
                       <option value="ECE">ECE</option>
                       <option value="EEE">EEE</option>
                     </select>
+                    <div id="branch-error" class="error"></div>
                   </div>
                 </div>
               </div>
@@ -149,6 +164,7 @@ if (isset($_POST['addnewstudent'])) {
                       <option value="E">E</option>
                       <option value="F">F</option>
                     </select>
+                    <div id="section-error" class="error"></div>
                   </div>
                 </div>
               </div>
@@ -164,6 +180,7 @@ if (isset($_POST['addnewstudent'])) {
                       <option value="2025">Third Year</option>
                       <option value="2024">Fourth Year</option>
                     </select>
+                    <div id="batch-error" class="error"></div>
                   </div>
                 </div>
               </div>
@@ -179,6 +196,7 @@ if (isset($_POST['addnewstudent'])) {
                 <div class="col-sm-10">
                   <input class="form-check-input" type="checkbox" name="gamestatus" value="1" id="defaultCheck2" />
                   <label class="form-check-label" for="defaultCheck2"> Allow to Play</label>
+                  <div id="allowtoplay-error" class="error"></div>
                 </div>
               </div>
 
@@ -188,14 +206,6 @@ if (isset($_POST['addnewstudent'])) {
                 </div>
               </div>
               <!-- Error placeholders for other fields -->
-              <div id="name-error" class="error"></div>
-              <div id="regno-error" class="error"></div>
-              <div id="email-error" class="error"></div>
-              <div id="mobile-error" class="error"></div>
-              <div id="branch-error" class="error"></div>
-              <div id="section-error" class="error"></div>
-              <div id="batch-error" class="error"></div>
-              <div id="captcha-error" class="error"></div>
             </form>
           </div>
         </div>
@@ -223,6 +233,8 @@ if (isset($_POST['addnewstudent'])) {
       document.getElementById("email-error").innerHTML = "";
       document.getElementById("mobile-error").innerHTML = "";
 
+      document.getElementById('allowtoplay-error').innerHTML = "";
+
       // Basic field validation
       var isValid = true;
 
@@ -236,10 +248,10 @@ if (isset($_POST['addnewstudent'])) {
         isValid = false;
       } else {
         var regnoPattern = /^\w{10}$/;
-                if (!regnoPattern.test(regno)) {
-                    document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
-                    isValid = false;
-                }
+        if (!regnoPattern.test(regno)) {
+          document.getElementById("regno-error").innerHTML = "Invalid Register Number format";
+          isValid = false;
+        }
 
       }
 
@@ -248,10 +260,10 @@ if (isset($_POST['addnewstudent'])) {
         isValid = false;
       } else {
         var emailPattern = /.+@.+/;
-                if (!emailPattern.test(email)) {
-                    document.getElementById("email-error").innerHTML = "Invalid Email format";
-                    isValid = false;
-                }
+        if (!emailPattern.test(email)) {
+          document.getElementById("email-error").innerHTML = "Invalid Email format";
+          isValid = false;
+        }
       }
 
       if (mobile === "") {
@@ -259,17 +271,38 @@ if (isset($_POST['addnewstudent'])) {
         isValid = false;
       } else {
         var mobilePattern = /^[6-9]\d{9}$/;
-                if (!mobilePattern.test(mobile)) {
-                    document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format (must be 10 digits)";
-                    isValid = false;
-                }
+        if (!mobilePattern.test(mobile)) {
+          document.getElementById("mobile-error").innerHTML = "Invalid Mobile Number format (must be 10 digits)";
+          isValid = false;
+        }
 
       }
-
 
       return isValid; // Form is valid if all validations pass
     }
   </script>
+  <script>
+    // Function to validate before allowing "Allow to Play" checkbox
+    function validateAllowToPlay() {
+      var paymentConfirmationCheckbox = document.getElementById("defaultCheck1");
+      var allowToPlayCheckbox = document.getElementById("defaultCheck2");
+      var paymentInfoError = document.getElementById("allowtoplay-error");
+
+      // Check if Payment Confirmation checkbox is not selected
+      if (!paymentConfirmationCheckbox.checked) {
+        paymentInfoError.textContent = "Please confirm payment first.";
+        return false; // Prevent checking "Allow to Play" checkbox
+      } else {
+        paymentInfoError.textContent = ""; // Clear error message
+        return true; // Allow checking "Allow to Play" checkbox
+      }
+    }
+
+    // Attach the validation function to the "Allow to Play" checkbox
+    var allowToPlayCheckbox = document.getElementById("defaultCheck2");
+    allowToPlayCheckbox.addEventListener("click", validateAllowToPlay);
+  </script>
+
 
 
 </body>
