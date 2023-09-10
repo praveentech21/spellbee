@@ -69,10 +69,13 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `status`=0 and `pay
                   <th>REGISTRATION NO</th>
                   <th>DEPARTMENT</th>
                   <th>YEAR</th>
+                  <th>Status</th>
                   <th>Replay</th>
                 </tr>
               </thead>
-              <?php while ($row = mysqli_fetch_array($notpayed)) { ?>
+              <?php while ($row = mysqli_fetch_array($notpayed)) {
+                $tresponces = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM `responses` WHERE `sid` = '$row[regno]'"))['count(*)'];
+              ?>
                 <tr>
                   <td><strong><?php echo strtoupper($row['player_name']) ?></strong></td>
                   <td><?php echo strtoupper($row['regno']) ?></td>
@@ -81,6 +84,16 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `status`=0 and `pay
                       elseif ($row['place'] == '2026') echo "Second Year";
                       elseif ($row['place'] == '2025') echo "Third Year";
                       elseif ($row['place'] == '2024') echo "Fourth Year";
+                      ?></td>
+                  <td><?php if ($row['payment_status'] == '0') echo "Not Paid";
+                      elseif ($row['payment_status'] == '1' and $row['status'] == '0') echo "Payment Confirmed";
+                      elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces == 0) echo "Go and Play";
+                      elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces < 15) echo "Semi Played";
+                      elseif ($row['payment_status'] == '1' and $row['status'] == '1' and $tresponces == 15) echo "Game Completed";
+                      elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '0') echo "Choose to Replay";
+                      elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces < '15') echo "Semi Replay";
+                      elseif ($row['payment_status'] > 1 and $row['status'] == '1' and $tresponces == '15') echo "Replayed";
+                      else echo "Update Status";
                       ?></td>
                   <td>
                     <button type="button" class="btn rounded-pill btn-danger confirm-game" data-toggle="modal" data-target="#confirmationModal" data-pid="<?php echo $row['pid']; ?>">Allow</button>
@@ -138,21 +151,21 @@ $notpayed = mysqli_query($conn, "SELECT * FROM `users` WHERE `status`=0 and `pay
         $("#confirmButton").click(function() {
           // Send the AJAX request to update the game confirmation
           $.ajax({
-          type: "POST",
-          url: "update_payment.php", // Replace with the URL of your PHP script
-          data: {
-            allow: pid
-          }, // Send the user ID to the server
-          success: function(response) {
-            // Handle the server response if needed
-            console.log("Replay Confirmed successfully.");
-            window.location.reload();
-          },
-          error: function() {
-            // Handle errors if the AJAX request fails
-            console.error("Error in Repayment confirmation.");
-          }
-        });
+            type: "POST",
+            url: "update_payment.php", // Replace with the URL of your PHP script
+            data: {
+              allow: pid
+            }, // Send the user ID to the server
+            success: function(response) {
+              // Handle the server response if needed
+              console.log("Replay Confirmed successfully.");
+              window.location.reload();
+            },
+            error: function() {
+              // Handle errors if the AJAX request fails
+              console.error("Error in Repayment confirmation.");
+            }
+          });
 
           // Close the modal
           $("#confirmationModal").modal("hide");

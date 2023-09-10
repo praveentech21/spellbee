@@ -6,14 +6,17 @@
 
    include "connect.php";
 
+   
    $sid=$_SESSION['pid'];
-
+   
    $nqres=mysqli_query($conn, "SELECT count(*) from responses where sid='$sid';"); 		
-
+   
    $qres=mysqli_fetch_array($nqres);
-
+   
    $q=$qres[0]+1;  
-
+	
+   $statuscheck = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `status` from users where pid='$sid';"))['status'];
+   if($statuscheck == 0) header("Location: index.php?stop");
 
   if(isset($_GET['qid']))
   {	  

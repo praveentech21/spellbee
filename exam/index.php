@@ -54,12 +54,19 @@
                echo "<center><span style='color:red;'>You are now logged out!</span></center>";
 			 }			   
 		 }
-		else if(isset($_REQUEST['pwderror']))
+		 else if(isset($_REQUEST['pwderror']))
 		 {
 		   session_start(); 
   		   $_SESSION = array();
            session_destroy();
            echo "<center><span style='color:red;' id='foo'><b>Invalid Secret Pin / Mobile!</b></span></center>";
+		 }
+		 else if(isset($_REQUEST['stop']))
+		 {
+		   session_start(); 
+  		   $_SESSION = array();
+           session_destroy();
+           echo "<center><span style='color:red;' id='foo'><b>You are Misusing the Game</b></span></center>";
 		 }
 		else if(isset($_REQUEST['wpin']))
 		 {
