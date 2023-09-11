@@ -5,20 +5,18 @@
 
   include 'connect.php';
   $date = date('Y-m-d');
-  $csd = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'csd' and DATE(`lastseen`) = '$date' "));
-  $csbs = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'csbs' and DATE(`lastseen`) = '$date' "));
-  $cse = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'cse' and DATE(`lastseen`) = '$date' "));
-  $it = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'it' and DATE(`lastseen`) = '$date' "));
-  $cic = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'cic' and DATE(`lastseen`) = '$date' "));
-  $cseiot = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'cse(iot)' and DATE(`lastseen`) = '$date' "));
-  $civil = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'civil' and DATE(`lastseen`) = '$date' "));
-  $ece = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'ece' and DATE(`lastseen`) = '$date' "));
-  $eee = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'eee' and DATE(`lastseen`) = '$date' "));
-  $mech = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'mech' and DATE(`lastseen`) = '$date' "));
-  $aids = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'aids' and DATE(`lastseen`) = '$date' "));
-  $aiml = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'aiml' and DATE(`lastseen`) = '$date' "));
-
-  
+  $csd = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'CSD' and DATE(`lastseen`) = '$date' "));
+  $csbs = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'CSBS' and DATE(`lastseen`) = '$date' "));
+  $cse = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'CSE' and DATE(`lastseen`) = '$date' "));
+  $it = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'IT' and DATE(`lastseen`) = '$date' "));
+  $cic = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'CIC' and DATE(`lastseen`) = '$date' "));
+  $cseiot = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'CSIT' and DATE(`lastseen`) = '$date' "));
+  $civil = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'CIVIL' and DATE(`lastseen`) = '$date' "));
+  $ece = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'ECE' and DATE(`lastseen`) = '$date' "));
+  $eee = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'EEE' and DATE(`lastseen`) = '$date' "));
+  $mech = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'MECH' and DATE(`lastseen`) = '$date' "));
+  $aids = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'AIDS' and DATE(`lastseen`) = '$date' "));
+  $aiml = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE `department` = 'AIML' and DATE(`lastseen`) = '$date' "));
 
 ?>
 <!DOCTYPE html>
@@ -86,7 +84,7 @@
                         <tbody>
                         <tr>
                           <?php 
-                          $todaygames = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `users` WHERE DATE(`lastseen`) = '$date' ")); ?>
+                          $todaygames = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM `responses` WHERE date(timestamp) = '$date' GROUP BY sid;")); ?>
                             <th>Number of Games</th>
                             <th><?php echo $todaygames ?></th>
                           </tr>
