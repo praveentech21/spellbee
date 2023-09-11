@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if(isset($_POST['mobile']) && $_POST['pin']=="191123")
+if(isset($_POST['mobile']) && $_POST['pin']=="291122")
 {
   $pid=$_POST['mobile'];
   $pin="0000";
