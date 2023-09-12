@@ -13,11 +13,13 @@
                 <h2 class="margin-bottom-0">CHECK OUTS </h2>
                 <!-- <h5><a href='http://saipraveen.free.nf/campusonline' target='_new'>Campus Online</a></h5> -->
                 <h5><a href='register.php' target='_new'>Register</a></h5>
+                <h5><a href='ranks.php' target='_new'>Leaderboard</a></h5>
                 <!-- <h5><a href='ranks.php' target='_new'>Ranks</a></h5> -->
                 <h5><a href='rules.php' target='_new'>Rules</a></h5>
                 <!-- <h5><a href='certificate.php' target='_new'>Certificate</a></h5> -->
                 <!-- <h5><a href='prizes.php' target='_new'>Prizes</a></h5> -->
                 <h5><a href='feedback.php' target='_new'>Feedback</a></h5>
+                <h5><a href='certificate.php' target='_new'>Downlode Certificates</a></h5>
             </div>
 
             <div class="col-md-3 col-sm-6 pre-footer-col">
