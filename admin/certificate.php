@@ -151,7 +151,7 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
         name.toUpperCase();
         
 
-            var message = "Dear "+name+",\nThank You for Registering to SRKR SpellBee Challenge 2023\nThis certificate is presented to you in recognition of your active participation in SRKR SPELL BEE CHAMP. We hope you enjoyed the event and we look forward to seeing you again next year.\n\nVisit https://srkrec.edu.in/spellbee/ranks.php \nfor more details and leaderboard score...\n\n-SRKR SpellBee Organizing Team(SDC), CSD";
+            var message = "Dear "+name+",\nThank You for being a part of SRKR SpellBee Challenge 2023\nThis certificate is presented to you in recognition of your active participation in SRKR SPELL BEE CHAMP. We hope you enjoyed the event.\n\nDownload Your Level 1 Certificate @  https://srkrec.edu.in/spellbee/certificate.php \nFor more details and leaderboard score, visit https://srkrec.edu.in/spellbee/\n\n-SRKR SpellBee Organizing Team(SDC), CSD";
 
 
         // Encode the message for use in a URL
