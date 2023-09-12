@@ -288,10 +288,58 @@ $aiml = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `depart
                     <th><?php echo $aboutadmin['team_name'] ?></th>
                     <th><?php echo $aboutadmin['admin_name'] ?></th>
                     <th><?php echo $aboutadmin['stall_area'] ?></th>
-                    <th><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE date(`lastseen`) = '$date' AND admin = '{$_SESSION['admin']}'"))?></th>
-                    <th><?php echo $tdpcf = mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE date(`lastseen`) = '$date' AND `pconfprby` = '{$_SESSION['admin']}'")) ?></th>
-                    <th><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE date(`lastseen`) = '$date' AND `gameconfby` = '{$_SESSION['admin']}'")) ?></th>
-                    <th><?php echo $tdrepl = mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `replay` WHERE date(`date`) = '$date' and `confby` = '{$_SESSION['admin']}'")) ?></th>
+                    <th><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE date(`lastseen`) = '$date' AND admin = '{$aboutadmin['mobile']}'"))?></th>
+                    <th><?php echo $tdpcf = mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE date(`lastseen`) = '$date' AND `pconfprby` = '{$aboutadmin['mobile']}'")) ?></th>
+                    <th><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE date(`lastseen`) = '$date' AND `gameconfby` = '{$aboutadmin['mobile']}'")) ?></th>
+                    <th><?php echo $tdrepl = mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `replay` WHERE date(`date`) = '$date' and `confby` = '{$aboutadmin['mobile']}'")) ?></th>
+                    <th><?php echo ($tdpcf * 20) + ($tdrepl * 10) ?></th>
+                  </tr>
+                <?php }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--/ Today Delivary Agent Report Ends Here Shiva -->
+
+      <!-- Super Admin Access Ends Hear -->
+      <br><br>
+      <hr>
+
+            <!-- Today Delivary Agent Report Starts Here Shiva -->
+            <div class="card">
+        <h5 class="card-header">Overall Stall Wise Status</h5>
+        <div class="card-body">
+          <div class="table-responsive text-nowrap">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Team Name</th>
+                  <th>Lead</th>
+                  <th>Place</th>
+                  <th>NO of registrations</th>
+                  <th>NO of Payment Confirmations</th>
+                  <th>No of Game Confirmations</th>
+                  <th>No of Replays</th>
+                  <th>Todat amount Collected</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $admindetails = mysqli_query($conn, "SELECT * FROM `admins`");
+                while ($aboutadmin = mysqli_fetch_assoc($admindetails)) {
+                  
+                  ?>
+
+                  <tr>
+                    <th><?php echo $aboutadmin['team_name'] ?></th>
+                    <th><?php echo $aboutadmin['admin_name'] ?></th>
+                    <th><?php echo $aboutadmin['stall_area'] ?></th>
+                    <th><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE admin = '{$aboutadmin['mobile']}'"))?></th>
+                    <th><?php echo $tdpcf = mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `pconfprby` = '{$aboutadmin['mobile']}'")) ?></th>
+                    <th><?php echo mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `users` WHERE `gameconfby` = '{$aboutadmin['mobile']}'")) ?></th>
+                    <th><?php echo $tdrepl = mysqli_num_rows(mysqli_query($conn,"SELECT `pid` FROM `replay` WHERE `confby` = '{$aboutadmin['mobile']}'")) ?></th>
                     <th><?php echo ($tdpcf * 20) + ($tdrepl * 10) ?></th>
                   </tr>
                 <?php }
