@@ -15,7 +15,7 @@ $white = imagecolorallocate($im, 255, 255, 255);
 $black = imagecolorallocate($im, 0, 0, 0);
 $font = './roboto.ttf'; // Provide the correct path to your font file
 
-$rollno=($_POST['rollno']);
+$rollno=($_GET['rollno']);
 include "../connect.php";
 
 $result=mysqli_query($conn, "SELECT * FROM `users` WHERE `pid`='$rollno'");
@@ -71,7 +71,11 @@ $myfile = "tmp/".$rollno.".png";
 // output the image as a png
 
 imagepng($im, $myfile);
-
+?>
+<script>
+  window.open("tmp/<?php echo $rollno; ?>.png");
+</script>
+<?php
 imagedestroy($im);
 	}		
 ?>
