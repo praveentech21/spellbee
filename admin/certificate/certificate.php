@@ -30,23 +30,23 @@ else
 	//echo "<h2 style='color:#AA0055;font-family:Arial;'>CODE MASTER 2018 - LEVEL 1 CERTIFICATE</h2>";  
   $sname=ucwords(strtolower($row['player_name']));
   $rollno=$row['regno'];
-  if($row['place'] == '2020') $year = '4'; 
-  elseif($row['place'] == '2021') $year = '3'; 
-  elseif($row['place'] == '2022') $year = '2'; 
-  else $year = '1';
+  if($row['place'] == '2024') $year = '4'; 
+  elseif($row['place'] == '2025') $year = '3'; 
+  elseif($row['place'] == '2026') $year = '2'; 
+  elseif($row['place'] == '2027') $year = '1';
 
   if($row['department'] == 'CSD') $department = 'Computer Science and Design';
-  elseif($row['department'] == 'CSE') $department = 'Computer Science and Engineering';
-  elseif($row['department'] == 'ECE') $department = 'Electronics and Communication Engineering';
-  elseif($row['department'] == 'EEE') $department = 'Electrical and Electronics Engineering';
+  elseif($row['department'] == 'CSE') $department = 'CSE';
+  elseif($row['department'] == 'ECE') $department = 'ECE';
+  elseif($row['department'] == 'EEE') $department = 'EEE';
   elseif($row['department'] == 'MECH') $department = 'Mechanical Engineering';
   elseif($row['department'] == 'CIVIL') $department = 'Civil Engineering';
   elseif($row['department'] == 'IT') $department = 'Information Technology';
-  elseif($row['department'] == 'AIDS') $department = 'Artificial Intelligence and Data Science';
-  elseif($row['department'] == 'AIML') $department = 'Artificial Intelligence and Machine Learning';
-  elseif($row['department'] == 'CSBS') $department = 'Computer Science and Business Systems';
-  elseif($row['department'] == 'CSE(IOT)') $department = 'Computer Science and Engineering (Internet of Things)';
-  elseif($row['department'] == 'CIC') $department = 'Computer Science and Engineering ';
+  elseif($row['department'] == 'AIDS') $department = 'AIDS';
+  elseif($row['department'] == 'AIML') $department = 'AIML';
+  elseif($row['department'] == 'CSBS') $department = 'CSBS';
+  elseif($row['department'] == 'CST') $department = 'CSI';
+  elseif($row['department'] == 'CIC') $department = 'CIC';
 
   //$name=$sname." - ".$rollno;
   $name=$sname;
@@ -63,16 +63,12 @@ imagettftext($im, 20, 0, 500, 353, $black, $font, $text);
 $text = $batch; 
 imagettftext($im, 20, 0, 150, 413, $black, $font, $text);
 
-
-
-
 $myfile = "tmp/".$rollno.".png";
 
 // output the image as a png
 
 imagepng($im, $myfile);
 
-echo 'jai sri ram';
 // tidy up
 
 imagedestroy($im);
