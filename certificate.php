@@ -25,7 +25,7 @@ if (isset($_POST['newregistration'])) {
     $responseData = json_decode($response);
 
     if ($responseData->success) {
-        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE  `pid` = '$mobile' and `points` is not null")) != 1) {
+        if (mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE  `pid` = '$mobile' and `points` is NOT NULL")) != 1) {
             echo "<script>alert('You have not Completed the game go and play game in Campus Online Stalls');</script>";
         } else {
           header("Location: certificate/certificate.php?rollno=$mobile");
@@ -116,7 +116,7 @@ if (isset($_POST['newregistration'])) {
 
             <div class="col-md-4">
 
-                <h3><strong>Online Registrations</strong><br></h3>
+                <h3><strong>Online Certificate</strong><br></h3>
                 <h3 id="error_register"><strong></strong><br></h3>
 
                 <form class="contact-form" id='reg1' method='post' action='#'>

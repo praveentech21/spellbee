@@ -4,7 +4,7 @@ if (!isset($_SESSION['admin'])) header("location: login.php");
 
 include 'connect.php';
 
-$replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NULL");
+$replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` =3000");
 
 ?>
 
@@ -57,7 +57,7 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
 
       <!-- Bordered Table -->
       <div class="card">
-        <h5 class="card-header">Game certificate</h5>
+        <h5 class="card-header">Merite Certificate</h5>
         <div class="card-body">
           <div class="table-responsive text-nowrap">
             <table class="table table-bordered" id="registrationTable">

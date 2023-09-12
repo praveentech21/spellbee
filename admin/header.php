@@ -115,6 +115,18 @@ if ($_SESSION['category'] == 'stall') {
 
           <li class="menu-item ">
 
+            <a href="meritcertificate.php" class="menu-link">
+
+              <i class="menu-icon tf-icons bx bx-file"></i>
+
+              <div data-i18n="Analytics">Merit Certificate</div>
+
+            </a>
+
+          </li>
+
+          <li class="menu-item ">
+
             <a href="stopgame.php" class="menu-link">
 
               <i class="menu-icon tf-icons bx bx-box"></i>
@@ -353,6 +365,18 @@ if ($_SESSION['category'] == 'stall') {
                       <i class="menu-icon tf-icons bx bx-file"></i>
 
                       <div data-i18n="Analytics">Certificate</div>
+
+                    </a>
+
+                  </li>
+
+                  <li class="menu-item ">
+
+                    <a href="meritcertificate.php" class="menu-link">
+
+                      <i class="menu-icon tf-icons bx bx-file"></i>
+
+                      <div data-i18n="Analytics">Merit Certificate</div>
 
                     </a>
 
