@@ -127,7 +127,7 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
             var link = document.createElement("a");
 
             // Set the href attribute to the file URL
-            link.href = "https://localhost/spellbee/admin/certificate/tmp/" + rolll + ".png";
+            link.href = "https://srkrec.edu.in/spellbee/admin/certificate/tmp/" + rolll + ".png";
 
             // Set the download attribute to specify the filename
             link.download = rolll + ".png";
@@ -135,7 +135,7 @@ $replayers = mysqli_query($conn, "SELECT * FROM `users` WHERE `points` IS NOT NU
             // Trigger a click event on the anchor element
             link.click();
 
-            window.open("https://localhost/spellbee/admin/certificate/tmp/" + rolll + ".png" , "_blank");
+            window.open("https://srkrec.edu.in/spellbee/admin/certificate/tmp/" + rolll + ".png" , "_blank");
 
           },
           error: function() {
