@@ -458,7 +458,7 @@
                 <a href="leaderboard.php?dept=CIC" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Internet of Things and Cyber Security</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSIT' ")) ?>br><br></em>
+                        <em><br><br>Register: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSIT' ")) ?><br><br></em>
                         <b>View CIC LeaderBoard</b>
                     </div>
                 </a>
