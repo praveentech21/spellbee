@@ -138,11 +138,11 @@
                             <div class="center-block-body">
                                 <span class="carousel-subtitle-v1">IMPORTANT DATES</span>
                                 <h3 class="margin-bottom-20 animate-delay promo-like-text" data-animation="animated fadeInDown">
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 24th
-                                        SEP 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 24th SEP - 4th
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 10th
                                         OCT 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 10th OCTOBER
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 10th OCT - 15th
+                                        OCT 2023</div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 15th OCTOBER
                                         2023</div>
                                 </h3>
                             </div>
