@@ -127,13 +127,14 @@ if (isset($_POST['newregistration'])) {
           <div class="h-captcha" data-sitekey="f6892b7e-56c6-4010-a3c0-2878d8437349"></div>
           <br><br>
 
-          <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="REGISTER NOW" id="regbutton"></center>
+          <center><input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Download Now" id="regbutton"></center>
 
         </form>
 
                 <br><br>
                 <h3><strong>NOTE: </strong> You can Pay money in our stalls and confirm you Registration, If you want to
-                    pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3><br><br>
+                    pay money online you can <strong><a href="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" target="_blank">Register Here</a></strong>.</h3>
+                    <br><br>
                 <!-- <br><br><br><br><br><br><br><br><br><br><br> -->
 
             </div>

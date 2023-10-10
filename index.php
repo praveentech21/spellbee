@@ -140,9 +140,9 @@
                                 <h3 class="margin-bottom-20 animate-delay promo-like-text" data-animation="animated fadeInDown">
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 10th
                                         OCT 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 10th OCT - 15th
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 11th OCT - 15th
                                         OCT 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 15th OCTOBER
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> 17th OCTOBER
                                         2023</div>
                                 </h3>
                             </div>
