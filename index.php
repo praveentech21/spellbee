@@ -13,7 +13,9 @@
 
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Fonts START -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    <link
+        href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all"
+        rel="stylesheet" type="text/css">
     <!-- Fonts END -->
     <!-- Global styles BEGIN -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,26 +36,26 @@
 
 
     <style type='text/css'>
-        .blink {
-            animation: blink-animation 3s steps(5, start) infinite;
-            -webkit-animation: blink-animation 3s steps(5, start) infinite;
-        }
+    .blink {
+        animation: blink-animation 3s steps(5, start) infinite;
+        -webkit-animation: blink-animation 3s steps(5, start) infinite;
+    }
 
-        @keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
+    @keyframes blink-animation {
+        to {
+            visibility: hidden;
         }
+    }
 
-        @-webkit-keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
+    @-webkit-keyframes blink-animation {
+        to {
+            visibility: hidden;
         }
+    }
 
-        h3 {
-            font-size: 14px;
-        }
+    h3 {
+        font-size: 14px;
+    }
     </style>
 
 </head>
@@ -63,25 +65,8 @@
 
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel">
-        <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" data-text="REGISTER NOW" data-color="#C91E3E" data-size="medium">
-            <script>
-                (function() {
-                    var d = document;
-                    var x = !d.getElementById('razorpay-embed-btn-js')
-                    if (x) {
-                        var s = d.createElement('script');
-                        s.defer = !0;
-                        s.id = 'razorpay-embed-btn-js';
-                        s.src = 'https://cdn.razorpay.com/static/embed_btn/bundle.js';
-                        d.body.appendChild(s);
-                    } else {
-                        var rzp = window['__rzp__'];
-                        rzp && rzp.init && rzp.init()
-                    }
-                })();
-            </script>
-        </div>
-
+        <div class="color-mode-icons icon-color"><a href='secondround.php' style='color:#FFF'>Selected List</a></div>
+        <!-- <div class="color-mode-icons icon-color-close"></div> -->
     </div>
     <!-- END BEGIN STYLE CUSTOMIZER -->
 
@@ -128,8 +113,10 @@
 
                 <div class="item carousel-item-one active">
                     <img class="carousel-position-srkrec animate-delay" data-animation="animated fadeInDown">
-                    <img class="animate-delay" style='padding-top:150px;' src="assets/onepage/img/slider/cup.png" alt="SpellBee Challenge" data-animation="animated fadeInDown">
-                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay" data-animation="animated fadeInUp">
+                    <img class="animate-delay" style='padding-top:150px;' src="assets/onepage/img/slider/cup.png"
+                        alt="SpellBee Challenge" data-animation="animated fadeInDown">
+                    <img class="carousel-position-coders hidden-sm hidden-xs animate-delay"
+                        data-animation="animated fadeInUp">
                 </div>
 
                 <div class="item carousel-item-three">
@@ -137,7 +124,8 @@
                         <div class="center-block-wrap">
                             <div class="center-block-body">
                                 <span class="carousel-subtitle-v1">IMPORTANT DATES</span>
-                                <h3 class="margin-bottom-20 animate-delay promo-like-text" data-animation="animated fadeInDown">
+                                <h3 class="margin-bottom-20 animate-delay promo-like-text"
+                                    data-animation="animated fadeInDown">
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 10th
                                         OCT 2023</div>
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 11th OCT - 15th
@@ -148,7 +136,9 @@
                             </div>
                         </div>
                     </div>
-                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay" src="assets/onepage/img/slider/cup.png" width='300px' alt="Prizes" data-animation="animated fadeInUp">
+                    <img class="carousel-position-three hidden-sm hidden-xs animate-delay"
+                        src="assets/onepage/img/slider/cup.png" width='300px' alt="Prizes"
+                        data-animation="animated fadeInUp">
                 </div>
             </div>
 
@@ -328,7 +318,9 @@
     <div class="portfolio-block content content-center" id="portfolio">
         <div class="container">
             <h2 class="margin-bottom-50">Department Wise <strong>Leader Board</strong></h2>
-            <a href="ranks.php" target="_blank" class="btn blink" style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b> VIEW SRKR SPELLBEE LEADERBOARD</b></a><br><br><br>
+            <a href="ranks.php" target="_blank" class="btn blink"
+                style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b> VIEW
+                    SRKR SPELLBEE LEADERBOARD</b></a><br><br><br>
 
         </div>
         <div class="row">
@@ -338,7 +330,9 @@
                 <a href="leaderboard.php?dept=CIVIL" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Civil Engineering</strong>
-                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CIVIL' ")) ?> <br><br></em>
+                        <em><br><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CIVIL' ")) ?>
+                            <br><br></em>
                         <b>View CIVIL LeaderBoard</b>
                     </div>
                 </a>
@@ -348,7 +342,9 @@
                 <a href="leaderboard.php?dept=CSE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science & Engineering</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSE' ")) ?> <br><br></em>
+                        <em><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSE' ")) ?>
+                            <br><br></em>
                         <b>View CSE LeaderBoard</b>
                     </div>
                 </a>
@@ -358,7 +354,8 @@
                 <a href="leaderboard.php?dept=ECE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electronics & Communication Engineering</strong>
-                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'ECE' ")) ?><br><br></em>
+                        <em><br><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'ECE' ")) ?><br><br></em>
                         <b>View ECE LeaderBoard</b>
                     </div>
                 </a>
@@ -368,7 +365,8 @@
                 <a href="leaderboard.php?dept=EEE" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Electrical & Electronics Engineering</strong>
-                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'EEE' ")) ?><br><br></em>
+                        <em><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'EEE' ")) ?><br><br></em>
                         <b>View EEE LeaderBoard</b>
                     </div>
                 </a>
@@ -379,7 +377,8 @@
                 <a href="leaderboard.php?dept=IT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Information Technology</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'IT' ")) ?><br><br></em>
+                        <em><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'IT' ")) ?><br><br></em>
                         <b>View IT LeaderBoard</b>
                     </div>
                 </a>
@@ -389,7 +388,8 @@
                 <a href="leaderboard.php?dept=MECH" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Mechanical Engineering</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'MECH' ")) ?><br><br></em>
+                        <em><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'MECH' ")) ?><br><br></em>
                         <b>View MECH LeaderBoard</b>
                     </div>
                 </a>
@@ -407,7 +407,8 @@
                 <a href="leaderboard.php?dept=CSBS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>COMPUTER SCIENCE & BUSINESS SYSTEMS</strong>
-                        <em><br><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSBS' ")) ?><br><br></em>
+                        <em><br><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSBS' ")) ?><br><br></em>
                         <b>View CSBS LeaderBoard</b>
                     </div>
                 </a>
@@ -417,7 +418,8 @@
                 <a href="leaderboard.php?dept=CSD" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Design</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSD' ")) ?><br><br></em>
+                        <em><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSD' ")) ?><br><br></em>
                         <b>View CSD LeaderBoard</b>
                     </div>
                 </a>
@@ -427,7 +429,8 @@
                 <a href="leaderboard.php?dept=AIML" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence & Machine Learning </strong>
-                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'AIML' ")) ?><br><br></em>
+                        <em><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'AIML' ")) ?><br><br></em>
                         <b>View AIML LeaderBoard</b>
                     </div>
                 </a>
@@ -437,7 +440,8 @@
                 <a href="leaderboard.php?dept=AIDS" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Artificial Intelligence and Data Science</strong>
-                        <em><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'AIDS' ")) ?><br><br></em>
+                        <em><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'AIDS' ")) ?><br><br></em>
                         <b>View AI&DS LeaderBoard</b>
                     </div>
                 </a>
@@ -448,7 +452,8 @@
                 <a href="leaderboard.php?dept=CSIT" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Computer Science and Information Technology</strong>
-                        <em><br><br>Registered: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CIC' ")) ?><br><br></em>
+                        <em><br><br>Registered:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CIC' ")) ?><br><br></em>
                         <b>View CSIT LeaderBoard</b>
                     </div>
                 </a>
@@ -458,7 +463,8 @@
                 <a href="leaderboard.php?dept=CIC" class="zoom valign-center">
                     <div class="valign-center-elem">
                         <strong>Internet of Things and Cyber Security</strong>
-                        <em><br><br>Register: <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSIT' ")) ?><br><br></em>
+                        <em><br><br>Register:
+                            <?php echo mysqli_num_rows(mysqli_query($conn, "SELECT `pid` FROM `users` WHERE `department`= 'CSIT' ")) ?><br><br></em>
                         <b>View CIC LeaderBoard</b>
                     </div>
                 </a>
@@ -472,7 +478,8 @@
         <div class="container">
             <h2>Frequently Asked <strong>Questions</strong></h2>
             <h4>The frequently asked questions have been answered for better understanding of the Spell Bee Contest and
-                other details. Please feel free to contact <a href="javascript:void(0);">Technology Centre, Z-Block or call to the helpline numbers at the bottom of this page.</a>
+                other details. Please feel free to contact <a href="javascript:void(0);">Technology Centre, Z-Block or
+                    call to the helpline numbers at the bottom of this page.</a>
                 for any unanswered queries.</h4>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 text-left">
@@ -483,40 +490,50 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">Who can participate?</a>
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                                        href="#accordion1_1">Who can participate?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_1" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <p>The Spell Bee contest is only for the students of SRKR Engineering College.
                                         Students of any branch and any year can participate in the contest.</p>
-                                    <p>Students can register and pay the fee at Campus Online Stalls or at Technology Centre.</p>
+                                    <p>Students can register and pay the fee at Campus Online Stalls or at Technology
+                                        Centre.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Is there an exam fee?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                        data-parent="#accordion1" href="#accordion1_2">Is there an exam fee?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_2" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <p>For First Time: Rs. 20/-. For Replay - Rs. 10/-</p>
-                                    <p>The registration fee can be paid to our Team at Stalls or at Technology Centre to get your exam user id and password.</p>
+                                    <p>The registration fee can be paid to our Team at Stalls or at Technology Centre to
+                                        get your exam user id and password.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">What is the benefit of taking this contest?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                        data-parent="#accordion1" href="#accordion1_3">What is the benefit of taking
+                                        this contest?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_3" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>SpellBee Challenge is a popular contest all across the globe and participating/winning in such contests can be helpful in your career and in your placements. The exciting prizes are only meant for encouragement. More than the prizes, you
-                                        can assess your Spelling skills and know where you stand among the potential peers
+                                    <p>SpellBee Challenge is a popular contest all across the globe and
+                                        participating/winning in such contests can be helpful in your career and in your
+                                        placements. The exciting prizes are only meant for encouragement. More than the
+                                        prizes, you
+                                        can assess your Spelling skills and know where you stand among the potential
+                                        peers
                                         of SRKR. SRKR SpellBee Challenge 2023 is going to generate Ranks for the top
                                         10 students based on their overall performance in the contest. A certificate of
                                         merit or participation is given to acknowledge their performance.</p>
@@ -530,7 +547,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">Where is the exam conducted?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                        data-parent="#accordion1" href="#accordion1_4">Where is the exam conducted?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_4" class="panel-collapse collapse">
@@ -545,19 +563,24 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">Is the contest tough to participate?</a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                        data-parent="#accordion1" href="#accordion1_5">Is the contest tough to
+                                        participate?</a>
                                 </h5>
                             </div>
                             <div id="accordion1_5" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>For round 1, we use the basic words that are used regularly in our daily life. For further rounds, the complexity may increase. Overall, contest has been designed for an average student to participate.</p>
+                                    <p>For round 1, we use the basic words that are used regularly in our daily life.
+                                        For further rounds, the complexity may increase. Overall, contest has been
+                                        designed for an average student to participate.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h5 class="panel-title">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">I have other doubts. Whom do I
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                        data-parent="#accordion1" href="#accordion1_6">I have other doubts. Whom do I
                                         contact?</a>
                                 </h5>
                             </div>
@@ -590,7 +613,9 @@
 
     <!-- Facts block BEGIN -->
     <div class="facts-block content content-center" id="facts-block">
-        <a href="ranks.php" target="_blank" class="btn blink" style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b> View SRKR SPELLBEE LEADERBOARD</b></a>
+        <a href="ranks.php" target="_blank" class="btn blink"
+            style='background-color:#C91E3E;color:#ffff; font-size:18px;box-shadow: 3px 3px 1px white;'><b> View SRKR
+                SPELLBEE LEADERBOARD</b></a>
         <br><br><br>
         <h2>Spell Champ 2023 Registration Stats</h2>
         <div class="container">
@@ -727,94 +752,94 @@
             <h2>Meet <strong>The Student Team</strong></h2>
             <div class="row">
                 <style>
-                    /* Style for the news scrolling section */
-                    .news-scrolling {
-                        background-color: #C91E3E;
-                        /* Background color for the scrolling section */
-                        padding: 10px 0;
-                        /* 10px padding at the top and bottom */
-                        text-align: center;
-                        white-space: nowrap;
-                        /* Prevent text from wrapping to multiple lines */
-                        overflow: hidden;
-                        /* Hide overflow content */
-                        color: #FFFFFF;
-                        /* Text color */
-                        font-size: 16px;
-                        /* Font size */
-                        font-weight: bold;
-                        /* Bold text */
+                /* Style for the news scrolling section */
+                .news-scrolling {
+                    background-color: #C91E3E;
+                    /* Background color for the scrolling section */
+                    padding: 10px 0;
+                    /* 10px padding at the top and bottom */
+                    text-align: center;
+                    white-space: nowrap;
+                    /* Prevent text from wrapping to multiple lines */
+                    overflow: hidden;
+                    /* Hide overflow content */
+                    color: #FFFFFF;
+                    /* Text color */
+                    font-size: 16px;
+                    /* Font size */
+                    font-weight: bold;
+                    /* Bold text */
+                }
+
+                /* Style for the scrolling marquee */
+                .marquee {
+                    animation: marquee 45s linear infinite;
+                    /* Start the marquee animation immediately */
+                    display: inline-block;
+                    /* Ensure the marquee stays inline */
+                    white-space: nowrap;
+                    /* Prevent text from wrapping */
+                }
+
+
+                /* Pause the marquee animation on hover */
+                .marquee:hover {
+                    animation-play-state: paused;
+                }
+
+                /* Keyframes for the marquee animation */
+                @keyframes marquee {
+                    0% {
+                        transform: translateX(50%);
                     }
 
-                    /* Style for the scrolling marquee */
-                    .marquee {
-                        animation: marquee 45s linear infinite;
-                        /* Start the marquee animation immediately */
-                        display: inline-block;
-                        /* Ensure the marquee stays inline */
-                        white-space: nowrap;
-                        /* Prevent text from wrapping */
+                    100% {
+                        transform: translateX(-100%);
                     }
+                }
 
+                /* Style for individual news items */
+                .news-item {
+                    display: inline-block;
+                    white-space: nowrap;
+                    /* Prevent text from wrapping to multiple lines */
+                    margin-right: 20px;
+                    /* Add a margin to create a gap between names */
+                }
 
-                    /* Pause the marquee animation on hover */
-                    .marquee:hover {
-                        animation-play-state: paused;
-                    }
+                /* Style for news text (non-link part) */
+                .news-text {
+                    color: #FFFFFF;
+                    /* Text color */
+                    display: inline;
+                    /* Display the text inline */
+                }
 
-                    /* Keyframes for the marquee animation */
-                    @keyframes marquee {
-                        0% {
-                            transform: translateX(50%);
-                        }
+                /* Style for news links */
+                .news-link {
+                    color: #C91E3E;
+                    /* Change link text color to #C91E3E */
+                    text-decoration: none;
+                    /* Remove underline from links */
+                    background-color: white;
+                    /* Change background color to white */
+                    padding: 5px 5px;
+                    /* Add padding to the button for better appearance */
+                    border-radius: 5px;
+                    /* Add rounded corners to the button */
+                    display: inline;
+                    /* Display the button inline */
+                    margin-left: 10px;
+                    /* Add spacing to separate the button from the text */
+                    cursor: pointer;
+                    /* Change cursor to pointer on hover */
+                }
 
-                        100% {
-                            transform: translateX(-100%);
-                        }
-                    }
-
-                    /* Style for individual news items */
-                    .news-item {
-                        display: inline-block;
-                        white-space: nowrap;
-                        /* Prevent text from wrapping to multiple lines */
-                        margin-right: 20px;
-                        /* Add a margin to create a gap between names */
-                    }
-
-                    /* Style for news text (non-link part) */
-                    .news-text {
-                        color: #FFFFFF;
-                        /* Text color */
-                        display: inline;
-                        /* Display the text inline */
-                    }
-
-                    /* Style for news links */
-                    .news-link {
-                        color: #C91E3E;
-                        /* Change link text color to #C91E3E */
-                        text-decoration: none;
-                        /* Remove underline from links */
-                        background-color: white;
-                        /* Change background color to white */
-                        padding: 5px 5px;
-                        /* Add padding to the button for better appearance */
-                        border-radius: 5px;
-                        /* Add rounded corners to the button */
-                        display: inline;
-                        /* Display the button inline */
-                        margin-left: 10px;
-                        /* Add spacing to separate the button from the text */
-                        cursor: pointer;
-                        /* Change cursor to pointer on hover */
-                    }
-
-                    /* Style for the white text */
-                    .white-text {
-                        color: #FFFFFF;
-                        /* Text color */
-                    }
+                /* Style for the white text */
+                .white-text {
+                    color: #FFFFFF;
+                    /* Text color */
+                }
                 </style>
 
 
@@ -962,20 +987,19 @@
     <?php include   'footer.php'; ?>
 
     <script>
-        jQuery(document).ready(function() {
-            Layout.init();
-        });
+    jQuery(document).ready(function() {
+        Layout.init();
+    });
 
-        // Get the marquee element by ID
-const marquee = document.getElementById('scrolling-marquee');
+    // Get the marquee element by ID
+    const marquee = document.getElementById('scrolling-marquee');
 
-// Resume the marquee animation when the cursor leaves the marquee
-marquee.addEventListener('mouseout', function () {
-    marquee.style.animationPlayState = 'running';
-});
-
+    // Resume the marquee animation when the cursor leaves the marquee
+    marquee.addEventListener('mouseout', function() {
+        marquee.style.animationPlayState = 'running';
+    });
     </script>
-    
+
     <!-- Global js END -->
 </body>
 

@@ -1,16 +1,9 @@
 <!-- BEGIN STYLE CUSTOMIZER -->
-    <div class="color-panel">
-    <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_MUwbEmBPOkmZtK/view" data-text="REGISTER NOW" data-color="#C91E3E" data-size="medium">
-  <script>
-    (function(){
-      var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-      if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-      s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
-      rzp && rzp.init && rzp.init()}})();
-  </script>
+<div class="color-panel">
+		<div class="color-mode-icons icon-color"><a href='secondround.php' style='color:#FFF'>Selected List</a></div>
+        <!-- <div class="color-mode-icons icon-color-close"></div> -->
 </div>
-    
-    </div>
+
     <!-- END BEGIN STYLE CUSTOMIZER -->
 
     <!-- Header BEGIN -->
