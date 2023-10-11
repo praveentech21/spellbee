@@ -8,6 +8,10 @@ include 'connect.php';
 
 $sid = $_SESSION['pid'];
 
+$game_points = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `points` from users where pid='$sid'"))['points'];
+if($game_points >= 2700)
+	header('Location: dashboard3.php');
+
 $nqres = mysqli_query($conn, "SELECT count(*) from responses where sid='$sid';");
 
 $qres = mysqli_fetch_array($nqres);

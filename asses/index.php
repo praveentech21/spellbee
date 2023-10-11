@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 include 'connect.php';
 
 //I want the words that user not yet assesed
-$words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `wordid` FROM `responces` WHERE `regno`='{$_SESSION['user']}')");
+$words = mysqli_query($conn, "SELECT * FROM `words1` WHERE `qid` NOT IN (SELECT `wordid` FROM `responces` WHERE `regno`='{$_SESSION['user']}')");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="Bhavani/" data-template="vertical-menu-template-free">
@@ -118,18 +118,18 @@ $words = mysqli_query($conn, "SELECT * FROM `words` WHERE `qid` NOT IN (SELECT `
                       <p class="card-text"><?php echo $aword['meaning'] ?></p>
                       <p class="card-text">
                         <audio id="myAudio" controls>
-                          <source src="Bhavani/sounds/<?php echo $aword['qid'] ?>.mp3" type="audio/mp3">
+                          <source src="Bhavani/sounds/secondround/<?php echo $aword['qid'] ?>.mp3" type="audio/mp3">
                           Your browser does not support the audio element.
                         </audio>
                       </p>
                       <a>
                         <button type='button' data-action="esay" class='btn btn-success assess-btn'>Easy</button>
-                        <button type='button' data-action="medium" class='btn btn-secondary assess-btn'>Medium</button>
+                        <!-- <button type='button' data-action="medium" class='btn btn-secondary assess-btn'>Medium</button> -->
                         <button type='button' data-action="difficult" class='btn btn-warning assess-btn'>Difficult</button>
                       </a>
                     </div>
                   </div>
-                <?php } ?>
+                <?php } ?>  
               </div>
             </div>
           </div>

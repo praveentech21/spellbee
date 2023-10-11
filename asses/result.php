@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 include 'connect.php';
 
 //I want the words that user not yet assesed
-$words = mysqli_query($conn, "SELECT * FROM `words` ");
+$words = mysqli_query($conn, "SELECT * FROM `words1` ");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="Bhavani/" data-template="vertical-menu-template-free">
