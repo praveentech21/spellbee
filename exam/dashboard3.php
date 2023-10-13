@@ -1,60 +1,62 @@
-<?php include "access_check.php"; ?>
+<?php include 'access_check.php'; ?>
 
-<?php 
+<?php
 
-   $right=-1;
+$right = -1;
 
-   include "connect.php";
+include 'connect.php';
 
-   
-   $sid=$_SESSION['pid'];
-   
-   $nqres=mysqli_query($conn, "SELECT count(*) from responses1 where sid='$sid';"); 		
-   
-   $qres=mysqli_fetch_array($nqres);
-   
-   $q=$qres[0]+1;  
-	
-   $statuscheck = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `status` from users where pid='$sid';"))['status'];
-   if($statuscheck == 0) header("Location: index.php?stop");
+$sid = $_SESSION['pid'];
 
-  if(isset($_GET['qid']))
-  {	  
+$nqres = mysqli_query($conn, "SELECT count(*) from responses1 where sid='$sid';");
 
-    $qid = (int)$_GET['qid'];
-    $response = strtoupper(trim($_GET['op']));
+$qres = mysqli_fetch_array($nqres);
 
-    $ans=mysqli_query($conn, "SELECT * FROM words1 where qid=$qid;"); 		
+$q = $qres[0] + 1;
 
-    $answer=mysqli_fetch_row($ans); 
+$statuscheck = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `status` from users where pid='$sid';"))['status'];
+if ($statuscheck == 0)
+	header('Location: index.php?stop');
 
-    $sid=$_SESSION['pid'];	
+if (isset($_GET['qid'])) {
+	$qid = (int) $_GET['qid'];
+	$response = strtoupper(trim($_GET['op']));
 
-    $ranswer=strtoupper($answer[1]);	  
+	$ans = mysqli_query($conn, "SELECT * FROM words1 where qid=$qid;");
 
-    $level=$answer[3];	  
+	$answer = mysqli_fetch_row($ans);
 
-    $right=1;
+	$sid = $_SESSION['pid'];
 
-    if($q<=5) { $marks=100;}
-    else if($q<=10) { $marks=200;}
-    else if($q<=15) { $marks=300;}
+	$ranswer = strtoupper($answer[1]);
 
-    if($ranswer != $response) {$marks=0; $right=0;}
+	$level = $answer[3];
 
-    $query = "insert into responses1 (sid, qid, answer,marks) values ('$sid', $qid, '$response', $marks)";  
+	$right = 1;
 
-    mysqli_query($conn, $query);  
-  }
+	if ($q <= 5) {
+		$marks = 100;
+	} else if ($q <= 10) {
+		$marks = 200;
+	} else if ($q <= 15) {
+		$marks = 300;
+	}
 
+	if ($ranswer != $response) {
+		$marks = 0;
+		$right = 0;
+	}
 
-   $nqres=mysqli_query($conn, "SELECT count(*) from responses1 where sid='$sid';"); 		
+	$query = "insert into responses1 (sid, qid, answer,marks) values ('$sid', $qid, '$response', $marks)";
 
-   $qres=mysqli_fetch_array($nqres);
+	mysqli_query($conn, $query);
+}
 
-   $q=$qres[0]+1;  
+$nqres = mysqli_query($conn, "SELECT count(*) from responses1 where sid='$sid';");
 
+$qres = mysqli_fetch_array($nqres);
 
+$q = $qres[0] + 1;
 
 ?>
 
@@ -64,7 +66,7 @@
 
 	<head>
 
-     <?php include "head.php"; ?>
+     <?php include 'head.php'; ?>
 
 	 <style>
 
@@ -120,13 +122,8 @@
 
 	<?php
 
-	
-
-    if($right==1)
-
-	{
-
-    ?>
+		if ($right == 1) {
+	?>
 
 	
 
@@ -145,14 +142,10 @@
 
 
 	<?php
+		}
 
-    }
-
-    if($right==0)
-
-	{
-
-    ?>
+		if ($right == 0) {
+			?>
 
 	
 
@@ -167,10 +160,9 @@
 
 
 	<?php
+		}
 
-    }
-
-    ?>
+	?>
 
 	
 
@@ -180,13 +172,13 @@
 
 		<section class="body">
 
-            <?php include "header.php"; ?>
+            <?php include 'header.php'; ?>
 
 			<div class="inner-wrapper">
 
 			<!-- start: sidebar -->
 
-            <?php include "sidebar.php"; ?>
+            <?php include 'sidebar.php'; ?>
 
 				<!-- end: sidebar -->
 
@@ -216,13 +208,8 @@
 
     <?php
 
-	
-
-    if($right==1)
-
-	{
-
-    ?>
+		if ($right == 1) {
+			?>
 
 				<div id="swinner" class="modal-block modal-header-color modal-block-primary">
 
@@ -275,13 +262,7 @@
 			</div>
 
             <?php
-
-	         }
-
-			 else if ($right==0)
-
-			 {
-
+		} else if ($right == 0) {
 			?>
 
 			
@@ -337,14 +318,9 @@
 			</div>
 
          <?php
-
-		 
-
 		}
 
-			 
-
-		?>
+	?>
 
 
 
@@ -360,114 +336,140 @@
 
 								<div class="card-body">
 
-	<?php			
+	<?php
 
+		if ($q <= 20) {
+			$bl = 3;
+			$be = 6;
+		} else {
+			$bl = 11;
+			$be = 15;
+		}
 
+		if ($q <= 20) {
+			echo "<h4 align='center' STYLE='COLOR:RED;'><B>YOUR QUESTION NO - $q</B></h4>";
 
-      if($q <= 5) {$bl=1;$be=3;}
+			$ques = mysqli_query($conn, "SELECT * FROM words where qid not in (select qid from responses1 where sid='$sid') and level between $bl and $be ORDER BY RAND() LIMIT 1;");
 
-	  else if($q <= 10) {$bl=4;$be=6;}
+			$qrow = mysqli_fetch_array($ques);
 
-	  else {$bl=7;$be=10;}
+			$qid = $qrow['qid'];
 
+			$ranswer = strtoupper($qrow['word']);
 
+			$question = $qrow['meaning'];
 
-      if($q <= 15)
-	  {		  
+			$lvl = $qrow['level'];
 
-	  echo "<h4 align='center' STYLE='COLOR:RED;'><B>YOUR QUESTION NO - $q</B></h4>";
+			if ($lvl <= 3) {
+				$level = 'Easy';
+			} else if ($lvl <= 6) {
+				$level = 'Moderate';
+			} else if ($lvl <= 10) {
+				$level = 'Difficult';
+			}
 
-   	  $ques=mysqli_query($conn, "SELECT * FROM words1 where qid not in (select qid from responses1 where sid='$sid') and level between $bl and $be ORDER BY RAND() LIMIT 1;"); 		 
+			$opr = array($qrow['option1'], $qrow['option2'], $qrow['option3'], $ranswer);
 
-	  $qrow=mysqli_fetch_array($ques);
+			shuffle($opr);
 
-      $qid=$qrow['qid'];	  	
+			$option1 = strtoupper($opr[0]);
 
-      $ranswer=strtoupper($qrow['word']);
+			$option2 = strtoupper($opr[1]);
 
-  	  $question = $qrow['meaning'];	  
+			$option3 = strtoupper($opr[2]);
 
-  	  $lvl=$qrow['level'];
+			$option4 = strtoupper($opr[3]);
 
-      if($lvl <= 3) { $level="Easy";}	  
+			echo "<div align='center'><h4><b>Word Meaning: </b>" . $question . '</h4></div>';
 
-      else if($lvl <= 6) { $level="Moderate";}	  
+			echo "<div align='center'><h4><b>Difficulty Level: </b>" . $level . "</h4></div><div align='center'>";
 
-      else if($lvl <= 10) { $level="Difficult";}	  
+			echo "<button class='mb-1 mt-1 mr-1 btn btn-danger' onclick='spell_sound($qid);'><span style='color:#ffffff;'><i class='fas fa-volume-up'></i> SPELL WORD <i class='fas fa-play'></i></span></button>";
 
-		  
+			// echo "<button class='mb-1 mt-1 mr-1 btn btn-primary' onclick='spell_human($qid);'><span style='color:#000000;'><i class='fas fa-volume-up'></i> SPELL HUMAN WORD <i class='fas fa-play'></i></span></button>";
 
-	  $opr = array($qrow['option1'],$qrow['option2'],$qrow['option3'],$ranswer);
+			// echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spelling();'>Submit Spelling</button></div></div>";
 
-      shuffle($opr);
+			echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spelling();'>Submit Spelling</button></div></div>";
 
+			// echo "<a href='dashboard.php?qid=$qid&op=$option1'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option1</button></a>";
 
+			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option2'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option2</button></a>";
 
-      $option1=strtoupper($opr[0]);
+			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option3'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option3</button></a>";
 
-      $option2=strtoupper($opr[1]);
+			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option4</button></a>";
 
-      $option3=strtoupper($opr[2]);
+			echo '</div>';
+		} 
+		elseif ($q <= 30) {
+			echo "<h4 align='center' STYLE='COLOR:RED;'><B>YOUR QUESTION NO - $q</B></h4>";
 
-	  $option4=strtoupper($opr[3]);
+			$ques = mysqli_query($conn, "SELECT * FROM words1 where qid not in (select qid from responses1 where sid='$sid') and level between $bl and $be ORDER BY RAND() LIMIT 1;");
 
-  		  
+			$qrow = mysqli_fetch_array($ques);
 
-      echo "<div align='center'><h4><b>Word Meaning: </b>".$question."</h4></div>";
+			$qid = $qrow['qid'];
 
-	  echo "<div align='center'><h4><b>Difficulty Level: </b>".$level."</h4></div><div align='center'>";
+			$ranswer = strtoupper($qrow['word']);
 
-	  
+			$question = $qrow['meaning'];
 
-	  echo "<button class='mb-1 mt-1 mr-1 btn btn-danger' onclick='spell_sound($qid);'><span style='color:#ffffff;'><i class='fas fa-volume-up'></i> SPELL WORD <i class='fas fa-play'></i></span></button>";
+			$lvl = $qrow['level'];
 
-	  //echo "<button class='mb-1 mt-1 mr-1 btn btn-primary' onclick='spell_human($qid);'><span style='color:#000000;'><i class='fas fa-volume-up'></i> SPELL HUMAN WORD <i class='fas fa-play'></i></span></button>";
+			if ($lvl <= 3) {
+				$level = 'Easy';
+			} else if ($lvl <= 6) {
+				$level = 'Moderate';
+			} else  {
+				$level = 'Difficult';
+			}
 
-		 
+			$opr = array($qrow['option1'], $qrow['option2'], $qrow['option3'], $ranswer);
 
-		 //echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spelling();'>Submit Spelling</button></div></div>";
+			shuffle($opr);
 
-		   
-		 echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spelling();'>Submit Spelling</button></div></div>";
+			$option1 = strtoupper($opr[0]);
 
-		   
+			$option2 = strtoupper($opr[1]);
 
-    	   
-    	   //echo "<a href='dashboard.php?qid=$qid&op=$option1'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option1</button></a>";
+			$option3 = strtoupper($opr[2]);
 
-//    	   echo "<a href='dashboard.php?qid=$qid&op=$option2'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option2</button></a>";
+			$option4 = strtoupper($opr[3]);
 
-//    	   echo "<a href='dashboard.php?qid=$qid&op=$option3'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option3</button></a>";
+			echo "<div align='center'><h4><b>Word Meaning: </b>" . $question . '</h4></div>';
 
-//    	   echo "<a href='dashboard.php?qid=$qid&op=$option4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option4</button></a>";
+			echo "<div align='center'><h4><b>Difficulty Level: </b>" . $level . "</h4></div><div align='center'>";
 
-		   
+			echo "<button class='mb-1 mt-1 mr-1 btn btn-danger' onclick='spell_sound1($qid);'><span style='color:#ffffff;'><i class='fas fa-volume-up'></i> SPELL WORD <i class='fas fa-play'></i></span></button>";
 
-		   echo "</div>";
+			// echo "<button class='mb-1 mt-1 mr-1 btn btn-primary' onclick='spell_human($qid);'><span style='color:#000000;'><i class='fas fa-volume-up'></i> SPELL HUMAN WORD <i class='fas fa-play'></i></span></button>";
 
+			// echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spelling1();'>Submit Spelling</button></div></div>";
 
+			echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spelling1();'>Submit Spelling</button></div></div>";
 
-	    }
+			// echo "<a href='dashboard.php?qid=$qid&op=$option1'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option1</button></a>";
 
-        else
+			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option2'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option2</button></a>";
 
-		{			
+			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option3'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option3</button></a>";
 
+			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option4</button></a>";
+
+			echo '</div>';
+		} 
+
+		else {
 			$points = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(marks) as points from responses1 where sid='$sid';"))['points'];
 
 			mysqli_query($conn, "UPDATE users set `points`=$points where pid='$sid';");
 
-		 echo "<h3 style='color:red;' align='center'>YOUR SPELL BEE QUIZ HAS BEEN COMPLETED!</h3>";			             
+			echo "<h3 style='color:red;' align='center'>YOUR SPELL BEE QUIZ HAS BEEN COMPLETED!</h3>";
+		}
 
-        }	
-
-
-
-
-
-		
-
-								?>
+	?>
 
 								</div>
 
@@ -525,13 +527,9 @@
 
         			<?php
 
+						$points_res = mysqli_query($conn, "SELECT * from users where pid='$sid';");
 
-
-					$points_res=mysqli_query($conn, "SELECT * from users where pid='$sid';"); 		
-
-          			$points=mysqli_fetch_array($points_res);
-
-					
+						$points = mysqli_fetch_array($points_res);
 
 					?>
 
@@ -635,23 +633,31 @@
 
 		<!-- Theme Initialization Files -->
 
-		<script src="js/theme.init.js"></script>
+		<script src="js/theme.init.js"></script>		
 
-		
-
-		
-
-		
-
-<script>
-
-
+		<script>
 
 function spell_sound(id)
 
 {
 
 	var audio = new Audio("sounds/machine/" + id + ".mp3");
+
+	audio.play();
+
+}
+
+</script>		
+
+<script>
+
+
+
+function spell_sound1(id)
+
+{
+
+	var audio = new Audio("sounds/secondround/" + id + ".mp3");
 
 	audio.play();
 
@@ -799,6 +805,54 @@ function check_spelling()
 	xmlhttp.open("GET","check_spelling.php?answer=" + answer + "&qid=" + qid,true);
 	xmlhttp.send();
 }
+function check_spelling1()
+{
+    var qid=document.getElementById('qid').value;
+    var answer = document.getElementById('answer').value;
+	
+	document.getElementById('spelling').innerHTML="";
+
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==1)
+			{
+				document.getElementById('spelling').innerHTML="Checking the spelling.....";
+			}
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				var response=xmlhttp.responseText;
+				if(response == 1)
+				{
+					document.getElementById('spelling').innerHTML="<h3 style='color:green'><i class='fa fa-check text-success'></i> Hurray! You Spelled It Right!</h3><a href='dashboard3.php?l=<?php echo $lvl; ?>'><button type='button' class='mb-1 mt-1 mr-1 btn btn-primary'>NEXT SPELL BEE WORD</button></a></div>";
+					var audio = new Audio("sounds/ipl.mp3");
+	                audio.play();
+					var audio = new Audio("sounds/claps.mp3");
+	                audio.play();
+				}	
+				else
+				{	
+					document.getElementById('spelling').innerHTML="<h3 style='color:red'><i class='fa fa-close text-success'></i> Sorry! You Spelled It Wrong!</h3><a href='dashboard3.php?l=<?php echo $lvl; ?>''><button type='button' class='mb-1 mt-1 mr-1 btn btn-primary'>NEXT SPELL BEE WORD</button></a></div>";
+					var audio = new Audio("sounds/aipaye.mp3");
+	                audio.play();
+				}
+
+			}
+    }
+    
+	//status=status.replace(/&amp;/, "%26");
+	xmlhttp.open("GET","check_spelling1.php?answer=" + answer + "&qid=" + qid,true);
+	xmlhttp.send();
+}
+
 </script>
 		
 		
@@ -808,7 +862,7 @@ function check_spelling()
 
 	<br><br>	
 
-    <?php include "footer.php"; ?>
+    <?php include 'footer.php'; ?>
 
 	</body>
 

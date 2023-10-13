@@ -6,7 +6,7 @@
   $qid = (int)$_GET['qid'];
   $response = strtoupper(trim($_GET['answer']));
 
-  $ans=mysqli_query($conn, "SELECT * FROM words where qid=$qid;"); 		
+  $ans=mysqli_query($conn, "SELECT * FROM words1 where qid=$qid;"); 		
 
   $answer=mysqli_fetch_row($ans);
   $sid=$_SESSION['pid'];	
@@ -17,7 +17,6 @@
   else if($level=='M') { $marks=20;}
   else if($level=='C') { $marks=30;}
   $marks=100;
-  
   if($ranswer != $response) {$marks=0; $right=0;}
   $query = "insert into responses1 (sid, qid, answer,marks) values ('$sid', $qid, '$response', $marks)";  
   mysqli_query($conn, $query);  
