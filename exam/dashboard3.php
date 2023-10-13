@@ -402,8 +402,7 @@ $q = $qres[0] + 1;
 			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option4</button></a>";
 
 			echo '</div>';
-		} 
-		elseif ($q <= 30) {
+		} elseif ($q <= 30) {
 			echo "<h4 align='center' STYLE='COLOR:RED;'><B>YOUR QUESTION NO - $q</B></h4>";
 
 			$ques = mysqli_query($conn, "SELECT * FROM words1 where qid not in (select qid from responses1 where sid='$sid') and level between $bl and $be ORDER BY RAND() LIMIT 1;");
@@ -422,7 +421,7 @@ $q = $qres[0] + 1;
 				$level = 'Easy';
 			} else if ($lvl <= 6) {
 				$level = 'Moderate';
-			} else  {
+			} else {
 				$level = 'Difficult';
 			}
 
@@ -459,17 +458,50 @@ $q = $qres[0] + 1;
 			//    	   echo "<a href='dashboard.php?qid=$qid&op=$option4'><button type='submit' class='mb-1 mt-1 mr-1 btn btn-primary'>$option4</button></a>";
 
 			echo '</div>';
-		} 
-
-		else {
+		} else {
 			$points = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(marks) as points from responses1 where sid='$sid';"))['points'];
 
 			mysqli_query($conn, "UPDATE users set `points`=$points where pid='$sid';");
 
 			echo "<h3 style='color:red;' align='center'>YOUR SPELL BEE QUIZ HAS BEEN COMPLETED!</h3>";
-		}
-
 	?>
+
+<table style='line-height:0px;' align="center">
+	<th>
+		<th>Word</th>
+		<th>Responce</th>
+		<th>Status</th>
+		<th>Score</th>
+		</th>
+	</th>
+	<tbody>
+		<?php 
+			$responces_res = mysqli_query($conn, "SELECT * from responses1 where sid='$sid' order by timestamp LIMIT 35;");
+			$sno=1;
+			while($row = mysqli_fetch_assoc($responces_res) ){
+				$marks=$row['marks'];
+				$answer=$row['answer'];
+				if($sno <= 20){$word = mysqli_fetch_assoc(mysqli_query($conn,"select word from words where qid='{$row['qid']}'"))['word'];}
+				else{$word = mysqli_fetch_assoc(mysqli_query($conn,"select word from words1 where qid='{$row['qid']}'"))['word'];}
+				echo "<tr><td align='center'>$sno </td>";
+				echo "<td align='left'>".strtoupper($word)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+				echo "<td align='left'>".$answer."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><th>";
+				if($marks > 0){
+					echo "<span style='color:green;'>RIGHT</span></th>";  	 
+				}else{
+					echo "<span style='color:red;'>WRONG</span></th>";  	 
+				}
+				echo "<td align='center'>".$marks."</td></tr>";
+				$sno++;
+			}
+		?>
+	</tbody>
+
+</table>
+			
+		<?php } ?>
+
+
 
 								</div>
 
