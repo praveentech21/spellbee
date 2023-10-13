@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 include 'connect.php';
 
 //I want the words that user not yet assesed
-$words = mysqli_query($conn, "SELECT * FROM `words1` ");
+$words = mysqli_query($conn, "SELECT * FROM `words1`");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="Bhavani/" data-template="vertical-menu-template-free">
@@ -123,7 +123,8 @@ $words = mysqli_query($conn, "SELECT * FROM `words1` ");
                     <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <th>Word</th>
+                        <th>SI NO</th>
+                        <th>Word</th>
                           <th>Esay</th>
                           <th>Esay Percentage</th>
                           <th>Medium</th>
@@ -134,7 +135,9 @@ $words = mysqli_query($conn, "SELECT * FROM `words1` ");
                         </tr>
                       </thead>
                       <tbody>
-                        <?php while($aword = mysqli_fetch_assoc($words)){
+                        <?php 
+                        $sino = 1;
+                         while($aword = mysqli_fetch_assoc($words)){
                           $esay = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `responces` WHERE `wordid` = '{$aword['qid']}' AND `responce` = '1'"));
                           $medium = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `responces` WHERE `wordid` = '{$aword['qid']}' AND `responce` = '2'"));
                           $difficult = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `responces` WHERE `wordid` = '{$aword['qid']}' AND `responce` = '3'"));
@@ -144,7 +147,8 @@ $words = mysqli_query($conn, "SELECT * FROM `words1` ");
                           $difficult_percentage = ($difficult/$total)*100;
                            ?>
                         <tr>
-                          <td><strong><?php echo $aword['word'] ?></strong></td>
+                        <td><strong><?php echo $sino ?></strong></td>
+                        <td><strong><?php echo $aword['word'] ?></strong></td>
                           <td><?php echo $esay ?></td>
                           <td><span class="badge bg-label-success me-1"><?php echo $esay_percentage ?></span></td>
                           <td><?php echo $medium ?></td>
@@ -153,7 +157,7 @@ $words = mysqli_query($conn, "SELECT * FROM `words1` ");
                           <td><span class="badge bg-label-warning me-1"><?php echo $difficult_percentage ?></span></td>
                           <td><?php echo $total ?></td>
                         </tr>
-                        <?php } ?>
+                        <?php $sino++; } ?>
                       </tbody>
                     </table>
                   </div>
