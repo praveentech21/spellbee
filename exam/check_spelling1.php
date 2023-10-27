@@ -10,7 +10,7 @@
 
   $answer=mysqli_fetch_row($ans);
   $sid=$_SESSION['pid'];	
-  $ranswer=strtoupper($answer[1]);	  
+  $ranswer=strtoupper(trim($answer[1]));	  
   $level=$answer[3];	  
   $right=1;
   if($level=='E') { $marks=10;}
