@@ -312,6 +312,18 @@ if ($_SESSION['category'] == 'stall') {
 
                   <li class="menu-item ">
 
+                    <a href="secondround.php" class="menu-link">
+
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+
+                      <div data-i18n="Analytics">Second Round</div>
+
+                    </a>
+
+                  </li>
+
+                  <li class="menu-item ">
+
                     <a href="register.php" class="menu-link">
 
                       <i class="menu-icon tf-icons bx bx-user"></i>
