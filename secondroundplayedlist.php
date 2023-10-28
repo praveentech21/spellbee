@@ -207,6 +207,7 @@ include 'connect.php';
                     }
 
                     print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" . $year .  "</td><td align='center'>" . $row['points'] . "</td></tr>";
+                    $sino++;
                   }
                   ?>
                     </table>
@@ -214,6 +215,7 @@ include 'connect.php';
 
 
             </div>
+            <br><br>
             <h4>The Remaing registred Students haven't take you exam <br>
                 You are requested to take your exam at any stall in our Campus</h4>
 
