@@ -1,6 +1,6 @@
 <!-- BEGIN STYLE CUSTOMIZER -->
 <div class="color-panel">
-		<div class="color-mode-icons icon-color"><a href='secondround.php' style='color:#FFF'>Selected List</a></div>
+		<div class="color-mode-icons icon-color"><a href='thirdround.php' style='color:#FFF'>Selected List</a></div>
         <!-- <div class="color-mode-icons icon-color-close"></div> -->
 </div>
 

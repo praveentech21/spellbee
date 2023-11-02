@@ -119,6 +119,61 @@ include 'connect.php';
     </div>
     <!-- Services block END -->
 
+    <!-- Facts block BEGIN -->
+    <div class="facts-block content content-center" id="a">
+        <?php
+
+        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2027'");
+        $one = mysqli_num_rows($depr);
+        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2026' ");
+        $two = mysqli_num_rows($depr);
+        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2025'");
+        $three = mysqli_num_rows($depr);
+        $depr = mysqli_query($conn, "SELECT * FROM `users` WHERE `place` = '2024' ");
+        $four = mysqli_num_rows($depr);
+
+        $total = $one + $two + $three + $four;
+        $leaderboard = mysqli_query($conn, "SELECT *, sum(marks) as points FROM `responses1` group by `sid` ORDER BY sum(marks) DESC limit 56");
+        ?>
+        <h2>TOTAL REGISTRATIONS : <?php echo $total; ?></h2>
+        <div class="container">
+            <div class="row">
+                <a href="year_wise_leaderboard.php?year=2027">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $one; ?></strong>
+                           FIRST YEAR <br> REGISTRATIONS
+                        </div>
+                    </div>
+                </a>
+                <a href="year_wise_leaderboard.php?year=2026">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $two; ?></strong>
+                            SECOND YEAR <br> REGISTRATIONS
+                        </div>
+                    </div>
+                </a>
+                <a href="year_wise_leaderboard.php?year=2025">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $three; ?></strong>
+                            THIRD YEAR <br> REGISTRATIONS
+                        </div>
+                    </div>
+                </a>
+                <a href="year_wise_leaderboard.php?year=2024">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="item">
+                            <strong><?php echo $four; ?></strong>
+                            FOURTH YEAR <br> REGISTRATIONS
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Facts block END -->
 
     <!-- Team block BEGIN -->
     <div class="team-block content content-center margin-bottom-40" id="team">
@@ -127,36 +182,42 @@ include 'connect.php';
             <h4>These are the students Played Second Round of <strong>SRKR SPELLBEE</strong> .<br></h4>
 
             <div class="col-md-12">
-            <center>
+                <center>
                     <table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'>
                         <tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;text-align:center;'>
                             <th>S.NO</th>
+                            <th>ROLL NUMBER</th>
                             <th>STUDENT NAME</th>
-                            <th>STARTING TIME</th>
-                            <th>ENDING TIME</th>
+                            <th>YEAR</th>
                             <th>SCORE</th>
-                            <th>TIME TAKEN</th>
                         </tr>
 
                         <?php
                   $sino = 1;
-                  $leaderboard = mysqli_query($conn, "SELECT sum(marks) as marks,`sid` from responses3 GROUP BY `sid`;");
                   while ($row = mysqli_fetch_assoc($leaderboard)) {
+                    $lbord = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users` WHERE `pid` = '{$row['sid']}'"));
+                    if ($lbord['place'] == '2027') {
+                        $year = "FIRST YEAR";
+                    } elseif ($lbord['place'] == '2026') {
+                        $year = "SECOND YEAR";
+                    } elseif ($lbord['place'] == '2025') {
+                        $year = "THIRD YEAR";
+                    } elseif ($lbord['place'] == '2024') {
+                        $year = "FOURTH YEAR";
+                    }
 
-                    $lbord = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users3` WHERE `pid` = '{$row['sid']}'"));
-                    $stime = strtotime($lbord['start_time']);
-                    $etime = strtotime($lbord['end_time']);
-                    $time = $etime - $stime;
-                    print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['player_name']) . "</font></td><td style='text-align: left;'><b>" . $stime . "</b></td><td style='text-align: left;'><b>" . $etime . "</b><td align='center'>" . $row['marks'] . "</td><td align='center'>" . $time .  " Seconds </td></tr>";
+                    print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['regno']) . "</font></td><td style='text-align: left;'><b>" . strtoupper($lbord['player_name']) . "</b></td><td style='text-align: left;'>" . $year .  "</td><td align='center'>" . $row['points'] . "</td></tr>";
                     $sino++;
                   }
                   ?>
                     </table>
-                </center>
+                </center>   
+
+
             </div>
             <br><br>
-            <h4>The Remaing registred Students haven't take you exam <br>
-                You are requested to take your exam at any stall in our Campus</h4>
+            <!-- <h4>The Remaing registred Students haven't take you exam <br>
+                You are requested to take your exam at any stall in our Campus</h4> -->
 
 
         </div>
@@ -164,16 +225,6 @@ include 'connect.php';
     <!-- Team block END -->
 
     <?php include "footer.php"; ?>
-
-    <script>
-		var source = new EventSource("leaderboard1.php");
-
-		source.onmessage = function(event) {
-
-			document.getElementById('lboard').innerHTML = event.data;
-
-		};
-	</script>
 
 </body>
 

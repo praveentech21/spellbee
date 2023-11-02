@@ -65,7 +65,7 @@
 
     <!-- BEGIN STYLE CUSTOMIZER -->
     <div class="color-panel">
-        <div class="color-mode-icons icon-color"><a href='secondround.php' style='color:#FFF'>Selected List</a></div>
+        <div class="color-mode-icons icon-color"><a href='thirdround.php' style='color:#FFF'>Selected List</a></div>
         <!-- <div class="color-mode-icons icon-color-close"></div> -->
     </div>
     <!-- END BEGIN STYLE CUSTOMIZER -->
@@ -128,9 +128,9 @@
                                     data-animation="animated fadeInDown">
                                     <div STYLE='font-size:28px;'><span class='color-red'>ROUND 1:</span> 04th SEP - 10th
                                         OCT 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 12th OCT - 17th
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 2:</span> 12th OCT - 28th
                                         OCT 2023</div>
-                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> Comming Soon </div>
+                                    <div STYLE='font-size:28px;'><span class='color-red'>ROUND 3:</span> November 2nd </div>
                                 </h3>
                             </div>
                         </div>

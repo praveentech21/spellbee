@@ -528,15 +528,15 @@ $q = $qres[0] + 1;
 				}
 				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 					var response = xmlhttp.responseText;
-					if (response == 1) {
+					if (response == 0) {
+						document.getElementById('spelling').innerHTML = "<h3 style='color:red'><i class='fa fa-close text-success'></i> Sorry! You Spelled It Wrong!</h3><a href='dashboard4.php'><button type='button' class='mb-1 mt-1 mr-1 btn btn-primary'>NEXT SPELL BEE WORD</button></a></div>";
+						var audio = new Audio("sounds/aipaye.mp3");
+						audio.play();
+					} else {
 						document.getElementById('spelling').innerHTML = "<h3 style='color:green'><i class='fa fa-check text-success'></i> Hurray! You Spelled It Right!</h3><a href='dashboard4.php'><button type='button' class='mb-1 mt-1 mr-1 btn btn-primary'>NEXT SPELL BEE WORD</button></a></div>";
 						var audio = new Audio("sounds/ipl.mp3");
 						audio.play();
 						var audio = new Audio("sounds/claps.mp3");
-						audio.play();
-					} else {
-						document.getElementById('spelling').innerHTML = "<h3 style='color:red'><i class='fa fa-close text-success'></i> Sorry! You Spelled It Wrong!</h3><a href='dashboard4.php'><button type='button' class='mb-1 mt-1 mr-1 btn btn-primary'>NEXT SPELL BEE WORD</button></a></div>";
-						var audio = new Audio("sounds/aipaye.mp3");
 						audio.play();
 					}
 
