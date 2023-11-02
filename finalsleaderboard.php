@@ -147,7 +147,7 @@ include 'connect.php';
                     $stime = strtotime($lbord['start_time']);
                     $etime = strtotime($lbord['end_time']);
                     $time = $etime - $stime;
-                    print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['player_name']) . "</font></td><td style='text-align: left;'><b>" . $stime . "</b></td><td style='text-align: left;'><b>" . $etime . "</b><td align='center'>" . $row['marks'] . "</td><td align='center'>" . $time .  " Seconds </td></tr>";
+                    print "<tr><td align='center'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['player_name']) . "</font></td><td style='text-align: left;'><b>" . $lbord['start_time'] . "</b></td><td style='text-align: left;'><b>" . $lbord['end_time'] . "</b><td align='center'>" . $row['marks'] . "</td><td align='center'>" . $time .  " Seconds </td></tr>";
                     $sino++;
                   }
                   ?>
@@ -155,8 +155,8 @@ include 'connect.php';
                 </center>
             </div>
             <br><br>
-            <h4>The Remaing registred Students haven't take you exam <br>
-                You are requested to take your exam at any stall in our Campus</h4>
+            <!-- <h4>The Remaing registred Students haven't take you exam <br>
+                You are requested to take your exam at any stall in our Campus</h4> -->
 
 
         </div>
