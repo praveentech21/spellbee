@@ -22,6 +22,7 @@
                 <h5><a href='certificate.php' target='_new'>Downlode Certificates</a></h5>
                 <h5><a href='secondround.php' target='_new'>Second Round Selected</a></h5>
                 <h5><a href='secondroundplayedlist.php' target='_new'>Second Round Played</a></h5>
+                <h5><a href='finalsleaderboard.php' target='_new'>Third Round Leader Board</a></h5>
             </div>
 
             <div class="col-md-3 col-sm-6 pre-footer-col">

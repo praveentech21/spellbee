@@ -327,7 +327,7 @@ $q = $qres[0] + 1;
 									$points = $point['points'];
 
 									mysqli_query($conn, "UPDATE users3 set `points`=$points where pid='$sid';");
-									if(is_null($point['end_time'])) {mysqli_query($conn, "UPDATE users3 set `end_time`=now() where pid='$sid'");}
+									// if(is_null($point['end_time'])) {mysqli_query($conn, "UPDATE users3 set `end_time`=now() where pid='$sid'");}
 
 									echo "<h3 style='color:red;' align='center'>YOUR SPELL BEE QUIZ HAS BEEN COMPLETED!</h3>";
 								?>
@@ -515,6 +515,8 @@ $q = $qres[0] + 1;
 			var qid = document.getElementById('qid').value;
 			var answer = document.getElementById('answer').value;
 
+			var len =answer.length;
+
 
 			document.getElementById('spelling').innerHTML = "";
 
@@ -545,9 +547,10 @@ $q = $qres[0] + 1;
 				}
 			}
 
-
-				xmlhttp.open("GET", "check_spelling3.php?answer="+ answer+"&qid="+qid, true);
-				xmlhttp.send();
+				if(len > 0){
+					xmlhttp.open("GET", "check_spelling3.php?answer="+ answer+"&qid="+qid, true);
+					xmlhttp.send();
+				}
 			}
 	</script>
 
