@@ -319,14 +319,15 @@ $q = $qres[0] + 1;
 
 									echo "<div align='center'><button class='mb-1 mt-1 mr-1 btn btn-danger' onclick='spell_sound($qid);'><span style='color:#ffffff;'><i class='fas fa-volume-up'></i> SPELL WORD <i class='fas fa-play'></i></span></button><br><br>";
 
-									echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<br><div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' required class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' REQUIRED></div><div class='col-4'><br><button type='submit' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spell()'>Submit Spelling</button></div></div>";
+									echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<br><div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' required class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' required></div><div class='col-4'><br><button type='submit' id='submitbtn' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spell()'>Submit Spelling</button></div></div>";
 
 									echo '</div>';
 								} else {
-									$points = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(marks) as points from responses3 where sid='$sid';"))['points'];
+									$point = mysqli_fetch_assoc(mysqli_query($conn, "SELECT *, sum(marks) as points from responses3 where sid='$sid';"));
+									$points = $point['points'];
 
 									mysqli_query($conn, "UPDATE users3 set `points`=$points where pid='$sid';");
-									mysqli_query($conn, "UPDATE users3 set `end_time`=now() where pid='$sid';");
+									if(is_null($point['end_time'])) {mysqli_query($conn, "UPDATE users3 set `end_time`=now() where pid='$sid'");}
 
 									echo "<h3 style='color:red;' align='center'>YOUR SPELL BEE QUIZ HAS BEEN COMPLETED!</h3>";
 								?>
@@ -514,6 +515,7 @@ $q = $qres[0] + 1;
 			var qid = document.getElementById('qid').value;
 			var answer = document.getElementById('answer').value;
 
+
 			document.getElementById('spelling').innerHTML = "";
 
 			if (window.XMLHttpRequest) {
@@ -543,13 +545,21 @@ $q = $qres[0] + 1;
 				}
 			}
 
-			//status=status.replace(/&amp;/, "%26");
-			xmlhttp.open("GET", "check_spelling3.php?answer="+ answer+"&qid="+qid, true);
-			xmlhttp.send();
-		}
+
+				xmlhttp.open("GET", "check_spelling3.php?answer="+ answer+"&qid="+qid, true);
+				xmlhttp.send();
+			}
 	</script>
 
-
+<script>
+document.getElementById('submitbtn').addEventListener('click', function(event) {
+    var answerInput = document.getElementById('answer');
+    if (answerInput.value.trim() === '') {
+        event.preventDefault(); // Prevent form submission
+        alert('Answer cannot be empty. Please enter a spelling.');
+    }
+});
+</script>
 
 
 
