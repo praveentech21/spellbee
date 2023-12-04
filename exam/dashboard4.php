@@ -322,12 +322,12 @@ $q = $qres[0] + 1;
 									echo "<div id='spelling'>WRITE THE CORRECT SPELLING IN THE TEXT BOX<br><div class='col-8'><input type='hidden' name='qid' id='qid' value='$qid'><input type='text' required class='form-control' name='answer'  id='answer'  value='' placeholder='Your Spelling Here' style='text-transform:uppercase;' autocomplete='off' required></div><div class='col-4'><br><button type='submit' id='submitbtn' class='mb-1 mt-1 mr-1 btn btn-success' onclick='check_spell()'>Submit Spelling</button></div></div>";
 
 									echo '</div>';
-								} else {
+								} else {+
 									$point = mysqli_fetch_assoc(mysqli_query($conn, "SELECT *, sum(marks) as points from responses3 where sid='$sid';"));
 									$points = $point['points'];
 
 									mysqli_query($conn, "UPDATE users3 set `points`=$points where pid='$sid';");
-									// if(is_null($point['end_time'])) {mysqli_query($conn, "UPDATE users3 set `end_time`=now() where pid='$sid'");}
+									if(is_null($point['end_time'])) {mysqli_query($conn, "UPDATE users3 set `end_time`=now() where pid='$sid'");}
 
 									echo "<h3 style='color:red;' align='center'>YOUR SPELL BEE QUIZ HAS BEEN COMPLETED!</h3>";
 								?>

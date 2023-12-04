@@ -123,8 +123,8 @@ include 'connect.php';
     <!-- Team block BEGIN -->
     <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
-            <h2>SRKR SPELLBEE <strong>SECOND ROUND Played</strong></h2>
-            <h4>These are the students Played Second Round of <strong>SRKR SPELLBEE</strong> .<br></h4>
+            <h2>SRKR SPELLBEE <strong>GRAND FINALE Played</strong></h2>
+            <h4>These are the students Played Final Round of <strong>SRKR SPELLBEE</strong> .<br></h4>
 
             <div class="col-md-12">
             <center>
@@ -140,7 +140,7 @@ include 'connect.php';
 
                         <?php
                   $sino = 1;
-                  $leaderboard = mysqli_query($conn, "SELECT sum(marks) as marks,`sid` from responses3 GROUP BY `sid`;");
+                  $leaderboard = mysqli_query($conn, "SELECT sum(marks) as marks,`sid` from responses3 GROUP BY `sid` ORDER BY marks DESC;");
                   while ($row = mysqli_fetch_assoc($leaderboard)) {
 
                     $lbord = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `users3` WHERE `pid` = '{$row['sid']}'"));
