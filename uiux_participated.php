@@ -1,43 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-
-include "connect.php";
-if (isset($_POST['newregistration'])) {
-    $mobile = $_POST['mobile'];
-    $mobile_num = $_POST['mobile'];
-    $mobile_num = trim($mobile_num);
-
-    $querry = "select * from participated where mobile = '$mobile_num'";
-    $result = mysqli_query($conn, $querry);
-
-    if (mysqli_num_rows($result) > 0) {
-        echo "<script>alert('Your Certificate is ready to download')</script>";
-        echo "<script>window.open('certificates/" . $mobile_num . ".png','_self')</script>";
-        // make this certificate auto downlode
-
-    } else {
-        echo "<script>alert('Seems you are not a participant of UI/UX Workshop. Contact CampusOnline @ 7337339376')</script>";
-        // echo "<script>window.open('index.html','_self')</script>";
-    }
-}
+include 'connect.php';
 
 ?>
-
+<!DOCTYPE html>
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
-    <title>Certificate - UIUX </title>
-    <link rel="shortcut icon" href="assets/onepage/img/cup.png">
+    <title>Leaderboard SRKR SPELLBEE</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+    <meta content="Metronic Shop UI description" name="description">
+    <meta content="Metronic Shop UI keywords" name="keywords">
+    <meta content="keenthemes" name="author">
+
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
 
     <link rel="shortcut icon" href="favicon.ico">
-
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
@@ -48,10 +36,6 @@ if (isset($_POST['newregistration'])) {
     <!-- Page level plugin styles BEGIN -->
     <link href="assets/pages/css/animate.css" rel="stylesheet">
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="scratch/test.css">
-
-
-
     <!-- Page level plugin styles END -->
     <!-- Theme styles BEGIN -->
     <link href="assets/pages/css/components.css" rel="stylesheet">
@@ -60,8 +44,6 @@ if (isset($_POST['newregistration'])) {
     <link href="assets/onepage/css/style-responsive.css" rel="stylesheet">
     <link href="assets/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
     <link href="assets/onepage/css/custom.css" rel="stylesheet">
-    <script src='https://www.hCaptcha.com/1/api.js' async defer></script>
-
     <!-- Theme styles END -->
 
 
@@ -82,21 +64,42 @@ if (isset($_POST['newregistration'])) {
                 visibility: hidden;
             }
         }
+
+        td,
+        th {
+            padding: 5px;
+            font-size: 13px;
+        }
+
+        /* Change the color of visited links */
+        a:visited {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
+
+        /* Change the color of links when hovered over */
+        a:hover {
+            color: rgb(201, 30, 62);
+            /* Change to your desired color */
+        }
+
+        /* Change the color of active links (when clicked) */
+        a:active {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
+
+        /* Change the default link color */
+        a {
+            color: #FFFFFF;
+            /* Change to your desired color */
+        }
     </style>
-    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+
 </head>
 <!--DOC: menu-always-on-top class to the body element to set menu on top -->
 
 <body class="menu-always-on-top">
-
-
-    <!-- BEGIN STYLE CUSTOMIZER -->
-<div class="color-panel">
-		<div class="color-mode-icons icon-color"><a href='uiux_participated.php' style='color:#FFF'>Participant list</a></div>
-        <!-- <div class="color-mode-icons icon-color-close"></div> -->
-</div>
-
-    <!-- END BEGIN STYLE CUSTOMIZER -->
 
     <!-- Header BEGIN -->
     <div class="header header-mobi-ext">
@@ -120,46 +123,44 @@ if (isset($_POST['newregistration'])) {
         </div>
     </div>
     <!-- Header END -->
+    <br><br>
 
-    <!-- About block BEGIN -->
-    <div class="about-block content content-center" id="about">
+
+    <!-- Team block BEGIN -->
+    <div class="team-block content content-center margin-bottom-40" id="team">
         <div class="container">
+            <h2>SRKR CampusOnline <strong>UI/UX workshop - Purplelane</strong></h2>
+            <h4>Participant list of 2 days workshop</strong> .<br></h4>
 
-            <br>
-            <h3><strong><b>SRKR CampusOnline UI/UX workshop</b></strong></h3>
+            <div class="col-md-12">
+                <center>
+                    <table style='background-color:#FFFFFF;text-align:center;' border='1' cellspacing='1' cellpadding='3'>
+                        <tr bgcolor='#DC143C' style='color:#FFFFFF;text-align:center;text-align:center;'>
+                            <th>S.NO</th>
+                            <th>STUDENT NAME</th>
+                        </tr>
 
-            <div class="col-md-4">
+                        <?php
+                        $sino = 1;
+                        $leaderboard = mysqli_query($conn, "SELECT * FROM `participated` ORDER BY `name` ASC");      
+                        while ($lbord = mysqli_fetch_assoc($leaderboard)) {
+                            
+                            print "<tr><td align='left'>" . $sino . "</td><td align='center'><font color='#DC143C'> " . strtoupper($lbord['name']) . "</font></td></tr>";
+                           $sino++;
+                        }
 
-                <h3><strong>Download Your Certificate </strong><br></h3>
-                <h3 id="error_register"><strong></strong><br></h3>
-
-                <form class="contact-form" id='reg1' method='post' action='#'>
-                    <input type="text" name='mobile' id="name" placeholder="Your Mobile Number" class="form-control" autocomplete="off" autofocus>
-
-                    <input type="submit" name="newregistration" class="button" style='background-color:#C91E3E;color:#ffff;font-weight:bold;padding:5px;' value="Download Now" id="regbutton">
-
-                </form>
+                        echo "</table></center><br><br>";
+                        ?>
 
             </div>
+            <h4></h4>
 
-            <img src="assets/onepage/img/purplelane.jpg" alt="">
 
         </div>
     </div>
-    <!-- About block END -->
-
+    <!-- Team block END -->
 
     <?php include "footer.php"; ?>
-
-    <script>
-        jQuery(document).ready(function() {
-            Layout.init();
-        });
-    </script>
-    <!-- Global js END -->
-    <script src="assets/onepage/scripts/bootbox.min.js" type="text/javascript"></script><!-- pop up -->
-
-
 
 </body>
 
